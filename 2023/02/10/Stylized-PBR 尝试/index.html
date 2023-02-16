@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://kampter.github.io/img/image-20230214155911531.png">
 <meta property="article:published_time" content="2023-02-10T04:58:11.000Z">
-<meta property="article:modified_time" content="2023-02-15T17:30:06.312Z">
+<meta property="article:modified_time" content="2023-02-16T07:27:52.137Z">
 <meta property="article:author" content="Kampter">
 <meta property="article:tag" content="shader">
 <meta name="twitter:card" content="summary_large_image">
@@ -286,6 +286,8 @@
 
 <img src="/2023/02/10/Stylized-PBR%20%E5%B0%9D%E8%AF%95/image-20230213152220206.png" srcset="/img/loading.gif" lazyload class="" alt="image-20230213152220206">
 
+
+
 <ul>
 <li><p>F项 - <strong>几何函数</strong>：</p>
 </li>
@@ -304,6 +306,8 @@
 
 <img src="/2023/02/10/Stylized-PBR%20%E5%B0%9D%E8%AF%95/image-20230213153857894.png" srcset="/img/loading.gif" lazyload class="" alt="image-20230213153857894">
 
+
+
 <ul>
 <li>G项 - <strong>菲涅尔方程</strong>：菲涅尔方程描述的是在不同的表面角下表面所反射的光线所占的比率。</li>
 </ul>
@@ -317,10 +321,14 @@
 
 <img src="/2023/02/10/Stylized-PBR%20%E5%B0%9D%E8%AF%95/image-20230213155609967.png" srcset="/img/loading.gif" lazyload class="" alt="image-20230213155609967">
 
+
+
 <p>这里的kd是早先提到过的入射光线中<strong>被折射</strong>部分的能量所占的比率，而ks是<strong>被反射</strong>部分的比率。BRDF的左侧表示的是漫反射部分，它被称为Lambertian漫反射，这和我们之前在漫反射着色中使用的常数因子类似，用如下的公式来表示：</p>
 <img src="/2023/02/10/Stylized-PBR%20%E5%B0%9D%E8%AF%95/image-20230213151542786.png" srcset="/img/loading.gif" lazyload class="" alt="image-20230213151542786">
 
 <img src="/2023/02/10/Stylized-PBR%20%E5%B0%9D%E8%AF%95/image-20230213173303675.png" srcset="/img/loading.gif" lazyload class="" alt="image-20230213173303675">
+
+
 
 <p>BRDF的镜面反射部分要稍微更高级一些，它的形式如下所示：</p>
 <img src="/2023/02/10/Stylized-PBR%20%E5%B0%9D%E8%AF%95/image-20230213150548688.png" srcset="/img/loading.gif" lazyload class="" alt="image-20230213150548688">
@@ -328,6 +336,8 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs HLSL">// direct specular<br>half smoothness = 1;<br>half roughness = 1 - smoothness;<br>half functionD = Function_D(ndotH, roughness);<br>// remap roughness to k value<br>half kDirect = pow(roughness + 1, 2) / 8;<br>half direct_functionG = Function_G(ndotV, ndotL, kDirect);<br>half3 functionF = Function_F(ndotV, albedo, metalness);<br>half3 nominator = functionD * direct_functionG * functionF;<br>half demoninator = 4.0 * ndotV * ndotL + 0.001;<br>half3 specular = nominator / demoninator;<br></code></pre></td></tr></table></figure>
 
 <img src="/2023/02/10/Stylized-PBR%20%E5%B0%9D%E8%AF%95/image-20230213170817796.png" srcset="/img/loading.gif" lazyload class="" alt="image-20230213170817796">
+
+
 
 <p>实时渲染中几乎只能使用Cook-Torrance BRDF模型。BRDF同事描绘入射光线和出射光线。严格上来说，Blinn-Phong光照模型也被认为是一个BRDF。然而由于Blinn-Phong模型并没有遵循能量守恒定律，因此它不被认为是基于物理的渲染。BRDF兼有漫反射和镜面反射两个部分：</p>
 <img src="/2023/02/10/Stylized-PBR%20%E5%B0%9D%E8%AF%95/image-20230213151433065.png" srcset="/img/loading.gif" lazyload class="" alt="image-20230213151433065">
@@ -357,6 +367,8 @@
 <img src="/2023/02/10/Stylized-PBR%20%E5%B0%9D%E8%AF%95/image-20230214143652274.png" srcset="/img/loading.gif" lazyload class="" alt="image-20230214143652274">
 
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs HLSL">/ Indirect BRDF<br>// Indirect diffuse<br>half3 indirectDiffuse = SH_indirectDiffuse(normalWS, AO);<br>half3 indirectColor = indirectDiffuse * albedo;<br>// Indirect Specualr<br>half NoV = saturate(dot(normalWS, viewDirWS));<br>half fresnelTerm = Pow4(1.0 - NoV);<br>half oneMinusReflectivity = OneMinusReflectivityMetallic(metalness);<br>half reflectivity = half(1.0) - oneMinusReflectivity;<br>half grazingTerm = saturate(reflectivity + smoothness);<br>half3 indirectSpecular = IndirectSpecular(reflectVector, roughness, AO);<br>half3 brdfSpecular = Calculate_F0(albedo, metalness);<br>indirectColor += AO * indirectSpecular * EnvironmentBRDFSpecular(roughness, brdfSpecular, fresnelTerm, grazingTerm);<br></code></pre></td></tr></table></figure>
+
+
 
 <p>最后添加脸部和手部的emission fake SSS效果，最终合成效果如下</p>
 <img src="/2023/02/10/Stylized-PBR%20%E5%B0%9D%E8%AF%95/image-20230214155911531.png" srcset="/img/loading.gif" lazyload class="" alt="image-20230214155911531">
