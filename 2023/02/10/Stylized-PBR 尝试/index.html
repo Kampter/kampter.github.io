@@ -18,14 +18,14 @@
   
     <meta name="description" content="这是一篇搭建Stylized-PBR的博客，记录从实现PBR到改造风格化shader的代码记录。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="尝试在URP下搭建Stylized-PBR shader">
+<meta property="og:title" content="尝试在URP下手写 PBR shader">
 <meta property="og:url" content="https://kampter.github.io/2023/02/10/Stylized-PBR%20%E5%B0%9D%E8%AF%95/index.html">
 <meta property="og:site_name" content="Kampter&#39;s Castle">
 <meta property="og:description" content="这是一篇搭建Stylized-PBR的博客，记录从实现PBR到改造风格化shader的代码记录。">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://kampter.github.io/img/image-20230214155911531.png">
 <meta property="article:published_time" content="2023-02-10T04:58:11.000Z">
-<meta property="article:modified_time" content="2023-02-15T13:03:10.597Z">
+<meta property="article:modified_time" content="2023-02-15T17:30:06.312Z">
 <meta property="article:author" content="Kampter">
 <meta property="article:tag" content="shader">
 <meta name="twitter:card" content="summary_large_image">
@@ -33,7 +33,7 @@
   
   
   
-  <title>尝试在URP下搭建Stylized-PBR shader - Kampter&#39;s Castle</title>
+  <title>尝试在URP下手写 PBR shader - Kampter&#39;s Castle</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -199,7 +199,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="尝试在URP下搭建Stylized-PBR shader"></span>
+            <span id="subtitle" data-typed-text="尝试在URP下手写 PBR shader"></span>
           
         </div>
 
@@ -222,7 +222,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          5.4k 字
+          5.3k 字
         
       </span>
     
@@ -271,13 +271,12 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">尝试在URP下搭建Stylized-PBR shader</h1>
+            <h1 style="display: none">尝试在URP下手写 PBR shader</h1>
             
             
               <div class="markdown-body">
                 
-                <p>先借用军团要塞版本的卡渲shader作为模板，来尝试手写一个PBR渲染。</p>
-<h2 id="Cook-Torrance-BRDF"><a href="#Cook-Torrance-BRDF" class="headerlink" title="Cook-Torrance BRDF"></a>Cook-Torrance BRDF</h2><p>Cook-Torrance BRDF的镜面反射部分包含三个函数，此外分母部分还有一个标准化因子 。字母D，F与G分别代表着一种类型的函数，各个函数分别用来近似的计算出表面反射特性的一个特定部分。三个函数分别为法线分布函数(Normal <strong>D</strong>istribution Function)，菲涅尔方程(<strong>F</strong>resnel Rquation)和几何函数(<strong>G</strong>eometry Function)：</p>
+                <h2 id="Cook-Torrance-BRDF"><a href="#Cook-Torrance-BRDF" class="headerlink" title="Cook-Torrance BRDF"></a>Cook-Torrance BRDF</h2><p>Cook-Torrance BRDF的镜面反射部分包含三个函数，此外分母部分还有一个标准化因子 。字母D，F与G分别代表着一种类型的函数，各个函数分别用来近似的计算出表面反射特性的一个特定部分。三个函数分别为法线分布函数(Normal <strong>D</strong>istribution Function)，菲涅尔方程(<strong>F</strong>resnel Rquation)和几何函数(<strong>G</strong>eometry Function)：</p>
 <ul>
 <li>D项 - <strong>法线分布函数</strong>: 估算在受到表面粗糙度的影响下，朝向方向与半程向量一致的微平面的数量。这是用来估算微平面的主要函数。</li>
 </ul>
@@ -362,9 +361,6 @@
 <p>最后添加脸部和手部的emission fake SSS效果，最终合成效果如下</p>
 <img src="/2023/02/10/Stylized-PBR%20%E5%B0%9D%E8%AF%95/image-20230214155911531.png" srcset="/img/loading.gif" lazyload class="" alt="image-20230214155911531">
 
-
-
-<h2 id="风格化渲染"><a href="#风格化渲染" class="headerlink" title="风格化渲染"></a>风格化渲染</h2><p>未完待续。。。</p>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
 <li><a target="_blank" rel="noopener" href="https://www.bilibili.com/read/cv7510082">URP管线的自学HLSL之路 第三十七篇 造一个PBR的轮子 - 哔哩哔哩 (bilibili.com)</a></li>
 <li><a target="_blank" rel="noopener" href="https://blog.csdn.net/linjf520/article/details/122464903">Unity Shader - 搬砖日志 - URP PBR (抄作业篇，持续更新~)_Jave.Lin的博客-CSDN博客_unity urp的pbrshader</a></li>
@@ -395,7 +391,7 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>尝试在URP下搭建Stylized-PBR shader</div>
+      <div>尝试在URP下手写 PBR shader</div>
       <div>https://kampter.github.io/2023/02/10/Stylized-PBR 尝试/</div>
     </div>
     <div class="license-meta">

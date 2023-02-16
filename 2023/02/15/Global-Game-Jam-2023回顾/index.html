@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://kampter.github.io/img/image-20230215211434958.png">
 <meta property="article:published_time" content="2023-02-15T11:10:20.000Z">
-<meta property="article:modified_time" content="2023-02-15T17:25:55.544Z">
+<meta property="article:modified_time" content="2023-02-16T07:17:18.263Z">
 <meta property="article:author" content="Kampter">
 <meta property="article:tag" content="shader">
 <meta name="twitter:card" content="summary_large_image">
@@ -222,7 +222,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          4k 字
+          4.8k 字
         
       </span>
     
@@ -233,7 +233,7 @@
         
         
         
-          34 分钟
+          41 分钟
         
       </span>
     
@@ -333,9 +333,43 @@
 <p>最后的效果图如下，踩坑点，记得写阴影pass并且阴影也要alpha clip。还是比较杂乱，没有把模型导入houdini传递一下球形法线，48小时时间来不及了。</p>
 <img src="/2023/02/15/Global-Game-Jam-2023%E5%9B%9E%E9%A1%BE/image-20230216011958528.png" srcset="/img/loading.gif" lazyload class="" alt="image-20230216011958528">
 
-<h3 id="人物渲染"><a href="#人物渲染" class="headerlink" title="人物渲染"></a>人物渲染</h3><h3 id="水面渲染"><a href="#水面渲染" class="headerlink" title="水面渲染"></a>水面渲染</h3><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
-<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/593500186">风格化树——树叶分析与实现 - 知乎 (zhihu.com)</a></li>
-<li></li>
+<h3 id="人物渲染"><a href="#人物渲染" class="headerlink" title="人物渲染"></a>人物渲染</h3><p>人物渲染我用的是shader graph + custom function的方式实现。</p>
+<img src="/2023/02/15/Global-Game-Jam-2023%E5%9B%9E%E9%A1%BE/image-20230216140256869.png" srcset="/img/loading.gif" lazyload class="" alt="image-20230216140256869">
+
+<p>大致思路与直接手写没有太大区别。首先遍历场景内的灯光（多灯光支持）获得每个灯光的颜色，方向，衰减属性用以叠加计算。光照模型用smoothstep函数控制半兰伯特模型的输出，同时设置Smooth参数来调整边界的光滑度。</p>
+<p><img src="Global-Game-Jam-2023回顾/image-20230216141054289.png" srcset="/img/loading.gif" lazyload alt="image-20230216141054289" style="zoom: 67%;" /><img src="Global-Game-Jam-2023回顾/image-20230216141119084.png" srcset="/img/loading.gif" lazyload alt="image-20230216141119084" style="zoom: 67%;" /><img src="Global-Game-Jam-2023回顾/image-20230216141856838.png" srcset="/img/loading.gif" lazyload alt="image-20230216141856838" style="zoom:67%;" /></p>
+<p>最左边smooth &#x3D; 0,  中间smooth &#x3D; 0.2 右边为开启边缘光的效果。边缘光用非常偷懒的方式实现</p>
+<img src="/2023/02/15/Global-Game-Jam-2023%E5%9B%9E%E9%A1%BE/image-20230216141737262.png" srcset="/img/loading.gif" lazyload class="" alt="image-20230216141737262">
+
+
+<h3 id="水面渲染"><a href="#水面渲染" class="headerlink" title="水面渲染"></a>水面渲染</h3><p>用根据时间变化的gradient noise控制水面的vertex position 移动，主要用以实现小幅度的潮汐的感觉。</p>
+<img src="/2023/02/15/Global-Game-Jam-2023%E5%9B%9E%E9%A1%BE/image-20230216144605097.png" srcset="/img/loading.gif" lazyload class="" alt="image-20230216144605097">
+
+<p>水面颜色用屏幕空间深度来控制，lerp深水区和浅水区颜色，这个实现来自unity的官方演示视频。</p>
+<img src="/2023/02/15/Global-Game-Jam-2023%E5%9B%9E%E9%A1%BE/image-20230216145156030.png" srcset="/img/loading.gif" lazyload class="" alt="image-20230216145156030">
+
+<p>通过调整Strength和depth控制浅水和深水区</p>
+<img src="/2023/02/15/Global-Game-Jam-2023%E5%9B%9E%E9%A1%BE/image-20230216145357665.png" srcset="/img/loading.gif" lazyload class="" alt="image-20230216145341579">
+
+<img src="/2023/02/15/Global-Game-Jam-2023%E5%9B%9E%E9%A1%BE/image-20230216145036049.png" srcset="/img/loading.gif" lazyload class="" alt="image-20230216145036049">
+
+<p>反射和水面波纹实现。选取两张水面法线纹理图，设置好根据时间移动的方向和速度，用reoriented normal blend的叠加方式（效果更好），用以模拟水面被风吹动的波纹。水面反射通过把刚刚的结果叠加至Screen position中，再把结果输出至Scene Color的UV中, 与给刚刚求得的深度图结果根据aplha通道进行lerp，输出至normal即可获得还算不错的具有反射效果的水面波纹。</p>
+<img src="/2023/02/15/Global-Game-Jam-2023%E5%9B%9E%E9%A1%BE/image-20230216150250404.png" srcset="/img/loading.gif" lazyload class="" alt="image-20230216150250404">
+
+<p>最终效果如图</p>
+<img src="/2023/02/15/Global-Game-Jam-2023%E5%9B%9E%E9%A1%BE/image-20230216145806132.png" srcset="/img/loading.gif" lazyload class="" alt="image-20230216145806132">
+
+<h3 id="体积云"><a href="#体积云" class="headerlink" title="体积云"></a>体积云</h3><p>云直接用的cubemap贴图贴上去的skybox，48小时实在没有时间实现了</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>不少内容都是临时拼凑和网上抄来的，也没有认真调整和细化方案，没有定制自己的东西。感觉还是耗材，希望接下来继续沉下来多积累一些东西。</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
+<li><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/593500186">风格化树——树叶分析与实现 - 知乎 (zhihu.com)</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/482749051">水一下原神树的渲染 - 知乎 (zhihu.com)</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=gRq-IdShxpU">Making a Water Shader in Unity with URP! (Tutorial) - YouTube</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=FIP6I1x6lMA">(4) Unity | Making a Lit Toon Shader in Shader Graph - YouTube</a></p>
+</li>
 </ol>
 
                 
@@ -410,8 +444,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/02/10/Stylized-PBR%20%E5%B0%9D%E8%AF%95/" title="尝试在URP下搭建Stylized-PBR shader">
-                        <span class="hidden-mobile">尝试在URP下搭建Stylized-PBR shader</span>
+                      <a href="/2023/02/10/Stylized-PBR%20%E5%B0%9D%E8%AF%95/" title="尝试在URP下手写 PBR shader">
+                        <span class="hidden-mobile">尝试在URP下手写 PBR shader</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
