@@ -16,20 +16,22 @@
   <meta name="author" content="Kampter">
   <meta name="keywords" content="Technical Artist">
   
-    <meta name="description" content="This is Kampter&#39;s personal website including Dev blog and Tech Sharing">
+    <meta name="description" content="技术分析论文中有一篇非常形象的图片来实现渲染效果     Albedo1234&#x2F;&#x2F; Albedohalf4 mainTex &#x3D; SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, IN.uv) * _MainColor;half4 albedo &#x3D; mainTex;half4 ambient &#x3D; half4(unity_SHAr.w, unity_SHAg.w,">
 <meta property="og:type" content="article">
 <meta property="og:title" content="军团要塞2渲染shader实现">
 <meta property="og:url" content="https://kampter.github.io/2023/02/16/%E5%86%9B%E5%9B%A2%E8%A6%81%E5%A1%9E2%E6%B8%B2%E6%9F%93shader%E5%AE%9E%E7%8E%B0/index.html">
 <meta property="og:site_name" content="Kampter&#39;s Castle">
-<meta property="og:description" content="This is Kampter&#39;s personal website including Dev blog and Tech Sharing">
+<meta property="og:description" content="技术分析论文中有一篇非常形象的图片来实现渲染效果     Albedo1234&#x2F;&#x2F; Albedohalf4 mainTex &#x3D; SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, IN.uv) * _MainColor;half4 albedo &#x3D; mainTex;half4 ambient &#x3D; half4(unity_SHAr.w, unity_SHAg.w,">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://kampter.github.io/img/image-20230217152508379.png">
 <meta property="article:published_time" content="2023-02-16T07:25:58.000Z">
-<meta property="article:modified_time" content="2023-02-17T07:19:17.698Z">
+<meta property="article:modified_time" content="2023-02-17T09:21:11.585Z">
 <meta property="article:author" content="Kampter">
 <meta property="article:tag" content="unity">
 <meta property="article:tag" content="hlsl">
 <meta property="article:tag" content="toon shader">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://kampter.github.io/img/image-20230217152508379.png">
   
   
   
@@ -193,7 +195,7 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+     style="background: url('/img/image-20230217152508379.png') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
@@ -222,7 +224,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          0 字
+          2.6k 字
         
       </span>
     
@@ -233,7 +235,7 @@
         
         
         
-          1 分钟
+          22 分钟
         
       </span>
     
@@ -276,7 +278,74 @@
             
               <div class="markdown-body">
                 
-                
+                <h2 id="技术分析"><a href="#技术分析" class="headerlink" title="技术分析"></a>技术分析</h2><p>论文中有一篇非常形象的图片来实现渲染效果</p>
+<img src="/2023/02/16/%E5%86%9B%E5%9B%A2%E8%A6%81%E5%A1%9E2%E6%B8%B2%E6%9F%93shader%E5%AE%9E%E7%8E%B0/Figure6_1.png" srcset="/img/loading.gif" lazyload class="" alt="image">
+
+<img src="/2023/02/16/%E5%86%9B%E5%9B%A2%E8%A6%81%E5%A1%9E2%E6%B8%B2%E6%9F%93shader%E5%AE%9E%E7%8E%B0/Figure6_@.png" srcset="/img/loading.gif" lazyload class="" alt="image">
+
+<h3 id="Albedo"><a href="#Albedo" class="headerlink" title="Albedo"></a>Albedo</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs HLSL">// Albedo<br>half4 mainTex = SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, IN.uv) * _MainColor;<br>half4 albedo = mainTex;<br>half4 ambient = half4(unity_SHAr.w, unity_SHAg.w, unity_SHAb.w, 1.0);<br></code></pre></td></tr></table></figure>
+
+<p>直接采样人物的贴图，顺手再把其他的贴图也一并采样进来。</p>
+<img src="/2023/02/16/%E5%86%9B%E5%9B%A2%E8%A6%81%E5%A1%9E2%E6%B8%B2%E6%9F%93shader%E5%AE%9E%E7%8E%B0/image-20230217154828034.png" srcset="/img/loading.gif" lazyload class="" alt="image-20230217154828034">
+
+
+
+<h3 id="Wraped-diffuse"><a href="#Wraped-diffuse" class="headerlink" title="Wraped diffuse"></a>Wraped diffuse</h3><p>论文中的光照实现公式为</p>
+<img src="/2023/02/16/%E5%86%9B%E5%9B%A2%E8%A6%81%E5%A1%9E2%E6%B8%B2%E6%9F%93shader%E5%AE%9E%E7%8E%B0/%E5%85%AC%E5%BC%8F1.png" srcset="/img/loading.gif" lazyload class="" alt="image">
+
+<p>在unity实现中使用ramp的方式即采样ramp时的uv 参数用halfLambert 组成的X分量，叠加上主光源即可。</p>
+<figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs reasonml"><span class="hljs-comment">// Half Lambert</span><br>half ndotL = max(<span class="hljs-number">0</span>, dot(normalWS, lightDir));<br>half lambert = ndotL;<br>half halfLambert= saturate(lambert<span class="hljs-operator"> * </span><span class="hljs-number">0.5</span> + <span class="hljs-number">0.5</span>);<br>half4 ramp = <span class="hljs-constructor">SAMPLE_TEXTURE2D(<span class="hljs-params">_RampMap</span>, <span class="hljs-params">sampler_RampMap</span>, <span class="hljs-params">half2</span>(<span class="hljs-params">halfLambert</span>, 0)</span>);<br>half4 wrapDiffuseTerm = ramp<span class="hljs-operator"> * </span>lightColor;<br></code></pre></td></tr></table></figure>
+
+<img src="/2023/02/16/%E5%86%9B%E5%9B%A2%E8%A6%81%E5%A1%9E2%E6%B8%B2%E6%9F%93shader%E5%AE%9E%E7%8E%B0/image-20230217160722860.png" srcset="/img/loading.gif" lazyload class="" alt="image-20230217160722860">
+
+
+
+<h3 id="Ambient"><a href="#Ambient" class="headerlink" title="Ambient"></a>Ambient</h3><p>ambient实现比较复杂，这里直接抄unity urp中关于SH 求谐函数的代码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs HLSL">real3 SH_indirectDiffuse(real3 normalWS, real AO)<br>&#123;<br>    real4 SHCoefficients[7];<br>    SHCoefficients[0] = unity_SHAr;<br>    SHCoefficients[1] = unity_SHAg;<br>    SHCoefficients[2] = unity_SHAb;<br>    SHCoefficients[3] = unity_SHBr;<br>    SHCoefficients[4] = unity_SHBg;<br>    SHCoefficients[5] = unity_SHBb;<br>    SHCoefficients[6] = unity_SHC;<br>    real3 color = SampleSH9(SHCoefficients, normalWS);<br>    return max(0, color) * AO;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<img src="/2023/02/16/%E5%86%9B%E5%9B%A2%E8%A6%81%E5%A1%9E2%E6%B8%B2%E6%9F%93shader%E5%AE%9E%E7%8E%B0/image-20230217161718102.png" srcset="/img/loading.gif" lazyload class="" alt="image-20230217161718102">
+
+
+
+<h3 id="View-Independent-Lighting-Terms"><a href="#View-Independent-Lighting-Terms" class="headerlink" title="View Independent Lighting Terms"></a>View Independent Lighting Terms</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs HLSL">half3 viewIndependentLightTerms = albedo * (indirectDiffuse+ wrapDiffuseTerm);<br></code></pre></td></tr></table></figure>
+
+<img src="/2023/02/16/%E5%86%9B%E5%9B%A2%E8%A6%81%E5%A1%9E2%E6%B8%B2%E6%9F%93shader%E5%AE%9E%E7%8E%B0/image-20230217162038823.png" srcset="/img/loading.gif" lazyload class="" alt="image-20230217162038823">
+
+
+
+<h3 id="View-Dependent-Lighting-Terms"><a href="#View-Dependent-Lighting-Terms" class="headerlink" title="View Dependent Lighting Terms"></a>View Dependent Lighting Terms</h3><p>论文中计算依赖视角的光照部分的公式</p>
+<img src="/2023/02/16/%E5%86%9B%E5%9B%A2%E8%A6%81%E5%A1%9E2%E6%B8%B2%E6%9F%93shader%E5%AE%9E%E7%8E%B0/%E5%85%AC%E5%BC%8F2.png" srcset="/img/loading.gif" lazyload class="" alt="image">
+
+<p>在依赖视角的光照部分中，《军团要塞2》除了考虑一般的Phong高光外，还基于菲涅尔现象实现了类似边缘光的效果。Specular就是式子中的左半部分，Rim lighting就是式子中的右半部分。</p>
+<p>原版实现代码如下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs HLSL">//计算View Independent Lighting Terms<br>half3 viewIndependentLightTerms = albedo * (indirectDiffuse+ wrapDiffuseTerm);<br><br>// Specular<br>half fs = _FresnelSpecular;<br>half4 spec = fs * pow(ndotH, smoothness);<br>half4 specular = pow(spec, _KSpecular)* _SpecularColor * metalMask;<br><br>// Rim Lightingw<br>half kr = 0.5;<br>half fr = pow(1 - ndotV, 4);<br>half4 rim = kr * fr * pow(spec, _RimPower);<br><br>// Dedicated Rim Lighting <br>half4 aV = half(1);<br>half4 dedicatedRimLighting = ndotU * fr * kr * aV;<br><br>// Multiple Phong Terms<br>half ks = 1;<br>half4 multiplePhongTerms = ks * lightColor * max(specular, rim);<br>half4 viewDependentLightTerms = multiplePhongTerms + dedicatedRimLighting;<br></code></pre></td></tr></table></figure>
+
+<p>参考没有遮罩的时候，转换成另一种算法，同时替代phong高光为blinn phong。</p>
+<p>添加Fresnel 效果的 multiplePhongTerms 高光模型</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs HLSL">// 计算View dependent Lighting Terms<br>half halfVector = normalize(viewDirWS + lightDir);<br>half3 specular = pow(ndotH, 1);<br>half fresnel = pow(1 - dot(viewDirWS, halfVector), 5.0);<br>fresnel += 0.5 * (1.0 - fresnel);<br>half3 multiplePhongTerms = specular * fresnel * lightColor;<br></code></pre></td></tr></table></figure>
+
+<img src="/2023/02/16/%E5%86%9B%E5%9B%A2%E8%A6%81%E5%A1%9E2%E6%B8%B2%E6%9F%93shader%E5%AE%9E%E7%8E%B0/image-20230217171838962.png" srcset="/img/loading.gif" lazyload class="" alt="image-20230217171838962">
+
+<p>Rim Light 实现 </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs HLSL">half rim = 1.0 - saturate(ndotV);<br>half3 dedicatedRimLighting = _RimLightColor * pow(rim, _RimPower);<br></code></pre></td></tr></table></figure>
+
+<img src="/2023/02/16/%E5%86%9B%E5%9B%A2%E8%A6%81%E5%A1%9E2%E6%B8%B2%E6%9F%93shader%E5%AE%9E%E7%8E%B0/image-20230217171853212.png" srcset="/img/loading.gif" lazyload class="" alt="image-20230217171853212">
+
+<p>合成效果</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs HLSL">half3 viewDependentLightTerms = albedo * lightColor * max(multiplePhongTerms, dedicatedRimLighting);<br><br>// Combine<br>half3 color = viewIndependentLightTerms + viewDependentLightTerms;<br></code></pre></td></tr></table></figure>
+
+<img src="/2023/02/16/%E5%86%9B%E5%9B%A2%E8%A6%81%E5%A1%9E2%E6%B8%B2%E6%9F%93shader%E5%AE%9E%E7%8E%B0/image-20230217171948752.png" srcset="/img/loading.gif" lazyload class="" alt="image-20230217171948752">
+
+
+
+<p>哦豁打完收工，忽略没有写投影pass。wrapped diffuse的效果提供明暗交界处有明显的泛红。</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
+<li><a target="_blank" rel="noopener" href="https://steamcdn-a.akamaihd.net/apps/valve/2007/NPAR07_IllustrativeRenderingInTeamFortress2.pdf">NPAR07_IllustrativeRenderingInTeamFortress2.pdf (akamaihd.net)</a></li>
+<li><a target="_blank" rel="noopener" href="http://richbabe.top/2018/12/12/%E5%86%9B%E5%9B%A2%E8%A6%81%E5%A1%9E2-%E5%8D%A1%E9%80%9A%E6%B8%B2%E6%9F%93%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0/">《军团要塞2》卡通渲染算法实现 - Richbabe的博客 | Richbabe Blog</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/candycat1992/article/details/37696187">【Shader拓展】Illustrative Rendering in Team Fortress 2_妈妈说女孩子要自立自强的博客-CSDN博客</a></li>
+<li><a target="_blank" rel="noopener" href="https://polycount.com/discussion/94026/shader-specular-term-fresnel">Shader - Specular Term - Fresnel — polycount</a></li>
+</ol>
+
                 
               </div>
             
