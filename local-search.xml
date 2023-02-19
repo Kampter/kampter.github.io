@@ -4,62 +4,6 @@
   
   
   <entry>
-    <title>URP仿原神渲染shader</title>
-    <link href="/2023/02/18/URP%E4%BB%BF%E5%8E%9F%E7%A5%9E%E6%B8%B2%E6%9F%93shader/"/>
-    <url>/2023/02/18/URP%E4%BB%BF%E5%8E%9F%E7%A5%9E%E6%B8%B2%E6%9F%93shader/</url>
-    
-    <content type="html"><![CDATA[<h2 id="技术实现"><a href="#技术实现" class="headerlink" title="技术实现"></a>技术实现</h2><p>在原神二测就有来体验过游戏，也是一步一步看着原神成长壮大封神的，一直以来都对于这样认真做内容的游戏公司怀有敬意。这次终于“敢”在掌握一定技术的情况下来模仿原神的渲染效果。</p><h3 id="模型准备"><a href="#模型准备" class="headerlink" title="模型准备"></a>模型准备</h3><p>模型下载自米哈游官方在B站开展的二创活动pmx格式，直接网上随便找个converter即可转为fbx方便使用，这里选择刻晴作为测试人物模型。而神奇的google有人通过神奇的方式获得其他的贴图文件。汇总起来一共获得这些文件：</p><img src="/2023/02/18/URP%E4%BB%BF%E5%8E%9F%E7%A5%9E%E6%B8%B2%E6%9F%93shader/image-20230218220545641.png" class="" alt="image-20230218220545641"><h3 id="贴图分析"><a href="#贴图分析" class="headerlink" title="贴图分析"></a>贴图分析</h3><img src="/2023/02/18/URP%E4%BB%BF%E5%8E%9F%E7%A5%9E%E6%B8%B2%E6%9F%93shader/image-20230218220828197.png" class="" alt="image-20230218220828197"><p>Lightmap.r &#x3D; Specular Mask</p><img src="/2023/02/18/URP%E4%BB%BF%E5%8E%9F%E7%A5%9E%E6%B8%B2%E6%9F%93shader/image-20230218220928101.png" class="" alt="image-20230218220928101"><p>Lightmap.g &#x3D; AO Map</p><img src="/2023/02/18/URP%E4%BB%BF%E5%8E%9F%E7%A5%9E%E6%B8%B2%E6%9F%93shader/image-20230218221112035.png" class="" alt="image-20230218221112035"><p>Lightmap.b &#x3D; Roughness</p><img src="/2023/02/18/URP%E4%BB%BF%E5%8E%9F%E7%A5%9E%E6%B8%B2%E6%9F%93shader/image-20230218221128126.png" class="" alt="image-20230218221128126"><p>lightmap.a &#x3D; Emission Mask</p><img src="/2023/02/18/URP%E4%BB%BF%E5%8E%9F%E7%A5%9E%E6%B8%B2%E6%9F%93shader/image-20230218221323235.png" class="" alt="image-20230218221323235"><p>diffuse.a 在脸部，肌肉和上衣打底部分是由不为1的数值的</p><img src="/2023/02/18/URP%E4%BB%BF%E5%8E%9F%E7%A5%9E%E6%B8%B2%E6%9F%93shader/image-20230218215709325.png" class="" alt="image-20230218215709325"><img src="/2023/02/18/URP%E4%BB%BF%E5%8E%9F%E7%A5%9E%E6%B8%B2%E6%9F%93shader/image-20230218221653598.png" class="" alt="image-20230218221653598"><img src="/2023/02/18/URP%E4%BB%BF%E5%8E%9F%E7%A5%9E%E6%B8%B2%E6%9F%93shader/image-20230218221715972.png" class="" alt="image-20230218221715972"><p>两张Ramp贴图让我想到军团要塞2中的wrapdiffuse处理，思路应该类似。而大佬们的文章表示贴图里有十条Ramp，分为上下各五条 分别对应白天和晚上。 </p><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol><li><a href="https://zhuanlan.zhihu.com/p/551104542">【01】Unity URP 卡通渲染 原神角色渲染记录-Diffuse: Ramp + AO + Double Shadow - 知乎 (zhihu.com)</a></li><li><a href="https://zhuanlan.zhihu.com/p/435005339">【Unity技术美术】 原神Shader渲染还原解析 - 知乎 (zhihu.com)</a></li><li>[<a href="https://zhuanlan.zhihu.com/p/547129280">卡通渲染]二、原神角色渲染还原 - Diffuse-1 - 知乎 (zhihu.com)</a></li><li><a href="https://zhuanlan.zhihu.com/p/360229590">原神角色渲染Shader分析还原 - 知乎 (zhihu.com)</a></li><li><a href="https://zhuanlan.zhihu.com/p/110025903">【02】从零开始的卡通渲染-着色篇1 - 知乎 (zhihu.com)</a></li></ol>]]></content>
-    
-    
-    <categories>
-      
-      <category>学习笔记</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>unity</tag>
-      
-      <tag>hlsl</tag>
-      
-      <tag>Toon shader</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Unity特效</title>
-    <link href="/2023/02/18/Unity%E7%89%B9%E6%95%88/"/>
-    <url>/2023/02/18/Unity%E7%89%B9%E6%95%88/</url>
-    
-    <content type="html"><![CDATA[<iframe width="560" height="315" src="https://www.youtube.com/embed/dV57u9PqvZY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>]]></content>
-    
-    
-    <categories>
-      
-      <category>学习笔记</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>unity</tag>
-      
-      <tag>VFX Graph</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
     <title>Global Game Jam 2023回顾</title>
     <link href="/2023/02/15/Global-Game-Jam-2023%E5%9B%9E%E9%A1%BE/"/>
     <url>/2023/02/15/Global-Game-Jam-2023%E5%9B%9E%E9%A1%BE/</url>
@@ -122,6 +66,35 @@
   
   
   <entry>
+    <title>URP仿原神渲染shader</title>
+    <link href="/2023/02/05/URP%E4%BB%BF%E5%8E%9F%E7%A5%9E%E6%B8%B2%E6%9F%93shader/"/>
+    <url>/2023/02/05/URP%E4%BB%BF%E5%8E%9F%E7%A5%9E%E6%B8%B2%E6%9F%93shader/</url>
+    
+    <content type="html"><![CDATA[<h2 id="技术实现"><a href="#技术实现" class="headerlink" title="技术实现"></a>技术实现</h2><p>在原神二测就有来体验过游戏，也是一步一步看着原神成长壮大封神的，一直以来都对于这样认真做内容的游戏公司怀有敬意。这次终于“敢”在掌握一定技术的情况下来模仿原神的渲染效果。</p><h3 id="模型准备"><a href="#模型准备" class="headerlink" title="模型准备"></a>模型准备</h3><p>模型下载自米哈游官方在B站开展的二创活动pmx格式，直接网上随便找个converter即可转为fbx方便使用，这里选择刻晴作为测试人物模型。而神奇的google有人通过神奇的方式获得其他的贴图文件。汇总起来一共获得这些文件：</p><img src="/2023/02/05/URP%E4%BB%BF%E5%8E%9F%E7%A5%9E%E6%B8%B2%E6%9F%93shader/image-20230218220545641.png" class="" alt="image-20230218220545641"><h3 id="贴图分析"><a href="#贴图分析" class="headerlink" title="贴图分析"></a>贴图分析</h3><img src="/2023/02/05/URP%E4%BB%BF%E5%8E%9F%E7%A5%9E%E6%B8%B2%E6%9F%93shader/image-20230218220828197.png" class="" alt="image-20230218220828197"><p>Lightmap.r &#x3D; Specular Mask</p><img src="/2023/02/05/URP%E4%BB%BF%E5%8E%9F%E7%A5%9E%E6%B8%B2%E6%9F%93shader/image-20230218220928101.png" class="" alt="image-20230218220928101"><p>Lightmap.g &#x3D; AO Map</p><img src="/2023/02/05/URP%E4%BB%BF%E5%8E%9F%E7%A5%9E%E6%B8%B2%E6%9F%93shader/image-20230218221112035.png" class="" alt="image-20230218221112035"><p>Lightmap.b &#x3D; Roughness</p><img src="/2023/02/05/URP%E4%BB%BF%E5%8E%9F%E7%A5%9E%E6%B8%B2%E6%9F%93shader/image-20230218221128126.png" class="" alt="image-20230218221128126"><p>lightmap.a &#x3D; Emission Mask</p><img src="/2023/02/05/URP%E4%BB%BF%E5%8E%9F%E7%A5%9E%E6%B8%B2%E6%9F%93shader/image-20230218221323235.png" class="" alt="image-20230218221323235"><p>diffuse.a 在脸部，肌肉和上衣打底部分是由不为1的数值的</p><img src="/2023/02/05/URP%E4%BB%BF%E5%8E%9F%E7%A5%9E%E6%B8%B2%E6%9F%93shader/image-20230218215709325.png" class="" alt="image-20230218215709325"><img src="/2023/02/05/URP%E4%BB%BF%E5%8E%9F%E7%A5%9E%E6%B8%B2%E6%9F%93shader/image-20230218221653598.png" class="" alt="image-20230218221653598"><img src="/2023/02/05/URP%E4%BB%BF%E5%8E%9F%E7%A5%9E%E6%B8%B2%E6%9F%93shader/image-20230218221715972.png" class="" alt="image-20230218221715972"><p>两张Ramp贴图让我想到军团要塞2中的wrapdiffuse处理，思路应该类似。而大佬们的文章表示贴图里有十条Ramp，分为上下各五条 分别对应白天和晚上。 </p><h3 id="贴图和基础计算准备"><a href="#贴图和基础计算准备" class="headerlink" title="贴图和基础计算准备"></a>贴图和基础计算准备</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs HLSL">// Direction Function<br>half3 viewDirWS = GetWorldSpaceViewDir(IN.positionWS);<br>half3 normalWS = IN.normalWS;<br><br>// Light Calculation<br>Light mainLight = GetMainLight(); <br>half4 lightColor = half4(mainLight.color, 1); //获取主光源颜色<br>half3 lightDir = normalize(mainLight.direction); //主光源方向<br><br>// Albedo<br>half4 albedo = SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, IN.uv); <br>half4 vertexColor = IN.vertexColor; //顶点色<br><br>// Texture Sampling<br>// lightmap<br>// R channel = Specular Mask<br>// G channel = AO Map<br>// B channel = Roughness<br>// A channel = Emission Mask<br>// 灰度1.0 ： 皮肤质感/头发质感（头发的部分是没有皮肤的）<br>// 灰度0.7 ： 丝绸/丝袜<br>// 灰度0.5 ： 金属/金属投影<br>// 灰度0.3 ： 软的物体<br>// 灰度0.0 ： 硬的物体<br>half4 lightMap = SAMPLE_TEXTURE2D(_LightMap, sampler_LightMap, IN.uv); <br><br>// Dot Product Function<br>half ndotL = max(0, dot(normalWS, lightDir));<br>half ndotH = max(0, dot(normalWS, normalize(viewDirWS + lightDir)));<br>half ndotV = max(0, dot(normalWS, viewDirWS));<br>half ndotU = max(0, dot(normalWS, (0, 1.0, 0)));<br></code></pre></td></tr></table></figure><h3 id="Adjusted-HalfLambert"><a href="#Adjusted-HalfLambert" class="headerlink" title="Adjusted HalfLambert"></a>Adjusted HalfLambert</h3><p>基础的半兰伯特模型，加上用定点色做调整。</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs HLSL">//lambert<br>half lambert = ndotL;<br>half lambertAO = lambert * saturate(lightMap.g * 2);<br>half lambertRampAO = smoothstep(0, _ShadowSmooth, lambertAO);<br><br>// using vertex color as an offset to adjust half lambert sampling<br>half halfLambertAO = saturate(lambertRampAO * _WrapDiffuse + 1 - _WrapDiffuse);<br>half vertexOffset = step(0.5, vertexColor) == 1 ? vertexColor : 1 - vertexColor;<br>half adjustedHalfSampler = saturate(halfLambertAO * vertexOffset);<br></code></pre></td></tr></table></figure><p>这里 AO的地方自定义（lightmap.g ）乘2用来获得对比度更加明显的AO效果_ShadowSmooth 用来调整亮部到暗部过度的明显程度，左边0.5，右侧1.0。</p><p><img src="URP仿原神渲染shader/image-20230219155213146.png" alt="image-20230219155213146" style="zoom:50%;" /><img src="URP仿原神渲染shader/image-20230219155240254.png" alt="image-20230219155240254" style="zoom:50%;" /></p><h3 id="Wrapped-Diffuse"><a href="#Wrapped-Diffuse" class="headerlink" title="Wrapped Diffuse"></a>Wrapped Diffuse</h3><p>回顾一下军团要塞2中Ramp使用方式</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs HLSL">half4 ramp = SAMPLE_TEXTURE2D(_RampMap, sampler_RampMap, half2(halfLambert, 0));<br></code></pre></td></tr></table></figure><p>原神的衣服整体并不受环境光颜色直接影响，这里面需要计算是否是白天或者夜晚。</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs HLSL">// Day (0.5) or Night(0)<br>half dayOrNight = (1 - step(0.1, _IsNight)) * 0.5 + 0.03;<br><br>// diffuse = ramp + adjusted half lambert + AO<br>half rampV = saturate(lightMap.a * 0.45 + dayOrNight);<br>half2 rampUV = half2(adjustedHalfSampler, rampV);<br></code></pre></td></tr></table></figure><p>把ramp的V方向取值，0-0.5为 黑天，0.5-1为白天，取代军团要塞中V方向只有单条ramp取值。</p><h3 id="Specular"><a href="#Specular" class="headerlink" title="Specular"></a>Specular</h3><p>金属部分使用到metalMap高光，实现原理来自MatCap采样。</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs HLSL">// Metal Specular<br>half metalMask = step(0.95, lightMap.r);<br>half3 cameraForward = -viewDirWS;<br>half3 viewUpDir = mul(UNITY_MATRIX_I_V, half4(0, 1, 0, 0)).xyz;<br>half3 cameraRight = SafeNormalize(cross(viewUpDir, cameraForward));<br>half3 cameraUp = SafeNormalize(cross(cameraForward, cameraRight));<br>half2 metalMapUV = mul(half3x3(cameraRight, cameraUp, cameraForward), normalWS).xy * 0.49 + 0.5;<br>half4 metalMap = SAMPLE_TEXTURE2D(_MetalMap, sampler_MetalMap, metalMapUV);<br>half4 metalSpecular = _MetalIntensity * metalMap * metalMask * albedo;<br></code></pre></td></tr></table></figure><p>非金属部分使用常规的Blinn Phong高光</p><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">half</span> Ks = <span class="hljs-number">0</span>.<span class="hljs-number">96</span>;<br><span class="hljs-attribute">half</span>  SpecularPow = exp2(lightMap.r * <span class="hljs-number">11</span>.<span class="hljs-number">0</span> + <span class="hljs-number">2</span>.<span class="hljs-number">0</span>);<br><span class="hljs-attribute">half</span>  SpecularNorm = (SpecularPow + <span class="hljs-number">8</span>.<span class="hljs-number">0</span>) / <span class="hljs-number">8</span>.<span class="hljs-number">0</span>;<br><span class="hljs-attribute">half4</span> SpecularColor = albedo * lightMap.g;<br><span class="hljs-attribute">half</span> SpecularContrib = albedo * (SpecularNorm * pow(ndotH, SpecularPow));<br><span class="hljs-attribute">half4</span> nonMetalSpecular = SpecularColor * SpecularContrib  * ndotL* Ks * lightMap.b;<br></code></pre></td></tr></table></figure><img src="/2023/02/05/URP%E4%BB%BF%E5%8E%9F%E7%A5%9E%E6%B8%B2%E6%9F%93shader/image-20230219192536859.png" class="" alt="image-20230219192536859"><p>自发光</p><p>这里我用自发光来描绘裸漏皮肤以及丝袜部分SSS材质的效果</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs HLSL">// Emission (Fake SSS)<br>half emissionMask = albedo.a;<br>emissionMask *= step(0.65, lightMap.a);<br>// half time =  abs((frac(_Time.y * 0.5) - 0.5) * 2);<br>half4 emission = albedo * lightColor * emissionMask * _EmissionIntensity * _EmissionColor;<br></code></pre></td></tr></table></figure><img src="/2023/02/05/URP%E4%BB%BF%E5%8E%9F%E7%A5%9E%E6%B8%B2%E6%9F%93shader/image-20230219213213931.png" class="" alt="image-20230219213213931"><h3 id="暂时效果"><a href="#暂时效果" class="headerlink" title="暂时效果"></a>暂时效果</h3><img src="/2023/02/05/URP%E4%BB%BF%E5%8E%9F%E7%A5%9E%E6%B8%B2%E6%9F%93shader/image-20230219213501350.png" class="" alt="image-20230219213501350"><p>还缺少描边和深度空间边缘光，哦对头发的高光也应该额外处理，留个坑以后去实现。</p><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol><li><a href="https://zhuanlan.zhihu.com/p/551104542">【01】Unity URP 卡通渲染 原神角色渲染记录-Diffuse: Ramp + AO + Double Shadow - 知乎 (zhihu.com)</a></li><li><a href="https://zhuanlan.zhihu.com/p/435005339">【Unity技术美术】 原神Shader渲染还原解析 - 知乎 (zhihu.com)</a></li><li>[<a href="https://zhuanlan.zhihu.com/p/547129280">卡通渲染]二、原神角色渲染还原 - Diffuse-1 - 知乎 (zhihu.com)</a></li><li><a href="https://zhuanlan.zhihu.com/p/360229590">原神角色渲染Shader分析还原 - 知乎 (zhihu.com)</a></li><li><a href="https://zhuanlan.zhihu.com/p/110025903">【02】从零开始的卡通渲染-着色篇1 - 知乎 (zhihu.com)</a></li><li>[<a href="https://zhuanlan.zhihu.com/p/551629982">卡通渲染]等宽屏幕空间边缘光 - 知乎 (zhihu.com)</a></li></ol>]]></content>
+    
+    
+    <categories>
+      
+      <category>学习笔记</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>unity</tag>
+      
+      <tag>hlsl</tag>
+      
+      <tag>Toon shader</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>记录一下用Hexo搭建个人博客的心路历程</title>
     <link href="/2023/01/25/%E8%AE%B0%E5%BD%95%E4%B8%80%E4%B8%8B%E7%94%A8Hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%9A%84%E5%BF%83%E8%B7%AF%E5%8E%86%E7%A8%8B/"/>
     <url>/2023/01/25/%E8%AE%B0%E5%BD%95%E4%B8%80%E4%B8%8B%E7%94%A8Hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%9A%84%E5%BF%83%E8%B7%AF%E5%8E%86%E7%A8%8B/</url>
@@ -172,6 +145,33 @@
       <tag>hlsl</tag>
       
       <tag>toon shader</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Unity特效</title>
+    <link href="/2022/09/18/Unity%E7%89%B9%E6%95%88/"/>
+    <url>/2022/09/18/Unity%E7%89%B9%E6%95%88/</url>
+    
+    <content type="html"><![CDATA[<iframe width="560" height="315" src="https://www.youtube.com/embed/dV57u9PqvZY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>]]></content>
+    
+    
+    <categories>
+      
+      <category>学习笔记</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>unity</tag>
+      
+      <tag>VFX Graph</tag>
       
     </tags>
     
