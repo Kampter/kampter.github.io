@@ -23,15 +23,15 @@
 <meta property="og:site_name" content="Kampter&#39;s Castle">
 <meta property="og:description" content="技术实现在原神二测就有来体验过游戏，也是一步一步看着原神成长壮大封神的，一直以来都对于这样认真做内容的游戏公司怀有敬意。这次终于“敢”在掌握一定技术的情况下来模仿原神的渲染效果。 模型准备模型下载自米哈游官方在B站开展的二创活动pmx格式，直接网上随便找个converter即可转为fbx方便使用，这里选择刻晴作为测试人物模型。而神奇的google有人通过神奇的方式获得其他的贴图文件。汇总起来一共获">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://kampter.github.io/img/image-20230218215709325.png">
+<meta property="og:image" content="https://kampter.github.io/img/image-20230220105004875.png">
 <meta property="article:published_time" content="2023-02-05T13:56:47.000Z">
-<meta property="article:modified_time" content="2023-02-19T13:35:41.258Z">
+<meta property="article:modified_time" content="2023-02-20T02:50:36.056Z">
 <meta property="article:author" content="Kampter">
 <meta property="article:tag" content="unity">
 <meta property="article:tag" content="hlsl">
 <meta property="article:tag" content="Toon shader">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://kampter.github.io/img/image-20230218215709325.png">
+<meta name="twitter:image" content="https://kampter.github.io/img/image-20230220105004875.png">
   
   
   
@@ -195,7 +195,7 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/image-20230218215709325.png') no-repeat center center; background-size: cover;">
+     style="background: url('/img/image-20230220105004875.png') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
@@ -224,7 +224,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          3.5k 字
+          4.4k 字
         
       </span>
     
@@ -235,7 +235,7 @@
         
         
         
-          30 分钟
+          37 分钟
         
       </span>
     
@@ -334,9 +334,14 @@
 
 <img src="/2023/02/05/URP%E4%BB%BF%E5%8E%9F%E7%A5%9E%E6%B8%B2%E6%9F%93shader/image-20230219213213931.png" srcset="/img/loading.gif" lazyload class="" alt="image-20230219213213931">
 
-<h3 id="暂时效果"><a href="#暂时效果" class="headerlink" title="暂时效果"></a>暂时效果</h3><img src="/2023/02/05/URP%E4%BB%BF%E5%8E%9F%E7%A5%9E%E6%B8%B2%E6%9F%93shader/image-20230219213501350.png" srcset="/img/loading.gif" lazyload class="" alt="image-20230219213501350">
+<h3 id="Outline"><a href="#Outline" class="headerlink" title="Outline"></a>Outline</h3><p>多开一个pass，平滑法线后back face沿着法线方向平移，都是基础做法。其实也可以用后处理来做。但是URP 2022才支持不用写后处理脚本，直接贴matertial上去，后面在尝试做一版吧。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs HLSL">Pass <br>&#123;<br>    Name &quot;OutLine&quot;<br>    Tags &#123;&quot;LightMode&quot; = &quot;SRPDefaultUnlit&quot;&#125;<br>    Cull front<br>    HLSLPROGRAM<br>    #pragma vertex vert  <br>    #pragma fragment frag<br><br>    Varyings vert(Attributes IN) &#123;<br>        half4 scaledScreenParams = GetScaledScreenParams();<br>        half ScaleX = abs(scaledScreenParams.x / scaledScreenParams.y);<br><br>        Varyings OUT;<br>        VertexPositionInputs vertexInput = GetVertexPositionInputs(IN.positionOS.xyz);<br>        VertexNormalInputs normalInput = GetVertexNormalInputs(IN.normal);<br>        half3 normalCS = TransformWorldToHClipDir(normalInput.normalWS);<br>        half2 extendDis = normalize(normalCS.xy) * (0.1 * 0.01);<br>        extendDis.x /=ScaleX ;<br>        OUT.positionCS = vertexInput.positionCS;<br>        OUT.positionCS.xy +=extendDis;<br>        return OUT;<br>    &#125;<br><br>    half4 frag(Varyings IN) : SV_Target &#123;<br>        return float4(0, 0, 0, 1);<br>    &#125;<br><br>    ENDHLSL<br>&#125;	<br></code></pre></td></tr></table></figure>
 
-<p>还缺少描边和深度空间边缘光，哦对头发的高光也应该额外处理，留个坑以后去实现。</p>
+<img src="/2023/02/05/URP%E4%BB%BF%E5%8E%9F%E7%A5%9E%E6%B8%B2%E6%9F%93shader/image-20230220104936235.png" srcset="/img/loading.gif" lazyload class="" alt="image-20230220104936235">
+
+<h3 id="暂时效果"><a href="#暂时效果" class="headerlink" title="暂时效果"></a>暂时效果</h3><img src="/2023/02/05/URP%E4%BB%BF%E5%8E%9F%E7%A5%9E%E6%B8%B2%E6%9F%93shader/image-20230220105004875.png" srcset="/img/loading.gif" lazyload class="" alt="image-20230220105004875">
+
+<p>还缺少深度空间边缘光，哦对头发的高光也应该额外处理，留个坑以后去实现。</p>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
 <li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/551104542">【01】Unity URP 卡通渲染 原神角色渲染记录-Diffuse: Ramp + AO + Double Shadow - 知乎 (zhihu.com)</a></li>
 <li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/435005339">【Unity技术美术】 原神Shader渲染还原解析 - 知乎 (zhihu.com)</a></li>
