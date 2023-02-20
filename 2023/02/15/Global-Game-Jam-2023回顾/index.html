@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://kampter.github.io/img/image-20230215211434958.png">
 <meta property="article:published_time" content="2023-02-15T11:10:20.000Z">
-<meta property="article:modified_time" content="2023-02-17T07:20:17.813Z">
+<meta property="article:modified_time" content="2023-02-20T06:41:20.328Z">
 <meta property="article:author" content="Kampter">
 <meta property="article:tag" content="unity">
 <meta property="article:tag" content="shader graph">
@@ -353,7 +353,14 @@
 
 
 <p>大致思路与直接手写没有太大区别。首先遍历场景内的灯光（多灯光支持）获得每个灯光的颜色，方向，衰减属性用以叠加计算。光照模型用smoothstep函数控制半兰伯特模型的输出，同时设置Smooth参数来调整边界的光滑度。</p>
-<p><img src="Global-Game-Jam-2023回顾/image-20230216141054289.png" srcset="/img/loading.gif" lazyload alt="image-20230216141054289" style="zoom: 67%;" /><img src="Global-Game-Jam-2023回顾/image-20230216141119084.png" srcset="/img/loading.gif" lazyload alt="image-20230216141119084" style="zoom: 67%;" /><img src="Global-Game-Jam-2023回顾/image-20230216141856838.png" srcset="/img/loading.gif" lazyload alt="image-20230216141856838" style="zoom:67%;" /></p>
+<img src="Global-Game-Jam-2023回顾/image-20230216141054289.png" srcset="/img/loading.gif" lazyload alt="image-20230216141054289" style="zoom: 67%;" />
+
+<img src="Global-Game-Jam-2023回顾/image-20230216141119084.png" srcset="/img/loading.gif" lazyload alt="image-20230216141119084" style="zoom: 67%;" />
+
+<img src="Global-Game-Jam-2023回顾/image-20230216141856838.png" srcset="/img/loading.gif" lazyload alt="image-20230216141856838" style="zoom:67%;" />
+
+
+
 <p>最左边smooth &#x3D; 0,  中间smooth &#x3D; 0.2 右边为开启边缘光的效果。边缘光用非常偷懒的方式实现</p>
 <img src="/2023/02/15/Global-Game-Jam-2023%E5%9B%9E%E9%A1%BE/image-20230216141737262.png" srcset="/img/loading.gif" lazyload class="" alt="image-20230216141737262">
 
@@ -369,7 +376,12 @@
 
 
 <p>通过调整Strength和depth控制浅水和深水区</p>
-<p><img src="Global-Game-Jam-2023回顾/image-20230216145341579.png" srcset="/img/loading.gif" lazyload alt="image-20230216145341579" style="zoom: 67%;" /><img src="Global-Game-Jam-2023回顾/image-20230216145357665.png" srcset="/img/loading.gif" lazyload alt="image-20230216145357665" style="zoom:67%;" /></p>
+<img src="Global-Game-Jam-2023回顾/image-20230216145341579.png" srcset="/img/loading.gif" lazyload alt="image-20230216145341579" style="zoom: 67%;" />
+
+<img src="Global-Game-Jam-2023回顾/image-20230216145357665.png" srcset="/img/loading.gif" lazyload alt="image-20230216145357665" style="zoom:67%;" />
+
+
+
 <img src="/2023/02/15/Global-Game-Jam-2023%E5%9B%9E%E9%A1%BE/image-20230216145036049.png" srcset="/img/loading.gif" lazyload class="" alt="image-20230216145036049">
 
 
