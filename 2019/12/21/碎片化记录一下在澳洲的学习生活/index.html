@@ -16,26 +16,31 @@
   <meta name="author" content="Kampter">
   <meta name="keywords" content="Technical Artist">
   
-    <meta name="description" content="R&amp;D  –&gt; WIP –&gt; Render Test –&gt; Final Render          第一周    第二周    第三周    第四周    第五周    第六周    第七周    第八周    第九周    第十周    第十一周">
+    <meta name="description" content="ANU - Canberra学习java的时候尝试复刻flappy bird https:&#x2F;&#x2F;youtube.com&#x2F;shorts&#x2F;CAFhVezwvgs?feature&#x3D;share 终于到了最喜欢的图形学课程，用Java 版本的opengl 绘画，并且实现了简单的光照模型和光线追踪 https:&#x2F;&#x2F;youtube.com&#x2F;shorts&#x2F;0AaM996kioI?feature&#x3D;share 学习制作">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Maya Bifrost 学习记录">
-<meta property="og:url" content="https://kampter.github.io/2018/02/17/Maya-Bifrost-%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/index.html">
+<meta property="og:title" content="碎片化记录一下在澳洲的学习生活">
+<meta property="og:url" content="https://kampter.github.io/2019/12/21/%E7%A2%8E%E7%89%87%E5%8C%96%E8%AE%B0%E5%BD%95%E4%B8%80%E4%B8%8B%E5%9C%A8%E6%BE%B3%E6%B4%B2%E7%9A%84%E5%AD%A6%E4%B9%A0%E7%94%9F%E6%B4%BB/index.html">
 <meta property="og:site_name" content="Kampter&#39;s Castle">
-<meta property="og:description" content="R&amp;D  –&gt; WIP –&gt; Render Test –&gt; Final Render          第一周    第二周    第三周    第四周    第五周    第六周    第七周    第八周    第九周    第十周    第十一周">
+<meta property="og:description" content="ANU - Canberra学习java的时候尝试复刻flappy bird https:&#x2F;&#x2F;youtube.com&#x2F;shorts&#x2F;CAFhVezwvgs?feature&#x3D;share 终于到了最喜欢的图形学课程，用Java 版本的opengl 绘画，并且实现了简单的光照模型和光线追踪 https:&#x2F;&#x2F;youtube.com&#x2F;shorts&#x2F;0AaM996kioI?feature&#x3D;share 学习制作">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://kampter.github.io/img/LOGOBEACH.png">
-<meta property="article:published_time" content="2018-02-17T04:03:11.000Z">
-<meta property="article:modified_time" content="2023-02-17T14:15:38.757Z">
+<meta property="og:image" content="https://kampter.github.io/2019/12/21/%E7%A2%8E%E7%89%87%E5%8C%96%E8%AE%B0%E5%BD%95%E4%B8%80%E4%B8%8B%E5%9C%A8%E6%BE%B3%E6%B4%B2%E7%9A%84%E5%AD%A6%E4%B9%A0%E7%94%9F%E6%B4%BB/碎片化记录一下在澳洲的学习生活/8b51c9432defe3d0fb9db106c52fee6.jpg">
+<meta property="og:image" content="https://kampter.github.io/2019/12/21/%E7%A2%8E%E7%89%87%E5%8C%96%E8%AE%B0%E5%BD%95%E4%B8%80%E4%B8%8B%E5%9C%A8%E6%BE%B3%E6%B4%B2%E7%9A%84%E5%AD%A6%E4%B9%A0%E7%94%9F%E6%B4%BB/碎片化记录一下在澳洲的学习生活/84c87fd348bfc43b86b937c12e24333.jpg">
+<meta property="og:image" content="https://kampter.github.io/2019/12/21/%E7%A2%8E%E7%89%87%E5%8C%96%E8%AE%B0%E5%BD%95%E4%B8%80%E4%B8%8B%E5%9C%A8%E6%BE%B3%E6%B4%B2%E7%9A%84%E5%AD%A6%E4%B9%A0%E7%94%9F%E6%B4%BB/c2917af42fe1f64380572831bb4ce51.jpg">
+<meta property="og:image" content="https://kampter.github.io/2019/12/21/%E7%A2%8E%E7%89%87%E5%8C%96%E8%AE%B0%E5%BD%95%E4%B8%80%E4%B8%8B%E5%9C%A8%E6%BE%B3%E6%B4%B2%E7%9A%84%E5%AD%A6%E4%B9%A0%E7%94%9F%E6%B4%BB/8fd3c4cf7358a4c5d911a32821be31d.jpg">
+<meta property="og:image" content="https://kampter.github.io/2019/12/21/%E7%A2%8E%E7%89%87%E5%8C%96%E8%AE%B0%E5%BD%95%E4%B8%80%E4%B8%8B%E5%9C%A8%E6%BE%B3%E6%B4%B2%E7%9A%84%E5%AD%A6%E4%B9%A0%E7%94%9F%E6%B4%BB/eb69c2033b9322c52543efcb206ed07.jpg">
+<meta property="og:image" content="https://kampter.github.io/2019/12/21/%E7%A2%8E%E7%89%87%E5%8C%96%E8%AE%B0%E5%BD%95%E4%B8%80%E4%B8%8B%E5%9C%A8%E6%BE%B3%E6%B4%B2%E7%9A%84%E5%AD%A6%E4%B9%A0%E7%94%9F%E6%B4%BB/ce0a3c2ef7f8feb8336d7481906ac6b.jpg">
+<meta property="article:published_time" content="2019-12-21T04:24:33.000Z">
+<meta property="article:modified_time" content="2023-02-21T05:05:32.927Z">
 <meta property="article:author" content="Kampter">
-<meta property="article:tag" content="bifrost">
-<meta property="article:tag" content="maya">
-<meta property="article:tag" content="ae">
+<meta property="article:tag" content="java">
+<meta property="article:tag" content="eve">
+<meta property="article:tag" content="computer graphic">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://kampter.github.io/img/LOGOBEACH.png">
+<meta name="twitter:image" content="https://kampter.github.io/2019/12/21/%E7%A2%8E%E7%89%87%E5%8C%96%E8%AE%B0%E5%BD%95%E4%B8%80%E4%B8%8B%E5%9C%A8%E6%BE%B3%E6%B4%B2%E7%9A%84%E5%AD%A6%E4%B9%A0%E7%94%9F%E6%B4%BB/碎片化记录一下在澳洲的学习生活/8b51c9432defe3d0fb9db106c52fee6.jpg">
   
   
   
-  <title>Maya Bifrost 学习记录 - Kampter&#39;s Castle</title>
+  <title>碎片化记录一下在澳洲的学习生活 - Kampter&#39;s Castle</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -195,13 +200,13 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/LOGOBEACH.png') no-repeat center center; background-size: cover;">
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Maya Bifrost 学习记录"></span>
+            <span id="subtitle" data-typed-text="碎片化记录一下在澳洲的学习生活"></span>
           
         </div>
 
@@ -212,8 +217,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2018-02-17 12:03" pubdate>
-          2018年2月17日 中午
+        <time datetime="2019-12-21 12:24" pubdate>
+          2019年12月21日 中午
         </time>
       </span>
     
@@ -224,7 +229,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          80 字
+          414 字
         
       </span>
     
@@ -235,7 +240,7 @@
         
         
         
-          1 分钟
+          4 分钟
         
       </span>
     
@@ -273,62 +278,36 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Maya Bifrost 学习记录</h1>
+            <h1 style="display: none">碎片化记录一下在澳洲的学习生活</h1>
             
             
               <div class="markdown-body">
                 
-                <h2 id="R-amp-D-–-gt-WIP-–-gt-Render-Test-–-gt-Final-Render"><a href="#R-amp-D-–-gt-WIP-–-gt-Render-Test-–-gt-Final-Render" class="headerlink" title="R&amp;D  –&gt; WIP –&gt; Render Test –&gt; Final Render"></a>R&amp;D  –&gt; WIP –&gt; Render Test –&gt; Final Render</h2><iframe width="560" height="315" src="https://www.youtube.com/embed/uAsKaydV064" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/MKkm7_qAV0w" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/_LVoVS6tVAM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/jKPkGnAJu50" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-
-
-
-<h2 id="第一周"><a href="#第一周" class="headerlink" title="第一周"></a>第一周</h2><img src="/2018/02/17/Maya-Bifrost-%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/BFV04_%E7%AC%AC%E4%B8%80%E5%91%A8%E7%AC%94%E8%AE%B0.png" srcset="/img/loading.gif" lazyload class="" alt="BFV04_第一周笔记">
-
-
-
-<h2 id="第二周"><a href="#第二周" class="headerlink" title="第二周"></a>第二周</h2><img src="/2018/02/17/Maya-Bifrost-%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/BF%E7%AC%AC%E4%BA%8C%E5%91%A8%E7%AC%94%E8%AE%B0.png" srcset="/img/loading.gif" lazyload class="" alt="BF第二周笔记">
+                <h2 id="ANU-Canberra"><a href="#ANU-Canberra" class="headerlink" title="ANU - Canberra"></a>ANU - Canberra</h2><p>学习java的时候尝试复刻flappy bird</p>
+<p><a target="_blank" rel="noopener" href="https://youtube.com/shorts/CAFhVezwvgs?feature=share">https://youtube.com/shorts/CAFhVezwvgs?feature=share</a></p>
+<p>终于到了最喜欢的图形学课程，用Java 版本的opengl 绘画，并且实现了简单的光照模型和光线追踪</p>
+<p><a target="_blank" rel="noopener" href="https://youtube.com/shorts/0AaM996kioI?feature=share">https://youtube.com/shorts/0AaM996kioI?feature=share</a></p>
+<p>学习制作网页的时候制作的网站效果</p>
+<p><img src="碎片化记录一下在澳洲的学习生活/8b51c9432defe3d0fb9db106c52fee6.jpg" srcset="/img/loading.gif" lazyload alt="8b51c9432defe3d0fb9db106c52fee6" style="zoom:50%;" /><img src="碎片化记录一下在澳洲的学习生活/84c87fd348bfc43b86b937c12e24333.jpg" srcset="/img/loading.gif" lazyload alt="84c87fd348bfc43b86b937c12e24333" style="zoom:50%;" /></p>
+<h2 id="VU-Melbourne"><a href="#VU-Melbourne" class="headerlink" title="VU - Melbourne"></a>VU - Melbourne</h2><p>作为一个名商科学生偷学AE合成课程的作品，学会了在AE中抠图，添加素材，定位追踪，求三维空间位置，并且最终调色合成。</p>
+<p><a target="_blank" rel="noopener" href="https://vimeo.com/user71466837">王子正 (vimeo.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://vimeo.com/user71466837">王子正 (vimeo.com)</a></p>
+<p>在课上有机会参观影视实拍流程的绿幕。</p>
+<img src="/2019/12/21/%E7%A2%8E%E7%89%87%E5%8C%96%E8%AE%B0%E5%BD%95%E4%B8%80%E4%B8%8B%E5%9C%A8%E6%BE%B3%E6%B4%B2%E7%9A%84%E5%AD%A6%E4%B9%A0%E7%94%9F%E6%B4%BB/c2917af42fe1f64380572831bb4ce51.jpg" srcset="/img/loading.gif" lazyload class="" alt="c2917af42fe1f64380572831bb4ce51">
 
 
 
-<h2 id="第三周"><a href="#第三周" class="headerlink" title="第三周"></a>第三周</h2><img src="/2018/02/17/Maya-Bifrost-%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/BFV04%20week3%20mind%20note.png" srcset="/img/loading.gif" lazyload class="" alt="BFV04 week3 mind note">
+<h2 id="EVE-悉尼见面会"><a href="#EVE-悉尼见面会" class="headerlink" title="EVE 悉尼见面会"></a>EVE 悉尼见面会</h2><p>在堪培拉枯燥的学习生活之余终于有机会去悉尼参加我喜欢的游戏eve的粉丝见面会。</p>
+<img src="/2019/12/21/%E7%A2%8E%E7%89%87%E5%8C%96%E8%AE%B0%E5%BD%95%E4%B8%80%E4%B8%8B%E5%9C%A8%E6%BE%B3%E6%B4%B2%E7%9A%84%E5%AD%A6%E4%B9%A0%E7%94%9F%E6%B4%BB/8fd3c4cf7358a4c5d911a32821be31d.jpg" srcset="/img/loading.gif" lazyload class="" alt="8fd3c4cf7358a4c5d911a32821be31d">
+
+<p>提前知道三神教船只信息，有点过分超模</p>
+<img src="/2019/12/21/%E7%A2%8E%E7%89%87%E5%8C%96%E8%AE%B0%E5%BD%95%E4%B8%80%E4%B8%8B%E5%9C%A8%E6%BE%B3%E6%B4%B2%E7%9A%84%E5%AD%A6%E4%B9%A0%E7%94%9F%E6%B4%BB/eb69c2033b9322c52543efcb206ed07.jpg" srcset="/img/loading.gif" lazyload class="" alt="eb69c2033b9322c52543efcb206ed07">
 
 
 
-<h2 id="第四周"><a href="#第四周" class="headerlink" title="第四周"></a>第四周</h2><img src="/2018/02/17/Maya-Bifrost-%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/BF%20week4%20mind%20notes.png" srcset="/img/loading.gif" lazyload class="" alt="BF week4 mind notes">
+<p>还有机会组队现场PVP，我太菜了，作为一个pve玩家被暴打。</p>
+<img src="/2019/12/21/%E7%A2%8E%E7%89%87%E5%8C%96%E8%AE%B0%E5%BD%95%E4%B8%80%E4%B8%8B%E5%9C%A8%E6%BE%B3%E6%B4%B2%E7%9A%84%E5%AD%A6%E4%B9%A0%E7%94%9F%E6%B4%BB/ce0a3c2ef7f8feb8336d7481906ac6b.jpg" srcset="/img/loading.gif" lazyload class="" alt="ce0a3c2ef7f8feb8336d7481906ac6b">
 
-
-
-<h2 id="第五周"><a href="#第五周" class="headerlink" title="第五周"></a>第五周</h2><img src="/2018/02/17/Maya-Bifrost-%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/BFV04%20week5%20notes.png" srcset="/img/loading.gif" lazyload class="" alt="BFV04 week5 notes">
-
-
-
-<h2 id="第六周"><a href="#第六周" class="headerlink" title="第六周"></a>第六周</h2><img src="/2018/02/17/Maya-Bifrost-%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/BFV05_WEEK6_NOTES.png" srcset="/img/loading.gif" lazyload class="" alt="BFV05_WEEK6_NOTES">
-
-
-
-<h2 id="第七周"><a href="#第七周" class="headerlink" title="第七周"></a>第七周</h2><img src="/2018/02/17/Maya-Bifrost-%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/BFV04_WEEK7_NOTES.png" srcset="/img/loading.gif" lazyload class="" alt="BFV04_WEEK7_NOTES">
-
-
-
-<h2 id="第八周"><a href="#第八周" class="headerlink" title="第八周"></a>第八周</h2><img src="/2018/02/17/Maya-Bifrost-%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/BFV04_WEEK08_NOTES%20(1).png" srcset="/img/loading.gif" lazyload class="" alt="BFV04_WEEK08_NOTES (1)">
-
-
-
-<h2 id="第九周"><a href="#第九周" class="headerlink" title="第九周"></a>第九周</h2><img src="/2018/02/17/Maya-Bifrost-%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/BFV04_WEEK08_NOTES.png" srcset="/img/loading.gif" lazyload class="" alt="BFV04_WEEK08_NOTES">
-
-
-
-<h2 id="第十周"><a href="#第十周" class="headerlink" title="第十周"></a>第十周</h2><img src="/2018/02/17/Maya-Bifrost-%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/BFV04_week10_notes.png" srcset="/img/loading.gif" lazyload class="" alt="BFV04_week10_notes">
-
-
-
-<h2 id="第十一周"><a href="#第十一周" class="headerlink" title="第十一周"></a>第十一周</h2><img src="/2018/02/17/Maya-Bifrost-%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/BFV04_WEEK11_NOTES.png" srcset="/img/loading.gif" lazyload class="" alt="BFV04_WEEK11_NOTES">
 
                 
               </div>
@@ -347,7 +326,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="category-chain-item">学习笔记</a>
+  <a href="/categories/%E6%97%A5%E5%B8%B8%E8%AE%B0%E5%BD%95/" class="category-chain-item">日常记录</a>
   
   
 
@@ -362,11 +341,11 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/bifrost/">#bifrost</a>
+        <a href="/tags/java/">#java</a>
       
-        <a href="/tags/maya/">#maya</a>
+        <a href="/tags/eve/">#eve</a>
       
-        <a href="/tags/ae/">#ae</a>
+        <a href="/tags/computer-graphic/">#computer graphic</a>
       
     </div>
   
@@ -378,8 +357,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Maya Bifrost 学习记录</div>
-      <div>https://kampter.github.io/2018/02/17/Maya-Bifrost-学习记录/</div>
+      <div>碎片化记录一下在澳洲的学习生活</div>
+      <div>https://kampter.github.io/2019/12/21/碎片化记录一下在澳洲的学习生活/</div>
     </div>
     <div class="license-meta">
       
@@ -391,7 +370,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2018年2月17日</div>
+          <div>2019年12月21日</div>
         </div>
       
       
@@ -423,9 +402,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2019/12/21/%E7%A2%8E%E7%89%87%E5%8C%96%E8%AE%B0%E5%BD%95%E4%B8%80%E4%B8%8B%E5%9C%A8%E6%BE%B3%E6%B4%B2%E7%9A%84%E5%AD%A6%E4%B9%A0%E7%94%9F%E6%B4%BB/" title="碎片化记录一下在澳洲的学习生活">
+                      <a href="/2022/09/18/Unity%E7%89%B9%E6%95%88/" title="Unity特效">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">碎片化记录一下在澳洲的学习生活</span>
+                        <span class="hidden-mobile">Unity特效</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -433,8 +412,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2017/12/18/Houdini%E5%AD%A6%E4%B9%A0%E5%9B%9E%E9%A1%BE/" title="Houdini学习回顾">
-                        <span class="hidden-mobile">Houdini学习回顾</span>
+                      <a href="/2018/02/17/Maya-Bifrost-%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/" title="Maya Bifrost 学习记录">
+                        <span class="hidden-mobile">Maya Bifrost 学习记录</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
