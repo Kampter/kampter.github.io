@@ -16,19 +16,24 @@
   <meta name="author" content="Kampter">
   <meta name="keywords" content="Technical Artist">
   
-    <meta name="description" content="辐射度量学  Radiant energy能量，单位：J（Joule焦耳） Radiant Flux（单位时间能量 → 功率）单位：W（Watt），lm（lumen流明） Intensitythe power per unit solid angle (立体角)$$I(\omega) &#x3D; \frac{\mathrm{d} \Phi}{\mathrm{d} \omega}$$  立体角">
+    <meta name="description" content="前言：只记录自己需要的内容  辐射度量学  Radiant energy能量，单位：J（Joule焦耳） Radiant Flux（单位时间能量 → 功率）单位：W（Watt），lm（lumen流明） Intensitythe power per unit solid angle (立体角)$$I(\omega) &#x3D; \frac{\mathrm{d} \Phi}{\mathrm{d} \">
 <meta property="og:type" content="article">
 <meta property="og:title" content="GAMES 101 课程笔记 - PBR原理">
 <meta property="og:url" content="https://kampter.github.io/2022/09/28/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0-PBR%E5%8E%9F%E7%90%86/index.html">
 <meta property="og:site_name" content="Kampter&#39;s Castle">
-<meta property="og:description" content="辐射度量学  Radiant energy能量，单位：J（Joule焦耳） Radiant Flux（单位时间能量 → 功率）单位：W（Watt），lm（lumen流明） Intensitythe power per unit solid angle (立体角)$$I(\omega) &#x3D; \frac{\mathrm{d} \Phi}{\mathrm{d} \omega}$$  立体角">
+<meta property="og:description" content="前言：只记录自己需要的内容  辐射度量学  Radiant energy能量，单位：J（Joule焦耳） Radiant Flux（单位时间能量 → 功率）单位：W（Watt），lm（lumen流明） Intensitythe power per unit solid angle (立体角)$$I(\omega) &#x3D; \frac{\mathrm{d} \Phi}{\mathrm{d} \">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://kampter.github.io/2022/09/28/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0-PBR%E5%8E%9F%E7%90%86/%E8%BE%90%E5%B0%84%E5%BA%A6%E9%87%8F%E5%AD%A6.png">
 <meta property="og:image" content="https://kampter.github.io/2022/09/28/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0-PBR%E5%8E%9F%E7%90%86/image-20230222175520499.png">
 <meta property="og:image" content="https://kampter.github.io/2022/09/28/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0-PBR%E5%8E%9F%E7%90%86/image-20230222175312913.png">
 <meta property="og:image" content="https://kampter.github.io/2022/09/28/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0-PBR%E5%8E%9F%E7%90%86/image-20230222174348091.png">
+<meta property="og:image" content="https://kampter.github.io/2022/09/28/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0-PBR%E5%8E%9F%E7%90%86/image-20230222181257182.png">
+<meta property="og:image" content="https://kampter.github.io/2022/09/28/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0-PBR%E5%8E%9F%E7%90%86/image-20230222182311587.png">
+<meta property="og:image" content="https://kampter.github.io/2022/09/28/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0-PBR%E5%8E%9F%E7%90%86/image-20230222182448860.png">
+<meta property="og:image" content="https://kampter.github.io/2022/09/28/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0-PBR%E5%8E%9F%E7%90%86/image-20230222183648389.png">
+<meta property="og:image" content="https://kampter.github.io/2022/09/28/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0-PBR%E5%8E%9F%E7%90%86/image-20230222184902536.png">
 <meta property="article:published_time" content="2022-09-28T09:09:57.000Z">
-<meta property="article:modified_time" content="2023-02-22T10:11:24.589Z">
+<meta property="article:modified_time" content="2023-02-22T10:49:46.499Z">
 <meta property="article:author" content="Kampter">
 <meta property="article:tag" content="computer graphic">
 <meta property="article:tag" content="math">
@@ -226,7 +231,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.1k 字
+          2.8k 字
         
       </span>
     
@@ -237,7 +242,7 @@
         
         
         
-          10 分钟
+          24 分钟
         
       </span>
     
@@ -280,7 +285,9 @@
             
               <div class="markdown-body">
                 
-                <h2 id="辐射度量学"><a href="#辐射度量学" class="headerlink" title="辐射度量学"></a>辐射度量学</h2><img src="/2022/09/28/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0-PBR%E5%8E%9F%E7%90%86/%E8%BE%90%E5%B0%84%E5%BA%A6%E9%87%8F%E5%AD%A6.png" srcset="/img/loading.gif" lazyload class="" alt="img">
+                <p>前言：只记录自己需要的内容</p>
+<hr>
+<h2 id="辐射度量学"><a href="#辐射度量学" class="headerlink" title="辐射度量学"></a>辐射度量学</h2><img src="/2022/09/28/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0-PBR%E5%8E%9F%E7%90%86/%E8%BE%90%E5%B0%84%E5%BA%A6%E9%87%8F%E5%AD%A6.png" srcset="/img/loading.gif" lazyload class="" alt="img">
 
 <h3 id="Radiant-energy"><a href="#Radiant-energy" class="headerlink" title="Radiant energy"></a>Radiant energy</h3><p>能量，单位：J（Joule焦耳）</p>
 <h3 id="Radiant-Flux"><a href="#Radiant-Flux" class="headerlink" title="Radiant Flux"></a>Radiant Flux</h3><p>（<strong>单位时间</strong>能量 → 功率）单位：W（Watt），lm（lumen流明）</p>
@@ -317,7 +324,58 @@
 <li>Radiance: power received by area dA from “direction” dω</li>
 </ul>
 <p>$$<br>\begin{aligned} d E(\mathrm{p}, \omega) &amp;&#x3D;L_{i}(\mathrm{p}, \omega) \cos \theta \mathrm{d} \omega \ E(\mathrm{p}) &amp;&#x3D;\int_{H^{2}} L_{i}(\mathrm{p}, \omega) \cos \theta \mathrm{d} \omega \end{aligned}<br>$$</p>
-<h2 id="Bidirectional-Reflectance-Distribution-Function-BRDF-双向反射分布函数"><a href="#Bidirectional-Reflectance-Distribution-Function-BRDF-双向反射分布函数" class="headerlink" title="Bidirectional Reflectance Distribution Function (BRDF) 双向反射分布函数"></a>Bidirectional Reflectance Distribution Function (BRDF) 双向反射分布函数</h2><p>— 2023.2.10 更新 —</p>
+<h2 id="Bidirectional-Reflectance-Distribution-Function-BRDF-双向反射分布函数"><a href="#Bidirectional-Reflectance-Distribution-Function-BRDF-双向反射分布函数" class="headerlink" title="Bidirectional Reflectance Distribution Function (BRDF) 双向反射分布函数"></a>Bidirectional Reflectance Distribution Function (BRDF) 双向反射分布函数</h2><h3 id="理解"><a href="#理解" class="headerlink" title="理解"></a>理解</h3><p>反射的理解：光线打到某个点，（被吸收了）然后反弹（发出）到其他地方</p>
+<img src="/2022/09/28/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0-PBR%E5%8E%9F%E7%90%86/image-20230222181257182.png" srcset="/img/loading.gif" lazyload class="" alt="image-20230222181257182">
+
+<p>某个点从某个方向接受&#x2F;向某个方向发射光线能量：radiance</p>
+<ul>
+<li>Differential irradiance incoming:</li>
+</ul>
+<p>$$<br>d E\left(\omega_{i}\right)&#x3D;L\left(\omega_{i}\right) \cos \theta_{i} d \omega_{i}<br>$$</p>
+<ul>
+<li>Differential radiance exiting:</li>
+</ul>
+<p>$$<br> d L_{r}\left(\omega_{r}\right)<br>$$</p>
+<p>通俗理解：这个微小面积接受的能量计算后，再分配到各个方向上</p>
+<h3 id="The-Reflection-Equation-反射方程"><a href="#The-Reflection-Equation-反射方程" class="headerlink" title="The Reflection Equation 反射方程"></a>The Reflection Equation 反射方程</h3><ul>
+<li>针对一个输出源（着色点），积分所有方向输入源（光照）的BRDF，获得最后的输出</li>
+</ul>
+<p>$$<br> L_{r}\left(\mathrm{p}, \omega_{r}\right)&#x3D;\int_{H^{2}} f_{r}\left(\mathrm{p}, \omega_{i} \rightarrow \omega_{r}\right) L_{i}\left(\mathrm{p}, \omega_{i}\right) \cos \theta_{i} \mathrm{d} \omega_{i}<br>$$</p>
+<h2 id="The-Rendering-Equation-渲染方程"><a href="#The-Rendering-Equation-渲染方程" class="headerlink" title="The Rendering Equation 渲染方程"></a>The Rendering Equation 渲染方程</h2><p>$$<br>L_{o}\left(p, \omega_{o}\right)&#x3D;L_{e}\left(p, \omega_{o}\right)+\int_{\Omega^{+}} L_{i}\left(p, \omega_{i}\right) f_{r}\left(p, \omega_{i}, \omega_{o}\right)\left(n \cdot \omega_{i}\right) \mathrm{d} \omega_{i}<br>$$</p>
+<img src="/2022/09/28/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0-PBR%E5%8E%9F%E7%90%86/image-20230222182311587.png" srcset="/img/loading.gif" lazyload class="" alt="image-20230222182311587">
+
+<p>渲染方程考虑多个点光源：根据w方向加起来，同时考虑其他物体反射的光源。</p>
+<img src="/2022/09/28/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0-PBR%E5%8E%9F%E7%90%86/image-20230222182448860.png" srcset="/img/loading.gif" lazyload class="" alt="image-20230222182448860">
+
+<p>一个神奇的抽象化理解：</p>
+<ul>
+<li>光栅化的着色过程主要是直接光照（间接光照计算非常复杂）</li>
+<li>全局光照：直接和间接光照的集合<ul>
+<li>会收敛到一个亮度</li>
+</ul>
+</li>
+</ul>
+<h3 id="BRDF-材质"><a href="#BRDF-材质" class="headerlink" title="BRDF 材质"></a>BRDF 材质</h3><p>以前只有Blinn Phong的时候，通过非物理的方式模拟出各种材质。</p>
+<p>Material &#x3D;&#x3D; BRDF 决定光如何被反射</p>
+<h4 id="Diffuse-x2F-Lambertain-Material"><a href="#Diffuse-x2F-Lambertain-Material" class="headerlink" title="Diffuse &#x2F; Lambertain Material"></a>Diffuse &#x2F; Lambertain Material</h4><img src="/2022/09/28/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0-PBR%E5%8E%9F%E7%90%86/image-20230222183648389.png" srcset="/img/loading.gif" lazyload class="" alt="image-20230222183648389">
+
+<ul>
+<li>能量守恒：进出的irradiance相同（总量）</li>
+<li>漫反射：出的radiance均匀→ $f_r &#x3D; c$ （常量）</li>
+<li>假设入射光和出射光都是均匀的→ $L_i &#x3D; L_o$</li>
+<li>ρ: albedo(反射率, RGB)</li>
+</ul>
+<h4 id="Glossy-Material（BRDF）"><a href="#Glossy-Material（BRDF）" class="headerlink" title="Glossy Material（BRDF）"></a>Glossy Material（BRDF）</h4><h4 id="Ideal-reflective-x2F-refractive-material-BSDF"><a href="#Ideal-reflective-x2F-refractive-material-BSDF" class="headerlink" title="Ideal reflective &#x2F; refractive material (BSDF * )"></a>Ideal reflective &#x2F; refractive material (BSDF * )</h4><p>BSDF（散射） &#x3D; BRDF（反射） + BTDF（折射）</p>
+<h4 id="Fresnel-Reflection-x2F-Term-（菲涅耳项）"><a href="#Fresnel-Reflection-x2F-Term-（菲涅耳项）" class="headerlink" title="Fresnel Reflection &#x2F; Term （菲涅耳项）"></a>Fresnel Reflection &#x2F; Term （菲涅耳项）</h4><p>和normal法线方向越接近，越少光被反射</p>
+<ul>
+<li>近似：Schlick’s approximation</li>
+</ul>
+<p>$$<br> \begin{aligned} R(\theta) &amp;&#x3D;R_{0}+\left(1-R_{0}\right)(1-\cos \theta)^{5} \ R_{0} &amp;&#x3D;\left(\frac{n_{1}-n_{2}}{n_{1}+n_{2}}\right)^{2} \end{aligned}<br>$$</p>
+<h3 id="Microfacet-Material-微表面材质"><a href="#Microfacet-Material-微表面材质" class="headerlink" title="Microfacet Material 微表面材质"></a>Microfacet Material 微表面材质</h3><p>从足够远的地方看过去，无限接近镜面反射。但是不断拉近，表面会变得凹凸不平。</p>
+<img src="/2022/09/28/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0-PBR%E5%8E%9F%E7%90%86/image-20230222184902536.png" srcset="/img/loading.gif" lazyload class="" alt="image-20230222184902536">
+
+<p>远处情况就是Glossy,  近处是diffuse，因此获得计算公式如下：<br>$$<br>f(\mathbf{i}, \mathbf{o})&#x3D;\frac{\mathbf{F}(\mathbf{i}, \mathbf{h}) \mathbf{G}(\mathbf{i}, \mathbf{o}, \mathbf{h}) \mathbf{D}(\mathbf{h})}{4(\mathbf{n}, \mathbf{i})(\mathbf{n}, \mathbf{o})}<br>$$</p>
+<p>— 2023.2.10 更新 —</p>
 <p>尝试再URP中手写PBR shader</p>
 
                 
