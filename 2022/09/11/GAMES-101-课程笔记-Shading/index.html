@@ -25,8 +25,13 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://kampter.github.io/2022/09/11/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0-Shading/image-20230221163720934.png">
 <meta property="og:image" content="https://kampter.github.io/2022/09/11/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0-Shading/https:/s3-us-west-2.amazonaws.com/secure.notion-static.com/596881ee-cc65-457c-9e6e-bafc2cc3f6c3/Untitled.png">
+<meta property="og:image" content="https://kampter.github.io/2022/09/11/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0-Shading/https:/s3-us-west-2.amazonaws.com/secure.notion-static.com/e85898a6-f4a7-442d-8046-6bd6118818b4/Untitled.png">
+<meta property="og:image" content="https://kampter.github.io/2022/09/11/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0-Shading/https:/s3-us-west-2.amazonaws.com/secure.notion-static.com/eb7d096b-029c-44d9-a8e1-afa8a97fc230/Untitled.png">
+<meta property="og:image" content="https://kampter.github.io/2022/09/11/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0-Shading/image-20230222160942261.png">
+<meta property="og:image" content="https://kampter.github.io/2022/09/11/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0-Shading/image-20230222161014635.png">
+<meta property="og:image" content="https://kampter.github.io/2022/09/11/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0-Shading/image-20230222161030909.png">
 <meta property="article:published_time" content="2022-09-11T08:31:55.000Z">
-<meta property="article:modified_time" content="2023-02-21T09:56:24.179Z">
+<meta property="article:modified_time" content="2023-02-22T08:10:44.256Z">
 <meta property="article:author" content="Kampter">
 <meta property="article:tag" content="computer graphic">
 <meta property="article:tag" content="math">
@@ -224,7 +229,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          864 字
+          4.9k 字
         
       </span>
     
@@ -235,7 +240,7 @@
         
         
         
-          8 分钟
+          41 分钟
         
       </span>
     
@@ -290,20 +295,84 @@
 <p>需要保证三角形进入顺序和结果无关</p>
 <p>无法处理透明物体</p>
 <h2 id="Blinn-Phong-Reflectance-Model-光照模型-着色模型"><a href="#Blinn-Phong-Reflectance-Model-光照模型-着色模型" class="headerlink" title="Blinn-Phong Reflectance Model 光照模型 着色模型"></a>Blinn-Phong Reflectance Model 光照模型 着色模型</h2><h3 id="Diffuse"><a href="#Diffuse" class="headerlink" title="Diffuse"></a>Diffuse</h3><ul>
-<li><p>Lambertian (Diffuse) Shading </p>
-<ul>
-<li>与view的方向无关</li>
+<li><p>Lambertian (Diffuse) Shading<br>$$<br>L_{d}&#x3D;k_{d}\left(I &#x2F; r^{2}\right) \max (0, \mathbf{n} \cdot \mathbf{l})<br>$$</p>
+</li>
+<li><p>可以简化为：</p>
+<p>K_d 漫反射系数</p>
+<p>I&#x2F;r2 衰减后的灯光，LightColor * AttenuationLight</p>
+<p>Max(0, normal dot LightDirction)</p>
+</li>
 </ul>
-<p>$$<br>L_{d}&#x3D;k_{d}\left(I &#x2F; r^{2}\right) \max (0, \mathbf{n} \cdot \mathbf{l})<br>$$</p>
+<h3 id="Specular"><a href="#Specular" class="headerlink" title="Specular"></a>Specular</h3><img src="/2022/09/11/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0-Shading/https:/s3-us-west-2.amazonaws.com/secure.notion-static.com/e85898a6-f4a7-442d-8046-6bd6118818b4/Untitled.png" srcset="/img/loading.gif" lazyload class="" alt="img">
+
+<p>p一般100～200，控制高光大小</p>
+<h3 id="Ambient"><a href="#Ambient" class="headerlink" title="Ambient"></a>Ambient</h3><p>$$<br>L_{a}&#x3D;k_{a} I_{a}<br>$$</p>
+<p>一般可以认为ambient为一个常数，要计算真实光照要考虑GI</p>
+<h3 id="Combine"><a href="#Combine" class="headerlink" title="Combine"></a>Combine</h3><p>$$<br>\begin{aligned} L &amp;&#x3D;L_{a}+L_{d}+L_{s} \ &amp;&#x3D;k_{a} I_{a}+k_{d}\left(I &#x2F; r^{2}\right) \max (0, \mathbf{n} \cdot \mathbf{l})+k_{s}\left(I &#x2F; r^{2}\right) \max (0, \mathbf{n} \cdot \mathbf{h})^{p} \end{aligned}<br>$$</p>
+<p>— 2022.12.20 更新 —</p>
+<p>URP实现</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br></pre></td><td class="code"><pre><code class="hljs HLSL">Shader &quot;Custom/Blinn-Phong&quot;<br>&#123;<br>    Properties<br>    &#123;<br>        _BaseColor (&quot;Base Color&quot;, Color) = (1.0, 1.0, 1.0, 1.0)<br>        _BaseMap (&quot;Main Texture&quot;, 2D) = &quot;white&quot;&#123;&#125;<br>        _SpecColor(&quot;Specular Color&quot;, Color) = (1.0, 1.0, 1.0, 1.0)<br>        _Smoothness(&quot;Smoothness&quot;, range(8, 256)) = 20<br>    &#125;<br>    SubShader<br>    &#123;<br>        Tags &#123;<br>            &quot;RenderType&quot;=&quot;Opaque&quot; <br>            &quot;RenderPipeline&quot;=&quot;UniversalRenderPipeline&quot; <br>            &quot;LightMode&quot; = &quot;UniversalForward&quot;<br>            &quot;ShaderModel&quot;=&quot;4.5&quot;<br>        &#125;<br>        LOD 100<br>        Pass<br>        &#123;<br>            HLSLPROGRAM<br>            #pragma vertex vert<br>            #pragma fragment frag<br>            <br>            #include &quot;Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl&quot;<br>            #include &quot;Packages/com.unity.render-pipelines.universal/ShaderLibrary/Lighting.hlsl&quot;<br>            <br>            struct Attributes<br>            &#123;<br>                half4 positionOS : POSITION;<br>                half3 normal : NORMAL;<br>                half4 tangetOS : TANGENT;<br>                half2 uv : TEXCOORD0;<br>            &#125;;<br><br>            struct Varyings<br>            &#123;<br>                half4 positionCS : SV_POSITION;<br>                half3 positionWS : POSITION_WS;<br>                half2 uv : TEXCOORD0;<br>                half3 normalWS : NORMAL_WS;<br>            &#125;;<br><br>            TEXTURE2D(_BaseMap);<br>            SAMPLER(sampler_BaseMap);<br>            <br>            CBUFFER_START(UnityPerMaterial)<br>                half4 _BaseMap_ST;<br>                half4 _BaseColor;<br>                half4 _SpecColor;<br>                half _Smoothness;<br>            CBUFFER_END<br>            <br>            Varyings vert (Attributes IN)<br>            &#123;<br>                const VertexPositionInputs vertex_position_inputs = GetVertexPositionInputs(IN.positionOS);<br>                const VertexNormalInputs vertex_normal_inputs = GetVertexNormalInputs(IN.normal);<br><br>                Varyings OUT;<br>                OUT.positionWS = vertex_position_inputs.positionWS;<br>                OUT.positionCS = vertex_position_inputs.positionCS;<br>                OUT.uv = TRANSFORM_TEX(IN.uv, _BaseMap);<br>                OUT.normalWS = vertex_normal_inputs.normalWS;<br>                return OUT;<br>            &#125;<br>            <br>            half4 frag (Varyings IN) : SV_Target<br>            &#123;<br>                Light mainLight = GetMainLight();<br>                half3 lightColor = mainLight.color;<br>                half3 lightDir = normalize(mainLight.direction);<br>                half3 lightAtten = mainLight.distanceAttenuation;<br>                // diffuse<br>                half3 albedo = SAMPLE_TEXTURE2D(_BaseMap, sampler_BaseMap, IN.uv) * _BaseColor;<br>                half kd = albedo;<br>                half light = lightColor * lightAtten;<br>                half ndotL = max(0, dot(IN.normalWS, lightDir));<br>                half3 diffuse = kd * light * ndotL;<br>                // specular<br>                half ks = 1 - kd;<br>                half3 viewDirWS = normalize(GetCameraPositionWS() - IN.positionWS);<br>                half3 halfDir = normalize(viewDirWS + lightDir);<br>                half nDotH = max(0, dot(halfDir, IN.normalWS));<br>                half3 specular = ks * light * pow(nDotH, _Smoothness) * saturate(_SpecColor);<br>                // Ambient<br>                half3 ambient = 0.1;<br>                // Combine<br>                half4 finalColor = half4(ambient + diffuse + specular, 1.0);<br>                return finalColor;<br>            &#125;<br>            ENDHLSL<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="Real-Time-Rendering"><a href="#Real-Time-Rendering" class="headerlink" title="Real Time Rendering"></a>Real Time Rendering</h2><img src="/2022/09/11/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0-Shading/https:/s3-us-west-2.amazonaws.com/secure.notion-static.com/eb7d096b-029c-44d9-a8e1-afa8a97fc230/Untitled.png" srcset="/img/loading.gif" lazyload class="" alt="img">
+
+<ol>
+<li>应用阶段：CPU传递数据给GPU（包括纹理，材质，着色器，是否Culling）</li>
+</ol>
+<p>Drawcall 即CPU每调用一次GPU就计算一次Drawcall</p>
+<ol start="2">
+<li>几何阶段：顶点着色器，几何着色器，曲面细分着色器，可编程。几何阶段还进行投影，裁切和屏幕映射等操作。</li>
+</ol>
+<p>几何着色器常见应用：法线可视化，绘制图形（增加删除点）</p>
+<p>曲面细分着色器常见应用: displacement 置换</p>
+<p>投影：观察空间转换到<strong>裁剪空间</strong>（又被称为齐次裁剪空间）</p>
+<p>裁切：对透视裁剪空间来说，GPU需要对裁剪空间中的顶点执行齐次除法（其实就是将齐次坐标系中的w分量除x、y、z分量），得到顶点的<strong>归一化的设备坐标（Normalized Device Coordinates, NDC</strong>）</p>
+<p>屏幕映射：最终转化为<strong>屏幕空间</strong>，Z分量即Z-buffer</p>
+<ol start="3">
+<li>光栅化阶段：包括图元组装（三个点组成一个三角形），三角形遍历（参考光栅化笔记），片元着色器，逐片元操作</li>
+</ol>
+<p>逐片元操作包括<strong>裁剪测试（Scissor Test）</strong>、<strong>透明度测试（Alpha Test）</strong>、<strong>模板测试（Stencil Test）</strong>以及<strong>深度测试（Depth Test）</strong>，可自定义。</p>
+<p>通过测试的片元可以进入合并，考虑是否颜色混合 （alpha blend）</p>
+<p>在经过上面的层层测试后，片元颜色就会被送到颜色缓冲区。GPU会使用<strong>双重缓冲（Double Buffering）</strong>的策略，即屏幕上显示<strong>前置缓冲（Front Buffer）</strong>，而渲染好的颜色先被送入<strong>后置缓冲（Back Buffer）</strong>，再替换前置缓冲，以此避免在屏幕上显示正在光栅化的图元。</p>
+<h2 id="纹理映射"><a href="#纹理映射" class="headerlink" title="纹理映射"></a>纹理映射</h2><p>纹理映射即漫反射系数k_d</p>
+<img src="/2022/09/11/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0-Shading/image-20230222160942261.png" srcset="/img/loading.gif" lazyload class="" alt="image-20230222160942261">
+
+<p>每一个3D模型的表面展开都是1个2d平面，2d平面的x y坐标用来查询纹理的uv坐标</p>
+<p>插值方式，V是三角形abc的重心<br>$$<br>\begin{aligned} \alpha &amp;&#x3D;\frac{-\left(x-x_{B}\right)\left(y_{C}-y_{B}\right)+\left(y-y_{B}\right)\left(x_{C}-x_{B}\right)}{-\left(x_{A}-x_{B}\right)\left(y_{C}-y_{B}\right)+\left(y_{A}-y_{B}\right)\left(x_{C}-x_{B}\right)} \ \beta &amp;&#x3D;\frac{-\left(x-x_{C}\right)\left(y_{A}-y_{C}\right)+\left(y-y_{C}\right)\left(x_{A}-x_{C}\right)}{-\left(x_{B}-x_{C}\right)\left(y_{A}-y_{C}\right)+\left(y_{B}-y_{C}\right)\left(x_{A}-x_{C}\right)} \ \gamma &amp;&#x3D;1-\alpha-\beta \end{aligned}<br>$$<br>投影前后的重心坐标可能会变化，所以需要在对应时间计算对应的重心坐标来做插值，不能随意复用！</p>
+<h3 id="纹素"><a href="#纹素" class="headerlink" title="纹素"></a>纹素</h3><p>每张纹理贴图的一个像素点。</p>
+<p>如果纹素太小，把多个pixel 映射同一个纹素</p>
 <ul>
-<li>几个变量：k_d,  r,  n,  l</li>
+<li>解决：<ul>
+<li>Nearest</li>
+<li>Bilinear<ul>
+<li>Bilinear 插值 lerp</li>
+<li>水平+竖直插值→双线性插值</li>
+<li>最近的四个点插值</li>
+</ul>
+</li>
+<li>Bicubic 双向三次插值<ul>
+<li>周围16个点做三次插值</li>
+<li>运算量更大，结果更好</li>
 </ul>
 </li>
 </ul>
-<p>— 2022.12.20 更新 —</p>
-<p>URP实现</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs HLSL">Light mainLight = GetMainLight();<br>half3 lightColor = mainLight.color;<br>half3 lightDir = mainLight.direction;<br><br>half3 normalWS = IN.normalWS;<br>// NdotL<br>half lightAtten = dot(lightDir, normalWS) * 0.5 + 0.5;<br>//half lightAtten = saturate(dot(lightDir, normalWS));<br>half4 tex = SAMPLE_TEXTURE2D(_BaseMap, sampler_BaseMap, IN.uv) * _BaseColor;<br>half3 ambient = half3(unity_SHAr.w, unity_SHAg.w, unity_SHAb.w);<br>half3 diffuse = tex * lightAtten * lightColor * ambient;<br>half4 finalColor = half4(diffuse, 1.0);<br><br>return finalColor;<br></code></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>如果纹素太大，会产生摩尔纹</p>
+<img src="/2022/09/11/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0-Shading/image-20230222161014635.png" srcset="/img/loading.gif" lazyload class="" alt="image-20230222161014635">
 
+<p>用Mipmap降低纹理精度</p>
+<img src="/2022/09/11/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0-Shading/image-20230222161030909.png" srcset="/img/loading.gif" lazyload class="" alt="image-20230222161030909">
+
+<p>各向异性过滤</p>
+<p>把贴图的xy方向分别使用不同的mipmap，比如1024x1024的贴图可以变成128 x 256或者64 x 128</p>
+<ul>
+<li>怎么知道层数D？约为相邻pixel的映射uv之间的距离取2的对数</li>
+<li>如果计算出来需要的D是整数，就很方便，直接查找</li>
+<li>如果计算出来需要的D不是整数→Trilinear Interpolation三线性插值</li>
+</ul>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/137780634">https://zhuanlan.zhihu.com/p/137780634</a></li>
+</ol>
 
                 
               </div>
