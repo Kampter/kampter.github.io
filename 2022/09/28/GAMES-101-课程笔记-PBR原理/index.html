@@ -23,17 +23,17 @@
 <meta property="og:site_name" content="Kampter&#39;s Castle">
 <meta property="og:description" content="辐射度量学  Radiant energy能量，单位：J（Joule焦耳） Radiant Flux（单位时间能量 → 功率）单位：W（Watt），lm（lumen流明） Intensitythe power per unit solid angle (立体角)$$I(\omega) &#x3D; \frac{\mathrm{d} \Phi}{\mathrm{d} \omega}$$  立体角">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://kampter.github.io/2022/09/28/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0-PBR%E5%8E%9F%E7%90%86/https:/s3-us-west-2.amazonaws.com/secure.notion-static.com/bd06e8c9-f198-4c9b-8852-12b859e02064/Untitled.png">
+<meta property="og:image" content="https://kampter.github.io/2022/09/28/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0-PBR%E5%8E%9F%E7%90%86/%E8%BE%90%E5%B0%84%E5%BA%A6%E9%87%8F%E5%AD%A6.png">
 <meta property="og:image" content="https://kampter.github.io/2022/09/28/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0-PBR%E5%8E%9F%E7%90%86/image-20230222175520499.png">
 <meta property="og:image" content="https://kampter.github.io/2022/09/28/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0-PBR%E5%8E%9F%E7%90%86/image-20230222175312913.png">
 <meta property="og:image" content="https://kampter.github.io/2022/09/28/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0-PBR%E5%8E%9F%E7%90%86/image-20230222174348091.png">
 <meta property="article:published_time" content="2022-09-28T09:09:57.000Z">
-<meta property="article:modified_time" content="2023-02-22T10:03:02.446Z">
+<meta property="article:modified_time" content="2023-02-22T10:11:24.589Z">
 <meta property="article:author" content="Kampter">
 <meta property="article:tag" content="computer graphic">
 <meta property="article:tag" content="math">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://kampter.github.io/2022/09/28/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0-PBR%E5%8E%9F%E7%90%86/https:/s3-us-west-2.amazonaws.com/secure.notion-static.com/bd06e8c9-f198-4c9b-8852-12b859e02064/Untitled.png">
+<meta name="twitter:image" content="https://kampter.github.io/2022/09/28/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0-PBR%E5%8E%9F%E7%90%86/%E8%BE%90%E5%B0%84%E5%BA%A6%E9%87%8F%E5%AD%A6.png">
   
   
   
@@ -280,7 +280,7 @@
             
               <div class="markdown-body">
                 
-                <h2 id="辐射度量学"><a href="#辐射度量学" class="headerlink" title="辐射度量学"></a>辐射度量学</h2><img src="/2022/09/28/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0-PBR%E5%8E%9F%E7%90%86/https:/s3-us-west-2.amazonaws.com/secure.notion-static.com/bd06e8c9-f198-4c9b-8852-12b859e02064/Untitled.png" srcset="/img/loading.gif" lazyload class="" alt="img">
+                <h2 id="辐射度量学"><a href="#辐射度量学" class="headerlink" title="辐射度量学"></a>辐射度量学</h2><img src="/2022/09/28/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0-PBR%E5%8E%9F%E7%90%86/%E8%BE%90%E5%B0%84%E5%BA%A6%E9%87%8F%E5%AD%A6.png" srcset="/img/loading.gif" lazyload class="" alt="img">
 
 <h3 id="Radiant-energy"><a href="#Radiant-energy" class="headerlink" title="Radiant energy"></a>Radiant energy</h3><p>能量，单位：J（Joule焦耳）</p>
 <h3 id="Radiant-Flux"><a href="#Radiant-Flux" class="headerlink" title="Radiant Flux"></a>Radiant Flux</h3><p>（<strong>单位时间</strong>能量 → 功率）单位：W（Watt），lm（lumen流明）</p>
@@ -317,7 +317,8 @@
 <li>Radiance: power received by area dA from “direction” dω</li>
 </ul>
 <p>$$<br>\begin{aligned} d E(\mathrm{p}, \omega) &amp;&#x3D;L_{i}(\mathrm{p}, \omega) \cos \theta \mathrm{d} \omega \ E(\mathrm{p}) &amp;&#x3D;\int_{H^{2}} L_{i}(\mathrm{p}, \omega) \cos \theta \mathrm{d} \omega \end{aligned}<br>$$</p>
-<h2 id="Bidirectional-Reflectance-Distribution-Function-BRDF-双向反射分布函数"><a href="#Bidirectional-Reflectance-Distribution-Function-BRDF-双向反射分布函数" class="headerlink" title="Bidirectional Reflectance Distribution Function (BRDF) 双向反射分布函数"></a>Bidirectional Reflectance Distribution Function (BRDF) 双向反射分布函数</h2><p>— 2022</p>
+<h2 id="Bidirectional-Reflectance-Distribution-Function-BRDF-双向反射分布函数"><a href="#Bidirectional-Reflectance-Distribution-Function-BRDF-双向反射分布函数" class="headerlink" title="Bidirectional Reflectance Distribution Function (BRDF) 双向反射分布函数"></a>Bidirectional Reflectance Distribution Function (BRDF) 双向反射分布函数</h2><p>— 2023.2.10 更新 —</p>
+<p>尝试再URP中手写PBR shader</p>
 
                 
               </div>
