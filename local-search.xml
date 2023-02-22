@@ -153,6 +153,35 @@
   
   
   <entry>
+    <title>GAMES 101 课程笔记 - Ray Tracing</title>
+    <link href="/2022/09/22/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0-Ray-Tracing/"/>
+    <url>/2022/09/22/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0-Ray-Tracing/</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+    
+    <categories>
+      
+      <category>学习笔记</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>computer graphic</tag>
+      
+      <tag>math</tag>
+      
+      <tag>HLSL</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Unity特效</title>
     <link href="/2022/09/18/Unity%E7%89%B9%E6%95%88/"/>
     <url>/2022/09/18/Unity%E7%89%B9%E6%95%88/</url>
@@ -199,6 +228,8 @@
       <tag>computer graphic</tag>
       
       <tag>math</tag>
+      
+      <tag>HLSL</tag>
       
     </tags>
     
