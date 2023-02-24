@@ -16,34 +16,31 @@
   <meta name="author" content="Kampter">
   <meta name="keywords" content="Technical Artist">
   
-    <meta name="description" content="前言：只记录自己需要的内容  辐射度量学  Radiant energy能量，单位：J（Joule焦耳） Radiant Flux（单位时间能量 → 功率）单位：W（Watt），lm（lumen流明） Intensitythe power per unit solid angle (立体角)$$I(\omega) &#x3D; \frac{\mathrm{d} \Phi}{\mathrm{d} \">
+    <meta name="description" content="前言：只记录自己需要的内容  线代 按照逆时针找到ab，bc，ca向量，当同时满足cross(ab * ap) &gt; 0 &amp;&amp; cross(bc * bp) &gt; 0 &amp;&amp; cross (ca * cp) &gt; 0 时点在三角形内，如果有一个结果为0 点在这条边上，有一个小于0在三角形外。换种思路就是如果点在三角形内测，三次判断点都在封闭线段的左侧，即点">
 <meta property="og:type" content="article">
-<meta property="og:title" content="GAMES 101 课程笔记 - PBR原理">
-<meta property="og:url" content="https://kampter.github.io/2022/09/28/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0-PBR%E5%8E%9F%E7%90%86/index.html">
+<meta property="og:title" content="GAMES 202 课程笔记 - 线代和变换">
+<meta property="og:url" content="https://kampter.github.io/2021/01/21/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0%20-%20%E7%BA%BF%E4%BB%A3%E5%92%8C%E5%8F%98%E6%8D%A2/index.html">
 <meta property="og:site_name" content="Kampter&#39;s Castle">
-<meta property="og:description" content="前言：只记录自己需要的内容  辐射度量学  Radiant energy能量，单位：J（Joule焦耳） Radiant Flux（单位时间能量 → 功率）单位：W（Watt），lm（lumen流明） Intensitythe power per unit solid angle (立体角)$$I(\omega) &#x3D; \frac{\mathrm{d} \Phi}{\mathrm{d} \">
+<meta property="og:description" content="前言：只记录自己需要的内容  线代 按照逆时针找到ab，bc，ca向量，当同时满足cross(ab * ap) &gt; 0 &amp;&amp; cross(bc * bp) &gt; 0 &amp;&amp; cross (ca * cp) &gt; 0 时点在三角形内，如果有一个结果为0 点在这条边上，有一个小于0在三角形外。换种思路就是如果点在三角形内测，三次判断点都在封闭线段的左侧，即点">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://kampter.github.io/2022/09/28/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0-PBR%E5%8E%9F%E7%90%86/%E8%BE%90%E5%B0%84%E5%BA%A6%E9%87%8F%E5%AD%A6.png">
-<meta property="og:image" content="https://kampter.github.io/2022/09/28/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0-PBR%E5%8E%9F%E7%90%86/image-20230222175520499.png">
-<meta property="og:image" content="https://kampter.github.io/2022/09/28/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0-PBR%E5%8E%9F%E7%90%86/image-20230222175312913.png">
-<meta property="og:image" content="https://kampter.github.io/2022/09/28/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0-PBR%E5%8E%9F%E7%90%86/image-20230222174348091.png">
-<meta property="og:image" content="https://kampter.github.io/2022/09/28/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0-PBR%E5%8E%9F%E7%90%86/image-20230222181257182.png">
-<meta property="og:image" content="https://kampter.github.io/2022/09/28/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0-PBR%E5%8E%9F%E7%90%86/image-20230222182311587.png">
-<meta property="og:image" content="https://kampter.github.io/2022/09/28/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0-PBR%E5%8E%9F%E7%90%86/image-20230222182448860.png">
-<meta property="og:image" content="https://kampter.github.io/2022/09/28/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0-PBR%E5%8E%9F%E7%90%86/image-20230222183648389.png">
-<meta property="og:image" content="https://kampter.github.io/2022/09/28/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0-PBR%E5%8E%9F%E7%90%86/image-20230222184902536.png">
-<meta property="og:image" content="https://kampter.github.io/2022/09/28/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0-PBR%E5%8E%9F%E7%90%86/image-20230222185813296.png">
-<meta property="article:published_time" content="2022-09-28T09:09:57.000Z">
-<meta property="article:modified_time" content="2023-02-22T11:01:36.572Z">
+<meta property="og:image" content="https://kampter.github.io/2021/01/21/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0%20-%20%E7%BA%BF%E4%BB%A3%E5%92%8C%E5%8F%98%E6%8D%A2/image-20230221133120210.png">
+<meta property="og:image" content="https://kampter.github.io/2021/01/21/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0%20-%20%E7%BA%BF%E4%BB%A3%E5%92%8C%E5%8F%98%E6%8D%A2/image-20230221133422396.png">
+<meta property="og:image" content="https://kampter.github.io/2021/01/21/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0%20-%20%E7%BA%BF%E4%BB%A3%E5%92%8C%E5%8F%98%E6%8D%A2/image-20230221151903102.png">
+<meta property="og:image" content="https://kampter.github.io/2021/01/21/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0%20-%20%E7%BA%BF%E4%BB%A3%E5%92%8C%E5%8F%98%E6%8D%A2/image-20230221152038483.png">
+<meta property="og:image" content="https://kampter.github.io/2021/01/21/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0%20-%20%E7%BA%BF%E4%BB%A3%E5%92%8C%E5%8F%98%E6%8D%A2/image-20230221153642237.png">
+<meta property="og:image" content="https://kampter.github.io/2021/01/21/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0%20-%20%E7%BA%BF%E4%BB%A3%E5%92%8C%E5%8F%98%E6%8D%A2/v2-0aacc4803212a11f43964d7f34824785_r.jpg">
+<meta property="article:published_time" content="2021-01-21T06:17:21.000Z">
+<meta property="article:modified_time" content="2023-02-24T15:32:11.045Z">
 <meta property="article:author" content="Kampter">
 <meta property="article:tag" content="computer graphic">
 <meta property="article:tag" content="math">
+<meta property="article:tag" content="HLSL">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://kampter.github.io/2022/09/28/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0-PBR%E5%8E%9F%E7%90%86/%E8%BE%90%E5%B0%84%E5%BA%A6%E9%87%8F%E5%AD%A6.png">
+<meta name="twitter:image" content="https://kampter.github.io/2021/01/21/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0%20-%20%E7%BA%BF%E4%BB%A3%E5%92%8C%E5%8F%98%E6%8D%A2/image-20230221133120210.png">
   
   
   
-  <title>GAMES 101 课程笔记 - PBR原理 - Kampter&#39;s Castle</title>
+  <title>GAMES 202 课程笔记 - 线代和变换 - Kampter&#39;s Castle</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -209,7 +206,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="GAMES 101 课程笔记 - PBR原理"></span>
+            <span id="subtitle" data-typed-text="GAMES 202 课程笔记 - 线代和变换"></span>
           
         </div>
 
@@ -220,8 +217,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-09-28 17:09" pubdate>
-          2022年9月28日 下午
+        <time datetime="2021-01-21 14:17" pubdate>
+          2021年1月21日 下午
         </time>
       </span>
     
@@ -232,7 +229,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          3k 字
+          876 字
         
       </span>
     
@@ -243,7 +240,7 @@
         
         
         
-          25 分钟
+          8 分钟
         
       </span>
     
@@ -281,111 +278,51 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">GAMES 101 课程笔记 - PBR原理</h1>
+            <h1 style="display: none">GAMES 202 课程笔记 - 线代和变换</h1>
             
             
               <div class="markdown-body">
                 
                 <p>前言：只记录自己需要的内容</p>
 <hr>
-<h2 id="辐射度量学"><a href="#辐射度量学" class="headerlink" title="辐射度量学"></a>辐射度量学</h2><img src="/2022/09/28/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0-PBR%E5%8E%9F%E7%90%86/%E8%BE%90%E5%B0%84%E5%BA%A6%E9%87%8F%E5%AD%A6.png" srcset="/img/loading.gif" lazyload class="" alt="img">
+<h2 id="线代"><a href="#线代" class="headerlink" title="线代"></a>线代</h2><ol>
+<li>按照逆时针找到ab，bc，ca向量，当同时满足cross(ab * ap) &gt; 0 &amp;&amp; cross(bc * bp) &gt; 0 &amp;&amp; cross (ca * cp) &gt; 0 时点在三角形内，如果有一个结果为0 点在这条边上，有一个小于0在三角形外。换种思路就是如果点在三角形内测，三次判断点都在封闭线段的左侧，即点在图形内。</li>
+</ol>
+<img src="/2021/01/21/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0%20-%20%E7%BA%BF%E4%BB%A3%E5%92%8C%E5%8F%98%E6%8D%A2/image-20230221133120210.png" srcset="/img/loading.gif" lazyload class="" alt="image-20230221133120210">
 
-<h3 id="Radiant-energy"><a href="#Radiant-energy" class="headerlink" title="Radiant energy"></a>Radiant energy</h3><p>能量，单位：J（Joule焦耳）</p>
-<h3 id="Radiant-Flux"><a href="#Radiant-Flux" class="headerlink" title="Radiant Flux"></a>Radiant Flux</h3><p>（<strong>单位时间</strong>能量 → 功率）单位：W（Watt），lm（lumen流明）</p>
-<h3 id="Intensity"><a href="#Intensity" class="headerlink" title="Intensity"></a>Intensity</h3><p>the power per unit solid angle (立体角)<br>$$<br>I(\omega) &#x3D; \frac{\mathrm{d} \Phi}{\mathrm{d} \omega}<br>$$</p>
-<ul>
-<li><p>立体角</p>
-<ul>
-<li>面积&#x2F;半径^2，</li>
-</ul>
-<p>$$<br>\Omega&#x3D;\frac{A}{r^{2}}<br>$$</p>
-<ul>
-<li>单位：sr, steradians</li>
-</ul>
-<p>$$<br>\mathrm{d} \omega&#x3D;\frac{\mathrm{d} A}{r^{2}}&#x3D;\sin \theta \mathrm{d} \theta \mathrm{d} \phi<br>$$</p>
-</li>
-<li><p>方向性：用 w来表示方向</p>
-</li>
-</ul>
-<p>###Irradiance</p>
-<p>power per unit area<br>$$<br>E(\mathbf{x}) \equiv \frac{\mathrm{d} \Phi(\mathbf{x})}{\mathrm{d} A}<br>$$<br>单位：W&#x2F;m^2 | lm&#x2F;m^2 &#x3D; lux</p>
-<img src="/2022/09/28/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0-PBR%E5%8E%9F%E7%90%86/image-20230222175520499.png" srcset="/img/loading.gif" lazyload class="" alt="image-20230222175520499">
+<ol start="2">
+<li>从远处发射一条光线，到无限远，如果与多边形交点为偶数，在图形外，否则在图形内。遍历多边形每一条边与光线相交，如果交点在这条边上，交点数 +1。</li>
+</ol>
+<img src="/2021/01/21/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0%20-%20%E7%BA%BF%E4%BB%A3%E5%92%8C%E5%8F%98%E6%8D%A2/image-20230221133422396.png" srcset="/img/loading.gif" lazyload class="" alt="image-20230221133416234">
 
-<p>irradiance解释衰减,  随着半径增大衰减越明显</p>
-<h3 id="Radiance"><a href="#Radiance" class="headerlink" title="Radiance"></a>Radiance</h3><p>power per unit solid angle, per projected unit area.<br>$$<br>L(\mathrm{p}, \omega) \equiv \frac{\mathrm{d}^{2} \Phi(\mathrm{p}, \omega)}{\mathrm{d} \omega \mathrm{d} A \cos \theta}<br>$$</p>
-<img src="/2022/09/28/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0-PBR%E5%8E%9F%E7%90%86/image-20230222175312913.png" srcset="/img/loading.gif" lazyload class="" alt="image-20230222175312913">
 
-<p>非垂直平面需要根据 θ 夹角计算</p>
-<img src="/2022/09/28/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0-PBR%E5%8E%9F%E7%90%86/image-20230222174348091.png" srcset="/img/loading.gif" lazyload class="" alt="image-20230222174348091">
 
-<p>radiance 与intensity 和 irradiance 结合对比</p>
-<p>Irradiance和Radiance之间的区别就在于是否有方向性</p>
-<ul>
-<li>Irradiance: power received by area dA 四面八方的光线积分起来</li>
-<li>Radiance: power received by area dA from “direction” dω</li>
-</ul>
-<p>$$<br>\begin{aligned} d E(\mathrm{p}, \omega) &amp;&#x3D;L_{i}(\mathrm{p}, \omega) \cos \theta \mathrm{d} \omega \ E(\mathrm{p}) &amp;&#x3D;\int_{H^{2}} L_{i}(\mathrm{p}, \omega) \cos \theta \mathrm{d} \omega \end{aligned}<br>$$</p>
-<h2 id="Bidirectional-Reflectance-Distribution-Function-BRDF-双向反射分布函数"><a href="#Bidirectional-Reflectance-Distribution-Function-BRDF-双向反射分布函数" class="headerlink" title="Bidirectional Reflectance Distribution Function (BRDF) 双向反射分布函数"></a>Bidirectional Reflectance Distribution Function (BRDF) 双向反射分布函数</h2><h3 id="理解"><a href="#理解" class="headerlink" title="理解"></a>理解</h3><p>反射的理解：光线打到某个点，（被吸收了）然后反弹（发出）到其他地方</p>
-<img src="/2022/09/28/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0-PBR%E5%8E%9F%E7%90%86/image-20230222181257182.png" srcset="/img/loading.gif" lazyload class="" alt="image-20230222181257182">
+<h2 id="变换"><a href="#变换" class="headerlink" title="变换"></a>变换</h2><p>齐次空间:  空间变化增加一个维度实现Transformation （图例为二维变换，三位变化同理增加一个维度到四维）<img src="/2021/01/21/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0%20-%20%E7%BA%BF%E4%BB%A3%E5%92%8C%E5%8F%98%E6%8D%A2/image-20230221151903102.png" srcset="/img/loading.gif" lazyload class="" alt="image-20230221151903102"></p>
+<p>这样带来的好处是在一个矩阵就能完成Transformation操作 （Affine map是原本Transformation 需要两个矩阵操作）</p>
+<img src="/2021/01/21/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0%20-%20%E7%BA%BF%E4%BB%A3%E5%92%8C%E5%8F%98%E6%8D%A2/image-20230221152038483.png" srcset="/img/loading.gif" lazyload class="" alt="image-20230221152038483">
 
-<p>某个点从某个方向接受&#x2F;向某个方向发射光线能量：radiance</p>
-<ul>
-<li>Differential irradiance incoming:</li>
-</ul>
-<p>$$<br>d E\left(\omega_{i}\right)&#x3D;L\left(\omega_{i}\right) \cos \theta_{i} d \omega_{i}<br>$$</p>
-<ul>
-<li>Differential radiance exiting:</li>
-</ul>
-<p>$$<br> d L_{r}\left(\omega_{r}\right)<br>$$</p>
-<p>通俗理解：这个微小面积接受的能量计算后，再分配到各个方向上</p>
-<h3 id="The-Reflection-Equation-反射方程"><a href="#The-Reflection-Equation-反射方程" class="headerlink" title="The Reflection Equation 反射方程"></a>The Reflection Equation 反射方程</h3><ul>
-<li>针对一个输出源（着色点），积分所有方向输入源（光照）的BRDF，获得最后的输出</li>
-</ul>
-<p>$$<br> L_{r}\left(\mathrm{p}, \omega_{r}\right)&#x3D;\int_{H^{2}} f_{r}\left(\mathrm{p}, \omega_{i} \rightarrow \omega_{r}\right) L_{i}\left(\mathrm{p}, \omega_{i}\right) \cos \theta_{i} \mathrm{d} \omega_{i}<br>$$</p>
-<h2 id="The-Rendering-Equation-渲染方程"><a href="#The-Rendering-Equation-渲染方程" class="headerlink" title="The Rendering Equation 渲染方程"></a>The Rendering Equation 渲染方程</h2><p>$$<br>L_{o}\left(p, \omega_{o}\right)&#x3D;L_{e}\left(p, \omega_{o}\right)+\int_{\Omega^{+}} L_{i}\left(p, \omega_{i}\right) f_{r}\left(p, \omega_{i}, \omega_{o}\right)\left(n \cdot \omega_{i}\right) \mathrm{d} \omega_{i}<br>$$</p>
-<img src="/2022/09/28/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0-PBR%E5%8E%9F%E7%90%86/image-20230222182311587.png" srcset="/img/loading.gif" lazyload class="" alt="image-20230222182311587">
+<p>模型空间：以模型为世界原点的坐标系（Local） </p>
+<p>Model transformation </p>
+<p>世界空间：以世界坐标系（0，0，0）为原点，将模型摆放在世界Global坐标系中</p>
+<p>View transformation</p>
+<p>相机&#x2F;观察空间：我们看到的画面由摄像机捕捉，摄像机参数决定了我们在屏幕上看到的东西，这一步可以将世界坐标系转换到摄像机坐标系。</p>
+<p>Projection transformation</p>
+<p>正交投影和透视投影：这也是Zbuffer储存深度信息的由来。投影变化包括从view变化到正交投影再变化到透视投影才输出至viewport视口显示再屏幕上。</p>
+<p>投影的取值范围为[-1,  1]</p>
+<img src="/2021/01/21/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0%20-%20%E7%BA%BF%E4%BB%A3%E5%92%8C%E5%8F%98%E6%8D%A2/image-20230221153642237.png" srcset="/img/loading.gif" lazyload class="" alt="image-20230221153642237">
 
-<p>渲染方程考虑多个点光源：根据w方向加起来，同时考虑其他物体反射的光源。</p>
-<img src="/2022/09/28/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0-PBR%E5%8E%9F%E7%90%86/image-20230222182448860.png" srcset="/img/loading.gif" lazyload class="" alt="image-20230222182448860">
 
-<p>一个神奇的抽象化理解：</p>
-<ul>
-<li>光栅化的着色过程主要是直接光照（间接光照计算非常复杂）</li>
-<li>全局光照：直接和间接光照的集合<ul>
-<li>会收敛到一个亮度</li>
-</ul>
-</li>
-</ul>
-<h3 id="BRDF-材质"><a href="#BRDF-材质" class="headerlink" title="BRDF 材质"></a>BRDF 材质</h3><p>以前只有Blinn Phong的时候，通过非物理的方式模拟出各种材质。</p>
-<p>Material &#x3D;&#x3D; BRDF 决定光如何被反射</p>
-<h4 id="Diffuse-x2F-Lambertain-Material"><a href="#Diffuse-x2F-Lambertain-Material" class="headerlink" title="Diffuse &#x2F; Lambertain Material"></a>Diffuse &#x2F; Lambertain Material</h4><img src="/2022/09/28/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0-PBR%E5%8E%9F%E7%90%86/image-20230222183648389.png" srcset="/img/loading.gif" lazyload class="" alt="image-20230222183648389">
 
-<ul>
-<li>能量守恒：进出的irradiance相同（总量）</li>
-<li>漫反射：出的radiance均匀→ $f_r &#x3D; c$ （常量）</li>
-<li>假设入射光和出射光都是均匀的→ $L_i &#x3D; L_o$</li>
-<li>ρ: albedo(反射率, RGB)</li>
-</ul>
-<h4 id="Glossy-Material（BRDF）"><a href="#Glossy-Material（BRDF）" class="headerlink" title="Glossy Material（BRDF）"></a>Glossy Material（BRDF）</h4><h4 id="Ideal-reflective-x2F-refractive-material-BSDF"><a href="#Ideal-reflective-x2F-refractive-material-BSDF" class="headerlink" title="Ideal reflective &#x2F; refractive material (BSDF * )"></a>Ideal reflective &#x2F; refractive material (BSDF * )</h4><p>BSDF（散射） &#x3D; BRDF（反射） + BTDF（折射）</p>
-<h4 id="Isotropic-x2F-Anisotropic-Materials-BRDFs"><a href="#Isotropic-x2F-Anisotropic-Materials-BRDFs" class="headerlink" title="Isotropic &#x2F; Anisotropic Materials (BRDFs)"></a>Isotropic &#x2F; Anisotropic Materials (BRDFs)</h4><p>各向异性BRDF</p>
-<h4 id="Fresnel-Reflection-x2F-Term-（菲涅耳项）"><a href="#Fresnel-Reflection-x2F-Term-（菲涅耳项）" class="headerlink" title="Fresnel Reflection &#x2F; Term （菲涅耳项）"></a>Fresnel Reflection &#x2F; Term （菲涅耳项）</h4><p>和normal法线方向越接近，越少光被反射</p>
-<ul>
-<li>近似：Schlick’s approximation</li>
-</ul>
-<p>$$<br> \begin{aligned} R(\theta) &amp;&#x3D;R_{0}+\left(1-R_{0}\right)(1-\cos \theta)^{5} \ R_{0} &amp;&#x3D;\left(\frac{n_{1}-n_{2}}{n_{1}+n_{2}}\right)^{2} \end{aligned}<br>$$</p>
-<h3 id="Microfacet-Material-微表面材质"><a href="#Microfacet-Material-微表面材质" class="headerlink" title="Microfacet Material 微表面材质"></a>Microfacet Material 微表面材质</h3><p>从足够远的地方看过去，无限接近镜面反射。但是不断拉近，表面会变得凹凸不平。</p>
-<img src="/2022/09/28/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0-PBR%E5%8E%9F%E7%90%86/image-20230222184902536.png" srcset="/img/loading.gif" lazyload class="" alt="image-20230222184902536">
+<p>— 2023.02.04 更新 — </p>
+<p>额外帮助理解的图片：空间变化的过程</p>
+<img src="/2021/01/21/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0%20-%20%E7%BA%BF%E4%BB%A3%E5%92%8C%E5%8F%98%E6%8D%A2/v2-0aacc4803212a11f43964d7f34824785_r.jpg" srcset="/img/loading.gif" lazyload class="" alt="img">
 
-<p>远处情况就是Glossy,  近处是diffuse，因此获得计算公式如下：<br>$$<br>f(\mathbf{i}, \mathbf{o})&#x3D;\frac{\mathbf{F}(\mathbf{i}, \mathbf{h}) \mathbf{G}(\mathbf{i}, \mathbf{o}, \mathbf{h}) \mathbf{D}(\mathbf{h})}{4(\mathbf{n}, \mathbf{i})(\mathbf{n}, \mathbf{o})}<br>$$</p>
-<img src="/2022/09/28/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0-PBR%E5%8E%9F%E7%90%86/image-20230222185813296.png" srcset="/img/loading.gif" lazyload class="" alt="image-20230222185813296">
-
-<ul>
-<li>Fresnel term 表示菲尼尔效果</li>
-<li>shadowing-masking term 表示足够远的地方光滑但是细微的地方实际是凹凸不平产生遮挡阴影效果</li>
-<li>distribution of normals 表示凹凸不平的法线方向（细小平面的方向）</li>
-</ul>
-<p>— 2023.2.10 更新 —</p>
-<p>尝试再URP中手写PBR shader</p>
+<p>以及在unity中实现空间变换部分的代码及说明</p>
+<p>HCS齐次裁剪空间的xy坐标范围在[-w, w]之间</p>
+<p>而NDC空间，是把视锥放映射到 -1 到 1的正方体中，也就是把HCS空间投影到[-1, 1]的范围内</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/552098339">【04】Unity URP 卡通渲染 原神角色渲染记录-Depth-Based Effect: 7Spaces + 屏幕空间等距深度边缘光Rim Light - 知乎 (zhihu.com)</a></li>
+</ol>
 
                 
               </div>
@@ -423,6 +360,8 @@
       
         <a href="/tags/math/">#math</a>
       
+        <a href="/tags/HLSL/">#HLSL</a>
+      
     </div>
   
 </div>
@@ -433,8 +372,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>GAMES 101 课程笔记 - PBR原理</div>
-      <div>https://kampter.github.io/2022/09/28/GAMES-101-课程笔记-PBR原理/</div>
+      <div>GAMES 202 课程笔记 - 线代和变换</div>
+      <div>https://kampter.github.io/2021/01/21/GAMES-101-课程笔记 - 线代和变换/</div>
     </div>
     <div class="license-meta">
       
@@ -446,7 +385,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2022年9月28日</div>
+          <div>2021年1月21日</div>
         </div>
       
       
@@ -478,9 +417,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/01/11/GAMES%20202%20%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0%20-%20%E9%98%B4%E5%BD%B1/" title="GAMES 202 课程笔记 - 阴影">
+                      <a href="/2022/08/21/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0%20-%20%E5%85%A8%E5%B1%80%E5%85%89%E7%85%A7/" title="GAMES 101 课程笔记 - 全局光照">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">GAMES 202 课程笔记 - 阴影</span>
+                        <span class="hidden-mobile">GAMES 101 课程笔记 - 全局光照</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -488,8 +427,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/09/22/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0-Ray-Tracing/" title="GAMES 101 课程笔记 - Ray Tracing">
-                        <span class="hidden-mobile">GAMES 101 课程笔记 - Ray Tracing</span>
+                      <a href="/2019/12/21/%E7%A2%8E%E7%89%87%E5%8C%96%E8%AE%B0%E5%BD%95%E4%B8%80%E4%B8%8B%E5%9C%A8%E6%BE%B3%E6%B4%B2%E7%9A%84%E5%AD%A6%E4%B9%A0%E7%94%9F%E6%B4%BB/" title="碎片化记录一下在澳洲的学习生活">
+                        <span class="hidden-mobile">碎片化记录一下在澳洲的学习生活</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

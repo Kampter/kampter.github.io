@@ -16,31 +16,41 @@
   <meta name="author" content="Kampter">
   <meta name="keywords" content="Technical Artist">
   
-    <meta name="description" content="前言：只记录自己需要的内容  线代 按照逆时针找到ab，bc，ca向量，当同时满足cross(ab * ap) &gt; 0 &amp;&amp; cross(bc * bp) &gt; 0 &amp;&amp; cross (ca * cp) &gt; 0 时点在三角形内，如果有一个结果为0 点在这条边上，有一个小于0在三角形外。换种思路就是如果点在三角形内测，三次判断点都在封闭线段的左侧，即点">
+    <meta name="description" content="IBL实时环境光照IBL：Image-Based Lighting 典型的保存方式：cube map，spherical map 在不考虑阴影的情况下（Visibility term）真实的渲染方程   真实求解需要用蒙特卡洛积分求解path tracing, 但是速度太慢 使用之前的近似方案  一点点小的区别，我们只需要对 BRDF 覆盖的范围 ΩG 进行积分即可    第一部分的积分红色区域就">
 <meta property="og:type" content="article">
-<meta property="og:title" content="GAMES 101 课程笔记 - 线代和变换">
-<meta property="og:url" content="https://kampter.github.io/2022/08/21/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0%20-%20%E7%BA%BF%E4%BB%A3%E5%92%8C%E5%8F%98%E6%8D%A2/index.html">
+<meta property="og:title" content="GAMES 202 课程笔记 - 全局光照">
+<meta property="og:url" content="https://kampter.github.io/2023/01/21/GAMES%20202%20%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0%20-%20%E5%85%A8%E5%B1%80%E5%85%89%E7%85%A7/index.html">
 <meta property="og:site_name" content="Kampter&#39;s Castle">
-<meta property="og:description" content="前言：只记录自己需要的内容  线代 按照逆时针找到ab，bc，ca向量，当同时满足cross(ab * ap) &gt; 0 &amp;&amp; cross(bc * bp) &gt; 0 &amp;&amp; cross (ca * cp) &gt; 0 时点在三角形内，如果有一个结果为0 点在这条边上，有一个小于0在三角形外。换种思路就是如果点在三角形内测，三次判断点都在封闭线段的左侧，即点">
+<meta property="og:description" content="IBL实时环境光照IBL：Image-Based Lighting 典型的保存方式：cube map，spherical map 在不考虑阴影的情况下（Visibility term）真实的渲染方程   真实求解需要用蒙特卡洛积分求解path tracing, 但是速度太慢 使用之前的近似方案  一点点小的区别，我们只需要对 BRDF 覆盖的范围 ΩG 进行积分即可    第一部分的积分红色区域就">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://kampter.github.io/2022/08/21/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0%20-%20%E7%BA%BF%E4%BB%A3%E5%92%8C%E5%8F%98%E6%8D%A2/image-20230221133120210.png">
-<meta property="og:image" content="https://kampter.github.io/2022/08/21/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0%20-%20%E7%BA%BF%E4%BB%A3%E5%92%8C%E5%8F%98%E6%8D%A2/image-20230221133422396.png">
-<meta property="og:image" content="https://kampter.github.io/2022/08/21/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0%20-%20%E7%BA%BF%E4%BB%A3%E5%92%8C%E5%8F%98%E6%8D%A2/image-20230221151903102.png">
-<meta property="og:image" content="https://kampter.github.io/2022/08/21/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0%20-%20%E7%BA%BF%E4%BB%A3%E5%92%8C%E5%8F%98%E6%8D%A2/image-20230221152038483.png">
-<meta property="og:image" content="https://kampter.github.io/2022/08/21/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0%20-%20%E7%BA%BF%E4%BB%A3%E5%92%8C%E5%8F%98%E6%8D%A2/image-20230221153642237.png">
-<meta property="og:image" content="https://kampter.github.io/2022/08/21/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0%20-%20%E7%BA%BF%E4%BB%A3%E5%92%8C%E5%8F%98%E6%8D%A2/v2-0aacc4803212a11f43964d7f34824785_r.jpg">
-<meta property="article:published_time" content="2022-08-21T06:17:21.000Z">
-<meta property="article:modified_time" content="2023-02-24T15:17:20.542Z">
+<meta property="og:image" content="https://kampter.github.io/2023/01/21/GAMES%20202%20%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0%20-%20%E5%85%A8%E5%B1%80%E5%85%89%E7%85%A7/image-20230224111730627.png">
+<meta property="og:image" content="https://kampter.github.io/2023/01/21/GAMES%20202%20%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0%20-%20%E5%85%A8%E5%B1%80%E5%85%89%E7%85%A7/image-20230224105959628.png">
+<meta property="og:image" content="https://kampter.github.io/2023/01/21/GAMES%20202%20%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0%20-%20%E5%85%A8%E5%B1%80%E5%85%89%E7%85%A7/image-20210411153933349.png">
+<meta property="og:image" content="https://kampter.github.io/2023/01/21/GAMES%20202%20%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0%20-%20%E5%85%A8%E5%B1%80%E5%85%89%E7%85%A7/image-20230224121919975.png">
+<meta property="og:image" content="https://kampter.github.io/2023/01/21/GAMES%20202%20%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0%20-%20%E5%85%A8%E5%B1%80%E5%85%89%E7%85%A7/image-20230224121704103.png">
+<meta property="og:image" content="https://kampter.github.io/2023/01/21/GAMES%20202%20%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0%20-%20%E5%85%A8%E5%B1%80%E5%85%89%E7%85%A7/image-20210411161156645.png">
+<meta property="og:image" content="https://kampter.github.io/2023/01/21/GAMES%20202%20%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0%20-%20%E5%85%A8%E5%B1%80%E5%85%89%E7%85%A7/image-20230224121853466.png">
+<meta property="og:image" content="https://kampter.github.io/2023/01/21/GAMES%20202%20%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0%20-%20%E5%85%A8%E5%B1%80%E5%85%89%E7%85%A7/image-20230224123946363.png">
+<meta property="og:image" content="https://kampter.github.io/2023/01/21/GAMES%20202%20%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0%20-%20%E5%85%A8%E5%B1%80%E5%85%89%E7%85%A7/image-20230224124241620.png">
+<meta property="og:image" content="https://kampter.github.io/2023/01/21/GAMES%20202%20%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0%20-%20%E5%85%A8%E5%B1%80%E5%85%89%E7%85%A7/image-20210414115518543.png">
+<meta property="og:image" content="https://kampter.github.io/2023/01/21/GAMES%20202%20%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0%20-%20%E5%85%A8%E5%B1%80%E5%85%89%E7%85%A7/1.png">
+<meta property="og:image" content="https://kampter.github.io/2023/01/21/GAMES%20202%20%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0%20-%20%E5%85%A8%E5%B1%80%E5%85%89%E7%85%A7/image-20210414142001805.png">
+<meta property="og:image" content="https://kampter.github.io/2023/01/21/GAMES%20202%20%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0%20-%20%E5%85%A8%E5%B1%80%E5%85%89%E7%85%A7/image-20230224160643950.png">
+<meta property="og:image" content="https://kampter.github.io/2023/01/21/GAMES%20202%20%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0%20-%20%E5%85%A8%E5%B1%80%E5%85%89%E7%85%A7/image-20230224160658065.png">
+<meta property="og:image" content="https://kampter.github.io/2023/01/21/GAMES%20202%20%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0%20-%20%E5%85%A8%E5%B1%80%E5%85%89%E7%85%A7/image-20230224160711216.png">
+<meta property="og:image" content="https://kampter.github.io/2023/01/21/GAMES%20202%20%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0%20-%20%E5%85%A8%E5%B1%80%E5%85%89%E7%85%A7/image-20230224160748654.png">
+<meta property="article:published_time" content="2023-01-21T06:17:21.000Z">
+<meta property="article:modified_time" content="2023-02-24T15:33:38.416Z">
 <meta property="article:author" content="Kampter">
 <meta property="article:tag" content="computer graphic">
 <meta property="article:tag" content="math">
 <meta property="article:tag" content="HLSL">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://kampter.github.io/2022/08/21/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0%20-%20%E7%BA%BF%E4%BB%A3%E5%92%8C%E5%8F%98%E6%8D%A2/image-20230221133120210.png">
+<meta name="twitter:image" content="https://kampter.github.io/2023/01/21/GAMES%20202%20%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0%20-%20%E5%85%A8%E5%B1%80%E5%85%89%E7%85%A7/image-20230224111730627.png">
   
   
   
-  <title>GAMES 101 课程笔记 - 线代和变换 - Kampter&#39;s Castle</title>
+  <title>GAMES 202 课程笔记 - 全局光照 - Kampter&#39;s Castle</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -206,7 +216,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="GAMES 101 课程笔记 - 线代和变换"></span>
+            <span id="subtitle" data-typed-text="GAMES 202 课程笔记 - 全局光照"></span>
           
         </div>
 
@@ -217,8 +227,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-08-21 14:17" pubdate>
-          2022年8月21日 下午
+        <time datetime="2023-01-21 14:17" pubdate>
+          2023年1月21日 下午
         </time>
       </span>
     
@@ -229,7 +239,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          876 字
+          1.7k 字
         
       </span>
     
@@ -240,7 +250,7 @@
         
         
         
-          8 分钟
+          15 分钟
         
       </span>
     
@@ -278,50 +288,137 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">GAMES 101 课程笔记 - 线代和变换</h1>
+            <h1 style="display: none">GAMES 202 课程笔记 - 全局光照</h1>
             
             
               <div class="markdown-body">
                 
-                <p>前言：只记录自己需要的内容</p>
-<hr>
-<h2 id="线代"><a href="#线代" class="headerlink" title="线代"></a>线代</h2><ol>
-<li>按照逆时针找到ab，bc，ca向量，当同时满足cross(ab * ap) &gt; 0 &amp;&amp; cross(bc * bp) &gt; 0 &amp;&amp; cross (ca * cp) &gt; 0 时点在三角形内，如果有一个结果为0 点在这条边上，有一个小于0在三角形外。换种思路就是如果点在三角形内测，三次判断点都在封闭线段的左侧，即点在图形内。</li>
+                <h2 id="IBL实时环境光照"><a href="#IBL实时环境光照" class="headerlink" title="IBL实时环境光照"></a>IBL实时环境光照</h2><p>IBL：Image-Based Lighting</p>
+<p>典型的保存方式：cube map，spherical map</p>
+<p>在不考虑阴影的情况下（Visibility term）真实的渲染方程</p>
+<img src="/2023/01/21/GAMES%20202%20%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0%20-%20%E5%85%A8%E5%B1%80%E5%85%89%E7%85%A7/image-20230224111730627.png" srcset="/img/loading.gif" lazyload class="" alt="image-20230224111730627">
+
+<p>真实求解需要用蒙特卡洛积分求解path tracing, 但是速度太慢</p>
+<p>使用之前的近似方案</p>
+<ul>
+<li>一点点小的区别，我们只需要对 BRDF 覆盖的范围 ΩG 进行积分即可</li>
+</ul>
+<img src="/2023/01/21/GAMES%20202%20%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0%20-%20%E5%85%A8%E5%B1%80%E5%85%89%E7%85%A7/image-20230224105959628.png" srcset="/img/loading.gif" lazyload class="" alt="image-20230224105959628">
+
+<h3 id="第一部分的积分"><a href="#第一部分的积分" class="headerlink" title="第一部分的积分"></a><strong>第一部分的积分</strong></h3><p>红色区域就是对光源的入射方向（上面的 r ）进行了一个滤波</p>
+<p>prefilter，在 rendering 之前预先处理</p>
+<ul>
+<li>类似于 MIPMAP 的思想</li>
+<li>预先生成多张使用不同滤波核 filter 的环境贴图</li>
+<li>之后在 shading 的时候进行一个查询，双线性插值</li>
+<li>如果查询的值不是一个预先设置的滤波核的大小，三线性插值</li>
+</ul>
+<img src="/2023/01/21/GAMES%20202%20%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0%20-%20%E5%85%A8%E5%B1%80%E5%85%89%E7%85%A7/image-20210411153933349.png" srcset="/img/loading.gif" lazyload class="" alt="img">
+
+<h3 id="第二部分的积分"><a href="#第二部分的积分" class="headerlink" title="第二部分的积分"></a><strong>第二部分的积分</strong></h3><p>蓝色部分的积分：预先计算 precompute</p>
+<p>假定是 microfacet 的 BRDF</p>
+<ul>
+<li>只需要知道菲涅尔项、微表面的法线分布（roughness）<ul>
+<li>Precompute its value for all possible combinations of variables roughness, color (Fresnel term), etc.</li>
+</ul>
+</li>
+<li>还是很难求积分 而且保存结果需要很大的内存</li>
+</ul>
+<img src="/2023/01/21/GAMES%20202%20%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0%20-%20%E5%85%A8%E5%B1%80%E5%85%89%E7%85%A7/image-20230224121919975.png" srcset="/img/loading.gif" lazyload class="" alt="image-20230224121919975">
+
+<p>菲涅尔项可以用一个函数近似</p>
+<ul>
+<li>Schlick’s approximation</li>
+<li>认为不同的材质是两个参数的函数：入射光夹角、基础反射率（基础颜色）</li>
+</ul>
+<img src="/2023/01/21/GAMES%20202%20%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0%20-%20%E5%85%A8%E5%B1%80%E5%85%89%E7%85%A7/image-20230224121704103.png" srcset="/img/loading.gif" lazyload class="" alt="image-20230224121704103">
+
+<img src="/2023/01/21/GAMES%20202%20%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0%20-%20%E5%85%A8%E5%B1%80%E5%85%89%E7%85%A7/image-20210411161156645.png" srcset="/img/loading.gif" lazyload class="" alt="img">
+
+<p>D 项可以定义一个法线分布</p>
+<ul>
+<li>Beckmann distribution</li>
+<li>α 定义 roughness，分布的胖瘦</li>
+<li>θh 表示法线和半角矢量的夹角</li>
+</ul>
+<img src="/2023/01/21/GAMES%20202%20%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0%20-%20%E5%85%A8%E5%B1%80%E5%85%89%E7%85%A7/image-20230224121853466.png" srcset="/img/loading.gif" lazyload class="" alt="image-20230224121853466">
+
+<p>这样就可以简化为一个三维的预计算，但是计算量依旧很大</p>
+<h3 id="Unreal-Engine的降维思路"><a href="#Unreal-Engine的降维思路" class="headerlink" title="Unreal Engine的降维思路"></a>Unreal Engine的降维思路</h3><p>显式把上面的菲涅尔项写进去，试图把 R0 分离开来</p>
+<ul>
+<li>分母的 F 会被消掉</li>
+<li><a target="_blank" rel="noopener" href="https://learnopengl-cn.github.io/07%20PBR/03%20IBL/02%20Specular%20IBL/#brdf">完整解释和求导公式</a></li>
+<li><img src="/2023/01/21/GAMES%20202%20%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0%20-%20%E5%85%A8%E5%B1%80%E5%85%89%E7%85%A7/image-20230224123946363.png" srcset="/img/loading.gif" lazyload class="" alt="image-20230224123946363"></li>
+<li>这样的好处是降维成二维纹理预计算</li>
+</ul>
+<img src="/2023/01/21/GAMES%20202%20%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0%20-%20%E5%85%A8%E5%B1%80%E5%85%89%E7%85%A7/image-20230224124241620.png" srcset="/img/loading.gif" lazyload class="" alt="image-20230224124241620">
+
+
+
+<h2 id="球面谐波函数"><a href="#球面谐波函数" class="headerlink" title="球面谐波函数"></a>球面谐波函数</h2><ol>
+<li>回顾Games101的知识点，diffuse一般保留低频信息</li>
 </ol>
-<img src="/2022/08/21/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0%20-%20%E7%BA%BF%E4%BB%A3%E5%92%8C%E5%8F%98%E6%8D%A2/image-20230221133120210.png" srcset="/img/loading.gif" lazyload class="" alt="image-20230221133120210">
+<p>Spherical Harmonics</p>
+<p>球面谐波函数的可视化</p>
+<ul>
+<li>每一行的频率是一样的，第 l 阶的 SH</li>
+<li>m&#x3D;2l+1</li>
+<li>前 n 阶一共有 n2 个基函数</li>
+<li><img src="/2023/01/21/GAMES%20202%20%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0%20-%20%E5%85%A8%E5%B1%80%E5%85%89%E7%85%A7/image-20210414115518543.png" srcset="/img/loading.gif" lazyload class="" alt="img"></li>
+</ul>
+<p>某天某个大佬想到用这个SH函数来描绘环境光照产生的diffuse信息。发现只需要使用前三阶的SH函数就可以把误差缩小到1%</p>
+<img src="/2023/01/21/GAMES%20202%20%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0%20-%20%E5%85%A8%E5%B1%80%E5%85%89%E7%85%A7/1.png" srcset="/img/loading.gif" lazyload class="" alt="img">
 
-<ol start="2">
-<li>从远处发射一条光线，到无限远，如果与多边形交点为偶数，在图形外，否则在图形内。遍历多边形每一条边与光线相交，如果交点在这条边上，交点数 +1。</li>
-</ol>
-<img src="/2022/08/21/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0%20-%20%E7%BA%BF%E4%BB%A3%E5%92%8C%E5%8F%98%E6%8D%A2/image-20230221133422396.png" srcset="/img/loading.gif" lazyload class="" alt="image-20230221133416234">
+<p>而SH可以支持旋转的性质解决了旋转问题：</p>
+<p>同一行的SH可以从同一行其他的SH旋转表示出来</p>
+<h2 id="Precomputed-Radiance-Transfer"><a href="#Precomputed-Radiance-Transfer" class="headerlink" title="Precomputed Radiance Transfer"></a>Precomputed Radiance Transfer</h2><ul>
+<li>利用球谐函数的性质进行预计算</li>
+<li>用另一种角度看待渲染方程</li>
+<li><strong>我们假设场景是不变的，改变的只是光照</strong></li>
+</ul>
+<img src="/2023/01/21/GAMES%20202%20%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0%20-%20%E5%85%A8%E5%B1%80%E5%85%89%E7%85%A7/image-20210414142001805.png" srcset="/img/loading.gif" lazyload class="" alt="img">
 
+<ul>
+<li>把 Lighting 表示为SH函数, 预计算Light transport部分</li>
+</ul>
+<h3 id="公式推演"><a href="#公式推演" class="headerlink" title="公式推演"></a>公式推演</h3><p>将 diffuse 常数项从渲染方程中提取出来</p>
+<img src="/2023/01/21/GAMES%20202%20%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0%20-%20%E5%85%A8%E5%B1%80%E5%85%89%E7%85%A7/image-20230224160643950.png" srcset="/img/loading.gif" lazyload class="" alt="image-20230224160643950">
 
+<p>光照使用 SH 表示</p>
+<img src="/2023/01/21/GAMES%20202%20%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0%20-%20%E5%85%A8%E5%B1%80%E5%85%89%E7%85%A7/image-20230224160658065.png" srcset="/img/loading.gif" lazyload class="" alt="image-20230224160658065">
 
-<h2 id="变换"><a href="#变换" class="headerlink" title="变换"></a>变换</h2><p>齐次空间:  空间变化增加一个维度实现Transformation （图例为二维变换，三位变化同理增加一个维度到四维）<img src="/2022/08/21/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0%20-%20%E7%BA%BF%E4%BB%A3%E5%92%8C%E5%8F%98%E6%8D%A2/image-20230221151903102.png" srcset="/img/loading.gif" lazyload class="" alt="image-20230221151903102"></p>
-<p>这样带来的好处是在一个矩阵就能完成Transformation操作 （Affine map是原本Transformation 需要两个矩阵操作）</p>
-<img src="/2022/08/21/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0%20-%20%E7%BA%BF%E4%BB%A3%E5%92%8C%E5%8F%98%E6%8D%A2/image-20230221152038483.png" srcset="/img/loading.gif" lazyload class="" alt="image-20230221152038483">
+<p>渲染方程变为</p>
+<img src="/2023/01/21/GAMES%20202%20%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0%20-%20%E5%85%A8%E5%B1%80%E5%85%89%E7%85%A7/image-20230224160711216.png" srcset="/img/loading.gif" lazyload class="" alt="image-20230224160711216">
 
-<p>模型空间：以模型为世界原点的坐标系（Local） </p>
-<p>Model transformation </p>
-<p>世界空间：以世界坐标系（0，0，0）为原点，将模型摆放在世界Global坐标系中</p>
-<p>View transformation</p>
-<p>相机&#x2F;观察空间：我们看到的画面由摄像机捕捉，摄像机参数决定了我们在屏幕上看到的东西，这一步可以将世界坐标系转换到摄像机坐标系。</p>
-<p>Projection transformation</p>
-<p>正交投影和透视投影：这也是Zbuffer储存深度信息的由来。投影变化包括从view变化到正交投影再变化到透视投影才输出至viewport视口显示再屏幕上。</p>
-<p>投影的取值范围为[-1,  1]</p>
-<img src="/2022/08/21/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0%20-%20%E7%BA%BF%E4%BB%A3%E5%92%8C%E5%8F%98%E6%8D%A2/image-20230221153642237.png" srcset="/img/loading.gif" lazyload class="" alt="image-20230221153642237">
+<p>红色部分与光照无关，可以预计算。渲染方程变为</p>
+<img src="/2023/01/21/GAMES%20202%20%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0%20-%20%E5%85%A8%E5%B1%80%E5%85%89%E7%85%A7/image-20230224160748654.png" srcset="/img/loading.gif" lazyload class="" alt="image-20230224160748654">
 
-
-
-<p>— 2023.02.04 更新 — </p>
-<p>额外帮助理解的图片：空间变化的过程</p>
-<img src="/2022/08/21/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0%20-%20%E7%BA%BF%E4%BB%A3%E5%92%8C%E5%8F%98%E6%8D%A2/v2-0aacc4803212a11f43964d7f34824785_r.jpg" srcset="/img/loading.gif" lazyload class="" alt="img">
-
-<p>以及在unity中实现空间变换部分的代码及说明</p>
-<p>HCS齐次裁剪空间的xy坐标范围在[-w, w]之间</p>
-<p>而NDC空间，是把视锥放映射到 -1 到 1的正方体中，也就是把HCS空间投影到[-1, 1]的范围内</p>
+<ul>
+<li><strong>场景是不能动的</strong>，因为动了，visibility 项就变了，预计算失效</li>
+<li>可以利用SH 的旋转性解决光源移动：如果光源做了一个旋转操作，很快就能够得到新的 SH</li>
+</ul>
+<p>搜SH文章的时候看到这篇，对于这个观点有点感兴趣，声音是2D的信号，图像是3D的信号</p>
+<p><a target="_blank" rel="noopener" href="https://www.zhihu.com/column/c_1046337272613527552">https://www.zhihu.com/column/c_1046337272613527552</a></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>无论 IBL 还是 PRT 都属于实现环境光照的方案，它们的区别在于：</p>
+<ul>
+<li>IBL 是一种从预计算环境光照出发的环境关照渲染方案：<ul>
+<li>采用环境贴图：存储占用空间较大，同时也占采样 I&#x2F;O。</li>
+<li>能保留高频信息，常用于 diffuse&#x2F;glossy&#x2F;specular 物体的渲染。</li>
+</ul>
+</li>
+<li>PRT 是一种从预计算 transfer function 出发的环境光照渲染方案：<ul>
+<li>采用 SH lighting：存储开销和重建环境光照的开销极低。</li>
+<li>只能保留低频信息，常用于 diffuse&#x2F;glossy 物体的渲染。</li>
+<li>物体不可局部形变，材质不可动态：若发生变化，那么其 transfer 就需要更新。</li>
+<li>只考虑了物体局部 transfer 效果，没有考虑完整场景 transfer 效果，不过在其它 PRT 方案中有支持完整场景的 transfer 效果。</li>
+</ul>
+</li>
+</ul>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
-<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/552098339">【04】Unity URP 卡通渲染 原神角色渲染记录-Depth-Based Effect: 7Spaces + 屏幕空间等距深度边缘光Rim Light - 知乎 (zhihu.com)</a></li>
+<li><p><a target="_blank" rel="noopener" href="https://learnopengl-cn.github.io/07%20PBR/03%20IBL/02%20Specular%20IBL/">https://learnopengl-cn.github.io/07%20PBR/03%20IBL/02%20Specular%20IBL/</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/KillerAery/p/15335369.html">https://www.cnblogs.com/KillerAery/p/15335369.html</a></p>
+</li>
 </ol>
 
                 
@@ -372,8 +469,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>GAMES 101 课程笔记 - 线代和变换</div>
-      <div>https://kampter.github.io/2022/08/21/GAMES-101-课程笔记 - 线代和变换/</div>
+      <div>GAMES 202 课程笔记 - 全局光照</div>
+      <div>https://kampter.github.io/2023/01/21/GAMES 202 课程笔记 - 全局光照/</div>
     </div>
     <div class="license-meta">
       
@@ -385,7 +482,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2022年8月21日</div>
+          <div>2023年1月21日</div>
         </div>
       
       
@@ -417,9 +514,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/08/21/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0%20-%20%E5%85%A8%E5%B1%80%E5%85%89%E7%85%A7/" title="GAMES 101 课程笔记 - 全局光照">
+                      <a href="/2023/01/25/%E8%AE%B0%E5%BD%95%E4%B8%80%E4%B8%8B%E7%94%A8Hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%9A%84%E5%BF%83%E8%B7%AF%E5%8E%86%E7%A8%8B/" title="记录一下用Hexo搭建个人博客的心路历程">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">GAMES 101 课程笔记 - 全局光照</span>
+                        <span class="hidden-mobile">记录一下用Hexo搭建个人博客的心路历程</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -427,8 +524,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/08/21/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0%20-%20%E9%98%B4%E5%BD%B1/" title="GAMES 101 课程笔记 - 阴影">
-                        <span class="hidden-mobile">GAMES 101 课程笔记 - 阴影</span>
+                      <a href="/2023/01/16/%E5%86%9B%E5%9B%A2%E8%A6%81%E5%A1%9E2%E6%B8%B2%E6%9F%93shader%E5%AE%9E%E7%8E%B0/" title="军团要塞2渲染shader实现">
+                        <span class="hidden-mobile">军团要塞2渲染shader实现</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
