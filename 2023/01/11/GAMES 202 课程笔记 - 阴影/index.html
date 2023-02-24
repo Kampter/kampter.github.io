@@ -16,12 +16,12 @@
   <meta name="author" content="Kampter">
   <meta name="keywords" content="Technical Artist">
   
-    <meta name="description" content="ShadowMapping原理     先渲染一个从光源到物体的pass 获得深度图 再渲染一个从相机位置到物体的pass获得深度图，并且把这个深度投影到光源位置      比较第一次与第二次投影到光源的深度，如果相同即没有阴影；如果比原深度远，即在阴影中  缺陷 走样、分辨率。数值精度问题 只能点光源、硬阴影 会产生自遮挡如果light 方向与物体平面接近平行    改善方式具体方式就是当一个点">
+    <meta name="description" content="ShadowMapping原理     先渲染一个从光源到物体的pass 获得深度图 再渲染一个从相机位置到物体的pass获得深度图，并且把这个深度投影到光源位置       比较第一次与第二次投影到光源的深度，如果相同即没有阴影；如果比原深度远，即在阴影中  缺陷 走样、分辨率。数值精度问题 只能点光源、硬阴影 会产生自遮挡如果light 方向与物体平面接近平行       改善方式具体方式就是">
 <meta property="og:type" content="article">
 <meta property="og:title" content="GAMES 202 课程笔记 - 阴影">
 <meta property="og:url" content="https://kampter.github.io/2023/01/11/GAMES%20202%20%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0%20-%20%E9%98%B4%E5%BD%B1/index.html">
 <meta property="og:site_name" content="Kampter&#39;s Castle">
-<meta property="og:description" content="ShadowMapping原理     先渲染一个从光源到物体的pass 获得深度图 再渲染一个从相机位置到物体的pass获得深度图，并且把这个深度投影到光源位置      比较第一次与第二次投影到光源的深度，如果相同即没有阴影；如果比原深度远，即在阴影中  缺陷 走样、分辨率。数值精度问题 只能点光源、硬阴影 会产生自遮挡如果light 方向与物体平面接近平行    改善方式具体方式就是当一个点">
+<meta property="og:description" content="ShadowMapping原理     先渲染一个从光源到物体的pass 获得深度图 再渲染一个从相机位置到物体的pass获得深度图，并且把这个深度投影到光源位置       比较第一次与第二次投影到光源的深度，如果相同即没有阴影；如果比原深度远，即在阴影中  缺陷 走样、分辨率。数值精度问题 只能点光源、硬阴影 会产生自遮挡如果light 方向与物体平面接近平行       改善方式具体方式就是">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://kampter.github.io/2023/01/11/GAMES%20202%20%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0%20-%20%E9%98%B4%E5%BD%B1/image-20230223123016702.png">
 <meta property="og:image" content="https://kampter.github.io/2023/01/11/GAMES%20202%20%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0%20-%20%E9%98%B4%E5%BD%B1/image-20230223123254908.png">
@@ -32,7 +32,7 @@
 <meta property="og:image" content="https://kampter.github.io/2023/01/11/GAMES%20202%20%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0%20-%20%E9%98%B4%E5%BD%B1/image-20210407175256445.png">
 <meta property="og:image" content="https://kampter.github.io/2023/01/11/GAMES%20202%20%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0%20-%20%E9%98%B4%E5%BD%B1/image-20230224103257763.png">
 <meta property="article:published_time" content="2023-01-11T06:17:21.000Z">
-<meta property="article:modified_time" content="2023-02-24T15:52:26.335Z">
+<meta property="article:modified_time" content="2023-02-24T15:55:51.524Z">
 <meta property="article:author" content="Kampter">
 <meta property="article:tag" content="computer graphic">
 <meta property="article:tag" content="math">
@@ -285,26 +285,30 @@
             
               <div class="markdown-body">
                 
-                <h2 id="ShadowMapping"><a href="#ShadowMapping" class="headerlink" title="ShadowMapping"></a>ShadowMapping</h2><h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><ul>
-<li><img src="/2023/01/11/GAMES%20202%20%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0%20-%20%E9%98%B4%E5%BD%B1/image-20230223123016702.png" srcset="/img/loading.gif" lazyload class="" alt="image-20230223123016702"></li>
-</ul>
-<hr>
+                <h2 id="ShadowMapping"><a href="#ShadowMapping" class="headerlink" title="ShadowMapping"></a>ShadowMapping</h2><h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><img src="/2023/01/11/GAMES%20202%20%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0%20-%20%E9%98%B4%E5%BD%B1/image-20230223123016702.png" srcset="/img/loading.gif" lazyload class="" alt="image-20230223123016702">
+
+
+
 <ol>
 <li>先渲染一个从光源到物体的pass 获得深度图</li>
 <li>再渲染一个从相机位置到物体的pass获得深度图，并且把这个深度投影到光源位置</li>
 </ol>
 <img src="/2023/01/11/GAMES%20202%20%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0%20-%20%E9%98%B4%E5%BD%B1/image-20230223123254908.png" srcset="/img/loading.gif" lazyload class="" alt="image-20230223123254908">
 
-<hr>
+
+
 <ol start="3">
 <li>比较第一次与第二次投影到光源的深度，如果相同即没有阴影；如果比原深度远，即在阴影中</li>
 </ol>
 <h3 id="缺陷"><a href="#缺陷" class="headerlink" title="缺陷"></a>缺陷</h3><ul>
 <li>走样、分辨率。数值精度问题</li>
 <li>只能点光源、硬阴影</li>
-<li>会产生自遮挡如果light 方向与物体平面接近平行<img src="/2023/01/11/GAMES%20202%20%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0%20-%20%E9%98%B4%E5%BD%B1/image-20230223124101790.png" srcset="/img/loading.gif" lazyload class="" alt="image-20230223124101790"></li>
+<li>会产生自遮挡如果light 方向与物体平面接近平行</li>
 </ul>
-<hr>
+<img src="/2023/01/11/GAMES%20202%20%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0%20-%20%E9%98%B4%E5%BD%B1/image-20230223124101790.png" srcset="/img/loading.gif" lazyload class="" alt="image-20230223124101790">
+
+
+
 <ul>
 <li>改善方式具体方式就是当一个点深度大于记录深度的值超过一个阈值bias时，我们才认为这个点在阴影内。</li>
 </ul>
@@ -317,7 +321,6 @@
 </ul>
 <img src="/2023/01/11/GAMES%20202%20%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0%20-%20%E9%98%B4%E5%BD%B1/image-20210407161249651.png" srcset="/img/loading.gif" lazyload class="" alt="img">
 
-<hr>
 <ul>
 <li>一些技巧：动态的 bias<ul>
 <li>当光线和物体表面法线夹角比较大时，bias 也需要比较大</li>
@@ -334,12 +337,12 @@
 <ul>
 <li><img src="/2023/01/11/GAMES%20202%20%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0%20-%20%E9%98%B4%E5%BD%B1/image-20230223220941154.png" srcset="/img/loading.gif" lazyload class="" alt="image-20230223220941154"></li>
 </ul>
-<hr>
 <p>多光源阴影还有些问题，后面需要修一下bug。</p>
-<h3 id="数学知识"><a href="#数学知识" class="headerlink" title="数学知识"></a>数学知识</h3><p>某年某月某日的某个变态搞了个数学公式，用不等式来代替等式。<br>$$<br>\int_{\Omega} f(x) g(x) \mathrm{d} x \approx \frac{\int_{\Omega} f(x) \mathrm{d} x}{\int_{\Omega} \mathrm{d} x} \cdot \int_{\Omega} g(x) \mathrm{d} x<br>$$<br>使用例子：Rendering Equation<br>$$<br>L_{o}\left(p, \omega_{o}\right)&#x3D;L_{e}\left(p, \omega_{o}\right)+\int_{\Omega^{+}} L_{i}\left(p, \omega_{i}\right) f_{r}\left(p, \omega_{i}, \omega_{o}\right) cos(\theta_i) V(p,\omega_{i}) \mathrm{d} \omega_{i}<br>$$<br>把Visibility拆出来：<br>$$<br> L_{o}\left(\mathrm{p}, \omega_{o}\right) \approx \frac{\int_{\Omega^{+}} V\left(\mathrm{p}, \omega_{i}\right) \mathrm{d} \omega_{i}}{\int_{\Omega^{+}} \mathrm{d} \omega_{i}} \cdot \int_{\Omega^{+}} L_{i}\left(\mathrm{p}, \omega_{i}\right) f_{r}\left(\mathrm{p}, \omega_{i}, \omega_{o}\right) \cos \theta_{i} \mathrm{~d} \omega_{i}<br>$$<br>因此其表示的意义就是,我们计算每个点的shading，然后去乘这个点的visibality得到的就是最后的渲染结果。</p>
+<h3 id="数学知识"><a href="#数学知识" class="headerlink" title="数学知识"></a>数学知识</h3><p>某年某月某日的某个变态搞了个数学公式，用不等式来代替等式。<br>$$<br>\int_{\Omega} f(x) g(x) \mathrm{d} x \approx \frac{\int_{\Omega} f(x) \mathrm{d} x}{\int_{\Omega} \mathrm{d} x} \cdot \int_{\Omega} g(x) \mathrm{d} x<br>$$<br>使用例子：Rendering Equation<br>$$<br>L_{o}\left(p, \omega_{o}\right)&#x3D;L_{e}\left(p, \omega_{o}\right)+\int_{\Omega^{+}} L_{i}\left(p, \omega_{i}\right) f_{r}\left(p, \omega_{i}, \omega_{o}\right) cos(\theta_i) V(p,\omega_{i}) \mathrm{d} \omega_{i}<br>$$<br>把Visibility拆出来：<br>$$<br>L_{o}\left(\mathrm{p}, \omega_{o}\right) \approx \frac{\int_{\Omega^{+}} V\left(\mathrm{p}, \omega_{i}\right) \mathrm{d} \omega_{i}}{\int_{\Omega^{+}} \mathrm{d} \omega_{i}} \cdot \int_{\Omega^{+}} L_{i}\left(\mathrm{p}, \omega_{i}\right) f_{r}\left(\mathrm{p}, \omega_{i}, \omega_{o}\right) \cos \theta_{i} \mathrm{~d} \omega_{i}<br>$$<br>因此其表示的意义就是,我们计算每个点的shading，然后去乘这个点的visibality得到的就是最后的渲染结果。</p>
 <h2 id="PCF-软阴影"><a href="#PCF-软阴影" class="headerlink" title="PCF 软阴影"></a>PCF 软阴影</h2><img src="/2023/01/11/GAMES%20202%20%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0%20-%20%E9%98%B4%E5%BD%B1/image-20230223221715111.png" srcset="/img/loading.gif" lazyload class="" alt="image-20230223221715111">
 
-<hr>
+
+
 <p>假设这是我们在shadow map中获取到的深度值，而P点得到的实际到光源深度为0.5，这时所有的在shadow map中获取到的深度值要与P点得到的实际到光源深度，即0.5进行比较，所有大于0.5的像素我们输出0，反之则输出</p>
 <h2 id="PCSS-软阴影"><a href="#PCSS-软阴影" class="headerlink" title="PCSS 软阴影"></a>PCSS 软阴影</h2><ul>
 <li>PCF 的思想，动态调整核的大小</li>
@@ -352,7 +355,8 @@
 </ul>
 <img src="/2023/01/11/GAMES%20202%20%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0%20-%20%E9%98%B4%E5%BD%B1/image-20210407175256445.png" srcset="/img/loading.gif" lazyload class="" alt="img">
 
-<hr>
+
+
 <ul>
 <li>根据相似三角形<ul>
 <li>penumbra：半影</li>
@@ -360,7 +364,6 @@
 </ul>
 </li>
 </ul>
-<hr>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
 <li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/523775521">https://zhuanlan.zhihu.com/p/523775521</a></li>
 <li><a target="_blank" rel="noopener" href="https://banbao991.github.io/2021/06/18/CG/Algorithm/SM-PCF-PCSS-VSM/">https://banbao991.github.io/2021/06/18/CG/Algorithm/SM-PCF-PCSS-VSM/</a></li>
