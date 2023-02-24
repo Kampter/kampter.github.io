@@ -1,0 +1,776 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Kampter">
+  <meta name="keywords" content="Technical Artist">
+  
+    <meta name="description" content="ShadowMapping原理   先渲染一个从光源到物体的pass 获得深度图 再渲染一个从相机位置到物体的pass获得深度图，并且把这个深度投影到光源位置     比较第一次与第二次投影到光源的深度，如果相同即没有阴影；如果比原深度远，即在阴影中  缺陷 走样、分辨率。数值精度问题 只能点光源、硬阴影 会产生自遮挡如果light 方向与物体平面接近平行改善方式具体方式就是当一个点深度大于记录深">
+<meta property="og:type" content="article">
+<meta property="og:title" content="GAMES 101 课程笔记 - 阴影">
+<meta property="og:url" content="https://kampter.github.io/2022/08/21/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0%20-%20%E9%98%B4%E5%BD%B1/index.html">
+<meta property="og:site_name" content="Kampter&#39;s Castle">
+<meta property="og:description" content="ShadowMapping原理   先渲染一个从光源到物体的pass 获得深度图 再渲染一个从相机位置到物体的pass获得深度图，并且把这个深度投影到光源位置     比较第一次与第二次投影到光源的深度，如果相同即没有阴影；如果比原深度远，即在阴影中  缺陷 走样、分辨率。数值精度问题 只能点光源、硬阴影 会产生自遮挡如果light 方向与物体平面接近平行改善方式具体方式就是当一个点深度大于记录深">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://kampter.github.io/2022/08/21/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0%20-%20%E9%98%B4%E5%BD%B1/image-20230223123016702.png">
+<meta property="og:image" content="https://kampter.github.io/2022/08/21/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0%20-%20%E9%98%B4%E5%BD%B1/image-20230223123254908.png">
+<meta property="og:image" content="https://kampter.github.io/2022/08/21/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0%20-%20%E9%98%B4%E5%BD%B1/image-20230223124101790.png">
+<meta property="og:image" content="https://kampter.github.io/2022/08/21/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0%20-%20%E9%98%B4%E5%BD%B1/image-20210407161249651.png">
+<meta property="og:image" content="https://kampter.github.io/2022/08/21/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0%20-%20%E9%98%B4%E5%BD%B1/image-20230223220941154.png">
+<meta property="og:image" content="https://kampter.github.io/2022/08/21/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0%20-%20%E9%98%B4%E5%BD%B1/image-20230223221715111.png">
+<meta property="og:image" content="https://kampter.github.io/2022/08/21/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0%20-%20%E9%98%B4%E5%BD%B1/image-20210407175256445.png">
+<meta property="og:image" content="https://kampter.github.io/2022/08/21/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0%20-%20%E9%98%B4%E5%BD%B1/image-20230224103257763.png">
+<meta property="article:published_time" content="2022-08-21T06:17:21.000Z">
+<meta property="article:modified_time" content="2023-02-24T15:19:01.558Z">
+<meta property="article:author" content="Kampter">
+<meta property="article:tag" content="computer graphic">
+<meta property="article:tag" content="math">
+<meta property="article:tag" content="HLSL">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://kampter.github.io/2022/08/21/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0%20-%20%E9%98%B4%E5%BD%B1/image-20230223123016702.png">
+  
+  
+  
+  <title>GAMES 101 课程笔记 - 阴影 - Kampter&#39;s Castle</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"kampter.github.io","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":4450397253,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Kampter&#39;s Castle</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="GAMES 101 课程笔记 - 阴影"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-08-21 14:17" pubdate>
+          2022年8月21日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          6.9k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          58 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">GAMES 101 课程笔记 - 阴影</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="ShadowMapping"><a href="#ShadowMapping" class="headerlink" title="ShadowMapping"></a>ShadowMapping</h2><h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><img src="/2022/08/21/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0%20-%20%E9%98%B4%E5%BD%B1/image-20230223123016702.png" srcset="/img/loading.gif" lazyload class="" alt="image-20230223123016702">
+
+<ol>
+<li>先渲染一个从光源到物体的pass 获得深度图</li>
+<li>再渲染一个从相机位置到物体的pass获得深度图，并且把这个深度投影到光源位置</li>
+</ol>
+<img src="/2022/08/21/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0%20-%20%E9%98%B4%E5%BD%B1/image-20230223123254908.png" srcset="/img/loading.gif" lazyload class="" alt="image-20230223123254908">
+
+<ol start="3">
+<li>比较第一次与第二次投影到光源的深度，如果相同即没有阴影；如果比原深度远，即在阴影中</li>
+</ol>
+<h3 id="缺陷"><a href="#缺陷" class="headerlink" title="缺陷"></a>缺陷</h3><ul>
+<li>走样、分辨率。数值精度问题</li>
+<li>只能点光源、硬阴影</li>
+<li>会产生自遮挡如果light 方向与物体平面接近平行<img src="/2022/08/21/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0%20-%20%E9%98%B4%E5%BD%B1/image-20230223124101790.png" srcset="/img/loading.gif" lazyload class="" alt="image-20230223124101790">改善方式具体方式就是当一个点深度大于记录深度的值超过一个阈值bias时，我们才认为这个点在阴影内。</li>
+</ul>
+<h4 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h4><ul>
+<li>增加一个 bias</li>
+<li>中间的黄色那段我们不算<ul>
+<li>也就是说我们对计算得到的深度减去一个 bias</li>
+</ul>
+</li>
+</ul>
+<p>[<img src="/2022/08/21/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0%20-%20%E9%98%B4%E5%BD%B1/image-20210407161249651.png" srcset="/img/loading.gif" lazyload class="" alt="img"></p>
+<ul>
+<li>一些技巧：动态的 bias<ul>
+<li>当光线和物体表面法线夹角比较大时，bias 也需要比较大</li>
+<li>当光线和物体表面法线夹角比较小时，bias 比较小即可</li>
+</ul>
+</li>
+<li>不合适的bias会出现阴影与物体中间出现间隔</li>
+</ul>
+<p>— 2022.12.15 更新 —</p>
+<p>Shadow map已经又引擎自动计算好不需要手动实现。</p>
+<p>URP中对shadow map 采样</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br></pre></td><td class="code"><pre><code class="hljs HLSL">Shader &quot;Custom/ShadowReciver&quot;<br>&#123;<br>    Properties<br>    &#123;<br>        _BaseColor (&quot;Base Color&quot;, Color) = (1.0, 1.0, 1.0, 1.0)<br>        _BaseMap (&quot;Main Texture&quot;, 2D) = &quot;white&quot;&#123;&#125;<br>        _SpecColor (&quot;Specular Color&quot;, Color) = (1.0, 1.0, 1.0, 1.0)<br>        _Smoothness (&quot;Gloss&quot;, range(8, 256)) = 20<br>        _BumpMap (&quot;Normal Map&quot;, 2D) = &quot;bump&quot; &#123;&#125;<br>        _BumpScale (&quot;Scale&quot;, Float) = 1.0<br>        [Toggle(_MULTIPLE_LIGHTS)] _MultipleLights (&quot;Received MultipleLights&quot;, Float) = 1.0<br>    &#125;<br>    SubShader<br>    &#123;<br>        Tags &#123;<br>            &quot;RenderType&quot;=&quot;Opaque&quot; <br>            &quot;RenderPipeline&quot;=&quot;UniversalRenderPipeline&quot; <br>            &quot;LightMode&quot; = &quot;UniversalForward&quot;<br>            &quot;ShaderModel&quot;=&quot;4.5&quot;<br>        &#125;<br>        <br>        HLSLINCLUDE<br>        #include &quot;Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl&quot;<br>        #include &quot;Packages/com.unity.render-pipelines.universal/ShaderLibrary/Lighting.hlsl&quot;<br><br>        CBUFFER_START(UnityPerMaterial)<br>            half4 _BaseMap_ST;<br>            half4 _BumpMap_ST;<br>            half4 _BaseColor;<br>            half4 _SpecColor;<br>            half _Smoothness;<br>            half _BumpScale;<br>        CBUFFER_END<br><br>        TEXTURE2D(_BaseMap);    SAMPLER(sampler_BaseMap);<br>        TEXTURE2D(_BumpMap);    SAMPLER(sampler_BumpMap);<br><br>        struct Attributes<br>        &#123;<br>            half4 positionOS : POSITION;<br>            half3 normal : NORMAL;<br>            half4 tangetOS : TANGENT;<br>            half2 uv : TEXCOORD0;<br>        &#125;;<br><br>        struct Varyings<br>        &#123;<br>            half4 positionCS : SV_POSITION;<br>            half3 positionWS : POSITION_WS;<br>            half4 positionSC : POSITION_SC;<br>            half2 uv : TEXCOORD0;<br>            half3 normalWS : NORMAL_WS;<br>            half4 tangentWS : TANGENT_WS;<br>        &#125;;<br>        <br>        half4 LightingModelImplement (Light light, half3 normalWS, half3 viewDirWS, half2 uv, bool isMainLight)<br>        &#123;<br>            half3 lightColor = light.color;<br>            half3 lightDir = normalize(light.direction);<br>            <br>            half lambert = saturate(dot(lightDir, normalWS));<br>            half3 albedo = SAMPLE_TEXTURE2D(_BaseMap, sampler_BaseMap, uv) * _BaseColor;<br>            //half3 ambient = half3(unity_SHAr.w, unity_SHAg.w, unity_SHAb.w) * albedo;<br>            half3 ambient = SampleSH(normalWS) * albedo;<br>            half3 diffuse = lambert * lightColor * ambient;<br>            half3 halfDir = normalize(viewDirWS + lightDir);<br>            half3 specular = pow(saturate(dot(normalWS, halfDir)), _Smoothness) * lightColor * saturate(_SpecColor);<br>            <br>            half4 finalColor = half4(ambient + diffuse + specular, 1.0) * light.shadowAttenuation * light.distanceAttenuation;<br>            return finalColor;<br>        &#125;<br>        <br>        <br>        ENDHLSL<br>        <br>        Pass<br>        &#123;<br>            Tags&#123;<br>                &quot;LightMode&quot;=&quot;UniversalForward&quot;    <br>            &#125;<br>            <br>            HLSLPROGRAM<br>            #pragma vertex vert<br>            #pragma fragment frag<br>            #pragma shader_feature _MULTIPLE_LIGHTS<br>            #pragma multi_compile _ _MAIN_LIGHT_SHADOWS<br>            #pragma multi_compile _ _MAIN_LIGHT_SHADOWS_CASCADE<br>            #pragma multi_compile _ _SHADOWS_SOFT<br>            #pragma multi_compile _ _ADDITIONAL_LIGHTS_VERTEX _ADDITIONAL_LIGHTS<br>            <br>            Varyings vert (Attributes IN)<br>            &#123;<br>                const VertexPositionInputs vertex_position_inputs = GetVertexPositionInputs(IN.positionOS);<br>                const VertexNormalInputs vertex_normal_inputs = GetVertexNormalInputs(IN.normal);<br>                // get positive or negative normal signal (should be either 1 or -1)<br>                half sign = IN.tangetOS.w * GetOddNegativeScale();<br><br>                Varyings OUT;<br>                OUT.positionWS = vertex_position_inputs.positionWS;<br>                OUT.positionCS = vertex_position_inputs.positionCS;<br>                OUT.normalWS = vertex_normal_inputs.normalWS;<br>                OUT.positionSC = GetShadowCoord(vertex_position_inputs);<br>                OUT.uv = TRANSFORM_TEX(IN.uv, _BaseMap);<br>                OUT.tangentWS = half4(vertex_normal_inputs.tangentWS, sign);<br>                return OUT;<br>            &#125;<br>            <br>            half4 frag (Varyings IN) : SV_Target<br>            &#123;<br>                half3 normalTS = UnpackNormalScale(SAMPLE_TEXTURE2D(_BumpMap, sampler_BumpMap, IN.uv), _BumpScale);<br>                half3 biTangent = IN.tangentWS.w * cross(IN.normalWS, IN.tangentWS.xyz);<br>                half3 normalWS = mul(normalTS, half3x3(IN.tangentWS.xyz, biTangent, IN.normalWS));<br>                half3 viewDirWS = SafeNormalize((GetCameraPositionWS() - IN.positionWS));<br><br>                Light mainLight = GetMainLight(IN.positionSC);<br>                half4 finalColor = LightingModelImplement(mainLight, normalWS, viewDirWS, IN.uv, true);<br><br>                #if _MULTIPLE_LIGHTS<br>                    int lightsCount = GetAdditionalLightsCount();<br>                    for (int i=0; i&lt;lightsCount; i++)<br>                    &#123;<br>                        Light light = GetAdditionalLight(i, IN.positionWS, half4(1, 1, 1, 1));<br>                        finalColor += LightingModelImplement(light, normalWS, viewDirWS, IN.uv, false);<br>                        half shadow = AdditionalLightRealtimeShadow(i, IN.positionWS, mainLight.direction);<br>                        <br>                        finalColor *= shadow;<br>                    &#125;<br>                #endif<br>                <br>                return finalColor;<br>            &#125;<br>            ENDHLSL<br>        &#125;<br>        <br>		Pass&#123;<br><br>			Tags&#123;<br>				&quot;LightMode&quot;=&quot;ShadowCaster&quot;<br>			&#125;<br>		    ZWrite On // the only goal of this pass is to write depth!<br>            ZTest LEqual // early exit at Early-Z stage if possible            <br>            ColorMask 0 // we don&#x27;t care about color, we just want to write depth, ColorMask 0 will save some write bandwidth<br>            Cull Back<br>		    <br>			HLSLPROGRAM<br>			#pragma vertex vertShadow<br>			#pragma fragment fragShadow<br><br>			half3 _LightDirection;<br><br>			Varyings vertShadow(Attributes IN)<br>			&#123;<br>				const VertexPositionInputs vertex_position_inputs = GetVertexPositionInputs(IN.positionOS);<br>                const VertexNormalInputs vertex_normal_inputs = GetVertexNormalInputs(IN.normal);<br>				<br>				Varyings OUT;<br>				OUT.positionWS = vertex_position_inputs.positionWS;<br>			    OUT.normalWS = vertex_normal_inputs.normalWS;<br>				OUT.positionCS = TransformWorldToHClip(ApplyShadowBias(OUT.positionWS,OUT.normalWS, _LightDirection));<br>			    #if UNITY_REVERSED_Z<br>                    OUT.positionCS.z = min(OUT.positionCS.z, UNITY_NEAR_CLIP_VALUE);<br>                #else<br>                    OUT.positionCS.z = max(OUT.positionCS.z, UNITY_NEAR_CLIP_VALUE);<br>                #endif<br>				OUT.uv = IN.uv;<br>   <br>				return OUT;<br>			&#125;<br>			half4 fragShadow(Varyings IN):SV_TARGET<br>			&#123;<br>				return 0;<br>			&#125;<br><br>			ENDHLSL<br>		&#125; <br><br>    &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+<img src="/2022/08/21/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0%20-%20%E9%98%B4%E5%BD%B1/image-20230223220941154.png" srcset="/img/loading.gif" lazyload class="" alt="image-20230223220941154">
+
+<p>多光源阴影还有些问题，后面需要修一下bug。</p>
+<h3 id="数学知识"><a href="#数学知识" class="headerlink" title="数学知识"></a>数学知识</h3><p>某年某月某日的某个变态搞了个数学公式，用不等式来代替等式。<br>$$<br>\int_{\Omega} f(x) g(x) \mathrm{d} x \approx \frac{\int_{\Omega} f(x) \mathrm{d} x}{\int_{\Omega} \mathrm{d} x} \cdot \int_{\Omega} g(x) \mathrm{d} x<br>$$<br>使用例子：Rendering Equation<br>$$<br>L_{o}\left(p, \omega_{o}\right)&#x3D;L_{e}\left(p, \omega_{o}\right)+\int_{\Omega^{+}} L_{i}\left(p, \omega_{i}\right) f_{r}\left(p, \omega_{i}, \omega_{o}\right) cos(\theta_i) V(p,\omega_{i}) \mathrm{d} \omega_{i}<br>$$<br>把Visibility拆出来：<br>$$<br> L_{o}\left(\mathrm{p}, \omega_{o}\right) \approx \frac{\int_{\Omega^{+}} V\left(\mathrm{p}, \omega_{i}\right) \mathrm{d} \omega_{i}}{\int_{\Omega^{+}} \mathrm{d} \omega_{i}} \cdot \int_{\Omega^{+}} L_{i}\left(\mathrm{p}, \omega_{i}\right) f_{r}\left(\mathrm{p}, \omega_{i}, \omega_{o}\right) \cos \theta_{i} \mathrm{~d} \omega_{i}<br>$$<br>因此其表示的意义就是,我们计算每个点的shading，然后去乘这个点的visibality得到的就是最后的渲染结果。</p>
+<h2 id="PCF-软阴影"><a href="#PCF-软阴影" class="headerlink" title="PCF 软阴影"></a>PCF 软阴影</h2><img src="/2022/08/21/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0%20-%20%E9%98%B4%E5%BD%B1/image-20230223221715111.png" srcset="/img/loading.gif" lazyload class="" alt="image-20230223221715111">
+
+<p>假设这是我们在shadow map中获取到的深度值，而P点得到的实际到光源深度为0.5，这时所有的在shadow map中获取到的深度值要与P点得到的实际到光源深度，即0.5进行比较，所有大于0.5的像素我们输出0，反之则输出</p>
+<h2 id="PCSS-软阴影"><a href="#PCSS-软阴影" class="headerlink" title="PCSS 软阴影"></a>PCSS 软阴影</h2><ul>
+<li>PCF 的思想，动态调整核的大小</li>
+<li>什么地方需要硬阴影，什么地方需要硬阴影？</li>
+<li>遮挡物和阴影的距离<ul>
+<li>距离越大，阴影越软</li>
+<li>距离越小，阴影越硬</li>
+</ul>
+</li>
+</ul>
+<p>[<img src="/2022/08/21/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0%20-%20%E9%98%B4%E5%BD%B1/image-20210407175256445.png" srcset="/img/loading.gif" lazyload class="" alt="img"></p>
+<ul>
+<li>根据相似三角形<ul>
+<li>penumbra：半影</li>
+<li><img src="/2022/08/21/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0%20-%20%E9%98%B4%E5%BD%B1/image-20230224103257763.png" srcset="/img/loading.gif" lazyload class="" alt="image-20230224103257763"></li>
+</ul>
+</li>
+</ul>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/523775521">https://zhuanlan.zhihu.com/p/523775521</a></li>
+<li><a target="_blank" rel="noopener" href="https://banbao991.github.io/2021/06/18/CG/Algorithm/SM-PCF-PCSS-VSM/">https://banbao991.github.io/2021/06/18/CG/Algorithm/SM-PCF-PCSS-VSM/</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/KillerAery/p/15201310.html">https://www.cnblogs.com/KillerAery/p/15201310.html</a></li>
+</ol>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="category-chain-item">学习笔记</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/computer-graphic/">#computer graphic</a>
+      
+        <a href="/tags/math/">#math</a>
+      
+        <a href="/tags/HLSL/">#HLSL</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>GAMES 101 课程笔记 - 阴影</div>
+      <div>https://kampter.github.io/2022/08/21/GAMES-101-课程笔记 - 阴影/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Kampter</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年8月21日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/08/21/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0%20-%20%E7%BA%BF%E4%BB%A3%E5%92%8C%E5%8F%98%E6%8D%A2/" title="GAMES 101 课程笔记 - 线代和变换">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">GAMES 101 课程笔记 - 线代和变换</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2019/12/21/%E7%A2%8E%E7%89%87%E5%8C%96%E8%AE%B0%E5%BD%95%E4%B8%80%E4%B8%8B%E5%9C%A8%E6%BE%B3%E6%B4%B2%E7%9A%84%E5%AD%A6%E4%B9%A0%E7%94%9F%E6%B4%BB/" title="碎片化记录一下在澳洲的学习生活">
+                        <span class="hidden-mobile">碎片化记录一下在澳洲的学习生活</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

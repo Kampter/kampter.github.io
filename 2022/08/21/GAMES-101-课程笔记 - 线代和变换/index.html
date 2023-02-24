@@ -19,24 +19,24 @@
     <meta name="description" content="前言：只记录自己需要的内容  线代 按照逆时针找到ab，bc，ca向量，当同时满足cross(ab * ap) &gt; 0 &amp;&amp; cross(bc * bp) &gt; 0 &amp;&amp; cross (ca * cp) &gt; 0 时点在三角形内，如果有一个结果为0 点在这条边上，有一个小于0在三角形外。换种思路就是如果点在三角形内测，三次判断点都在封闭线段的左侧，即点">
 <meta property="og:type" content="article">
 <meta property="og:title" content="GAMES 101 课程笔记 - 线代和变换">
-<meta property="og:url" content="https://kampter.github.io/2022/08/21/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:url" content="https://kampter.github.io/2022/08/21/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0%20-%20%E7%BA%BF%E4%BB%A3%E5%92%8C%E5%8F%98%E6%8D%A2/index.html">
 <meta property="og:site_name" content="Kampter&#39;s Castle">
 <meta property="og:description" content="前言：只记录自己需要的内容  线代 按照逆时针找到ab，bc，ca向量，当同时满足cross(ab * ap) &gt; 0 &amp;&amp; cross(bc * bp) &gt; 0 &amp;&amp; cross (ca * cp) &gt; 0 时点在三角形内，如果有一个结果为0 点在这条边上，有一个小于0在三角形外。换种思路就是如果点在三角形内测，三次判断点都在封闭线段的左侧，即点">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://kampter.github.io/2022/08/21/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20230221133120210.png">
-<meta property="og:image" content="https://kampter.github.io/2022/08/21/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20230221133422396.png">
-<meta property="og:image" content="https://kampter.github.io/2022/08/21/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20230221151903102.png">
-<meta property="og:image" content="https://kampter.github.io/2022/08/21/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20230221152038483.png">
-<meta property="og:image" content="https://kampter.github.io/2022/08/21/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20230221153642237.png">
-<meta property="og:image" content="https://kampter.github.io/2022/08/21/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/v2-0aacc4803212a11f43964d7f34824785_r.jpg">
+<meta property="og:image" content="https://kampter.github.io/2022/08/21/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0%20-%20%E7%BA%BF%E4%BB%A3%E5%92%8C%E5%8F%98%E6%8D%A2/image-20230221133120210.png">
+<meta property="og:image" content="https://kampter.github.io/2022/08/21/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0%20-%20%E7%BA%BF%E4%BB%A3%E5%92%8C%E5%8F%98%E6%8D%A2/image-20230221133422396.png">
+<meta property="og:image" content="https://kampter.github.io/2022/08/21/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0%20-%20%E7%BA%BF%E4%BB%A3%E5%92%8C%E5%8F%98%E6%8D%A2/image-20230221151903102.png">
+<meta property="og:image" content="https://kampter.github.io/2022/08/21/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0%20-%20%E7%BA%BF%E4%BB%A3%E5%92%8C%E5%8F%98%E6%8D%A2/image-20230221152038483.png">
+<meta property="og:image" content="https://kampter.github.io/2022/08/21/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0%20-%20%E7%BA%BF%E4%BB%A3%E5%92%8C%E5%8F%98%E6%8D%A2/image-20230221153642237.png">
+<meta property="og:image" content="https://kampter.github.io/2022/08/21/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0%20-%20%E7%BA%BF%E4%BB%A3%E5%92%8C%E5%8F%98%E6%8D%A2/v2-0aacc4803212a11f43964d7f34824785_r.jpg">
 <meta property="article:published_time" content="2022-08-21T06:17:21.000Z">
-<meta property="article:modified_time" content="2023-02-21T10:01:38.196Z">
+<meta property="article:modified_time" content="2023-02-24T15:17:20.542Z">
 <meta property="article:author" content="Kampter">
 <meta property="article:tag" content="computer graphic">
 <meta property="article:tag" content="math">
 <meta property="article:tag" content="HLSL">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://kampter.github.io/2022/08/21/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20230221133120210.png">
+<meta name="twitter:image" content="https://kampter.github.io/2022/08/21/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0%20-%20%E7%BA%BF%E4%BB%A3%E5%92%8C%E5%8F%98%E6%8D%A2/image-20230221133120210.png">
   
   
   
@@ -288,18 +288,18 @@
 <h2 id="线代"><a href="#线代" class="headerlink" title="线代"></a>线代</h2><ol>
 <li>按照逆时针找到ab，bc，ca向量，当同时满足cross(ab * ap) &gt; 0 &amp;&amp; cross(bc * bp) &gt; 0 &amp;&amp; cross (ca * cp) &gt; 0 时点在三角形内，如果有一个结果为0 点在这条边上，有一个小于0在三角形外。换种思路就是如果点在三角形内测，三次判断点都在封闭线段的左侧，即点在图形内。</li>
 </ol>
-<img src="/2022/08/21/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20230221133120210.png" srcset="/img/loading.gif" lazyload class="" alt="image-20230221133120210">
+<img src="/2022/08/21/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0%20-%20%E7%BA%BF%E4%BB%A3%E5%92%8C%E5%8F%98%E6%8D%A2/image-20230221133120210.png" srcset="/img/loading.gif" lazyload class="" alt="image-20230221133120210">
 
 <ol start="2">
 <li>从远处发射一条光线，到无限远，如果与多边形交点为偶数，在图形外，否则在图形内。遍历多边形每一条边与光线相交，如果交点在这条边上，交点数 +1。</li>
 </ol>
-<img src="/2022/08/21/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20230221133422396.png" srcset="/img/loading.gif" lazyload class="" alt="image-20230221133416234">
+<img src="/2022/08/21/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0%20-%20%E7%BA%BF%E4%BB%A3%E5%92%8C%E5%8F%98%E6%8D%A2/image-20230221133422396.png" srcset="/img/loading.gif" lazyload class="" alt="image-20230221133416234">
 
 
 
-<h2 id="变换"><a href="#变换" class="headerlink" title="变换"></a>变换</h2><p>齐次空间:  空间变化增加一个维度实现Transformation （图例为二维变换，三位变化同理增加一个维度到四维）<img src="/2022/08/21/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20230221151903102.png" srcset="/img/loading.gif" lazyload class="" alt="image-20230221151903102"></p>
+<h2 id="变换"><a href="#变换" class="headerlink" title="变换"></a>变换</h2><p>齐次空间:  空间变化增加一个维度实现Transformation （图例为二维变换，三位变化同理增加一个维度到四维）<img src="/2022/08/21/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0%20-%20%E7%BA%BF%E4%BB%A3%E5%92%8C%E5%8F%98%E6%8D%A2/image-20230221151903102.png" srcset="/img/loading.gif" lazyload class="" alt="image-20230221151903102"></p>
 <p>这样带来的好处是在一个矩阵就能完成Transformation操作 （Affine map是原本Transformation 需要两个矩阵操作）</p>
-<img src="/2022/08/21/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20230221152038483.png" srcset="/img/loading.gif" lazyload class="" alt="image-20230221152038483">
+<img src="/2022/08/21/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0%20-%20%E7%BA%BF%E4%BB%A3%E5%92%8C%E5%8F%98%E6%8D%A2/image-20230221152038483.png" srcset="/img/loading.gif" lazyload class="" alt="image-20230221152038483">
 
 <p>模型空间：以模型为世界原点的坐标系（Local） </p>
 <p>Model transformation </p>
@@ -309,13 +309,13 @@
 <p>Projection transformation</p>
 <p>正交投影和透视投影：这也是Zbuffer储存深度信息的由来。投影变化包括从view变化到正交投影再变化到透视投影才输出至viewport视口显示再屏幕上。</p>
 <p>投影的取值范围为[-1,  1]</p>
-<img src="/2022/08/21/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/image-20230221153642237.png" srcset="/img/loading.gif" lazyload class="" alt="image-20230221153642237">
+<img src="/2022/08/21/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0%20-%20%E7%BA%BF%E4%BB%A3%E5%92%8C%E5%8F%98%E6%8D%A2/image-20230221153642237.png" srcset="/img/loading.gif" lazyload class="" alt="image-20230221153642237">
 
 
 
 <p>— 2023.02.04 更新 — </p>
 <p>额外帮助理解的图片：空间变化的过程</p>
-<img src="/2022/08/21/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/v2-0aacc4803212a11f43964d7f34824785_r.jpg" srcset="/img/loading.gif" lazyload class="" alt="img">
+<img src="/2022/08/21/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0%20-%20%E7%BA%BF%E4%BB%A3%E5%92%8C%E5%8F%98%E6%8D%A2/v2-0aacc4803212a11f43964d7f34824785_r.jpg" srcset="/img/loading.gif" lazyload class="" alt="img">
 
 <p>以及在unity中实现空间变换部分的代码及说明</p>
 <p>HCS齐次裁剪空间的xy坐标范围在[-w, w]之间</p>
@@ -373,7 +373,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>GAMES 101 课程笔记 - 线代和变换</div>
-      <div>https://kampter.github.io/2022/08/21/GAMES-101-课程笔记/</div>
+      <div>https://kampter.github.io/2022/08/21/GAMES-101-课程笔记 - 线代和变换/</div>
     </div>
     <div class="license-meta">
       
@@ -417,9 +417,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/09/02/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0-%E5%85%89%E6%A0%85%E5%8C%96/" title="GAMES 101 课程笔记 - 光栅化">
+                      <a href="/2022/08/21/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0%20-%20%E5%85%A8%E5%B1%80%E5%85%89%E7%85%A7/" title="GAMES 101 课程笔记 - 全局光照">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">GAMES 101 课程笔记 - 光栅化</span>
+                        <span class="hidden-mobile">GAMES 101 课程笔记 - 全局光照</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -427,8 +427,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2019/12/21/%E7%A2%8E%E7%89%87%E5%8C%96%E8%AE%B0%E5%BD%95%E4%B8%80%E4%B8%8B%E5%9C%A8%E6%BE%B3%E6%B4%B2%E7%9A%84%E5%AD%A6%E4%B9%A0%E7%94%9F%E6%B4%BB/" title="碎片化记录一下在澳洲的学习生活">
-                        <span class="hidden-mobile">碎片化记录一下在澳洲的学习生活</span>
+                      <a href="/2022/08/21/GAMES-101-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0%20-%20%E9%98%B4%E5%BD%B1/" title="GAMES 101 课程笔记 - 阴影">
+                        <span class="hidden-mobile">GAMES 101 课程笔记 - 阴影</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
