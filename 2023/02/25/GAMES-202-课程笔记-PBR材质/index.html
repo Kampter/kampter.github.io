@@ -36,10 +36,19 @@
 <meta property="og:image" content="https://kampter.github.io/2023/02/25/GAMES-202-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0-PBR%E6%9D%90%E8%B4%A8/image-20230226110622330.png">
 <meta property="og:image" content="https://kampter.github.io/2023/02/25/GAMES-202-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0-PBR%E6%9D%90%E8%B4%A8/image-20230226110849478.png">
 <meta property="og:image" content="https://kampter.github.io/2023/02/25/GAMES-202-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0-PBR%E6%9D%90%E8%B4%A8/image-20230226111145169.png">
-<meta property="og:image" content="https://kampter.github.io/2023/02/25/GAMES-202-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0-PBR%E6%9D%90%E8%B4%A8/image-20230226121006548.png">
 <meta property="og:image" content="https://kampter.github.io/2023/02/25/GAMES-202-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0-PBR%E6%9D%90%E8%B4%A8/image-20230226113414818.png">
+<meta property="og:image" content="https://kampter.github.io/2023/02/25/GAMES-202-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0-PBR%E6%9D%90%E8%B4%A8/image-20230226123706382.png">
+<meta property="og:image" content="https://kampter.github.io/2023/02/25/GAMES-202-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0-PBR%E6%9D%90%E8%B4%A8/image-20230226123632386.png">
+<meta property="og:image" content="https://kampter.github.io/2023/02/25/GAMES-202-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0-PBR%E6%9D%90%E8%B4%A8/image-20230226123846683.png">
+<meta property="og:image" content="https://kampter.github.io/2023/02/25/GAMES-202-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0-PBR%E6%9D%90%E8%B4%A8/image-20230226124105179.png">
+<meta property="og:image" content="https://kampter.github.io/2023/02/25/GAMES-202-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0-PBR%E6%9D%90%E8%B4%A8/image-20230226124328841.png">
+<meta property="og:image" content="https://kampter.github.io/2023/02/25/GAMES-202-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0-PBR%E6%9D%90%E8%B4%A8/image-20230226123722840.png">
+<meta property="og:image" content="https://kampter.github.io/2023/02/25/GAMES-202-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0-PBR%E6%9D%90%E8%B4%A8/image-20230226123751890.png">
+<meta property="og:image" content="https://kampter.github.io/2023/02/25/GAMES-202-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0-PBR%E6%9D%90%E8%B4%A8/image-20230226130639413.png">
+<meta property="og:image" content="https://kampter.github.io/2023/02/25/GAMES-202-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0-PBR%E6%9D%90%E8%B4%A8/image-20230226130724042.png">
+<meta property="og:image" content="https://kampter.github.io/2023/02/25/GAMES-202-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0-PBR%E6%9D%90%E8%B4%A8/image-20230226130811312.png">
 <meta property="article:published_time" content="2023-02-25T02:50:14.000Z">
-<meta property="article:modified_time" content="2023-02-26T04:18:36.949Z">
+<meta property="article:modified_time" content="2023-02-26T15:34:29.493Z">
 <meta property="article:author" content="Kampter">
 <meta property="article:tag" content="computer graphic">
 <meta property="article:tag" content="math">
@@ -237,7 +246,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.9k 字
+          2.2k 字
         
       </span>
     
@@ -248,7 +257,7 @@
         
         
         
-          16 分钟
+          18 分钟
         
       </span>
     
@@ -347,17 +356,7 @@
 
 
 <p>闫神说现在有人用diffuse + brdf 来描述能量补偿，也就是粗暴的用diffuse来补偿能量，但是不符合能量守恒定律。</p>
-<p><a target="_blank" rel="noopener" href="https://www.blurredcode.com/2021/05/dec701b2/">看到这篇文章</a>，大致解决了我的疑惑。原来我们所谓的cook-torrance brdf或者下文中的disney principled brdf都是不完全正确的，都使用一些trick的方式解决参数过多不好调整，又在一定程度上尝试还原更更加真实的PBR的效果。</p>
-<p>我觉得我的世界观崩塌了，以前我计算Blinn Phong Shading的时候是</p>
-<p>diffuse + specular + ambient</p>
-<p>而cook-torrance 给我的思路是</p>
-<p>diffuse + cook-torrance brdf </p>
-<p>而相对正确的方式是</p>
-<p>microfacet brdf + energy compensation term</p>
-<img src="/2023/02/25/GAMES-202-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0-PBR%E6%9D%90%E8%B4%A8/image-20230226121006548.png" srcset="/img/loading.gif" lazyload class="" alt="image-20230226121006548">
-
-
-
+<p>这里的补偿是指单独对specular BRDF的补偿，而不包括diffuse部分的，因此所谓弹幕中说opengl中cook-torrance brdf多加diffuse错误的理解是不对的。闫神指出这种错误其实在最终计算会叠加2此diffuse因此是能量不守恒的。</p>
 <h2 id="Linearly-Transformed-Cosines-LTC"><a href="#Linearly-Transformed-Cosines-LTC" class="headerlink" title="Linearly Transformed Cosines (LTC)"></a>Linearly Transformed Cosines (LTC)</h2><p>LTC:<strong>在不考虑遮挡和阴影情况下做微表面模型的shading.</strong></p>
 <p>我的理解是为了实现多边形光源对原Microfacet BRDF的改进，主要改进GGX发现分布项。</p>
 <p>但是这个模型并不能很好的支持阴影</p>
@@ -365,6 +364,37 @@
 <img src="/2023/02/25/GAMES-202-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0-PBR%E6%9D%90%E8%B4%A8/image-20230226113414818.png" srcset="/img/loading.gif" lazyload class="" alt="image-20230226113414818">
 
 <p>参考<a target="_blank" rel="noopener" href="https://github.com/wdas/brdf/blob/main/src/brdfs/disney.brdf">Disney 源码</a>：</p>
+<p>漫反射（Diffuse）</p>
+<img src="/2023/02/25/GAMES-202-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0-PBR%E6%9D%90%E8%B4%A8/image-20230226123706382.png" srcset="/img/loading.gif" lazyload class="" alt="image-20230226123706382">
+
+<p>高光部分与Cook-Torrance BRDF类似</p>
+<img src="/2023/02/25/GAMES-202-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0-PBR%E6%9D%90%E8%B4%A8/image-20230226123632386.png" srcset="/img/loading.gif" lazyload class="" alt="image-20230226123632386">
+
+<p>菲涅尔项（Fresnel Term）</p>
+<img src="/2023/02/25/GAMES-202-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0-PBR%E6%9D%90%E8%B4%A8/image-20230226123846683.png" srcset="/img/loading.gif" lazyload class="" alt="image-20230226123846683">
+
+<p>法线分布项（Normal Distribution Term）</p>
+<p>使用了 Generalized-Trowbridge-Reitz（GTR）γ&#x3D;2 的版本，并根据各向异性做了一定改进。anisotropicanisotropic 表述了各向异性的程度，Xa,Ya则描述了各向异性的旋转方向。</p>
+<img src="/2023/02/25/GAMES-202-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0-PBR%E6%9D%90%E8%B4%A8/image-20230226124105179.png" srcset="/img/loading.gif" lazyload class="" alt="image-20230226124105179">
+
+<p>几何函数 （Geometry Function）Disney 在几何函数上使用 Smith 遮蔽函数，并基于各向异性 GGX 分布来得到如下：</p>
+<img src="/2023/02/25/GAMES-202-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0-PBR%E6%9D%90%E8%B4%A8/image-20230226124328841.png" srcset="/img/loading.gif" lazyload class="" alt="image-20230226124328841">
+
+<p>次表面散射SSS</p>
+<img src="/2023/02/25/GAMES-202-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0-PBR%E6%9D%90%E8%B4%A8/image-20230226123722840.png" srcset="/img/loading.gif" lazyload class="" alt="image-20230226123722840">
+
+<p>Sheen 布料光泽</p>
+<img src="/2023/02/25/GAMES-202-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0-PBR%E6%9D%90%E8%B4%A8/image-20230226123751890.png" srcset="/img/loading.gif" lazyload class="" alt="image-20230226123751890">
+
+<p> 清漆项（Clearcoat）简单粗暴的使用cook-torrance高光 * clearcoat</p>
+<img src="/2023/02/25/GAMES-202-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0-PBR%E6%9D%90%E8%B4%A8/image-20230226130639413.png" srcset="/img/loading.gif" lazyload class="" alt="image-20230226130639413">
+
+<p>使用 γ&#x3D;1的各向同性 GTR 法线分布，并通过 clearcoatGlossclearcoatGloss 来控制清漆的光滑程度：</p>
+<img src="/2023/02/25/GAMES-202-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0-PBR%E6%9D%90%E8%B4%A8/image-20230226130724042.png" srcset="/img/loading.gif" lazyload class="" alt="image-20230226130724042">
+
+<p>使用 f0 &#x3D; 0.04 的菲尼尔项和使用a &#x3D; 0.25的ggx各向同性GGX</p>
+<img src="/2023/02/25/GAMES-202-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0-PBR%E6%9D%90%E8%B4%A8/image-20230226130811312.png" srcset="/img/loading.gif" lazyload class="" alt="image-20230226130811312">
+
 
                 
               </div>
@@ -456,6 +486,12 @@
                 <div class="post-prevnext my-3">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/2023/02/26/GAMES-202-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0-PBR-rendering-%E6%80%BB%E7%BB%93/" title="GAMES 202 课程笔记 - PBR rendering 总结">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">GAMES 202 课程笔记 - PBR rendering 总结</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">
