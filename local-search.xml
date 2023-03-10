@@ -4,11 +4,73 @@
   
   
   <entry>
+    <title>URP 14 RenderFeature 使用方式</title>
+    <link href="/2023/03/10/URP-14-RenderFeature-%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F/"/>
+    <url>/2023/03/10/URP-14-RenderFeature-%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F/</url>
+    
+    <content type="html"><![CDATA[<h2 id="URP-14"><a href="#URP-14" class="headerlink" title="URP 14"></a>URP 14</h2><p><a href="https://docs.unity3d.com/Packages/com.unity.render-pipelines.universal@14.0/manual/upgrade-guide-2022-2.html">URP 14</a> 对应Unity 2022.2对于2021lts版本的URP 12中后处理的API有些许改变，需要参考官方文档的改变。而其中最大的改变来自于RTHandle的引入。</p><p>以一个DesaturateFeature为例。在DesaturateFeature.cs中改变比较大的是加入一个SetupRenderPasses来帮助创建Materail和传递参数，而不是传统的写法在Create()中。</p><figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs C#"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">override</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SetupRenderPasses</span>(<span class="hljs-params">ScriptableRenderer renderer, <span class="hljs-keyword">in</span> RenderingData renderingData</span>)</span><br>&#123;<br>    Material material = CoreUtils.CreateEngineMaterial(shader);<br>    desaturateRenderPass.ConfigureInput(ScriptableRenderPassInput.Color);<br>    desaturateRenderPass.Setup(material, <span class="hljs-string">&quot;DesaturatedRenderPass&quot;</span>,renderingData);<br>&#125;<br></code></pre></td></tr></table></figure><p>然后写内部的DesaturateRenderPass 类。</p><ul><li>变化一是RenderTargetHandle.Init(“_CustomPassHandle”)方式的改变为</li></ul><figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs C#"><span class="hljs-keyword">var</span> colorCopyDescriptor = renderingData.cameraData.cameraTargetDescriptor;<br>            colorCopyDescriptor.depthBufferBits = (<span class="hljs-built_in">int</span>) DepthBits.None;<br>            RenderingUtils.ReAllocateIfNeeded(<span class="hljs-keyword">ref</span> m_CopiedColor, colorCopyDescriptor, name: <span class="hljs-string">&quot;_FullscreenPassColorCopy&quot;</span>);<br>        <br></code></pre></td></tr></table></figure><ul><li><p>变化二：command buffer的GetTemporaryRT和ReleaseTemporaryRT被弃用。</p></li><li><p>官方推荐使用Blitter.BlitCameraTexture方法把原始的RT添加我们自定义的material然后再传递回去。代码实现如下</p></li></ul><figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs C#">CommandBuffer cmd = CommandBufferPool.Get();<br><span class="hljs-keyword">var</span> cameraData = renderingData.cameraData;<br><span class="hljs-keyword">using</span> (<span class="hljs-keyword">new</span> ProfilingScope(cmd, profilingSampler))<br>&#123;<br>    <span class="hljs-keyword">var</span> source =cameraData.renderer.cameraColorTargetHandle;<br>    passMaterial.SetTexture(m_BlitTextureShaderID, copiedColor);<br>    Blitter.BlitCameraTexture(cmd, source, copiedColor, passMaterial, <span class="hljs-number">0</span>);<br>    Blitter.BlitCameraTexture(cmd, copiedColor, source);<br>    context.ExecuteCommandBuffer(cmd);<br>    cmd.Clear();<br>&#125;<br></code></pre></td></tr></table></figure><p>使用方式与之前并无差异，添加Renderer Feature并且指定好shader，这里偷懒使用了一个shader graph来快速测试。新版的shader graph支持full screen shader 创建。</p><img src="/2023/03/10/URP-14-RenderFeature-%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F/image-20230310112935685.png" class="" alt="image-20230310112935685"><p>shader的部分实现非常简洁，Unity 2022.2中可以使用URP sample Buffer node来采样_BlitTexture 非常方便，如果想自己在shader中写也十分方便。</p><img src="/2023/03/10/URP-14-RenderFeature-%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F/image-20230310113130248.png" class="" alt="image-20230310113130248"><p>URP Sample Buffer的对应代码如下</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs HLSL">TEXTURE2D_X(_BlitTexture);<br>float4 Unity_Universal_SampleBuffer_BlitSource_float(float2 uv)<br>&#123;<br>    uint2 pixelCoords = uint2(uv * _ScreenSize.xy);<br>    return LOAD_TEXTURE2D_X_LOD(_BlitTexture, pixelCoords, 0);<br>&#125;<br></code></pre></td></tr></table></figure><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol><li><a href="https://docs.unity3d.com/Packages/com.unity.render-pipelines.universal@14.0/manual/upgrade-guide-2022-2.html">Upgrading to URP 14 (Unity 2022.2) | Universal RP | 14.0.6 (unity3d.com)</a></li></ol>]]></content>
+    
+    
+    <categories>
+      
+      <category>学习笔记</category>
+      
+      <category>demo</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>unity</tag>
+      
+      <tag>shader graph</tag>
+      
+      <tag>hlsl</tag>
+      
+      <tag>toon shader</tag>
+      
+      <tag>c#</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Unity 项目优化</title>
+    <link href="/2023/02/27/Unity-%E9%A1%B9%E7%9B%AE%E4%BC%98%E5%8C%96%E5%85%A5%E9%97%A8/"/>
+    <url>/2023/02/27/Unity-%E9%A1%B9%E7%9B%AE%E4%BC%98%E5%8C%96%E5%85%A5%E9%97%A8/</url>
+    
+    <content type="html"><![CDATA[<h2 id="资产说明"><a href="#资产说明" class="headerlink" title="资产说明"></a>资产说明</h2><p>这次使用的全部资产来自<a href="https://assetstore.unity.com/packages/3d/environments/landscapes/toon-fantasy-nature-215197">Toon Fantasy Nature</a> 这个Pacakage，直接使用下面的的Lake 01场景，原价是比较贵的，刚刚参加的Game Jam有优惠，几个特效，场景，人物还有音频等等资产加起来不到20刀还是蛮划算的，谢谢Unity。</p><h2 id="UPR"><a href="#UPR" class="headerlink" title="UPR"></a>UPR</h2><p>使用Unity官方自带的检测工具过一遍全部的资产，先用<a href="https://upr.unity.cn/instructions/assetchecker">AssetChecker Win</a>过一遍总览一下有哪些问题。</p><p>使用方式也非常简单，直接查看用户手册即可，这工具绿色好用，真心点赞。</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">.\assetcheck.exe --project=&lt;project_path&gt; --projectId=&lt;project_id&gt;<br></code></pre></td></tr></table></figure><p><project_path>为Unity工程所在路径，<project_id>为UPR项目Id。</p><p><project_id>非必需项。如果填写了<project_id>，检测结束后，可直接在UPR网站该项目内查看检测结果。</p><img src="/2023/02/27/Unity-%E9%A1%B9%E7%9B%AE%E4%BC%98%E5%8C%96%E5%85%A5%E9%97%A8/image-20230227224213960.png" class="" alt="image-20230227224213960"><p>运行游戏看一下效果</p><img src="/2023/02/27/Unity-%E9%A1%B9%E7%9B%AE%E4%BC%98%E5%8C%96%E5%85%A5%E9%97%A8/image-20230227224717438.png" class="" alt="image-20230227224717438"><p>看一下内存占用情况</p><img src="/2023/02/27/Unity-%E9%A1%B9%E7%9B%AE%E4%BC%98%E5%8C%96%E5%85%A5%E9%97%A8/image-20230227230210520.png" class="" alt="image-20230227230210520"><img src="/2023/02/27/Unity-%E9%A1%B9%E7%9B%AE%E4%BC%98%E5%8C%96%E5%85%A5%E9%97%A8/image-20230227232803515.png" class="" alt="image-20230227232803515">]]></content>
+    
+    
+    <categories>
+      
+      <category>学习笔记</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>profile</tag>
+      
+      <tag>UPR</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>GAMES 202 课程笔记 - PBR rendering 总结</title>
     <link href="/2023/02/26/GAMES-202-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0-PBR-rendering-%E6%80%BB%E7%BB%93/"/>
     <url>/2023/02/26/GAMES-202-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0-PBR-rendering-%E6%80%BB%E7%BB%93/</url>
     
-    <content type="html"><![CDATA[<h2 id="直接光照"><a href="#直接光照" class="headerlink" title="直接光照"></a>直接光照</h2><p>在不考虑能量补偿的情况下 传统的Blinn Phong模型是</p><p>diffuse + specular + ambient</p><p>而cook-torrance BRDF的方程是</p><img src="/2023/02/26/GAMES-202-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0-PBR-rendering-%E6%80%BB%E7%BB%93/image-20230226131940960.png" class="" alt="image-20230226131940960"><p>其中Ks &#x3D; F, 且金属材质的漫反射为0</p><img src="GAMES-202-课程笔记-PBR-rendering-总结/image-20230226131632859.png" alt="image-20230226131632859" style="zoom:80%;" /><h3 id="阴影"><a href="#阴影" class="headerlink" title="阴影"></a>阴影</h3><p>各种优化过的Shadow Map, PCF, PCSS等等</p><h2 id="间接光照"><a href="#间接光照" class="headerlink" title="间接光照"></a>间接光照</h2><img src="/2023/02/26/GAMES-202-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0-PBR-rendering-%E6%80%BB%E7%BB%93/v2-0283ea94721af41f092d612d90e311b4_r.jpg" class="" alt="img"><p>间接光照与直接光照思路相同</p><ol><li>直接光源是指物体自身发出的光，比如灯泡、蜡烛、荧光棒、太阳</li><li>间接光源是指物体反射出来的光，直接看图，下边的右图，两边的墙壁反射出自身的颜色，照亮了场景中的物体</li></ol><p>那么间接光照的实现思路也是</p><ol><li>有哪些间接光源会向外发射Radiance？（找到光源）</li><li>哪些方向的间接光源Radiance会到达着色点？（构建光照模型）</li></ol><h3 id="环境光"><a href="#环境光" class="headerlink" title="环境光"></a>环境光</h3><p>环境光包括其他物体反射的光以及所谓天空盒发出的光照</p><p>最简单的环境光可以是一个常量</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs HLSL">float3 ambient = float3(0.1, 0.1, 0.1);<br></code></pre></td></tr></table></figure><p>而符合物理的计算方式是基于图像的照明（<strong>IBL</strong>）来计算</p><h3 id="漫反射部分"><a href="#漫反射部分" class="headerlink" title="漫反射部分"></a>漫反射部分</h3><img src="/2023/02/26/GAMES-202-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0-PBR-rendering-%E6%80%BB%E7%BB%93/image-20230226230604595.png" class="" alt="image-20230226230604595"><p>而Irradiance因为是低频信号可以用SH函数拟合。</p><p>其中使用PRT改进的SH就自带类似AO的效果。</p><h3 id="镜面反射比较难实现"><a href="#镜面反射比较难实现" class="headerlink" title="镜面反射比较难实现"></a>镜面反射比较难实现</h3><p>SSR是基于光线追踪的做法</p><h3 id="阴影-1"><a href="#阴影-1" class="headerlink" title="阴影"></a>阴影</h3><p>间接光照的阴影实现比较难实现，目前较为黑科技的代表是SSAO</p><h2 id="能量补偿部分"><a href="#能量补偿部分" class="headerlink" title="能量补偿部分"></a><a href="https://zhuanlan.zhihu.com/p/503998650">能量补偿部分</a></h2><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol><li><a href="https://zhuanlan.zhihu.com/p/416112744">重新理解PBR（1） - 知乎 (zhihu.com)</a></li><li><a href="https://zhuanlan.zhihu.com/p/452190320">重新理解PBR（2）——漫反射全局光照 - 知乎 (zhihu.com)</a></li><li><a href="https://www.blurredcode.com/2021/05/dec701b2/#diffusediffuse-irradiance-map">PBR渲染: Cook-Torrance的实现与补充 | Blurred code</a></li></ol>]]></content>
+    <content type="html"><![CDATA[<h2 id="直接光照"><a href="#直接光照" class="headerlink" title="直接光照"></a>直接光照</h2><p>在不考虑能量补偿的情况下 传统的Blinn Phong模型是</p><p>diffuse + specular + ambient</p><p>而cook-torrance BRDF的方程是</p><img src="/2023/02/26/GAMES-202-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0-PBR-rendering-%E6%80%BB%E7%BB%93/image-20230226131940960.png" class="" alt="image-20230226131940960"><p>其中Ks &#x3D; F, 且金属材质的漫反射为0</p><img src="/2023/02/26/GAMES-202-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0-PBR-rendering-%E6%80%BB%E7%BB%93/image-20230226131632859.png" class="" alt="image-20230226131632859"><h3 id="阴影"><a href="#阴影" class="headerlink" title="阴影"></a>阴影</h3><p>各种优化过的Shadow Map, PCF, PCSS等等</p><h2 id="间接光照"><a href="#间接光照" class="headerlink" title="间接光照"></a>间接光照</h2><img src="/2023/02/26/GAMES-202-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0-PBR-rendering-%E6%80%BB%E7%BB%93/v2-0283ea94721af41f092d612d90e311b4_r.jpg" class="" alt="img"><p>间接光照与直接光照思路相同</p><ol><li>直接光源是指物体自身发出的光，比如灯泡、蜡烛、荧光棒、太阳</li><li>间接光源是指物体反射出来的光，直接看图，下边的右图，两边的墙壁反射出自身的颜色，照亮了场景中的物体</li></ol><p>那么间接光照的实现思路也是</p><ol><li>有哪些间接光源会向外发射Radiance？（找到光源）</li><li>哪些方向的间接光源Radiance会到达着色点？（构建光照模型）</li></ol><h3 id="环境光"><a href="#环境光" class="headerlink" title="环境光"></a>环境光</h3><p>环境光包括其他物体反射的光以及所谓天空盒发出的光照</p><p>最简单的环境光可以是一个常量</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs HLSL">float3 ambient = float3(0.1, 0.1, 0.1);<br></code></pre></td></tr></table></figure><p>而符合物理的计算方式是基于图像的照明（<strong>IBL</strong>）来计算</p><h3 id="漫反射部分"><a href="#漫反射部分" class="headerlink" title="漫反射部分"></a>漫反射部分</h3><img src="/2023/02/26/GAMES-202-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0-PBR-rendering-%E6%80%BB%E7%BB%93/image-20230226230604595.png" class="" alt="image-20230226230604595"><p>而Irradiance因为是低频信号可以用SH函数拟合。</p><p>其中使用PRT改进的SH就自带类似AO的效果。</p><h3 id="镜面反射比较难实现"><a href="#镜面反射比较难实现" class="headerlink" title="镜面反射比较难实现"></a>镜面反射比较难实现</h3><p>SSR是基于光线追踪的做法</p><h3 id="阴影-1"><a href="#阴影-1" class="headerlink" title="阴影"></a>阴影</h3><p>间接光照的阴影实现比较难实现，目前较为黑科技的代表是SSAO</p><h2 id="能量补偿部分"><a href="#能量补偿部分" class="headerlink" title="能量补偿部分"></a><a href="https://zhuanlan.zhihu.com/p/503998650">能量补偿部分</a></h2><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol><li><a href="https://zhuanlan.zhihu.com/p/416112744">重新理解PBR（1） - 知乎 (zhihu.com)</a></li><li><a href="https://zhuanlan.zhihu.com/p/452190320">重新理解PBR（2）——漫反射全局光照 - 知乎 (zhihu.com)</a></li><li><a href="https://www.blurredcode.com/2021/05/dec701b2/#diffusediffuse-irradiance-map">PBR渲染: Cook-Torrance的实现与补充 | Blurred code</a></li></ol>]]></content>
     
     
     <categories>
@@ -129,6 +191,8 @@
       
       <category>学习笔记</category>
       
+      <category>demo</category>
+      
     </categories>
     
     
@@ -243,6 +307,8 @@
       
       <category>学习笔记</category>
       
+      <category>demo</category>
+      
     </categories>
     
     
@@ -326,7 +392,7 @@
     
     <categories>
       
-      <category>学习笔记</category>
+      <category>demo</category>
       
     </categories>
     
@@ -336,6 +402,8 @@
       <tag>unity</tag>
       
       <tag>VFX Graph</tag>
+      
+      <tag>substance Designer</tag>
       
     </tags>
     
@@ -467,6 +535,8 @@
       
       <category>学习笔记</category>
       
+      <category>demo</category>
+      
     </categories>
     
     
@@ -495,6 +565,8 @@
     <categories>
       
       <category>学习笔记</category>
+      
+      <category>demo</category>
       
     </categories>
     

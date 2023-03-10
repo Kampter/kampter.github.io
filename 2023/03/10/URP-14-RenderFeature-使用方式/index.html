@@ -16,24 +16,29 @@
   <meta name="author" content="Kampter">
   <meta name="keywords" content="Technical Artist">
   
-    <meta name="description" content="Particle Trails    Water Cathedral Beauty">
+    <meta name="description" content="URP 14URP 14 对应Unity 2022.2对于2021lts版本的URP 12中后处理的API有些许改变，需要参考官方文档的改变。而其中最大的改变来自于RTHandle的引入。 以一个DesaturateFeature为例。在DesaturateFeature.cs中改变比较大的是加入一个SetupRenderPasses来帮助创建Materail和传递参数，而不是传统的写法在Crea">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Houdini学习回顾">
-<meta property="og:url" content="https://kampter.github.io/2017/12/18/Houdini%E5%AD%A6%E4%B9%A0%E5%9B%9E%E9%A1%BE/index.html">
+<meta property="og:title" content="URP 14 RenderFeature 使用方式">
+<meta property="og:url" content="https://kampter.github.io/2023/03/10/URP-14-RenderFeature-%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F/index.html">
 <meta property="og:site_name" content="Kampter&#39;s Castle">
-<meta property="og:description" content="Particle Trails    Water Cathedral Beauty">
+<meta property="og:description" content="URP 14URP 14 对应Unity 2022.2对于2021lts版本的URP 12中后处理的API有些许改变，需要参考官方文档的改变。而其中最大的改变来自于RTHandle的引入。 以一个DesaturateFeature为例。在DesaturateFeature.cs中改变比较大的是加入一个SetupRenderPasses来帮助创建Materail和传递参数，而不是传统的写法在Crea">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2017-12-18T08:23:55.000Z">
-<meta property="article:modified_time" content="2023-03-10T02:49:20.554Z">
+<meta property="og:image" content="https://kampter.github.io/2023/03/10/URP-14-RenderFeature-%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F/image-20230310112935685.png">
+<meta property="og:image" content="https://kampter.github.io/2023/03/10/URP-14-RenderFeature-%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F/image-20230310113130248.png">
+<meta property="article:published_time" content="2023-03-10T02:47:50.000Z">
+<meta property="article:modified_time" content="2023-03-10T03:34:23.543Z">
 <meta property="article:author" content="Kampter">
-<meta property="article:tag" content="houdini">
-<meta property="article:tag" content="flip">
-<meta property="article:tag" content="pyro">
+<meta property="article:tag" content="unity">
+<meta property="article:tag" content="shader graph">
+<meta property="article:tag" content="hlsl">
+<meta property="article:tag" content="toon shader">
+<meta property="article:tag" content="c#">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://kampter.github.io/2023/03/10/URP-14-RenderFeature-%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F/image-20230310112935685.png">
   
   
   
-  <title>Houdini学习回顾 - Kampter&#39;s Castle</title>
+  <title>URP 14 RenderFeature 使用方式 - Kampter&#39;s Castle</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -199,7 +204,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Houdini学习回顾"></span>
+            <span id="subtitle" data-typed-text="URP 14 RenderFeature 使用方式"></span>
           
         </div>
 
@@ -210,8 +215,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2017-12-18 16:23" pubdate>
-          2017年12月18日 下午
+        <time datetime="2023-03-10 10:47" pubdate>
+          2023年3月10日 上午
         </time>
       </span>
     
@@ -222,7 +227,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          34 字
+          1.9k 字
         
       </span>
     
@@ -233,7 +238,7 @@
         
         
         
-          1 分钟
+          16 分钟
         
       </span>
     
@@ -271,17 +276,41 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Houdini学习回顾</h1>
+            <h1 style="display: none">URP 14 RenderFeature 使用方式</h1>
             
             
               <div class="markdown-body">
                 
-                <h3 id="Particle-Trails"><a href="#Particle-Trails" class="headerlink" title="Particle Trails"></a>Particle Trails</h3><iframe width="560" height="315" src="https://www.youtube.com/embed/eKbWienD2iQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                <h2 id="URP-14"><a href="#URP-14" class="headerlink" title="URP 14"></a>URP 14</h2><p><a target="_blank" rel="noopener" href="https://docs.unity3d.com/Packages/com.unity.render-pipelines.universal@14.0/manual/upgrade-guide-2022-2.html">URP 14</a> 对应Unity 2022.2对于2021lts版本的URP 12中后处理的API有些许改变，需要参考官方文档的改变。而其中最大的改变来自于RTHandle的引入。</p>
+<p>以一个DesaturateFeature为例。在DesaturateFeature.cs中改变比较大的是加入一个SetupRenderPasses来帮助创建Materail和传递参数，而不是传统的写法在Create()中。</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs C#"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">override</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SetupRenderPasses</span>(<span class="hljs-params">ScriptableRenderer renderer, <span class="hljs-keyword">in</span> RenderingData renderingData</span>)</span><br>&#123;<br>    Material material = CoreUtils.CreateEngineMaterial(shader);<br>    desaturateRenderPass.ConfigureInput(ScriptableRenderPassInput.Color);<br>    desaturateRenderPass.Setup(material, <span class="hljs-string">&quot;DesaturatedRenderPass&quot;</span>,renderingData);<br>&#125;<br></code></pre></td></tr></table></figure>
 
+<p>然后写内部的DesaturateRenderPass 类。</p>
+<ul>
+<li>变化一是RenderTargetHandle.Init(“_CustomPassHandle”)方式的改变为</li>
+</ul>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs C#"><span class="hljs-keyword">var</span> colorCopyDescriptor = renderingData.cameraData.cameraTargetDescriptor;<br>            colorCopyDescriptor.depthBufferBits = (<span class="hljs-built_in">int</span>) DepthBits.None;<br>            RenderingUtils.ReAllocateIfNeeded(<span class="hljs-keyword">ref</span> m_CopiedColor, colorCopyDescriptor, name: <span class="hljs-string">&quot;_FullscreenPassColorCopy&quot;</span>);<br>        <br></code></pre></td></tr></table></figure>
 
+<ul>
+<li><p>变化二：command buffer的GetTemporaryRT和ReleaseTemporaryRT被弃用。</p>
+</li>
+<li><p>官方推荐使用Blitter.BlitCameraTexture方法把原始的RT添加我们自定义的material然后再传递回去。代码实现如下</p>
+</li>
+</ul>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs C#">CommandBuffer cmd = CommandBufferPool.Get();<br><span class="hljs-keyword">var</span> cameraData = renderingData.cameraData;<br><span class="hljs-keyword">using</span> (<span class="hljs-keyword">new</span> ProfilingScope(cmd, profilingSampler))<br>&#123;<br>    <span class="hljs-keyword">var</span> source =cameraData.renderer.cameraColorTargetHandle;<br>    passMaterial.SetTexture(m_BlitTextureShaderID, copiedColor);<br>    Blitter.BlitCameraTexture(cmd, source, copiedColor, passMaterial, <span class="hljs-number">0</span>);<br>    Blitter.BlitCameraTexture(cmd, copiedColor, source);<br>    context.ExecuteCommandBuffer(cmd);<br>    cmd.Clear();<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<h3 id="Water-Cathedral-Beauty"><a href="#Water-Cathedral-Beauty" class="headerlink" title="Water Cathedral Beauty"></a>Water Cathedral Beauty</h3><iframe width="560" height="315" src="https://www.youtube.com/embed/lz5tCo2st0s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<p>使用方式与之前并无差异，添加Renderer Feature并且指定好shader，这里偷懒使用了一个shader graph来快速测试。新版的shader graph支持full screen shader 创建。</p>
+<img src="/2023/03/10/URP-14-RenderFeature-%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F/image-20230310112935685.png" srcset="/img/loading.gif" lazyload class="" alt="image-20230310112935685">
 
+<p>shader的部分实现非常简洁，Unity 2022.2中可以使用URP sample Buffer node来采样_BlitTexture 非常方便，如果想自己在shader中写也十分方便。</p>
+<img src="/2023/03/10/URP-14-RenderFeature-%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F/image-20230310113130248.png" srcset="/img/loading.gif" lazyload class="" alt="image-20230310113130248">
+
+<p>URP Sample Buffer的对应代码如下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs HLSL">TEXTURE2D_X(_BlitTexture);<br>float4 Unity_Universal_SampleBuffer_BlitSource_float(float2 uv)<br>&#123;<br>    uint2 pixelCoords = uint2(uv * _ScreenSize.xy);<br>    return LOAD_TEXTURE2D_X_LOD(_BlitTexture, pixelCoords, 0);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
+<li><a target="_blank" rel="noopener" href="https://docs.unity3d.com/Packages/com.unity.render-pipelines.universal@14.0/manual/upgrade-guide-2022-2.html">Upgrading to URP 14 (Unity 2022.2) | Universal RP | 14.0.6 (unity3d.com)</a></li>
+</ol>
 
                 
               </div>
@@ -322,11 +351,15 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/houdini/">#houdini</a>
+        <a href="/tags/unity/">#unity</a>
       
-        <a href="/tags/flip/">#flip</a>
+        <a href="/tags/shader-graph/">#shader graph</a>
       
-        <a href="/tags/pyro/">#pyro</a>
+        <a href="/tags/hlsl/">#hlsl</a>
+      
+        <a href="/tags/toon-shader/">#toon shader</a>
+      
+        <a href="/tags/c/">#c#</a>
       
     </div>
   
@@ -338,8 +371,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Houdini学习回顾</div>
-      <div>https://kampter.github.io/2017/12/18/Houdini学习回顾/</div>
+      <div>URP 14 RenderFeature 使用方式</div>
+      <div>https://kampter.github.io/2023/03/10/URP-14-RenderFeature-使用方式/</div>
     </div>
     <div class="license-meta">
       
@@ -351,7 +384,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2017年12月18日</div>
+          <div>2023年3月10日</div>
         </div>
       
       
@@ -383,15 +416,15 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2018/02/17/Maya-Bifrost-%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/" title="Maya Bifrost 学习记录">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Maya Bifrost 学习记录</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
+                    
+                      <a href="/2023/02/27/Unity-%E9%A1%B9%E7%9B%AE%E4%BC%98%E5%8C%96%E5%85%A5%E9%97%A8/" title="Unity 项目优化">
+                        <span class="hidden-mobile">Unity 项目优化</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
                     
                   </article>
                 </div>

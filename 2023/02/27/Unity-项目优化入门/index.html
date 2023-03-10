@@ -16,24 +16,28 @@
   <meta name="author" content="Kampter">
   <meta name="keywords" content="Technical Artist">
   
-    <meta name="description" content="Particle Trails    Water Cathedral Beauty">
+    <meta name="description" content="资产说明这次使用的全部资产来自Toon Fantasy Nature 这个Pacakage，直接使用下面的的Lake 01场景，原价是比较贵的，刚刚参加的Game Jam有优惠，几个特效，场景，人物还有音频等等资产加起来不到20刀还是蛮划算的，谢谢Unity。 UPR使用Unity官方自带的检测工具过一遍全部的资产，先用AssetChecker Win过一遍总览一下有哪些问题。 使用方式也非常简单">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Houdini学习回顾">
-<meta property="og:url" content="https://kampter.github.io/2017/12/18/Houdini%E5%AD%A6%E4%B9%A0%E5%9B%9E%E9%A1%BE/index.html">
+<meta property="og:title" content="Unity 项目优化">
+<meta property="og:url" content="https://kampter.github.io/2023/02/27/Unity-%E9%A1%B9%E7%9B%AE%E4%BC%98%E5%8C%96%E5%85%A5%E9%97%A8/index.html">
 <meta property="og:site_name" content="Kampter&#39;s Castle">
-<meta property="og:description" content="Particle Trails    Water Cathedral Beauty">
+<meta property="og:description" content="资产说明这次使用的全部资产来自Toon Fantasy Nature 这个Pacakage，直接使用下面的的Lake 01场景，原价是比较贵的，刚刚参加的Game Jam有优惠，几个特效，场景，人物还有音频等等资产加起来不到20刀还是蛮划算的，谢谢Unity。 UPR使用Unity官方自带的检测工具过一遍全部的资产，先用AssetChecker Win过一遍总览一下有哪些问题。 使用方式也非常简单">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2017-12-18T08:23:55.000Z">
-<meta property="article:modified_time" content="2023-03-10T02:49:20.554Z">
+<meta property="og:image" content="https://kampter.github.io/2023/02/27/Unity-%E9%A1%B9%E7%9B%AE%E4%BC%98%E5%8C%96%E5%85%A5%E9%97%A8/image-20230227224213960.png">
+<meta property="og:image" content="https://kampter.github.io/2023/02/27/Unity-%E9%A1%B9%E7%9B%AE%E4%BC%98%E5%8C%96%E5%85%A5%E9%97%A8/image-20230227224717438.png">
+<meta property="og:image" content="https://kampter.github.io/2023/02/27/Unity-%E9%A1%B9%E7%9B%AE%E4%BC%98%E5%8C%96%E5%85%A5%E9%97%A8/image-20230227230210520.png">
+<meta property="og:image" content="https://kampter.github.io/2023/02/27/Unity-%E9%A1%B9%E7%9B%AE%E4%BC%98%E5%8C%96%E5%85%A5%E9%97%A8/image-20230227232803515.png">
+<meta property="article:published_time" content="2023-02-27T14:34:27.000Z">
+<meta property="article:modified_time" content="2023-03-10T02:49:39.214Z">
 <meta property="article:author" content="Kampter">
-<meta property="article:tag" content="houdini">
-<meta property="article:tag" content="flip">
-<meta property="article:tag" content="pyro">
+<meta property="article:tag" content="profile">
+<meta property="article:tag" content="UPR">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://kampter.github.io/2023/02/27/Unity-%E9%A1%B9%E7%9B%AE%E4%BC%98%E5%8C%96%E5%85%A5%E9%97%A8/image-20230227224213960.png">
   
   
   
-  <title>Houdini学习回顾 - Kampter&#39;s Castle</title>
+  <title>Unity 项目优化 - Kampter&#39;s Castle</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -199,7 +203,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Houdini学习回顾"></span>
+            <span id="subtitle" data-typed-text="Unity 项目优化"></span>
           
         </div>
 
@@ -210,8 +214,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2017-12-18 16:23" pubdate>
-          2017年12月18日 下午
+        <time datetime="2023-02-27 22:34" pubdate>
+          2023年2月27日 晚上
         </time>
       </span>
     
@@ -222,7 +226,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          34 字
+          371 字
         
       </span>
     
@@ -233,7 +237,7 @@
         
         
         
-          1 分钟
+          4 分钟
         
       </span>
     
@@ -271,17 +275,27 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Houdini学习回顾</h1>
+            <h1 style="display: none">Unity 项目优化</h1>
             
             
               <div class="markdown-body">
                 
-                <h3 id="Particle-Trails"><a href="#Particle-Trails" class="headerlink" title="Particle Trails"></a>Particle Trails</h3><iframe width="560" height="315" src="https://www.youtube.com/embed/eKbWienD2iQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                <h2 id="资产说明"><a href="#资产说明" class="headerlink" title="资产说明"></a>资产说明</h2><p>这次使用的全部资产来自<a target="_blank" rel="noopener" href="https://assetstore.unity.com/packages/3d/environments/landscapes/toon-fantasy-nature-215197">Toon Fantasy Nature</a> 这个Pacakage，直接使用下面的的Lake 01场景，原价是比较贵的，刚刚参加的Game Jam有优惠，几个特效，场景，人物还有音频等等资产加起来不到20刀还是蛮划算的，谢谢Unity。</p>
+<h2 id="UPR"><a href="#UPR" class="headerlink" title="UPR"></a>UPR</h2><p>使用Unity官方自带的检测工具过一遍全部的资产，先用<a target="_blank" rel="noopener" href="https://upr.unity.cn/instructions/assetchecker">AssetChecker Win</a>过一遍总览一下有哪些问题。</p>
+<p>使用方式也非常简单，直接查看用户手册即可，这工具绿色好用，真心点赞。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">.\assetcheck.exe --project=&lt;project_path&gt; --projectId=&lt;project_id&gt;<br></code></pre></td></tr></table></figure>
 
+<p><project_path>为Unity工程所在路径，<project_id>为UPR项目Id。</p>
+<p><project_id>非必需项。如果填写了<project_id>，检测结束后，可直接在UPR网站该项目内查看检测结果。</p>
+<img src="/2023/02/27/Unity-%E9%A1%B9%E7%9B%AE%E4%BC%98%E5%8C%96%E5%85%A5%E9%97%A8/image-20230227224213960.png" srcset="/img/loading.gif" lazyload class="" alt="image-20230227224213960">
 
+<p>运行游戏看一下效果</p>
+<img src="/2023/02/27/Unity-%E9%A1%B9%E7%9B%AE%E4%BC%98%E5%8C%96%E5%85%A5%E9%97%A8/image-20230227224717438.png" srcset="/img/loading.gif" lazyload class="" alt="image-20230227224717438">
 
-<h3 id="Water-Cathedral-Beauty"><a href="#Water-Cathedral-Beauty" class="headerlink" title="Water Cathedral Beauty"></a>Water Cathedral Beauty</h3><iframe width="560" height="315" src="https://www.youtube.com/embed/lz5tCo2st0s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<p>看一下内存占用情况</p>
+<img src="/2023/02/27/Unity-%E9%A1%B9%E7%9B%AE%E4%BC%98%E5%8C%96%E5%85%A5%E9%97%A8/image-20230227230210520.png" srcset="/img/loading.gif" lazyload class="" alt="image-20230227230210520">
 
+<img src="/2023/02/27/Unity-%E9%A1%B9%E7%9B%AE%E4%BC%98%E5%8C%96%E5%85%A5%E9%97%A8/image-20230227232803515.png" srcset="/img/loading.gif" lazyload class="" alt="image-20230227232803515">
 
                 
               </div>
@@ -303,13 +317,6 @@
   <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="category-chain-item">学习笔记</a>
   
   
-    <span>></span>
-    
-  <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/demo/" class="category-chain-item">demo</a>
-  
-  
-
-  
 
       </span>
     
@@ -322,11 +329,9 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/houdini/">#houdini</a>
+        <a href="/tags/profile/">#profile</a>
       
-        <a href="/tags/flip/">#flip</a>
-      
-        <a href="/tags/pyro/">#pyro</a>
+        <a href="/tags/UPR/">#UPR</a>
       
     </div>
   
@@ -338,8 +343,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Houdini学习回顾</div>
-      <div>https://kampter.github.io/2017/12/18/Houdini学习回顾/</div>
+      <div>Unity 项目优化</div>
+      <div>https://kampter.github.io/2023/02/27/Unity-项目优化入门/</div>
     </div>
     <div class="license-meta">
       
@@ -351,7 +356,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2017年12月18日</div>
+          <div>2023年2月27日</div>
         </div>
       
       
@@ -383,15 +388,21 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2018/02/17/Maya-Bifrost-%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/" title="Maya Bifrost 学习记录">
+                      <a href="/2023/03/10/URP-14-RenderFeature-%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F/" title="URP 14 RenderFeature 使用方式">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Maya Bifrost 学习记录</span>
+                        <span class="hidden-mobile">URP 14 RenderFeature 使用方式</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
                   </article>
                   <article class="post-next col-6">
                     
+                    
+                      <a href="/2023/02/26/GAMES-202-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0-PBR-rendering-%E6%80%BB%E7%BB%93/" title="GAMES 202 课程笔记 - PBR rendering 总结">
+                        <span class="hidden-mobile">GAMES 202 课程笔记 - PBR rendering 总结</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
                     
                   </article>
                 </div>
