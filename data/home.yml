@@ -1,0 +1,217 @@
+# Sections content configuration file
+##
+### use navigation.yml file to re-order, delete or add section of each card
+### here you can find all content in all pre-build sections
+
+### About [ about ]
+about:
+  title: "About Me"
+  text: "
+        <p>
+          <strong>你好！我是王子正.</strong><br> 一个立志成为技术美术和游戏设计师的人，现在定居在中国上海。我十分热爱游戏世界的五彩缤纷，也喜欢动手制作出精良的视觉效果，因而去学习三维软件和影视特效。不满足于此的我还去学习计算机技术以及图形学知识，希望借此能精进我的技能并能参与到游戏开发流程中。
+        </p>
+        "
+  list:
+    - label: "Age"
+      value: "26"
+
+    - label: "Residence"
+      value: "中国"
+
+    - label: "Freelance"
+      value: "Available"
+
+    - label: "Address"
+      value: "上海, 中国"
+
+### Services [ services ]
+services:
+  title: "My Services"
+  items:
+    - icon: "ion-ios-game-controller-b"
+      name: "游戏设计与开发"
+      text: "制定游戏规则，深究其中的机制，并且创造无限可能的画面"
+      h_line: 0
+
+    - icon: "ion-stats-bars"
+      name: "数据分析"
+      text: "以结果导向，驱动自身发展，预测未来的可能"
+      h_line: 0
+
+### Facts [ facts ]
+facts:
+  title: "Fun Fact"
+  items:
+    - icon: "ion-ios-game-controller-b"
+      name: "200款以上游戏体验"
+
+    - icon: "ion-steam"
+      name: "10000小时以上游戏时常"
+
+    - icon: "ion-coffee"
+      name: "3 000 Cups of coffee"
+
+    - icon: "ion-flag"
+      name: "6 Countries Visited"
+
+    - icon: "ion-battery-empty"
+      name: "第一款游戏：《红色警戒》"
+
+    - icon: "ion-battery-low"
+      name: "第一款竞技游戏：《DOTA》"
+
+    - icon: "ion-battery-half"
+      name: "玩得最久的游戏：《魔兽世界》"
+
+    - icon: "ion-battery-full"
+      name: "当前最爱的游戏：《地平线：西之绝境》"
+
+
+### Testimonials [ testimonials ]
+testimonials:
+  title: "座右铭"
+  items:
+    - image: "images/man2.jpg"
+      name: "Zizheng Wang"
+      subname: "游戏技术美术"
+      text: "师者传道授业解惑，老师教书育人传播的是文化思想。而游戏也是一种文化的载体，我希望我可以将我玩游戏，做游戏的乐趣分享给更多的人"
+
+### Resume [ resume ]
+resume:
+  title: "Resume"
+  experience:
+    title: "Experience"
+    icon: "ion-briefcase"
+    items:
+      - year: "2022 - Present"
+        role: "技术美术"
+        company: "Project : ELE"
+        text: "制定美术风格，包含场景和人物模型元素，主题色搭配。根据风格编写shader用于渲染和特效的shader。添加自定义后处理效果以及设置场景内灯光。团队参加GGJ 2023 xCiGA 中国区比赛完成Groot项目。"
+        active: 1
+        h_line: 1
+
+      - year: "2020 - 2022"
+        role: "数据运营"
+        company: "心动网络"
+        text: "搭建分布式爬虫对 TapTap, NGA, 贴吧, 微博, GooglePlay的游戏关键信息抽取，构建情感分析模型，搭建数据指标。将数据用于版本调优参考。参与《仙境传说 RO》《不休的乌拉拉》版本内容数据分析以及调优。重点调研过仙境传说 2.0 大版本重置前期体验。通过细分维度发现新玩家留存率较低问题。结合用户研究数据找出与版本宣发内容的较大差异。《Project: saga》放置类竞品分析《元素方尖》rouguelite 类游戏分析。"
+        active: 0
+        h_line: 0
+
+  education:
+    title: "Education"
+    icon: "ion-university"
+    items:
+      - year: "2018 - 2021"
+        institution: "Australian National University"
+        city: "Canberra"
+        text: "Master's Degree in Computer Science"
+        h_line: 1
+
+      - year: "2016 - 2018"
+        institution: "Victoria University"
+        city: "Melbourne"
+        text: "Bachelor's Degree in Business"
+        h_line: 1
+
+      - year: "2014 - 2016"
+        institution: "辽宁大学"
+        city: "沈阳市"
+        text: "工商管理类（国际贸易）"
+        h_line: 0
+
+### Skills [ skills ]
+skills:
+  title: "My Skills"
+  columns:
+
+    - type: "list" #skills progress type - default, dotted, circles, list
+      title: "Knowledge"
+      icon: "ion-android-list"
+      items:
+        - label: "Unity和UE Shader 编写"
+          value: "" #0-100 progress in %
+
+        - label: "VFX graph 和 Niagara 特效制作"
+          value: "" #0-100 progress in %
+
+        - label: "了解PBR渲染涉及的灯光材质渲染"
+          value: "" #0-100 progress in %
+
+        - label: "具有在URP和HDRP下制作项目经验"
+          value: "" #0-100 progress in %
+
+        - label: "使用Maya制作烟火水体粒子特效"
+          value: "" #0-100 progress in %
+
+        - label: "使用Houdini制作游戏引起宁需要的资产，了解PDG流程"
+          value: "" #0-100 progress in %
+
+        - label: "了解SD制作特效贴图，了解Blender插件开发"
+          value: "" #0-100 progress in %
+
+    - type: "circles" #skills progress type - default, dotted, circles, list
+      title: "Coding"
+      icon: "ion-code"
+      items:
+        - label: "HLSL游戏渲染"
+          value: "75" #0-100 progress in %
+
+        - label: "C#游戏开发"
+          value: "60" #0-100 progress in %
+
+        - label: "Python数据分析"
+          value: "80" #0-100 progress in %
+
+    - type: "dotted" #skills progress type - default, dotted, circles, list
+      title: "Languages"
+      icon: "ion-flag"
+      items:
+        - label: "Chinese"
+          value: "90" #0-100 progress in %
+
+        - label: "English"
+          value: "70" #0-100 progress in %
+
+    - type: "default" #skills progress type - default, dotted, circles, list
+      title: "Other Skills"
+      icon: "ion-easel"
+      items:
+        - label: "全英文环境学习工作"
+          value: "70" #0-100 progress in %
+
+        - label: "自我学习与团队协作"
+          value: "80" #0-100 progress in %
+
+        - label: "咖啡，健身和露营"
+          value: "70" #0-100 progress in %
+
+        - label: "学习摄影中"
+          value: "30" #0-100 progress in %
+
+### Portfolio [ portfolio ]
+portfolio:
+  title: "Recent Works"
+
+### Blog [ blog ]
+blog:
+  title: "Latest Posts"
+
+### Contact Info List [ contacts-info ]
+contacts_info:
+  title: "Get in Touch"
+  list:
+    - label: "Address"
+      value: "上海, 中国"
+
+    - label: "Email"
+      value: "psbswsg@gmail.com"
+
+    - label: "Phone"
+      value: "+86 13889834550"
+
+    - label: "Freelance"
+      value: "Available"
+
+### Contact Form [ contacts-form ]
+contacts_form:
+  title: "Contact Form"

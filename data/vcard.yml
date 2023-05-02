@@ -1,0 +1,35 @@
+# Vcard configuration file
+##
+### param "bgimage" - Background Image or Background Photo
+### param "photo" - Small circle photo
+### param "name" - Your Name
+### param "typed" - Typed text under Name
+### param "social" - Social Links, icon class name you can find here https://fontawesome.com/icons?d=gallery&s=brands&m=free
+### param "buttons" - Buttons, icon class you can find here https://ionicons.com/v4/
+
+main:
+  bgimage: "images/1082264.png"
+  photo: ""
+  name: "王子正"
+  typed:
+    - text: "Technical Artist"
+  social:
+    - title: "Twitter"
+      icon: "fab fa-twitter"
+      url: "https://twitter.com/wang_psbswsg"
+    - title: "GitHub"
+      icon: "fab fa-github"
+      url: "https://github.com/Kampter"
+    - title: "Youtube"
+      icon: "fab fa-youtube"
+      url: "https://www.youtube.com/channel/UCK43eUkmsyRk8FeBw5oRJtQ"
+    - title: "Stackoverflow"
+      icon: "fab fa-artstation"
+      url: "https://www.artstation.com/kampter"
+  buttons:
+    - title: "Download CV"
+      icon: "ion ion-archive"
+      url: "/images/Resume_ZizhengWang_Chinese_v004.pdf"
+    - title: "Contact Me"
+      icon: "arrow"
+      url: "mailto:psbswsg@gmail.com"
