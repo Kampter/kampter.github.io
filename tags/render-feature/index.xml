@@ -1,51 +1,5 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Render Feature on RyanCV - CV Resume &amp; vCard Hugo Theme</title>
-    <link>https://kampter.github.io/tags/render-feature/</link>
-    <description>Recent content in Render Feature on RyanCV - CV Resume &amp; vCard Hugo Theme</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Wed, 05 Apr 2023 20:25:54 +0800</lastBuildDate><atom:link href="https://kampter.github.io/tags/render-feature/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>URP屏幕空间Sobel边缘检测</title>
-      <link>https://kampter.github.io/blog/urp%E5%B1%8F%E5%B9%95%E7%A9%BA%E9%97%B4sobel%E8%BE%B9%E7%BC%98%E6%A3%80%E6%B5%8B/</link>
-      <pubDate>Wed, 05 Apr 2023 20:25:54 +0800</pubDate>
-      
-      <guid>https://kampter.github.io/blog/urp%E5%B1%8F%E5%B9%95%E7%A9%BA%E9%97%B4sobel%E8%BE%B9%E7%BC%98%E6%A3%80%E6%B5%8B/</guid>
-      <description>什么是边缘检测 根据Wiki说明，边缘检测是一种用于识别图像变化的明显的区域的技术。因此这种基础技术被广泛应用与图像处理和计算机视觉中用以查找出物体的边缘。边缘检测算法的目的是发掘图像中不连续火图像亮度急剧变化的点。而常见的几种算法用于便边缘检测技术包括Sobel， Prewitt, Roberts 和 Canny。其中Canny 边缘检测器是罪被广泛应用的算法，它使用多阶算法结合，于1986年被John F. Canny最先开发出来并且随后广泛使用。
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Render Feature on RyanCV - CV Resume &amp; vCard Hugo Theme</title><link>https://kampter.github.io/tags/render-feature/</link><description>Recent content in Render Feature on RyanCV - CV Resume &amp; vCard Hugo Theme</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Wed, 05 Apr 2023 20:25:54 +0800</lastBuildDate><atom:link href="https://kampter.github.io/tags/render-feature/index.xml" rel="self" type="application/rss+xml"/><item><title>URP屏幕空间Sobel边缘检测</title><link>https://kampter.github.io/blog/urp%E5%B1%8F%E5%B9%95%E7%A9%BA%E9%97%B4sobel%E8%BE%B9%E7%BC%98%E6%A3%80%E6%B5%8B/</link><pubDate>Wed, 05 Apr 2023 20:25:54 +0800</pubDate><guid>https://kampter.github.io/blog/urp%E5%B1%8F%E5%B9%95%E7%A9%BA%E9%97%B4sobel%E8%BE%B9%E7%BC%98%E6%A3%80%E6%B5%8B/</guid><description>什么是边缘检测 根据Wiki说明，边缘检测是一种用于识别图像变化的明显的区域的技术。因此这种基础技术被广泛应用与图像处理和计算机视觉中用以查找出物体的边缘。边缘检测算法的目的是发掘图像中不连续火图像亮度急剧变化的点。而常见的几种算法用于便边缘检测技术包括Sobel， Prewitt, Roberts 和 Canny。其中Canny 边缘检测器是罪被广泛应用的算法，它使用多阶算法结合，于1986年被John F. Canny最先开发出来并且随后广泛使用。
 为什么边缘检测重要 边缘检测是图像处理的重要组成部分，因为它有助于计算识别和将图像分离成不同的部分 。 它用于图像处理、计算机视觉和机器视觉等领域的图像分割和数据提取。 检测图像亮度的急剧变化的目的是捕捉重要事件和属性的变化。 边缘是与图像相关的最重要的特征之一。 我们通过图像的边缘了解图像的底层结构。 因此，计算机视觉处理管道广泛使用边缘检测。
-Sobel 边缘检测 简单地说，我们对每个片段的四个边邻居进行采样，并对采样属性的差异求和。 小的差异表明表面是一致的，我们很可能不在边缘上，而大的差异表明采样属性的突然变化，我们很可能在边缘像素上。</description>
-    </item>
-    
-    <item>
-      <title>URP屏幕空间环境光遮蔽</title>
-      <link>https://kampter.github.io/blog/urp%E5%B1%8F%E5%B9%95%E7%A9%BA%E9%97%B4%E7%8E%AF%E5%A2%83%E5%85%89%E9%81%AE%E8%94%BD/</link>
-      <pubDate>Wed, 05 Apr 2023 14:35:17 +0800</pubDate>
-      
-      <guid>https://kampter.github.io/blog/urp%E5%B1%8F%E5%B9%95%E7%A9%BA%E9%97%B4%E7%8E%AF%E5%A2%83%E5%85%89%E9%81%AE%E8%94%BD/</guid>
-      <description>Screen Space Ambient Occlusion: Enhancing Realism in Video Games Introduction Video games have come a long way since their inception, and the quality of graphics has improved significantly.</description>
-    </item>
-    
-    <item>
-      <title>URP屏幕空间雾效</title>
-      <link>https://kampter.github.io/blog/urp%E5%B1%8F%E5%B9%95%E7%A9%BA%E9%97%B4%E9%9B%BE%E6%95%88/</link>
-      <pubDate>Tue, 04 Apr 2023 14:25:03 +0800</pubDate>
-      
-      <guid>https://kampter.github.io/blog/urp%E5%B1%8F%E5%B9%95%E7%A9%BA%E9%97%B4%E9%9B%BE%E6%95%88/</guid>
-      <description>Unity URP Depth Fog Introduction Unity is a powerful game engine that has been used by game developers around the world to create high-quality games with various tools and features.</description>
-    </item>
-    
-    <item>
-      <title>URP 14 RenderFeature 使用方式</title>
-      <link>https://kampter.github.io/blog/urp-14-renderfeature-%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F/</link>
-      <pubDate>Mon, 20 Mar 2023 10:47:50 +0000</pubDate>
-      
-      <guid>https://kampter.github.io/blog/urp-14-renderfeature-%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F/</guid>
-      <description>URP 14 URP 14 对应Unity 2022.2对于2021lts版本的URP 12中后处理的API有些许改变，需要参考官方文档的改变。而其中最大的改变来自于RTHandle的引入。
+Sobel 边缘检测 简单地说，我们对每个片段的四个边邻居进行采样，并对采样属性的差异求和。 小的差异表明表面是一致的，我们很可能不在边缘上，而大的差异表明采样属性的突然变化，我们很可能在边缘像素上。</description></item><item><title>URP屏幕空间环境光遮蔽</title><link>https://kampter.github.io/blog/urp%E5%B1%8F%E5%B9%95%E7%A9%BA%E9%97%B4%E7%8E%AF%E5%A2%83%E5%85%89%E9%81%AE%E8%94%BD/</link><pubDate>Wed, 05 Apr 2023 14:35:17 +0800</pubDate><guid>https://kampter.github.io/blog/urp%E5%B1%8F%E5%B9%95%E7%A9%BA%E9%97%B4%E7%8E%AF%E5%A2%83%E5%85%89%E9%81%AE%E8%94%BD/</guid><description>Screen Space Ambient Occlusion: Enhancing Realism in Video Games Introduction Video games have come a long way since their inception, and the quality of graphics has improved significantly.</description></item><item><title>URP屏幕空间雾效</title><link>https://kampter.github.io/blog/urp%E5%B1%8F%E5%B9%95%E7%A9%BA%E9%97%B4%E9%9B%BE%E6%95%88/</link><pubDate>Tue, 04 Apr 2023 14:25:03 +0800</pubDate><guid>https://kampter.github.io/blog/urp%E5%B1%8F%E5%B9%95%E7%A9%BA%E9%97%B4%E9%9B%BE%E6%95%88/</guid><description>Unity URP Depth Fog Introduction Unity is a powerful game engine that has been used by game developers around the world to create high-quality games with various tools and features.</description></item><item><title>URP 14 RenderFeature 使用方式</title><link>https://kampter.github.io/blog/urp-14-renderfeature-%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F/</link><pubDate>Mon, 20 Mar 2023 10:47:50 +0000</pubDate><guid>https://kampter.github.io/blog/urp-14-renderfeature-%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F/</guid><description>URP 14 URP 14 对应Unity 2022.2对于2021lts版本的URP 12中后处理的API有些许改变，需要参考官方文档的改变。而其中最大的改变来自于RTHandle的引入。
 以一个DesaturateFeature为例。在DesaturateFeature.cs中改变比较大的是加入一个SetupRenderPasses来帮助创建Materail和传递参数，而不是传统的写法在Create()中。
-public override void SetupRenderPasses(ScriptableRenderer renderer, in RenderingData renderingData) { Material material = CoreUtils.</description>
-    </item>
-    
-  </channel>
-</rss>
+public override void SetupRenderPasses(ScriptableRenderer renderer, in RenderingData renderingData) { Material material = CoreUtils.</description></item></channel></rss>

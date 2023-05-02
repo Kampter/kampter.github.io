@@ -1,52 +1,15 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Games 202 on RyanCV - CV Resume &amp; vCard Hugo Theme</title>
-    <link>https://kampter.github.io/tags/games-202/</link>
-    <description>Recent content in Games 202 on RyanCV - CV Resume &amp; vCard Hugo Theme</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Sun, 26 Feb 2023 23:16:34 +0000</lastBuildDate><atom:link href="https://kampter.github.io/tags/games-202/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Games 202 - PBR rendering 总结</title>
-      <link>https://kampter.github.io/blog/games-202-pbr-rendering-%E6%80%BB%E7%BB%93/</link>
-      <pubDate>Sun, 26 Feb 2023 23:16:34 +0000</pubDate>
-      
-      <guid>https://kampter.github.io/blog/games-202-pbr-rendering-%E6%80%BB%E7%BB%93/</guid>
-      <description>直接光照 在不考虑能量补偿的情况下 传统的Blinn Phong模型是
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Games 202 on RyanCV - CV Resume &amp; vCard Hugo Theme</title><link>https://kampter.github.io/tags/games-202/</link><description>Recent content in Games 202 on RyanCV - CV Resume &amp; vCard Hugo Theme</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sun, 26 Feb 2023 23:16:34 +0000</lastBuildDate><atom:link href="https://kampter.github.io/tags/games-202/index.xml" rel="self" type="application/rss+xml"/><item><title>Games 202 - PBR rendering 总结</title><link>https://kampter.github.io/blog/games-202-pbr-rendering-%E6%80%BB%E7%BB%93/</link><pubDate>Sun, 26 Feb 2023 23:16:34 +0000</pubDate><guid>https://kampter.github.io/blog/games-202-pbr-rendering-%E6%80%BB%E7%BB%93/</guid><description>直接光照 在不考虑能量补偿的情况下 传统的Blinn Phong模型是
 diffuse + specular + ambient
 而cook-torrance BRDF的方程是
 其中Ks = F, 且金属材质的漫反射为0
-阴影 各种优化过的Shadow Map, PCF, PCSS等等</description>
-    </item>
-    
-    <item>
-      <title>Games 202 - PBR材质</title>
-      <link>https://kampter.github.io/blog/games-202-pbr%E6%9D%90%E8%B4%A8/</link>
-      <pubDate>Sat, 25 Feb 2023 10:50:14 +0000</pubDate>
-      
-      <guid>https://kampter.github.io/blog/games-202-pbr%E6%9D%90%E8%B4%A8/</guid>
-      <description>PBR PBR包括Materials, lighting, camera, light transport等等任何与渲染有关的基于物理的内容。而工业界习惯叫PBR都是指PBR材质，虽然之前已经在unity中看过URP中PBR的实现原理并且尝试手动还原，这次看过Games 202后还是更加深化对PBR材质的了解。
+阴影 各种优化过的Shadow Map, PCF, PCSS等等</description></item><item><title>Games 202 - PBR材质</title><link>https://kampter.github.io/blog/games-202-pbr%E6%9D%90%E8%B4%A8/</link><pubDate>Sat, 25 Feb 2023 10:50:14 +0000</pubDate><guid>https://kampter.github.io/blog/games-202-pbr%E6%9D%90%E8%B4%A8/</guid><description>PBR PBR包括Materials, lighting, camera, light transport等等任何与渲染有关的基于物理的内容。而工业界习惯叫PBR都是指PBR材质，虽然之前已经在unity中看过URP中PBR的实现原理并且尝试手动还原，这次看过Games 202后还是更加深化对PBR材质的了解。
 基于表面的材质
 Microfacet models微表面模型（不是完全基于物理的）
 Disney Principled BRDF能够用于离线渲染, 但也可以运用在实时渲染中，但也不是PBR，是基于artist的角度来考虑的。
 基于体积的材质
-实时渲染中并没有什么特别好的解决方案，常见的诸如云，头发，皮肤。 Microfacet BRDF F项：菲涅尔项，表示观察角度与反射的关系(从一个角度看去会有多少的能量被反射) 当视线与反射表面夹角越小，反射越明显。水体是菲涅尔效应最明显的现实物体之一（当站在湖边看到脚下的湖水是透明的，而远处湖面的水则是不透明的，并且反射非常强烈）。</description>
-    </item>
-    
-    <item>
-      <title>Games 202 环境光照</title>
-      <link>https://kampter.github.io/blog/games-202-%E7%8E%AF%E5%A2%83%E5%85%89%E7%85%A7/</link>
-      <pubDate>Sat, 21 Jan 2023 14:17:21 +0000</pubDate>
-      
-      <guid>https://kampter.github.io/blog/games-202-%E7%8E%AF%E5%A2%83%E5%85%89%E7%85%A7/</guid>
-      <description>IBL实时环境光照 IBL：Image-Based Lighting
+实时渲染中并没有什么特别好的解决方案，常见的诸如云，头发，皮肤。 Microfacet BRDF F项：菲涅尔项，表示观察角度与反射的关系(从一个角度看去会有多少的能量被反射) 当视线与反射表面夹角越小，反射越明显。水体是菲涅尔效应最明显的现实物体之一（当站在湖边看到脚下的湖水是透明的，而远处湖面的水则是不透明的，并且反射非常强烈）。</description></item><item><title>Games 202 环境光照</title><link>https://kampter.github.io/blog/games-202-%E7%8E%AF%E5%A2%83%E5%85%89%E7%85%A7/</link><pubDate>Sat, 21 Jan 2023 14:17:21 +0000</pubDate><guid>https://kampter.github.io/blog/games-202-%E7%8E%AF%E5%A2%83%E5%85%89%E7%85%A7/</guid><description>IBL实时环境光照 IBL：Image-Based Lighting
 典型的保存方式：cube map，spherical map
 在不考虑阴影的情况下（Visibility term）真实的渲染方程
 真实求解需要用蒙特卡洛积分求解path tracing, 但是速度太慢
 使用之前的近似方案
-一点点小的区别，我们只需要对 BRDF 覆盖的范围 ΩG 进行积分即可 第一部分的积分 红色区域就是对光源的入射方向（上面的 r ）进行了一个滤波</description>
-    </item>
-    
-  </channel>
-</rss>
+一点点小的区别，我们只需要对 BRDF 覆盖的范围 ΩG 进行积分即可 第一部分的积分 红色区域就是对光源的入射方向（上面的 r ）进行了一个滤波</description></item></channel></rss>

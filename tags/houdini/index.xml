@@ -1,31 +1,7 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Houdini on RyanCV - CV Resume &amp; vCard Hugo Theme</title>
-    <link>https://kampter.github.io/tags/houdini/</link>
-    <description>Recent content in Houdini on RyanCV - CV Resume &amp; vCard Hugo Theme</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Tue, 18 Apr 2023 17:46:43 +0800</lastBuildDate><atom:link href="https://kampter.github.io/tags/houdini/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>近期做的几个Unity和UE特效</title>
-      <link>https://kampter.github.io/blog/%E8%BF%91%E6%9C%9F%E5%81%9A%E7%9A%84%E5%87%A0%E4%B8%AAunity%E5%92%8Cue%E7%89%B9%E6%95%88/</link>
-      <pubDate>Tue, 18 Apr 2023 17:46:43 +0800</pubDate>
-      
-      <guid>https://kampter.github.io/blog/%E8%BF%91%E6%9C%9F%E5%81%9A%E7%9A%84%E5%87%A0%E4%B8%AAunity%E5%92%8Cue%E7%89%B9%E6%95%88/</guid>
-      <description>风格化毒液投射物 请原谅我制作了一个毒液的技能特效。我原本想要制作毒液效果的，但是尝试了多次后一直不满意，就把部分素材拼凑成了毒液的技能特效，希望可以得到谅解。这里我用UE5来制作这个技能特效。
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Houdini on RyanCV - CV Resume &amp; vCard Hugo Theme</title><link>https://kampter.github.io/tags/houdini/</link><description>Recent content in Houdini on RyanCV - CV Resume &amp; vCard Hugo Theme</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Tue, 18 Apr 2023 17:46:43 +0800</lastBuildDate><atom:link href="https://kampter.github.io/tags/houdini/index.xml" rel="self" type="application/rss+xml"/><item><title>近期做的几个Unity和UE特效</title><link>https://kampter.github.io/blog/%E8%BF%91%E6%9C%9F%E5%81%9A%E7%9A%84%E5%87%A0%E4%B8%AAunity%E5%92%8Cue%E7%89%B9%E6%95%88/</link><pubDate>Tue, 18 Apr 2023 17:46:43 +0800</pubDate><guid>https://kampter.github.io/blog/%E8%BF%91%E6%9C%9F%E5%81%9A%E7%9A%84%E5%87%A0%E4%B8%AAunity%E5%92%8Cue%E7%89%B9%E6%95%88/</guid><description>风格化毒液投射物 请原谅我制作了一个毒液的技能特效。我原本想要制作毒液效果的，但是尝试了多次后一直不满意，就把部分素材拼凑成了毒液的技能特效，希望可以得到谅解。这里我用UE5来制作这个技能特效。
 Texture的思路：用cross section + histogram scan制造一条线，通过不断叠加noise制造细节，并且用blend的subtract模式减掉球状的shape，用来模拟液体的感觉。最后用Directional Warp制造速度的感觉。
 原本Trail是不需要有mesh的，但是我希望力大出奇迹（bushi），只是希望最终呈现的效果更加立体吧。这里用 point jitter制造noise并且把球体copy to point 来制造这个不规则的球状物体作为 projectile 的mesh。
-Material的部分我分成三块，第一块是 Projectile，我希望用Fresnel来描述mesh的边缘发光的感觉。同时在这个Material里面我还添加erosion的效果在alpha mask中，希望在Niagara中可以驱动这个erosion 制造飞溅的小液滴的效果，而不是用particle来实现。除此之外我还用一张noise 贴图来驱动vertex posion，希望制造液体飞出主体但是与主体牵连的感觉(液滴表面张力)。 Smoke的部分，用一张Noise作为UV的distortion添加在Main Noise Texture上面，并且添加圆形的mask和depth fade减弱边缘。Trail部分与Smoke基本相同，在Mask部分我用了横向的Gradient Mask，希望Trail的尾部逐渐虚化掉。</description>
-    </item>
-    
-    <item>
-      <title>GGJ2023 x GiCA 中国站回顾</title>
-      <link>https://kampter.github.io/blog/global-game-jam-2023%E5%9B%9E%E9%A1%BE/</link>
-      <pubDate>Wed, 15 Feb 2023 19:10:20 +0000</pubDate>
-      
-      <guid>https://kampter.github.io/blog/global-game-jam-2023%E5%9B%9E%E9%A1%BE/</guid>
-      <description>心得 抱歉这么晚才来写这个回顾，近期忙于过年，情人节，以及学习等等事项，年后到现在终于有一段时间相对比较安静可以回顾一下这个赛事。
+Material的部分我分成三块，第一块是 Projectile，我希望用Fresnel来描述mesh的边缘发光的感觉。同时在这个Material里面我还添加erosion的效果在alpha mask中，希望在Niagara中可以驱动这个erosion 制造飞溅的小液滴的效果，而不是用particle来实现。除此之外我还用一张noise 贴图来驱动vertex posion，希望制造液体飞出主体但是与主体牵连的感觉(液滴表面张力)。 Smoke的部分，用一张Noise作为UV的distortion添加在Main Noise Texture上面，并且添加圆形的mask和depth fade减弱边缘。Trail部分与Smoke基本相同，在Mask部分我用了横向的Gradient Mask，希望Trail的尾部逐渐虚化掉。</description></item><item><title>GGJ2023 x GiCA 中国站回顾</title><link>https://kampter.github.io/blog/global-game-jam-2023%E5%9B%9E%E9%A1%BE/</link><pubDate>Wed, 15 Feb 2023 19:10:20 +0000</pubDate><guid>https://kampter.github.io/blog/global-game-jam-2023%E5%9B%9E%E9%A1%BE/</guid><description>心得 抱歉这么晚才来写这个回顾，近期忙于过年，情人节，以及学习等等事项，年后到现在终于有一段时间相对比较安静可以回顾一下这个赛事。
 首先感谢GGJ 2023能在这个时期召开，我从前公司离职到现在学习游戏制作已经有半年多的时间。一直在学习但是没有什么机会能够回顾学会什么，还欠缺什么，还想要什么。而且在这种比赛的压力下，很多问题才会暴漏出来，感谢这次能够让我总结的机会。
 其次感谢我的组员：
 48小时开发辛苦了，组内的除了我之外都是已经在游戏公司内工作的大佬，很高兴能与你们一起合作完成这个作品，希望我没有给你们拖后腿。
@@ -35,17 +11,4 @@ Material的部分我分成三块，第一块是 Projectile，我希望用Fresnel
 找参考 背景参考，可以说是整个流程里最轻松的部分。因为我需要做的就是去看原来知名的对应题材的作品，游戏，动画，影视等。寻找其中的共同背景，色彩构成，空间元素构成。
 乱糟糟随心所欲找了一些东西，也没有成体系。理想的过程是从图片总结出风格特点，再转化成引擎可以实现的方案做出来。
 基础场景搭建 刚好在2022年底花不少精力学习和排坑的houdini PDG流程这次刚好可以应该用在这次项目中。
-用houdini 生成Heightmap已经是非常轻松愉快的事情了，这个项目不需要高精度雕琢，简单调整一些细节就可以搭建PDG节点了。哦对，在这之前要在unity中准备好terrain layer以及通过随即撒点种植的植物prefab，同时设置好LOD。</description>
-    </item>
-    
-    <item>
-      <title>Houdini</title>
-      <link>https://kampter.github.io/blog/houdini-showreel/</link>
-      <pubDate>Mon, 18 Dec 2017 16:23:55 +0000</pubDate>
-      
-      <guid>https://kampter.github.io/blog/houdini-showreel/</guid>
-      <description>Particle Trails Water Cathedral Beauty </description>
-    </item>
-    
-  </channel>
-</rss>
+用houdini 生成Heightmap已经是非常轻松愉快的事情了，这个项目不需要高精度雕琢，简单调整一些细节就可以搭建PDG节点了。哦对，在这之前要在unity中准备好terrain layer以及通过随即撒点种植的植物prefab，同时设置好LOD。</description></item><item><title>Houdini</title><link>https://kampter.github.io/blog/houdini-showreel/</link><pubDate>Mon, 18 Dec 2017 16:23:55 +0000</pubDate><guid>https://kampter.github.io/blog/houdini-showreel/</guid><description>Particle Trails Water Cathedral Beauty</description></item></channel></rss>

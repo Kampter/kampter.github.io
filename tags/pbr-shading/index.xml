@@ -1,32 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>PBR Shading on RyanCV - CV Resume &amp; vCard Hugo Theme</title>
-    <link>https://kampter.github.io/tags/pbr-shading/</link>
-    <description>Recent content in PBR Shading on RyanCV - CV Resume &amp; vCard Hugo Theme</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Thu, 16 Mar 2023 23:33:20 +0000</lastBuildDate><atom:link href="https://kampter.github.io/tags/pbr-shading/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>在URP中搭建一个Disney Principled BRDF</title>
-      <link>https://kampter.github.io/blog/%E5%9C%A8urp%E4%B8%AD%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AAdisney-principled-brdf/</link>
-      <pubDate>Thu, 16 Mar 2023 23:33:20 +0000</pubDate>
-      
-      <guid>https://kampter.github.io/blog/%E5%9C%A8urp%E4%B8%AD%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AAdisney-principled-brdf/</guid>
-      <description>技术实现 Unity 自带的Lit 采用了通用的microfacet Cook-Torrance BRDF着色模型，对于各向异性，清漆，布料等支持并没有实现。这里希望搭建一个Disney Principled BRDF 来学习源码并且扩充这部分shader便于以后风格化定制。
-Diffuse项实现 half3 Disney_Diffuse(half3 diffuseColor, half roughness, half ndotV, half ndotL, half LdotH) { half FD90 = 0.</description>
-    </item>
-    
-    <item>
-      <title>尝试在URP下手写 PBR shader</title>
-      <link>https://kampter.github.io/blog/%E5%B0%9D%E8%AF%95%E5%9C%A8urp%E4%B8%AD%E6%89%8B%E5%86%99-pbr-shader/</link>
-      <pubDate>Fri, 10 Feb 2023 12:58:11 +0000</pubDate>
-      
-      <guid>https://kampter.github.io/blog/%E5%B0%9D%E8%AF%95%E5%9C%A8urp%E4%B8%AD%E6%89%8B%E5%86%99-pbr-shader/</guid>
-      <description>Cook-Torrance BRDF Cook-Torrance BRDF的镜面反射部分包含三个函数，此外分母部分还有一个标准化因子 。字母D，F与G分别代表着一种类型的函数，各个函数分别用来近似的计算出表面反射特性的一个特定部分。三个函数分别为法线分布函数(Normal Distribution Function)，菲涅尔方程(Fresnel Rquation)和几何函数(Geometry Function)：
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>PBR Shading on RyanCV - CV Resume &amp; vCard Hugo Theme</title><link>https://kampter.github.io/tags/pbr-shading/</link><description>Recent content in PBR Shading on RyanCV - CV Resume &amp; vCard Hugo Theme</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Thu, 16 Mar 2023 23:33:20 +0000</lastBuildDate><atom:link href="https://kampter.github.io/tags/pbr-shading/index.xml" rel="self" type="application/rss+xml"/><item><title>在URP中搭建一个Disney Principled BRDF</title><link>https://kampter.github.io/blog/%E5%9C%A8urp%E4%B8%AD%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AAdisney-principled-brdf/</link><pubDate>Thu, 16 Mar 2023 23:33:20 +0000</pubDate><guid>https://kampter.github.io/blog/%E5%9C%A8urp%E4%B8%AD%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AAdisney-principled-brdf/</guid><description>技术实现 Unity 自带的Lit 采用了通用的microfacet Cook-Torrance BRDF着色模型，对于各向异性，清漆，布料等支持并没有实现。这里希望搭建一个Disney Principled BRDF 来学习源码并且扩充这部分shader便于以后风格化定制。
+Diffuse项实现 half3 Disney_Diffuse(half3 diffuseColor, half roughness, half ndotV, half ndotL, half LdotH) { half FD90 = 0.</description></item><item><title>尝试在URP下手写 PBR shader</title><link>https://kampter.github.io/blog/%E5%B0%9D%E8%AF%95%E5%9C%A8urp%E4%B8%AD%E6%89%8B%E5%86%99-pbr-shader/</link><pubDate>Fri, 10 Feb 2023 12:58:11 +0000</pubDate><guid>https://kampter.github.io/blog/%E5%B0%9D%E8%AF%95%E5%9C%A8urp%E4%B8%AD%E6%89%8B%E5%86%99-pbr-shader/</guid><description>Cook-Torrance BRDF Cook-Torrance BRDF的镜面反射部分包含三个函数，此外分母部分还有一个标准化因子 。字母D，F与G分别代表着一种类型的函数，各个函数分别用来近似的计算出表面反射特性的一个特定部分。三个函数分别为法线分布函数(Normal Distribution Function)，菲涅尔方程(Fresnel Rquation)和几何函数(Geometry Function)：
 D项 - 法线分布函数: 估算在受到表面粗糙度的影响下，朝向方向与半程向量一致的微平面的数量。这是用来估算微平面的主要函数。
-half Function_D(half ndotH, half roughness) { half a2 = roughness * roughness; half ndotH2 = ndotH * ndotH; half nom = a2; half denom = (ndotH2 * (a2 - 1.</description>
-    </item>
-    
-  </channel>
-</rss>
+half Function_D(half ndotH, half roughness) { half a2 = roughness * roughness; half ndotH2 = ndotH * ndotH; half nom = a2; half denom = (ndotH2 * (a2 - 1.</description></item></channel></rss>

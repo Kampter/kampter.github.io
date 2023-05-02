@@ -1,119 +1,23 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Blog on RyanCV - CV Resume &amp; vCard Hugo Theme</title>
-    <link>https://kampter.github.io/blog/</link>
-    <description>Recent content in Blog on RyanCV - CV Resume &amp; vCard Hugo Theme</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Tue, 18 Apr 2023 17:46:43 +0800</lastBuildDate><atom:link href="https://kampter.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>近期做的几个Unity和UE特效</title>
-      <link>https://kampter.github.io/blog/%E8%BF%91%E6%9C%9F%E5%81%9A%E7%9A%84%E5%87%A0%E4%B8%AAunity%E5%92%8Cue%E7%89%B9%E6%95%88/</link>
-      <pubDate>Tue, 18 Apr 2023 17:46:43 +0800</pubDate>
-      
-      <guid>https://kampter.github.io/blog/%E8%BF%91%E6%9C%9F%E5%81%9A%E7%9A%84%E5%87%A0%E4%B8%AAunity%E5%92%8Cue%E7%89%B9%E6%95%88/</guid>
-      <description>风格化毒液投射物 请原谅我制作了一个毒液的技能特效。我原本想要制作毒液效果的，但是尝试了多次后一直不满意，就把部分素材拼凑成了毒液的技能特效，希望可以得到谅解。这里我用UE5来制作这个技能特效。
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Blog on RyanCV - CV Resume &amp; vCard Hugo Theme</title><link>https://kampter.github.io/blog/</link><description>Recent content in Blog on RyanCV - CV Resume &amp; vCard Hugo Theme</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Tue, 18 Apr 2023 17:46:43 +0800</lastBuildDate><atom:link href="https://kampter.github.io/blog/index.xml" rel="self" type="application/rss+xml"/><item><title>近期做的几个Unity和UE特效</title><link>https://kampter.github.io/blog/%E8%BF%91%E6%9C%9F%E5%81%9A%E7%9A%84%E5%87%A0%E4%B8%AAunity%E5%92%8Cue%E7%89%B9%E6%95%88/</link><pubDate>Tue, 18 Apr 2023 17:46:43 +0800</pubDate><guid>https://kampter.github.io/blog/%E8%BF%91%E6%9C%9F%E5%81%9A%E7%9A%84%E5%87%A0%E4%B8%AAunity%E5%92%8Cue%E7%89%B9%E6%95%88/</guid><description>风格化毒液投射物 请原谅我制作了一个毒液的技能特效。我原本想要制作毒液效果的，但是尝试了多次后一直不满意，就把部分素材拼凑成了毒液的技能特效，希望可以得到谅解。这里我用UE5来制作这个技能特效。
 Texture的思路：用cross section + histogram scan制造一条线，通过不断叠加noise制造细节，并且用blend的subtract模式减掉球状的shape，用来模拟液体的感觉。最后用Directional Warp制造速度的感觉。
 原本Trail是不需要有mesh的，但是我希望力大出奇迹（bushi），只是希望最终呈现的效果更加立体吧。这里用 point jitter制造noise并且把球体copy to point 来制造这个不规则的球状物体作为 projectile 的mesh。
-Material的部分我分成三块，第一块是 Projectile，我希望用Fresnel来描述mesh的边缘发光的感觉。同时在这个Material里面我还添加erosion的效果在alpha mask中，希望在Niagara中可以驱动这个erosion 制造飞溅的小液滴的效果，而不是用particle来实现。除此之外我还用一张noise 贴图来驱动vertex posion，希望制造液体飞出主体但是与主体牵连的感觉(液滴表面张力)。 Smoke的部分，用一张Noise作为UV的distortion添加在Main Noise Texture上面，并且添加圆形的mask和depth fade减弱边缘。Trail部分与Smoke基本相同，在Mask部分我用了横向的Gradient Mask，希望Trail的尾部逐渐虚化掉。</description>
-    </item>
-    
-    <item>
-      <title>URP屏幕空间Sobel边缘检测</title>
-      <link>https://kampter.github.io/blog/urp%E5%B1%8F%E5%B9%95%E7%A9%BA%E9%97%B4sobel%E8%BE%B9%E7%BC%98%E6%A3%80%E6%B5%8B/</link>
-      <pubDate>Wed, 05 Apr 2023 20:25:54 +0800</pubDate>
-      
-      <guid>https://kampter.github.io/blog/urp%E5%B1%8F%E5%B9%95%E7%A9%BA%E9%97%B4sobel%E8%BE%B9%E7%BC%98%E6%A3%80%E6%B5%8B/</guid>
-      <description>什么是边缘检测 根据Wiki说明，边缘检测是一种用于识别图像变化的明显的区域的技术。因此这种基础技术被广泛应用与图像处理和计算机视觉中用以查找出物体的边缘。边缘检测算法的目的是发掘图像中不连续火图像亮度急剧变化的点。而常见的几种算法用于便边缘检测技术包括Sobel， Prewitt, Roberts 和 Canny。其中Canny 边缘检测器是罪被广泛应用的算法，它使用多阶算法结合，于1986年被John F. Canny最先开发出来并且随后广泛使用。
+Material的部分我分成三块，第一块是 Projectile，我希望用Fresnel来描述mesh的边缘发光的感觉。同时在这个Material里面我还添加erosion的效果在alpha mask中，希望在Niagara中可以驱动这个erosion 制造飞溅的小液滴的效果，而不是用particle来实现。除此之外我还用一张noise 贴图来驱动vertex posion，希望制造液体飞出主体但是与主体牵连的感觉(液滴表面张力)。 Smoke的部分，用一张Noise作为UV的distortion添加在Main Noise Texture上面，并且添加圆形的mask和depth fade减弱边缘。Trail部分与Smoke基本相同，在Mask部分我用了横向的Gradient Mask，希望Trail的尾部逐渐虚化掉。</description></item><item><title>URP屏幕空间Sobel边缘检测</title><link>https://kampter.github.io/blog/urp%E5%B1%8F%E5%B9%95%E7%A9%BA%E9%97%B4sobel%E8%BE%B9%E7%BC%98%E6%A3%80%E6%B5%8B/</link><pubDate>Wed, 05 Apr 2023 20:25:54 +0800</pubDate><guid>https://kampter.github.io/blog/urp%E5%B1%8F%E5%B9%95%E7%A9%BA%E9%97%B4sobel%E8%BE%B9%E7%BC%98%E6%A3%80%E6%B5%8B/</guid><description>什么是边缘检测 根据Wiki说明，边缘检测是一种用于识别图像变化的明显的区域的技术。因此这种基础技术被广泛应用与图像处理和计算机视觉中用以查找出物体的边缘。边缘检测算法的目的是发掘图像中不连续火图像亮度急剧变化的点。而常见的几种算法用于便边缘检测技术包括Sobel， Prewitt, Roberts 和 Canny。其中Canny 边缘检测器是罪被广泛应用的算法，它使用多阶算法结合，于1986年被John F. Canny最先开发出来并且随后广泛使用。
 为什么边缘检测重要 边缘检测是图像处理的重要组成部分，因为它有助于计算识别和将图像分离成不同的部分 。 它用于图像处理、计算机视觉和机器视觉等领域的图像分割和数据提取。 检测图像亮度的急剧变化的目的是捕捉重要事件和属性的变化。 边缘是与图像相关的最重要的特征之一。 我们通过图像的边缘了解图像的底层结构。 因此，计算机视觉处理管道广泛使用边缘检测。
-Sobel 边缘检测 简单地说，我们对每个片段的四个边邻居进行采样，并对采样属性的差异求和。 小的差异表明表面是一致的，我们很可能不在边缘上，而大的差异表明采样属性的突然变化，我们很可能在边缘像素上。</description>
-    </item>
-    
-    <item>
-      <title>blender插件制作心得</title>
-      <link>https://kampter.github.io/blog/blender%E6%8F%92%E4%BB%B6%E5%88%B6%E4%BD%9C%E5%BF%83%E5%BE%97/</link>
-      <pubDate>Wed, 05 Apr 2023 15:36:05 +0800</pubDate>
-      
-      <guid>https://kampter.github.io/blog/blender%E6%8F%92%E4%BB%B6%E5%88%B6%E4%BD%9C%E5%BF%83%E5%BE%97/</guid>
-      <description>前言 一个偶然的机会接触到 Blender插件编写，一直以来我都是(曾经是) Maya以及Houdini软件的拥护者，但是Blender 的开源社区逐渐壮大也不能不引起重视，那么是时候了解一下Blender的相关内容。
+Sobel 边缘检测 简单地说，我们对每个片段的四个边邻居进行采样，并对采样属性的差异求和。 小的差异表明表面是一致的，我们很可能不在边缘上，而大的差异表明采样属性的突然变化，我们很可能在边缘像素上。</description></item><item><title>blender插件制作心得</title><link>https://kampter.github.io/blog/blender%E6%8F%92%E4%BB%B6%E5%88%B6%E4%BD%9C%E5%BF%83%E5%BE%97/</link><pubDate>Wed, 05 Apr 2023 15:36:05 +0800</pubDate><guid>https://kampter.github.io/blog/blender%E6%8F%92%E4%BB%B6%E5%88%B6%E4%BD%9C%E5%BF%83%E5%BE%97/</guid><description>前言 一个偶然的机会接触到 Blender插件编写，一直以来我都是(曾经是) Maya以及Houdini软件的拥护者，但是Blender 的开源社区逐渐壮大也不能不引起重视，那么是时候了解一下Blender的相关内容。
 Blender的交互层都是用Python来编写的，这就很友好了。作为一个使用过python用来数据分析以及编写爬虫爬 *** 内容的人表示这很开心。
-基础模板 bl_info = { &amp;#34;name&amp;#34;: &amp;#34;HelloAddon&amp;#34;, &amp;#34;author&amp;#34;: &amp;#34;作者&amp;#34;, &amp;#34;version&amp;#34;: (1, 0), &amp;#34;blender&amp;#34;: (2, 79, 0), &amp;#34;location&amp;#34;: &amp;#34;View3D &amp;gt; Tool Shelf &amp;gt;HelloAddon Panel&amp;#34;, &amp;#34;description&amp;#34;: &amp;#34;插件描述&amp;#34;, &amp;#34;warning&amp;#34;: &amp;#34;&amp;#34;, &amp;#34;wiki_url&amp;#34;: &amp;#34;&amp;#34;, &amp;#34;category&amp;#34;: &amp;#34;3D View&amp;#34;, } import bpy import logging from .</description>
-    </item>
-    
-    <item>
-      <title>URP屏幕空间环境光遮蔽</title>
-      <link>https://kampter.github.io/blog/urp%E5%B1%8F%E5%B9%95%E7%A9%BA%E9%97%B4%E7%8E%AF%E5%A2%83%E5%85%89%E9%81%AE%E8%94%BD/</link>
-      <pubDate>Wed, 05 Apr 2023 14:35:17 +0800</pubDate>
-      
-      <guid>https://kampter.github.io/blog/urp%E5%B1%8F%E5%B9%95%E7%A9%BA%E9%97%B4%E7%8E%AF%E5%A2%83%E5%85%89%E9%81%AE%E8%94%BD/</guid>
-      <description>Screen Space Ambient Occlusion: Enhancing Realism in Video Games Introduction Video games have come a long way since their inception, and the quality of graphics has improved significantly.</description>
-    </item>
-    
-    <item>
-      <title>URP屏幕空间雾效</title>
-      <link>https://kampter.github.io/blog/urp%E5%B1%8F%E5%B9%95%E7%A9%BA%E9%97%B4%E9%9B%BE%E6%95%88/</link>
-      <pubDate>Tue, 04 Apr 2023 14:25:03 +0800</pubDate>
-      
-      <guid>https://kampter.github.io/blog/urp%E5%B1%8F%E5%B9%95%E7%A9%BA%E9%97%B4%E9%9B%BE%E6%95%88/</guid>
-      <description>Unity URP Depth Fog Introduction Unity is a powerful game engine that has been used by game developers around the world to create high-quality games with various tools and features.</description>
-    </item>
-    
-    <item>
-      <title>URP 14 RenderFeature 使用方式</title>
-      <link>https://kampter.github.io/blog/urp-14-renderfeature-%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F/</link>
-      <pubDate>Mon, 20 Mar 2023 10:47:50 +0000</pubDate>
-      
-      <guid>https://kampter.github.io/blog/urp-14-renderfeature-%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F/</guid>
-      <description>URP 14 URP 14 对应Unity 2022.2对于2021lts版本的URP 12中后处理的API有些许改变，需要参考官方文档的改变。而其中最大的改变来自于RTHandle的引入。
+基础模板 bl_info = { &amp;#34;name&amp;#34;: &amp;#34;HelloAddon&amp;#34;, &amp;#34;author&amp;#34;: &amp;#34;作者&amp;#34;, &amp;#34;version&amp;#34;: (1, 0), &amp;#34;blender&amp;#34;: (2, 79, 0), &amp;#34;location&amp;#34;: &amp;#34;View3D &amp;gt; Tool Shelf &amp;gt;HelloAddon Panel&amp;#34;, &amp;#34;description&amp;#34;: &amp;#34;插件描述&amp;#34;, &amp;#34;warning&amp;#34;: &amp;#34;&amp;#34;, &amp;#34;wiki_url&amp;#34;: &amp;#34;&amp;#34;, &amp;#34;category&amp;#34;: &amp;#34;3D View&amp;#34;, } import bpy import logging from .</description></item><item><title>URP屏幕空间环境光遮蔽</title><link>https://kampter.github.io/blog/urp%E5%B1%8F%E5%B9%95%E7%A9%BA%E9%97%B4%E7%8E%AF%E5%A2%83%E5%85%89%E9%81%AE%E8%94%BD/</link><pubDate>Wed, 05 Apr 2023 14:35:17 +0800</pubDate><guid>https://kampter.github.io/blog/urp%E5%B1%8F%E5%B9%95%E7%A9%BA%E9%97%B4%E7%8E%AF%E5%A2%83%E5%85%89%E9%81%AE%E8%94%BD/</guid><description>Screen Space Ambient Occlusion: Enhancing Realism in Video Games Introduction Video games have come a long way since their inception, and the quality of graphics has improved significantly.</description></item><item><title>URP屏幕空间雾效</title><link>https://kampter.github.io/blog/urp%E5%B1%8F%E5%B9%95%E7%A9%BA%E9%97%B4%E9%9B%BE%E6%95%88/</link><pubDate>Tue, 04 Apr 2023 14:25:03 +0800</pubDate><guid>https://kampter.github.io/blog/urp%E5%B1%8F%E5%B9%95%E7%A9%BA%E9%97%B4%E9%9B%BE%E6%95%88/</guid><description>Unity URP Depth Fog Introduction Unity is a powerful game engine that has been used by game developers around the world to create high-quality games with various tools and features.</description></item><item><title>URP 14 RenderFeature 使用方式</title><link>https://kampter.github.io/blog/urp-14-renderfeature-%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F/</link><pubDate>Mon, 20 Mar 2023 10:47:50 +0000</pubDate><guid>https://kampter.github.io/blog/urp-14-renderfeature-%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F/</guid><description>URP 14 URP 14 对应Unity 2022.2对于2021lts版本的URP 12中后处理的API有些许改变，需要参考官方文档的改变。而其中最大的改变来自于RTHandle的引入。
 以一个DesaturateFeature为例。在DesaturateFeature.cs中改变比较大的是加入一个SetupRenderPasses来帮助创建Materail和传递参数，而不是传统的写法在Create()中。
-public override void SetupRenderPasses(ScriptableRenderer renderer, in RenderingData renderingData) { Material material = CoreUtils.</description>
-    </item>
-    
-    <item>
-      <title>在URP中搭建一个Disney Principled BRDF</title>
-      <link>https://kampter.github.io/blog/%E5%9C%A8urp%E4%B8%AD%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AAdisney-principled-brdf/</link>
-      <pubDate>Thu, 16 Mar 2023 23:33:20 +0000</pubDate>
-      
-      <guid>https://kampter.github.io/blog/%E5%9C%A8urp%E4%B8%AD%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AAdisney-principled-brdf/</guid>
-      <description>技术实现 Unity 自带的Lit 采用了通用的microfacet Cook-Torrance BRDF着色模型，对于各向异性，清漆，布料等支持并没有实现。这里希望搭建一个Disney Principled BRDF 来学习源码并且扩充这部分shader便于以后风格化定制。
-Diffuse项实现 half3 Disney_Diffuse(half3 diffuseColor, half roughness, half ndotV, half ndotL, half LdotH) { half FD90 = 0.</description>
-    </item>
-    
-    <item>
-      <title>Games 202 - PBR rendering 总结</title>
-      <link>https://kampter.github.io/blog/games-202-pbr-rendering-%E6%80%BB%E7%BB%93/</link>
-      <pubDate>Sun, 26 Feb 2023 23:16:34 +0000</pubDate>
-      
-      <guid>https://kampter.github.io/blog/games-202-pbr-rendering-%E6%80%BB%E7%BB%93/</guid>
-      <description>直接光照 在不考虑能量补偿的情况下 传统的Blinn Phong模型是
+public override void SetupRenderPasses(ScriptableRenderer renderer, in RenderingData renderingData) { Material material = CoreUtils.</description></item><item><title>在URP中搭建一个Disney Principled BRDF</title><link>https://kampter.github.io/blog/%E5%9C%A8urp%E4%B8%AD%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AAdisney-principled-brdf/</link><pubDate>Thu, 16 Mar 2023 23:33:20 +0000</pubDate><guid>https://kampter.github.io/blog/%E5%9C%A8urp%E4%B8%AD%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AAdisney-principled-brdf/</guid><description>技术实现 Unity 自带的Lit 采用了通用的microfacet Cook-Torrance BRDF着色模型，对于各向异性，清漆，布料等支持并没有实现。这里希望搭建一个Disney Principled BRDF 来学习源码并且扩充这部分shader便于以后风格化定制。
+Diffuse项实现 half3 Disney_Diffuse(half3 diffuseColor, half roughness, half ndotV, half ndotL, half LdotH) { half FD90 = 0.</description></item><item><title>Games 202 - PBR rendering 总结</title><link>https://kampter.github.io/blog/games-202-pbr-rendering-%E6%80%BB%E7%BB%93/</link><pubDate>Sun, 26 Feb 2023 23:16:34 +0000</pubDate><guid>https://kampter.github.io/blog/games-202-pbr-rendering-%E6%80%BB%E7%BB%93/</guid><description>直接光照 在不考虑能量补偿的情况下 传统的Blinn Phong模型是
 diffuse + specular + ambient
 而cook-torrance BRDF的方程是
 其中Ks = F, 且金属材质的漫反射为0
-阴影 各种优化过的Shadow Map, PCF, PCSS等等</description>
-    </item>
-    
-    <item>
-      <title>Games 202 - PBR材质</title>
-      <link>https://kampter.github.io/blog/games-202-pbr%E6%9D%90%E8%B4%A8/</link>
-      <pubDate>Sat, 25 Feb 2023 10:50:14 +0000</pubDate>
-      
-      <guid>https://kampter.github.io/blog/games-202-pbr%E6%9D%90%E8%B4%A8/</guid>
-      <description>PBR PBR包括Materials, lighting, camera, light transport等等任何与渲染有关的基于物理的内容。而工业界习惯叫PBR都是指PBR材质，虽然之前已经在unity中看过URP中PBR的实现原理并且尝试手动还原，这次看过Games 202后还是更加深化对PBR材质的了解。
+阴影 各种优化过的Shadow Map, PCF, PCSS等等</description></item><item><title>Games 202 - PBR材质</title><link>https://kampter.github.io/blog/games-202-pbr%E6%9D%90%E8%B4%A8/</link><pubDate>Sat, 25 Feb 2023 10:50:14 +0000</pubDate><guid>https://kampter.github.io/blog/games-202-pbr%E6%9D%90%E8%B4%A8/</guid><description>PBR PBR包括Materials, lighting, camera, light transport等等任何与渲染有关的基于物理的内容。而工业界习惯叫PBR都是指PBR材质，虽然之前已经在unity中看过URP中PBR的实现原理并且尝试手动还原，这次看过Games 202后还是更加深化对PBR材质的了解。
 基于表面的材质
 Microfacet models微表面模型（不是完全基于物理的）
 Disney Principled BRDF能够用于离线渲染, 但也可以运用在实时渲染中，但也不是PBR，是基于artist的角度来考虑的。
 基于体积的材质
-实时渲染中并没有什么特别好的解决方案，常见的诸如云，头发，皮肤。 Microfacet BRDF F项：菲涅尔项，表示观察角度与反射的关系(从一个角度看去会有多少的能量被反射) 当视线与反射表面夹角越小，反射越明显。水体是菲涅尔效应最明显的现实物体之一（当站在湖边看到脚下的湖水是透明的，而远处湖面的水则是不透明的，并且反射非常强烈）。</description>
-    </item>
-    
-    <item>
-      <title>GGJ2023 x GiCA 中国站回顾</title>
-      <link>https://kampter.github.io/blog/global-game-jam-2023%E5%9B%9E%E9%A1%BE/</link>
-      <pubDate>Wed, 15 Feb 2023 19:10:20 +0000</pubDate>
-      
-      <guid>https://kampter.github.io/blog/global-game-jam-2023%E5%9B%9E%E9%A1%BE/</guid>
-      <description>心得 抱歉这么晚才来写这个回顾，近期忙于过年，情人节，以及学习等等事项，年后到现在终于有一段时间相对比较安静可以回顾一下这个赛事。
+实时渲染中并没有什么特别好的解决方案，常见的诸如云，头发，皮肤。 Microfacet BRDF F项：菲涅尔项，表示观察角度与反射的关系(从一个角度看去会有多少的能量被反射) 当视线与反射表面夹角越小，反射越明显。水体是菲涅尔效应最明显的现实物体之一（当站在湖边看到脚下的湖水是透明的，而远处湖面的水则是不透明的，并且反射非常强烈）。</description></item><item><title>GGJ2023 x GiCA 中国站回顾</title><link>https://kampter.github.io/blog/global-game-jam-2023%E5%9B%9E%E9%A1%BE/</link><pubDate>Wed, 15 Feb 2023 19:10:20 +0000</pubDate><guid>https://kampter.github.io/blog/global-game-jam-2023%E5%9B%9E%E9%A1%BE/</guid><description>心得 抱歉这么晚才来写这个回顾，近期忙于过年，情人节，以及学习等等事项，年后到现在终于有一段时间相对比较安静可以回顾一下这个赛事。
 首先感谢GGJ 2023能在这个时期召开，我从前公司离职到现在学习游戏制作已经有半年多的时间。一直在学习但是没有什么机会能够回顾学会什么，还欠缺什么，还想要什么。而且在这种比赛的压力下，很多问题才会暴漏出来，感谢这次能够让我总结的机会。
 其次感谢我的组员：
 48小时开发辛苦了，组内的除了我之外都是已经在游戏公司内工作的大佬，很高兴能与你们一起合作完成这个作品，希望我没有给你们拖后腿。
@@ -123,138 +27,39 @@ Disney Principled BRDF能够用于离线渲染, 但也可以运用在实时渲�
 找参考 背景参考，可以说是整个流程里最轻松的部分。因为我需要做的就是去看原来知名的对应题材的作品，游戏，动画，影视等。寻找其中的共同背景，色彩构成，空间元素构成。
 乱糟糟随心所欲找了一些东西，也没有成体系。理想的过程是从图片总结出风格特点，再转化成引擎可以实现的方案做出来。
 基础场景搭建 刚好在2022年底花不少精力学习和排坑的houdini PDG流程这次刚好可以应该用在这次项目中。
-用houdini 生成Heightmap已经是非常轻松愉快的事情了，这个项目不需要高精度雕琢，简单调整一些细节就可以搭建PDG节点了。哦对，在这之前要在unity中准备好terrain layer以及通过随即撒点种植的植物prefab，同时设置好LOD。</description>
-    </item>
-    
-    <item>
-      <title>尝试在URP下手写 PBR shader</title>
-      <link>https://kampter.github.io/blog/%E5%B0%9D%E8%AF%95%E5%9C%A8urp%E4%B8%AD%E6%89%8B%E5%86%99-pbr-shader/</link>
-      <pubDate>Fri, 10 Feb 2023 12:58:11 +0000</pubDate>
-      
-      <guid>https://kampter.github.io/blog/%E5%B0%9D%E8%AF%95%E5%9C%A8urp%E4%B8%AD%E6%89%8B%E5%86%99-pbr-shader/</guid>
-      <description>Cook-Torrance BRDF Cook-Torrance BRDF的镜面反射部分包含三个函数，此外分母部分还有一个标准化因子 。字母D，F与G分别代表着一种类型的函数，各个函数分别用来近似的计算出表面反射特性的一个特定部分。三个函数分别为法线分布函数(Normal Distribution Function)，菲涅尔方程(Fresnel Rquation)和几何函数(Geometry Function)：
+用houdini 生成Heightmap已经是非常轻松愉快的事情了，这个项目不需要高精度雕琢，简单调整一些细节就可以搭建PDG节点了。哦对，在这之前要在unity中准备好terrain layer以及通过随即撒点种植的植物prefab，同时设置好LOD。</description></item><item><title>尝试在URP下手写 PBR shader</title><link>https://kampter.github.io/blog/%E5%B0%9D%E8%AF%95%E5%9C%A8urp%E4%B8%AD%E6%89%8B%E5%86%99-pbr-shader/</link><pubDate>Fri, 10 Feb 2023 12:58:11 +0000</pubDate><guid>https://kampter.github.io/blog/%E5%B0%9D%E8%AF%95%E5%9C%A8urp%E4%B8%AD%E6%89%8B%E5%86%99-pbr-shader/</guid><description>Cook-Torrance BRDF Cook-Torrance BRDF的镜面反射部分包含三个函数，此外分母部分还有一个标准化因子 。字母D，F与G分别代表着一种类型的函数，各个函数分别用来近似的计算出表面反射特性的一个特定部分。三个函数分别为法线分布函数(Normal Distribution Function)，菲涅尔方程(Fresnel Rquation)和几何函数(Geometry Function)：
 D项 - 法线分布函数: 估算在受到表面粗糙度的影响下，朝向方向与半程向量一致的微平面的数量。这是用来估算微平面的主要函数。
-half Function_D(half ndotH, half roughness) { half a2 = roughness * roughness; half ndotH2 = ndotH * ndotH; half nom = a2; half denom = (ndotH2 * (a2 - 1.</description>
-    </item>
-    
-    <item>
-      <title>URP仿原神渲染shader</title>
-      <link>https://kampter.github.io/blog/urp%E4%BB%BF%E5%8E%9F%E7%A5%9E%E6%B8%B2%E6%9F%93shader/</link>
-      <pubDate>Sun, 05 Feb 2023 21:56:47 +0000</pubDate>
-      
-      <guid>https://kampter.github.io/blog/urp%E4%BB%BF%E5%8E%9F%E7%A5%9E%E6%B8%B2%E6%9F%93shader/</guid>
-      <description>技术实现 在原神二测就有来体验过游戏，也是一步一步看着原神成长壮大封神的，一直以来都对于这样认真做内容的游戏公司怀有敬意。这次终于“敢”在掌握一定技术的情况下来模仿原神的渲染效果。
+half Function_D(half ndotH, half roughness) { half a2 = roughness * roughness; half ndotH2 = ndotH * ndotH; half nom = a2; half denom = (ndotH2 * (a2 - 1.</description></item><item><title>URP仿原神渲染shader</title><link>https://kampter.github.io/blog/urp%E4%BB%BF%E5%8E%9F%E7%A5%9E%E6%B8%B2%E6%9F%93shader/</link><pubDate>Sun, 05 Feb 2023 21:56:47 +0000</pubDate><guid>https://kampter.github.io/blog/urp%E4%BB%BF%E5%8E%9F%E7%A5%9E%E6%B8%B2%E6%9F%93shader/</guid><description>技术实现 在原神二测就有来体验过游戏，也是一步一步看着原神成长壮大封神的，一直以来都对于这样认真做内容的游戏公司怀有敬意。这次终于“敢”在掌握一定技术的情况下来模仿原神的渲染效果。
 模型准备 模型下载自米哈游官方在B站开展的二创活动pmx格式，直接网上随便找个converter即可转为fbx方便使用，这里选择刻晴作为测试人物模型。而神奇的google有人通过神奇的方式获得其他的贴图文件。汇总起来一共获得这些文件：
 贴图分析 Lightmap.r = Specular Mask
 Lightmap.g = AO Map
 Lightmap.b = Roughness
-lightmap.a = Emission Mask</description>
-    </item>
-    
-    <item>
-      <title>Games 202 环境光照</title>
-      <link>https://kampter.github.io/blog/games-202-%E7%8E%AF%E5%A2%83%E5%85%89%E7%85%A7/</link>
-      <pubDate>Sat, 21 Jan 2023 14:17:21 +0000</pubDate>
-      
-      <guid>https://kampter.github.io/blog/games-202-%E7%8E%AF%E5%A2%83%E5%85%89%E7%85%A7/</guid>
-      <description>IBL实时环境光照 IBL：Image-Based Lighting
+lightmap.a = Emission Mask</description></item><item><title>Games 202 环境光照</title><link>https://kampter.github.io/blog/games-202-%E7%8E%AF%E5%A2%83%E5%85%89%E7%85%A7/</link><pubDate>Sat, 21 Jan 2023 14:17:21 +0000</pubDate><guid>https://kampter.github.io/blog/games-202-%E7%8E%AF%E5%A2%83%E5%85%89%E7%85%A7/</guid><description>IBL实时环境光照 IBL：Image-Based Lighting
 典型的保存方式：cube map，spherical map
 在不考虑阴影的情况下（Visibility term）真实的渲染方程
 真实求解需要用蒙特卡洛积分求解path tracing, 但是速度太慢
 使用之前的近似方案
-一点点小的区别，我们只需要对 BRDF 覆盖的范围 ΩG 进行积分即可 第一部分的积分 红色区域就是对光源的入射方向（上面的 r ）进行了一个滤波</description>
-    </item>
-    
-    <item>
-      <title>军团要塞2渲染shader实现</title>
-      <link>https://kampter.github.io/blog/%E5%86%9B%E5%9B%A2%E8%A6%81%E5%A1%9E2%E6%B8%B2%E6%9F%93shader%E5%AE%9E%E7%8E%B0/</link>
-      <pubDate>Mon, 16 Jan 2023 15:25:58 +0000</pubDate>
-      
-      <guid>https://kampter.github.io/blog/%E5%86%9B%E5%9B%A2%E8%A6%81%E5%A1%9E2%E6%B8%B2%E6%9F%93shader%E5%AE%9E%E7%8E%B0/</guid>
-      <description>技术分析 论文中有一篇非常形象的图片来实现渲染效果
-Albedo // Albedo half4 mainTex = SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, IN.uv) * _MainColor; half4 albedo = mainTex; half4 ambient = half4(unity_SHAr.</description>
-    </item>
-    
-    <item>
-      <title>Games 202 - 阴影</title>
-      <link>https://kampter.github.io/blog/games-202-%E9%98%B4%E5%BD%B1/</link>
-      <pubDate>Wed, 11 Jan 2023 14:17:21 +0000</pubDate>
-      
-      <guid>https://kampter.github.io/blog/games-202-%E9%98%B4%E5%BD%B1/</guid>
-      <description>ShadowMapping 原理 先渲染一个从光源到物体的pass 获得深度图 再渲染一个从相机位置到物体的pass获得深度图，并且把这个深度投影到光源位置 （图中橙色点为无阴影） 比较第一次与第二次投影到光源的深度，如果相同即没有阴影；如果比原深度远，即在阴影中(图中红色点为在阴影中) 缺陷 走样、分辨率。数值精度问题 只能点光源、硬阴影 会产生自遮挡如果light 方向与物体平面接近平行 改善方式具体方式就是当一个点深度大于记录深度的值超过一个阈值bias时，我们才认为这个点在阴影内。 解决方案 增加一个 bias
+一点点小的区别，我们只需要对 BRDF 覆盖的范围 ΩG 进行积分即可 第一部分的积分 红色区域就是对光源的入射方向（上面的 r ）进行了一个滤波</description></item><item><title>军团要塞2渲染shader实现</title><link>https://kampter.github.io/blog/%E5%86%9B%E5%9B%A2%E8%A6%81%E5%A1%9E2%E6%B8%B2%E6%9F%93shader%E5%AE%9E%E7%8E%B0/</link><pubDate>Mon, 16 Jan 2023 15:25:58 +0000</pubDate><guid>https://kampter.github.io/blog/%E5%86%9B%E5%9B%A2%E8%A6%81%E5%A1%9E2%E6%B8%B2%E6%9F%93shader%E5%AE%9E%E7%8E%B0/</guid><description>技术分析 论文中有一篇非常形象的图片来实现渲染效果
+Albedo // Albedo half4 mainTex = SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, IN.uv) * _MainColor; half4 albedo = mainTex; half4 ambient = half4(unity_SHAr.</description></item><item><title>Games 202 - 阴影</title><link>https://kampter.github.io/blog/games-202-%E9%98%B4%E5%BD%B1/</link><pubDate>Wed, 11 Jan 2023 14:17:21 +0000</pubDate><guid>https://kampter.github.io/blog/games-202-%E9%98%B4%E5%BD%B1/</guid><description>ShadowMapping 原理 先渲染一个从光源到物体的pass 获得深度图 再渲染一个从相机位置到物体的pass获得深度图，并且把这个深度投影到光源位置 （图中橙色点为无阴影） 比较第一次与第二次投影到光源的深度，如果相同即没有阴影；如果比原深度远，即在阴影中(图中红色点为在阴影中) 缺陷 走样、分辨率。数值精度问题 只能点光源、硬阴影 会产生自遮挡如果light 方向与物体平面接近平行 改善方式具体方式就是当一个点深度大于记录深度的值超过一个阈值bias时，我们才认为这个点在阴影内。 解决方案 增加一个 bias
 中间的黄色那段我们不算
-也就是说我们对计算得到的深度减去一个 bias 一些技巧：动态的 bias</description>
-    </item>
-    
-    <item>
-      <title>程序相关</title>
-      <link>https://kampter.github.io/blog/%E7%A8%8B%E5%BA%8F%E7%9B%B8%E5%85%B3/</link>
-      <pubDate>Sun, 25 Dec 2022 17:40:29 +0800</pubDate>
-      
-      <guid>https://kampter.github.io/blog/%E7%A8%8B%E5%BA%8F%E7%9B%B8%E5%85%B3/</guid>
-      <description>Unity 仿只狼抓钩系统 Github
-Blender 插件 自定义转盘 拼写检查 实现原理</description>
-    </item>
-    
-    <item>
-      <title>渲染相关</title>
-      <link>https://kampter.github.io/blog/%E6%B8%B2%E6%9F%93%E7%9B%B8%E5%85%B3/</link>
-      <pubDate>Sun, 25 Dec 2022 17:22:02 +0800</pubDate>
-      
-      <guid>https://kampter.github.io/blog/%E6%B8%B2%E6%9F%93%E7%9B%B8%E5%85%B3/</guid>
-      <description>URP 后处理描边 实现原理
+也就是说我们对计算得到的深度减去一个 bias 一些技巧：动态的 bias</description></item><item><title>程序相关</title><link>https://kampter.github.io/blog/%E7%A8%8B%E5%BA%8F%E7%9B%B8%E5%85%B3/</link><pubDate>Sun, 25 Dec 2022 17:40:29 +0800</pubDate><guid>https://kampter.github.io/blog/%E7%A8%8B%E5%BA%8F%E7%9B%B8%E5%85%B3/</guid><description>Unity 仿只狼抓钩系统 Github
+Blender 插件 自定义转盘 拼写检查 实现原理</description></item><item><title>渲染相关</title><link>https://kampter.github.io/blog/%E6%B8%B2%E6%9F%93%E7%9B%B8%E5%85%B3/</link><pubDate>Sun, 25 Dec 2022 17:22:02 +0800</pubDate><guid>https://kampter.github.io/blog/%E6%B8%B2%E6%9F%93%E7%9B%B8%E5%85%B3/</guid><description>URP 后处理描边 实现原理
 URP 后处理雾效 实现原理
 Disney Principled BRDF 实现 实现原理
 Global Game Jam 2023 （包括草地，树木，水体渲染） 实现原理
-URP 仿原神渲染 实现原理</description>
-    </item>
-    
-    <item>
-      <title>游戏特效</title>
-      <link>https://kampter.github.io/blog/%E6%B8%B8%E6%88%8F%E7%89%B9%E6%95%88/</link>
-      <pubDate>Sun, 25 Dec 2022 17:21:06 +0800</pubDate>
-      
-      <guid>https://kampter.github.io/blog/%E6%B8%B8%E6%88%8F%E7%89%B9%E6%95%88/</guid>
-      <description>Poison Projectile Trail by UE 实现原理
+URP 仿原神渲染 实现原理</description></item><item><title>游戏特效</title><link>https://kampter.github.io/blog/%E6%B8%B8%E6%88%8F%E7%89%B9%E6%95%88/</link><pubDate>Sun, 25 Dec 2022 17:21:06 +0800</pubDate><guid>https://kampter.github.io/blog/%E6%B8%B8%E6%88%8F%E7%89%B9%E6%95%88/</guid><description>Poison Projectile Trail by UE 实现原理
 Lighting Impact by Unity 实现原理
 Bubble Effect by Unity 实现原理
-Lighting Swipe Trail by Unity Stylized Projectile by Unity {{youtube s9sVoHDX0EM}}</description>
-    </item>
-    
-    <item>
-      <title>Games 101 - PBR原理</title>
-      <link>https://kampter.github.io/blog/games-101-pbr%E5%8E%9F%E7%90%86/</link>
-      <pubDate>Wed, 28 Sep 2022 17:09:57 +0000</pubDate>
-      
-      <guid>https://kampter.github.io/blog/games-101-pbr%E5%8E%9F%E7%90%86/</guid>
-      <description>前言：只记录自己需要的内容
+Lighting Swipe Trail by Unity Stylized Projectile by Unity {{youtube s9sVoHDX0EM}}</description></item><item><title>Games 101 - PBR原理</title><link>https://kampter.github.io/blog/games-101-pbr%E5%8E%9F%E7%90%86/</link><pubDate>Wed, 28 Sep 2022 17:09:57 +0000</pubDate><guid>https://kampter.github.io/blog/games-101-pbr%E5%8E%9F%E7%90%86/</guid><description>前言：只记录自己需要的内容
 辐射度量学 Radiant energy 能量，单位：J（Joule焦耳）
 Radiant Flux （单位时间能量 → 功率）单位：W（Watt），lm（lumen流明）
-Intensity the power per unit solid angle (立体角) $$ I(\omega) = \frac{\mathrm{d} \Phi}{\mathrm{d} \omega} $$</description>
-    </item>
-    
-    <item>
-      <title>Games 101 - Shading</title>
-      <link>https://kampter.github.io/blog/games-101-shading/</link>
-      <pubDate>Sun, 11 Sep 2022 16:31:55 +0000</pubDate>
-      
-      <guid>https://kampter.github.io/blog/games-101-shading/</guid>
-      <description>前言：只记录自己需要的内容
+Intensity the power per unit solid angle (立体角) $$ I(\omega) = \frac{\mathrm{d} \Phi}{\mathrm{d} \omega} $$</description></item><item><title>Games 101 - Shading</title><link>https://kampter.github.io/blog/games-101-shading/</link><pubDate>Sun, 11 Sep 2022 16:31:55 +0000</pubDate><guid>https://kampter.github.io/blog/games-101-shading/</guid><description>前言：只记录自己需要的内容
 深度测试 （Z buffer or Depth buffer） 把深度视为无限远，然后遍历每一个山脚行，再遍历每一个三角形的光栅化过程，同时记录光栅化的深度信息。如果光栅化后当前像素点的深度信息小于之前记录过的信息，则替换原本的像素点信息。
 Z-buffer：对每个像素多存一个深度
 复杂度：O(n) for n triangles 并不是排序，而是只要最值
 需要保证三角形进入顺序和结果无关
 无法处理透明物体
-Blinn-Phong Reflectance Model 光照模型 着色模型 Diffuse Lambertian (Diffuse) Shading $$ L_{d}=k_{d}\left(I / r^{2}\right) \max (0, \mathbf{n} \cdot \mathbf{l}) $$</description>
-    </item>
-    
-    <item>
-      <title>Games 101 - 光栅化</title>
-      <link>https://kampter.github.io/blog/games-101-%E5%85%89%E6%A0%85%E5%8C%96/</link>
-      <pubDate>Fri, 02 Sep 2022 15:48:07 +0000</pubDate>
-      
-      <guid>https://kampter.github.io/blog/games-101-%E5%85%89%E6%A0%85%E5%8C%96/</guid>
-      <description>前言：只记录自己需要的内容
+Blinn-Phong Reflectance Model 光照模型 着色模型 Diffuse Lambertian (Diffuse) Shading $$ L_{d}=k_{d}\left(I / r^{2}\right) \max (0, \mathbf{n} \cdot \mathbf{l}) $$</description></item><item><title>Games 101 - 光栅化</title><link>https://kampter.github.io/blog/games-101-%E5%85%89%E6%A0%85%E5%8C%96/</link><pubDate>Fri, 02 Sep 2022 15:48:07 +0000</pubDate><guid>https://kampter.github.io/blog/games-101-%E5%85%89%E6%A0%85%E5%8C%96/</guid><description>前言：只记录自己需要的内容
 光栅化 屏幕空间 从（0，0）到（width, height）
 光栅化的过程即采样过程，来判断屏幕上的像素点是否在三角形里面
 采样的缺点：以点代面，有失偏颇 → Aliasing 走样，表现为锯齿
@@ -263,52 +68,12 @@ Blinn-Phong Reflectance Model 光照模型 着色模型 Diffuse Lambertian (Diff
 只保留高频信息：表现为边缘部分
 只保留低频信息：表现为画面主体
 走样 走样就是采样的中出现重复或者没有采集到关键信息 （图中蓝色和黑色采样点相同，但是实际差距明显）
-减少Aliasing Error 的方法</description>
-    </item>
-    
-    <item>
-      <title>Games 101 - 线代和变换</title>
-      <link>https://kampter.github.io/blog/games-101-%E7%BA%BF%E4%BB%A3%E5%92%8C%E5%8F%98%E6%8D%A2/</link>
-      <pubDate>Sun, 21 Aug 2022 14:17:21 +0000</pubDate>
-      
-      <guid>https://kampter.github.io/blog/games-101-%E7%BA%BF%E4%BB%A3%E5%92%8C%E5%8F%98%E6%8D%A2/</guid>
-      <description>前言：只记录自己需要的内容
-线代 判断点是否在三角形内的方法1 按照逆时针找到ab，bc，ca向量，当同时满足cross(ab * ap) &amp;gt; 0 &amp;amp;&amp;amp; cross(bc * bp) &amp;gt; 0 &amp;amp;&amp;amp; cross (ca * cp) &amp;gt; 0 时点在三角形内，如果有一个结果为0 点在这条边上，有一个小于0在三角形外。换种思路就是如果点在三角形内测，三次判断点都在封闭线段的左侧，即点在图形内。</description>
-    </item>
-    
-    <item>
-      <title>碎片化记录一下在澳洲的学习生活</title>
-      <link>https://kampter.github.io/blog/%E7%A2%8E%E7%89%87%E5%8C%96%E8%AE%B0%E5%BD%95%E6%BE%B3%E6%B4%B2%E7%9A%84%E5%AD%A6%E4%B9%A0%E7%94%9F%E6%B4%BB/</link>
-      <pubDate>Sat, 21 Dec 2019 12:24:33 +0000</pubDate>
-      
-      <guid>https://kampter.github.io/blog/%E7%A2%8E%E7%89%87%E5%8C%96%E8%AE%B0%E5%BD%95%E6%BE%B3%E6%B4%B2%E7%9A%84%E5%AD%A6%E4%B9%A0%E7%94%9F%E6%B4%BB/</guid>
-      <description>ANU - Canberra 学习java的时候尝试复刻flappy bird
+减少Aliasing Error 的方法</description></item><item><title>Games 101 - 线代和变换</title><link>https://kampter.github.io/blog/games-101-%E7%BA%BF%E4%BB%A3%E5%92%8C%E5%8F%98%E6%8D%A2/</link><pubDate>Sun, 21 Aug 2022 14:17:21 +0000</pubDate><guid>https://kampter.github.io/blog/games-101-%E7%BA%BF%E4%BB%A3%E5%92%8C%E5%8F%98%E6%8D%A2/</guid><description>前言：只记录自己需要的内容
+线代 判断点是否在三角形内的方法1 按照逆时针找到ab，bc，ca向量，当同时满足cross(ab * ap) &amp;gt; 0 &amp;amp;&amp;amp; cross(bc * bp) &amp;gt; 0 &amp;amp;&amp;amp; cross (ca * cp) &amp;gt; 0 时点在三角形内，如果有一个结果为0 点在这条边上，有一个小于0在三角形外。换种思路就是如果点在三角形内测，三次判断点都在封闭线段的左侧，即点在图形内。</description></item><item><title>碎片化记录一下在澳洲的学习生活</title><link>https://kampter.github.io/blog/%E7%A2%8E%E7%89%87%E5%8C%96%E8%AE%B0%E5%BD%95%E6%BE%B3%E6%B4%B2%E7%9A%84%E5%AD%A6%E4%B9%A0%E7%94%9F%E6%B4%BB/</link><pubDate>Sat, 21 Dec 2019 12:24:33 +0000</pubDate><guid>https://kampter.github.io/blog/%E7%A2%8E%E7%89%87%E5%8C%96%E8%AE%B0%E5%BD%95%E6%BE%B3%E6%B4%B2%E7%9A%84%E5%AD%A6%E4%B9%A0%E7%94%9F%E6%B4%BB/</guid><description>ANU - Canberra 学习java的时候尝试复刻flappy bird
 终于到了最喜欢的图形学课程。可以用Java 版本的opengl 绘画。
 也在老师的帮助指导下，完成了Lighting model以及简单光线追踪模型。
 我还专门选修了一门制作网页的课程。这是当时制作网站的效果，完全静态网站，没有使用任何的框架，纯html, cs, javascript实现的网站效果。那时候觉得手写响应式网站还要不断适配各种设备可太累了，痛恨老师不让我们用框架。
 VU - Melbourne 作为一个名商科学生偷学AE合成课程的作品，学会了在AE中抠图，添加素材，定位追踪，求三维空间位置，并且最终调色合成。
 这是那节课上课时候有机会参观影视实拍流程的绿幕。我的第一个AE合成作品便使用这里实现的把拍摄素材融入到视频中。
-EVE 悉尼见面会 在堪培拉枯燥的学习生活之余终于有机会去悉尼参加我喜欢的游戏eve的粉丝见面会。</description>
-    </item>
-    
-    <item>
-      <title>Maya Bifrost</title>
-      <link>https://kampter.github.io/blog/maya-bifrost-showreel/</link>
-      <pubDate>Sat, 17 Feb 2018 12:03:11 +0000</pubDate>
-      
-      <guid>https://kampter.github.io/blog/maya-bifrost-showreel/</guid>
-      <description> R&amp;amp;D &amp;ndash;&amp;gt; WIP &amp;ndash;&amp;gt; Render Test &amp;ndash;&amp;gt; Final Render
-Beach Beer Waterfall Coffee 第一周 第二周 第三周 第四周 第五周 第六周 第七周 第八周 第九周 第十周 第十一周 </description>
-    </item>
-    
-    <item>
-      <title>Houdini</title>
-      <link>https://kampter.github.io/blog/houdini-showreel/</link>
-      <pubDate>Mon, 18 Dec 2017 16:23:55 +0000</pubDate>
-      
-      <guid>https://kampter.github.io/blog/houdini-showreel/</guid>
-      <description>Particle Trails Water Cathedral Beauty </description>
-    </item>
-    
-  </channel>
-</rss>
+EVE 悉尼见面会 在堪培拉枯燥的学习生活之余终于有机会去悉尼参加我喜欢的游戏eve的粉丝见面会。</description></item><item><title>Maya Bifrost</title><link>https://kampter.github.io/blog/maya-bifrost-showreel/</link><pubDate>Sat, 17 Feb 2018 12:03:11 +0000</pubDate><guid>https://kampter.github.io/blog/maya-bifrost-showreel/</guid><description> R&amp;amp;D &amp;ndash;&amp;gt; WIP &amp;ndash;&amp;gt; Render Test &amp;ndash;&amp;gt; Final Render
+Beach Beer Waterfall Coffee 第一周 第二周 第三周 第四周 第五周 第六周 第七周 第八周 第九周 第十周 第十一周</description></item><item><title>Houdini</title><link>https://kampter.github.io/blog/houdini-showreel/</link><pubDate>Mon, 18 Dec 2017 16:23:55 +0000</pubDate><guid>https://kampter.github.io/blog/houdini-showreel/</guid><description>Particle Trails Water Cathedral Beauty</description></item></channel></rss>

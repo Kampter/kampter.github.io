@@ -1,969 +1,378 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <title>在URP中搭建一个Disney Principled BRDF</title>
-
-  <!-- Meta -->
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="HandheldFriendly" content="true">
-  <meta name="author" content="bslthemes" />
-
-  <!-- Google Fonts -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" />
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.0/css/all.css" />
-
-  <!-- Main Stylesheets -->
-  
-  <link rel="stylesheet" href="https://kampter.github.io/scss/style.min.css" />
-
-  <!-- Plugins Stylesheets -->
-  <link rel="stylesheet" href="https://kampter.github.io/plugins/ionicons/ionicons.css" />
-  <link rel="stylesheet" href="https://kampter.github.io/plugins/font-awesome/css/font-awesome.css" />
-  <link rel="stylesheet" href="https://kampter.github.io/plugins/magnific-popup/magnific-popup.css" />
-  <link rel="stylesheet" href="https://kampter.github.io/plugins/owl-carousel/owl.carousel.css" />
-  <link rel="stylesheet" href="https://kampter.github.io/plugins/animate/animate.css" />
-  <link rel="stylesheet" href="https://kampter.github.io/plugins/syntax/syntax.css" />
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  <!-- Favicon -->
-  <link rel="shortcut icon" href="https://kampter.github.io/images/favicon/favicon.ico" type="image/x-icon" />
-  <link rel="icon" href="https://kampter.github.io/images/favicon/favicon.ico" type="image/x-icon" />
-
-  
-  <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-4BGKQYLBBG"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-
-    gtag('config', 'G-4BGKQYLBBG');
-  </script>
-  
-
-  </head>
-
-
-<body class=" blog">
-  <div class="page new-skin">
-
-    <!-- Preloader -->
-<div class="preloader">
-	<div class="centrize full-width">
-		<div class="vertical-center">
-			<div class="spinner">
-				<div class="double-bounce1"></div>
-				<div class="double-bounce2"></div>
-			</div>
-		</div>
-	</div>
-</div>
-
-
-    
-
-<!-- Background -->
-
-
-<div class="background gradient">
-	<ul class="bg-bubbles">
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-	</ul>
-</div>
-
-
-
-
-
-    
-
-<div class="s_overlay"></div>
-<div class="content-sidebar">
-	<div class="sidebar-wrap">
-		<aside id="secondary" class="widget-area">
-
-      
-			<div id="search" class="widget widget_search">
-				<form class="search-form" action="https://kampter.github.io/search">
-					<label>
-						<input type="search" id="searchInput" class="search-field" placeholder="Search ..." value="">
-					</label>
-					<input type="submit" class="search-submit" value="">
-          <ul id="searchResults"></ul>
-				</form>
-			</div>
-      
-
-			
-			<section class="widget widget_menu">
-				<h2 class="widget-title">Menu</h2>
-				<ul>
-					
-					
-					
-					
-					
-					<li class="active">
-						<a href="https://kampter.github.io//blog">Blog Page</a>
-					</li>
-					
-					
-					
-					
-					<li>
-						<a href="https://kampter.github.io//portfolio">Portfolio Page</a>
-					</li>
-					
-				</ul>
-			</section>
-      
-
-			
-			<section class="widget widget_recent_entries">
-				<h2 class="widget-title">Latest Posts</h2>
-				<ul>
-					
-					<li>
-						<a href="https://kampter.github.io/blog/%E8%BF%91%E6%9C%9F%E5%81%9A%E7%9A%84%E5%87%A0%E4%B8%AAunity%E5%92%8Cue%E7%89%B9%E6%95%88/">近期做的几个Unity和UE特效</a>
-					</li>
-					
-					<li>
-						<a href="https://kampter.github.io/blog/urp%E5%B1%8F%E5%B9%95%E7%A9%BA%E9%97%B4sobel%E8%BE%B9%E7%BC%98%E6%A3%80%E6%B5%8B/">URP屏幕空间Sobel边缘检测</a>
-					</li>
-					
-					<li>
-						<a href="https://kampter.github.io/blog/blender%E6%8F%92%E4%BB%B6%E5%88%B6%E4%BD%9C%E5%BF%83%E5%BE%97/">blender插件制作心得</a>
-					</li>
-					
-					<li>
-						<a href="https://kampter.github.io/blog/urp%E5%B1%8F%E5%B9%95%E7%A9%BA%E9%97%B4%E7%8E%AF%E5%A2%83%E5%85%89%E9%81%AE%E8%94%BD/">URP屏幕空间环境光遮蔽</a>
-					</li>
-					
-				</ul>
-			</section>
-			
-
-			
-			<section class="widget widget_categories">
-				<h2 class="widget-title">Categories</h2>
-				<ul>
-            
-  				  <li>
-              <a href="https://kampter.github.io/categories/portfolio/">Portfolio</a>
-              <small>( 5 )</small>
-            </li>
-            
-  				  <li>
-              <a href="https://kampter.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
-              <small>( 6 )</small>
-            </li>
-            
-  				  <li>
-              <a href="https://kampter.github.io/categories/%E6%8A%80%E6%9C%AF%E5%AE%9E%E7%8E%B0/">技术实现</a>
-              <small>( 5 )</small>
-            </li>
-            
-  				  <li>
-              <a href="https://kampter.github.io/categories/%E6%97%A5%E5%B8%B8%E7%94%9F%E6%B4%BB/">日常生活</a>
-              <small>( 1 )</small>
-            </li>
-            
-  				  <li>
-              <a href="https://kampter.github.io/categories/%E6%97%A5%E5%B8%B8%E8%AE%B0%E5%BD%95/">日常记录</a>
-              <small>( 1 )</small>
-            </li>
-            
-  				  <li>
-              <a href="https://kampter.github.io/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/">课程笔记</a>
-              <small>( 8 )</small>
-            </li>
-            
-				</ul>
-			</section>
-			
-
-			
-			<section class="widget widget_tags">
-				<h2 class="widget-title">Tags</h2>
-				<ul>
-           
-           <li>
-             <a href="https://kampter.github.io/tags/after-effect/">After Effect</a>
-             <small>( 1 )</small>
-           </li>
-           
-           <li>
-             <a href="https://kampter.github.io/tags/bifrost/">Bifrost</a>
-             <small>( 1 )</small>
-           </li>
-           
-           <li>
-             <a href="https://kampter.github.io/tags/blender/">blender</a>
-             <small>( 2 )</small>
-           </li>
-           
-           <li>
-             <a href="https://kampter.github.io/tags/c#/">C#</a>
-             <small>( 4 )</small>
-           </li>
-           
-           <li>
-             <a href="https://kampter.github.io/tags/computer-graphic/">Computer Graphic</a>
-             <small>( 9 )</small>
-           </li>
-           
-           <li>
-             <a href="https://kampter.github.io/tags/eve-online/">Eve Online</a>
-             <small>( 1 )</small>
-           </li>
-           
-           <li>
-             <a href="https://kampter.github.io/tags/flip/">Flip</a>
-             <small>( 1 )</small>
-           </li>
-           
-           <li>
-             <a href="https://kampter.github.io/tags/games-101/">Games 101</a>
-             <small>( 4 )</small>
-           </li>
-           
-           <li>
-             <a href="https://kampter.github.io/tags/games-202/">Games 202</a>
-             <small>( 3 )</small>
-           </li>
-           
-           <li>
-             <a href="https://kampter.github.io/tags/hlsl/">HLSL</a>
-             <small>( 12 )</small>
-           </li>
-           
-           <li>
-             <a href="https://kampter.github.io/tags/houdini/">Houdini</a>
-             <small>( 3 )</small>
-           </li>
-           
-           <li>
-             <a href="https://kampter.github.io/tags/java/">Java</a>
-             <small>( 1 )</small>
-           </li>
-           
-           <li>
-             <a href="https://kampter.github.io/tags/math/">Math</a>
-             <small>( 8 )</small>
-           </li>
-           
-           <li>
-             <a href="https://kampter.github.io/tags/maya/">Maya</a>
-             <small>( 1 )</small>
-           </li>
-           
-           <li>
-             <a href="https://kampter.github.io/tags/niagara-system/">niagara system</a>
-             <small>( 2 )</small>
-           </li>
-           
-           <li>
-             <a href="https://kampter.github.io/tags/opengl/">Opengl</a>
-             <small>( 1 )</small>
-           </li>
-           
-           <li>
-             <a href="https://kampter.github.io/tags/particle/">Particle</a>
-             <small>( 1 )</small>
-           </li>
-           
-           <li>
-             <a href="https://kampter.github.io/tags/pbr-shading/">PBR Shading</a>
-             <small>( 2 )</small>
-           </li>
-           
-           <li>
-             <a href="https://kampter.github.io/tags/plugin/">plugin</a>
-             <small>( 1 )</small>
-           </li>
-           
-           <li>
-             <a href="https://kampter.github.io/tags/render-feature/">Render Feature</a>
-             <small>( 4 )</small>
-           </li>
-           
-           <li>
-             <a href="https://kampter.github.io/tags/shader-graph/">Shader Graph</a>
-             <small>( 1 )</small>
-           </li>
-           
-           <li>
-             <a href="https://kampter.github.io/tags/substance-designer/">substance designer</a>
-             <small>( 2 )</small>
-           </li>
-           
-           <li>
-             <a href="https://kampter.github.io/tags/toon-shading/">Toon Shading</a>
-             <small>( 3 )</small>
-           </li>
-           
-           <li>
-             <a href="https://kampter.github.io/tags/unity/">Unity</a>
-             <small>( 15 )</small>
-           </li>
-           
-           <li>
-             <a href="https://kampter.github.io/tags/unreal-engine/">unreal engine</a>
-             <small>( 2 )</small>
-           </li>
-           
-           <li>
-             <a href="https://kampter.github.io/tags/vfx-graph/">VFX Graph</a>
-             <small>( 2 )</small>
-           </li>
-           
-				</ul>
-			</section>
-			
-
-		</aside>
-	</div>
-	<span class="close"></span>
-</div>
-
-
-    
-    
-    <!-- Container -->
-    <div class="container opened" data-animation-in="fadeInLeft" data-animation-out="fadeOutLeft">
-
-      
-
-<!-- Header -->
-<header class="header">
-
-	<a href="#" class="menu-btn"><span></span></a>
-
-  <!-- menu -->
-	<div class="top-menu">
-		<ul>
-      
-      
-      
-      
-      
-			<li class="active">
-				<a href="https://kampter.github.io/#about-card">
-					<span class="icon ion-person"></span>
-					<span class="link">About</span>
-				</a>
-			</li>
-			
-      
-      
-      
-			<li>
-				<a href="https://kampter.github.io/#resume-card">
-					<span class="icon ion-android-list"></span>
-					<span class="link">Resume</span>
-				</a>
-			</li>
-			
-      
-      
-      
-			<li>
-				<a href="https://kampter.github.io/#works-card">
-					<span class="icon ion-paintbrush"></span>
-					<span class="link">Works</span>
-				</a>
-			</li>
-			
-      
-      
-      
-			<li>
-				<a href="https://kampter.github.io/#blog-card">
-					<span class="icon ion-chatbox-working"></span>
-					<span class="link">Blog</span>
-				</a>
-			</li>
-			
-      
-      
-      
-			<li>
-				<a href="https://kampter.github.io/#contact-card">
-					<span class="icon ion-at"></span>
-					<span class="link">Contact</span>
-				</a>
-			</li>
-			
-		</ul>
-	</div>
-
-</header>
-
-
-      <!-- Card - Started -->
-
-
-
-<div class="card-started" id="home-card">
-
-  <!-- Profile-->
-  <div class="profile no-photo">
-
-    <!-- profile image -->
-    <div class="slide" style="background-image: url(https://kampter.github.io/images/1082264.png);"></div>
-
-    <!-- profile photo -->
-    
-
-    <!-- profile titles -->
-    <div class="title">王子正</div>
-    <div class="subtitle subtitle-typed">
-      <div class="typing-title">
-        
-        <p>Technical Artist</p>
-        
-      </div>
-    </div>
-
-    <!-- profile socials -->
-    <div class="social">
-      
-      <a target="_blank" href="https://twitter.com/wang_psbswsg" title="Twitter"><span class="fab fa-twitter"></span></a>
-      
-      <a target="_blank" href="https://github.com/Kampter" title="GitHub"><span class="fab fa-github"></span></a>
-      
-      <a target="_blank" href="https://www.youtube.com/channel/UCK43eUkmsyRk8FeBw5oRJtQ" title="Youtube"><span class="fab fa-youtube"></span></a>
-      
-      <a target="_blank" href="https://www.artstation.com/kampter" title="Stackoverflow"><span class="fab fa-artstation"></span></a>
-      
-    </div>
-
-    <!-- profile buttons -->
-    <div class="lnks">
-      
-      <a href="/images/Resume_ZizhengWang_Chinese_v004.pdf" target="_blank" class="lnk">
-        <span class="text">Download CV</span>
-        
-        <span class="ion ion ion-archive"></span>
-        
-      </a>
-      
-      <a href="mailto:psbswsg@gmail.com" target="_blank" class="lnk">
-        <span class="text">Contact Me</span>
-        
-        <span class="ion arrow"></span>
-        
-      </a>
-      
-    </div>
-
-  </div>
-
-</div>
-
-
-
-
-      
-
-
-<!-- Blog Post -->
-<div class="card-inner blog blog-post animated" id="blog-card">
-	<div class="card-wrap">
-
-		<div class="content blog-single">
-
-			<div class="title">Blog Post</div>
-
-			<div class="row border-line-v">
-				<div class="col col-m-12 col-t-12 col-d-12">
-					<div class="post-box">
-
-						<h1>在URP中搭建一个Disney Principled BRDF</h1>
-						<div class="blog-detail">
-							<span class="date">March 16, 2023</span>
-							
-							<span class="cat-links">
-		            
-		            <a href="https://kampter.github.io/categories/%E6%8A%80%E6%9C%AF%E5%AE%9E%E7%8E%B0/">技术实现</a>
-		            
-							</span>
-							
-							<span class="byline"> By <span class="author">Ryan Adlard</span></span>
-						</div>
-
-						
-						<div class="blog-image">
-							<img src="https://kampter.github.io/images/blog/image-20230317121626944.png" alt="在URP中搭建一个Disney Principled BRDF" />
-						</div>
-						
-
-						<div class="blog-content">
-							<h2 id="技术实现">技术实现</h2>
-<p>Unity 自带的Lit 采用了通用的microfacet Cook-Torrance BRDF着色模型，对于各向异性，清漆，布料等支持并没有实现。这里希望搭建一个Disney Principled BRDF 来学习源码并且扩充这部分shader便于以后风格化定制。</p>
-<h3 id="diffuse项实现">Diffuse项实现</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-HLSL" data-lang="HLSL"><span style="display:flex;"><span><span style="color:#66d9ef">half3</span> Disney_Diffuse(<span style="color:#66d9ef">half3</span> diffuseColor, <span style="color:#66d9ef">half</span> roughness, <span style="color:#66d9ef">half</span> ndotV, <span style="color:#66d9ef">half</span> ndotL, <span style="color:#66d9ef">half</span> LdotH)
-</span></span><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span> <span style="color:#66d9ef">half</span> FD90 <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.5</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">*</span> LdotH <span style="color:#f92672">*</span> LdotH <span style="color:#f92672">*</span> roughness;
-</span></span><span style="display:flex;"><span> <span style="color:#66d9ef">half</span> FnV <span style="color:#f92672">=</span> SchlickFresnel(ndotV);
-</span></span><span style="display:flex;"><span> <span style="color:#66d9ef">half</span> FnL <span style="color:#f92672">=</span> SchlickFresnel(ndotL);
-</span></span><span style="display:flex;"><span> <span style="color:#66d9ef">return</span>  lerp(<span style="color:#ae81ff">1.0</span>, FD90, FnV) <span style="color:#f92672">*</span> lerp(<span style="color:#ae81ff">1.0</span>, FD90, FnL);
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p>unity实现如下，但是UE把LdotH修改成VdotH</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-HLSL" data-lang="HLSL"><span style="display:flex;"><span><span style="color:#66d9ef">half3</span> Diffuse_Burley_Disney(<span style="color:#66d9ef">float3</span> diffuseColor, <span style="color:#66d9ef">float</span> roughness, <span style="color:#66d9ef">float</span> ndotV, <span style="color:#66d9ef">float</span> ndotL, <span style="color:#66d9ef">float</span> LdotH)
-</span></span><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span> <span style="color:#66d9ef">float</span> FD90 <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.5</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">*</span> LdotH <span style="color:#f92672">*</span> LdotH <span style="color:#f92672">*</span> roughness;
-</span></span><span style="display:flex;"><span> <span style="color:#66d9ef">float</span> FdV <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">+</span> (FD90 <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">*</span> Pow5(<span style="color:#ae81ff">1</span> <span style="color:#f92672">-</span> ndotV);
-</span></span><span style="display:flex;"><span> <span style="color:#66d9ef">float</span> FdL <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">+</span> (FD90 <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">*</span> Pow5(<span style="color:#ae81ff">1</span> <span style="color:#f92672">-</span> ndotL);
-</span></span><span style="display:flex;"><span> <span style="color:#66d9ef">return</span> diffuseColor <span style="color:#f92672">*</span> ((<span style="color:#ae81ff">1</span> <span style="color:#f92672">/</span> PI) <span style="color:#f92672">*</span> FdV <span style="color:#f92672">*</span> FdL);
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p><img src="image-20230316234314746.png" alt=""></p>
-<p>UE的修改会造成远距离看diffuse模型变成一个没有明暗区分的模型。</p>
-<p><img src="image-20230316234400394.png" alt=""></p>
-<p>这与Disney的效果十分接近</p>
-<figure><img src="image-20230317001852780.png" width="30%"/>
-</figure>
-
-<h3 id="完整代码">完整代码</h3>
-<p>偷懒没有逐一贴过来，完整写完直接代码在这里。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-HLSL" data-lang="HLSL"><span style="display:flex;"><span>Shader <span style="color:#e6db74">&#34;Custom/Disney PBR&#34;</span>
-</span></span><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>    Properties
-</span></span><span style="display:flex;"><span>    {   
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e">//Disney coefficients</span>
-</span></span><span style="display:flex;"><span>        [MainTexture] _BaseMap   (<span style="color:#e6db74">&#34;Base Color&#34;</span>, <span style="color:#ae81ff">2</span>D)                  <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;white&#34;</span> {}
-</span></span><span style="display:flex;"><span>        _MainColor               (<span style="color:#e6db74">&#34;Color Tint&#34;</span>, Color)               <span style="color:#f92672">=</span> (<span style="color:#ae81ff">1.0</span>, <span style="color:#ae81ff">1.0</span>, <span style="color:#ae81ff">1.0</span>, <span style="color:#ae81ff">1.0</span>)
-</span></span><span style="display:flex;"><span>        _Metallic                (<span style="color:#e6db74">&#34;Metallic&#34;</span>, Range(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>))           <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.0</span>
-</span></span><span style="display:flex;"><span>        _Smoothness              (<span style="color:#e6db74">&#34;Smoothness&#34;</span>, Range(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>))         <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.5</span>
-</span></span><span style="display:flex;"><span>        _Subsurface              (<span style="color:#e6db74">&#34;Subsurface&#34;</span>, Range(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>))         <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.0</span>
-</span></span><span style="display:flex;"><span>        _Specular                (<span style="color:#e6db74">&#34;Specular&#34;</span>, Range(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>))           <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.5</span>
-</span></span><span style="display:flex;"><span>        _SpecularTint            (<span style="color:#e6db74">&#34;SpecularTint&#34;</span>, Range(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>))       <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.0</span>
-</span></span><span style="display:flex;"><span>        _Anisotropic             (<span style="color:#e6db74">&#34;Anisotropic&#34;</span>, Range(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>))        <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.0</span>
-</span></span><span style="display:flex;"><span>        _Sheen                   (<span style="color:#e6db74">&#34;Sheen&#34;</span>, Range(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>))              <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.0</span>
-</span></span><span style="display:flex;"><span>        _SheenTint               (<span style="color:#e6db74">&#34;SheenTint&#34;</span>, Range(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>))          <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.5</span>
-</span></span><span style="display:flex;"><span>        _Clearcoat               (<span style="color:#e6db74">&#34;Clearcoat&#34;</span>, Range(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>))          <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.0</span>
-</span></span><span style="display:flex;"><span>        _ClearcoatGloss          (<span style="color:#e6db74">&#34;ClearcoatGloss&#34;</span>, Range(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>))     <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.0</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e">//Normal control</span>
-</span></span><span style="display:flex;"><span>        _BumpScale               (<span style="color:#e6db74">&#34;Normal Scale&#34;</span>, Range(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>))       <span style="color:#f92672">=</span> <span style="color:#ae81ff">1.0</span>
-</span></span><span style="display:flex;"><span>        _BumpMap                 (<span style="color:#e6db74">&#34;Normal Map&#34;</span>, <span style="color:#ae81ff">2</span>D)                  <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;bump&#34;</span>  {}
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e">//GI control</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">//        _IrradianceMap           (&#34;Irradiance Map&#34;, CUBE)            = &#34;white&#34; {}</span>
-</span></span><span style="display:flex;"><span>        _LUT                     (<span style="color:#e6db74">&#34;LUT&#34;</span>, <span style="color:#ae81ff">2</span>D)                         <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;white&#34;</span> {}
-</span></span><span style="display:flex;"><span><span style="color:#75715e">//        _PrefilterMap            (&#34;Prefilter Map&#34;, CUBE)             = &#34;white&#34; {}</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">//        _AO                      (&#34;AO&#34;, 2D)                          = &#34;white&#34; {}</span>
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>    SubShader
-</span></span><span style="display:flex;"><span>    {
-</span></span><span style="display:flex;"><span>        Tags { <span style="color:#e6db74">&#34;RenderType&#34;</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Opaque&#34;</span> <span style="color:#e6db74">&#34;RenderPipeLine&#34;</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;UniversalRenderPipeline&#34;</span> <span style="color:#e6db74">&#34;IgnoreProjector&#34;</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;True&#34;</span> }
-</span></span><span style="display:flex;"><span>        HLSLINCLUDE
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        <span style="color:#960050;background-color:#1e0010">#</span>include <span style="color:#e6db74">&#34;Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl&#34;</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#960050;background-color:#1e0010">#</span>include <span style="color:#e6db74">&#34;Packages/com.unity.render-pipelines.universal/ShaderLibrary/Lighting.hlsl&#34;</span>
-</span></span><span style="display:flex;"><span>        
-</span></span><span style="display:flex;"><span>        TEXTURE2D(_BaseMap);        SAMPLER(sample_BaseMap);
-</span></span><span style="display:flex;"><span>        TEXTURE2D(_BumpMap);        SAMPLER(sampler_BumpMap);
-</span></span><span style="display:flex;"><span>        TEXTURE2D(_LUT);            SAMPLER(sampler_LUT);
-</span></span><span style="display:flex;"><span>        
-</span></span><span style="display:flex;"><span>        CBUFFER_START(UnityPerMaterial)
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">half4</span> _BaseMap_ST;
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">half4</span> _MainColor;
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">half</span> _Metallic;
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">half</span> _Smoothness;
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">half</span> _Subsurface;
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">half</span> _Specular;
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">half</span> _SpecularTint;
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">half</span> _Anisotropic;
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">half</span> _Sheen;
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">half</span> _SheenTint;
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">half</span> _Clearcoat;
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">half</span> _ClearcoatGloss;
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">half4</span> _BumpMap_ST;
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">half</span> _BumpScale;
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">half4</span> _LUT_ST;
-</span></span><span style="display:flex;"><span>        CBUFFER_END
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">struct</span> Attributes
-</span></span><span style="display:flex;"><span>        {
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">half4</span> positionOS    <span style="color:#f92672">:</span> POSITION;
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">half3</span> normalOS      <span style="color:#f92672">:</span> NORMAL;
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">half4</span> tangetOS      <span style="color:#f92672">:</span> TANGENT;
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">half2</span> uv            <span style="color:#f92672">:</span> TEXCOORD0;
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">half2</span> lightmapUV    <span style="color:#f92672">:</span> TEXCOORD1;
-</span></span><span style="display:flex;"><span>            UNITY_VERTEX_INPUT_INSTANCE_ID
-</span></span><span style="display:flex;"><span>        };
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">struct</span> Varyings
-</span></span><span style="display:flex;"><span>        {
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">half4</span> positionCS    <span style="color:#f92672">:</span> SV_POSITION;
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">half3</span> positionWS    <span style="color:#f92672">:</span> TEXCOORD0;
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">half3</span> normalWS      <span style="color:#f92672">:</span> TEXCOORD1;
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">half2</span> uv            <span style="color:#f92672">:</span> TEXCOORD2;
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">half3</span> tangentWS     <span style="color:#f92672">:</span> TEXCOORD3;
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">half2</span> lightmapUV    <span style="color:#f92672">:</span> TEXCOORD4;
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">half3</span> bitangentWS   <span style="color:#f92672">:</span> TEXCOORD5;
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">half4</span> viewDirWS     <span style="color:#f92672">:</span> TEXCOORD6;
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">half</span>  fogCoord      <span style="color:#f92672">:</span> TEXCOORD7;
-</span></span><span style="display:flex;"><span>            UNITY_VERTEX_INPUT_INSTANCE_ID
-</span></span><span style="display:flex;"><span>        };
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        ENDHLSL
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        Pass 
-</span></span><span style="display:flex;"><span>        {   
-</span></span><span style="display:flex;"><span>            Name <span style="color:#e6db74">&#34;DisneyForward&#34;</span>
-</span></span><span style="display:flex;"><span>            Tags{ <span style="color:#e6db74">&#34;LightMode&#34;</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;UniversalForward&#34;</span> }
-</span></span><span style="display:flex;"><span>            
-</span></span><span style="display:flex;"><span>            CULL OFF
-</span></span><span style="display:flex;"><span>            HLSLPROGRAM
-</span></span><span style="display:flex;"><span>            <span style="color:#960050;background-color:#1e0010">#</span>pragma vertex vert
-</span></span><span style="display:flex;"><span>            <span style="color:#960050;background-color:#1e0010">#</span>pragma fragment frag
-</span></span><span style="display:flex;"><span>            <span style="color:#960050;background-color:#1e0010">#</span>pragma multi_compile_fog
-</span></span><span style="display:flex;"><span>            <span style="color:#960050;background-color:#1e0010">#</span>pragma shader_feature_local_fragement _EMISSION
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>            <span style="color:#960050;background-color:#1e0010">#</span>define _NORMALMAP
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>            Varyings vert(Attributes IN)
-</span></span><span style="display:flex;"><span>            {
-</span></span><span style="display:flex;"><span>                Varyings OUT <span style="color:#f92672">=</span> (Varyings)<span style="color:#ae81ff">0</span>;
-</span></span><span style="display:flex;"><span>                UNITY_SETUP_INSTANCE_ID(IN);
-</span></span><span style="display:flex;"><span>                UNITY_TRANSFER_INSTANCE_ID(IN, OUT);
-</span></span><span style="display:flex;"><span>            
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">const</span> VertexPositionInputs vpi <span style="color:#f92672">=</span> GetVertexPositionInputs(IN.positionOS);
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">const</span> VertexNormalInputs vni <span style="color:#f92672">=</span> GetVertexNormalInputs(IN.normalOS, IN.tangetOS);
-</span></span><span style="display:flex;"><span>                <span style="color:#75715e">// get positive or negative normal signal (should be either 1 or -1)</span>
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">half</span> sign <span style="color:#f92672">=</span> IN.tangetOS.w <span style="color:#f92672">*</span> GetOddNegativeScale();
-</span></span><span style="display:flex;"><span>                
-</span></span><span style="display:flex;"><span>                OUT.positionWS <span style="color:#f92672">=</span> vpi.positionWS;
-</span></span><span style="display:flex;"><span>                OUT.positionCS <span style="color:#f92672">=</span> vpi.positionCS;
-</span></span><span style="display:flex;"><span>                OUT.uv <span style="color:#f92672">=</span> TRANSFORM_TEX(IN.uv, _BaseMap);
-</span></span><span style="display:flex;"><span>                OUT.normalWS <span style="color:#f92672">=</span> vni.normalWS;
-</span></span><span style="display:flex;"><span>                OUT.tangentWS <span style="color:#f92672">=</span> vni.tangentWS;
-</span></span><span style="display:flex;"><span>                OUT.bitangentWS <span style="color:#f92672">=</span> vni.bitangentWS;
-</span></span><span style="display:flex;"><span>                OUT.lightmapUV <span style="color:#f92672">=</span> IN.lightmapUV;
-</span></span><span style="display:flex;"><span>                OUT.fogCoord <span style="color:#f92672">=</span> ComputeFogFactor(OUT.positionCS.z);
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> OUT;
-</span></span><span style="display:flex;"><span>            }
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">half</span> Pow2(<span style="color:#66d9ef">half</span> v)
-</span></span><span style="display:flex;"><span>            {
-</span></span><span style="display:flex;"><span>               <span style="color:#66d9ef">return</span> v <span style="color:#f92672">*</span> v;
-</span></span><span style="display:flex;"><span>            }
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">half</span> Pow5(<span style="color:#66d9ef">half</span> v)
-</span></span><span style="display:flex;"><span>            {
-</span></span><span style="display:flex;"><span>               <span style="color:#66d9ef">return</span> v <span style="color:#f92672">*</span> v <span style="color:#f92672">*</span> v <span style="color:#f92672">*</span> v <span style="color:#f92672">*</span> v;
-</span></span><span style="display:flex;"><span>            }
-</span></span><span style="display:flex;"><span>            
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">half</span> SchlickFresnel(<span style="color:#66d9ef">half</span> v) {
-</span></span><span style="display:flex;"><span>                v <span style="color:#f92672">=</span> clamp(<span style="color:#ae81ff">1</span> <span style="color:#f92672">-</span> v, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>);
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> Pow5(v);
-</span></span><span style="display:flex;"><span>            }
-</span></span><span style="display:flex;"><span>            
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">half3</span> Disney_Diffuse_Kfd(<span style="color:#66d9ef">half</span> roughness, <span style="color:#66d9ef">half</span> ndotV, <span style="color:#66d9ef">half</span> ndotL, <span style="color:#66d9ef">half</span> LdotH)
-</span></span><span style="display:flex;"><span>            {
-</span></span><span style="display:flex;"><span>               <span style="color:#66d9ef">half</span> FD90 <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.5</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">*</span> Pow2(LdotH) <span style="color:#f92672">*</span> roughness;
-</span></span><span style="display:flex;"><span>               <span style="color:#66d9ef">half</span> FnV <span style="color:#f92672">=</span> SchlickFresnel(ndotV);
-</span></span><span style="display:flex;"><span>               <span style="color:#66d9ef">half</span> FnL <span style="color:#f92672">=</span> SchlickFresnel(ndotL);
-</span></span><span style="display:flex;"><span>               <span style="color:#66d9ef">return</span> lerp(<span style="color:#ae81ff">1.0</span>, FD90, FnV) <span style="color:#f92672">*</span> lerp(<span style="color:#ae81ff">1.0</span>, FD90, FnL);
-</span></span><span style="display:flex;"><span>            }
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">half</span> Disney_Specular_GTR2_iso(<span style="color:#66d9ef">half</span> NdotH, <span style="color:#66d9ef">half</span> roughness) {
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">half</span> a2 <span style="color:#f92672">=</span> Pow2(roughness);
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">half</span> den <span style="color:#f92672">=</span> <span style="color:#ae81ff">1.0</span> <span style="color:#f92672">+</span> (a2 <span style="color:#f92672">-</span> <span style="color:#ae81ff">1.0</span>) <span style="color:#f92672">*</span> Pow2(NdotH);
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> a2 <span style="color:#f92672">/</span> (Pow2(den) <span style="color:#f92672">*</span> PI);
-</span></span><span style="display:flex;"><span>            }
-</span></span><span style="display:flex;"><span>            
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">half</span> SmithsG_GGX_aniso(<span style="color:#66d9ef">half</span> NdotV, <span style="color:#66d9ef">half</span> XdotV, <span style="color:#66d9ef">half</span> YdotV, <span style="color:#66d9ef">half</span> ax, <span style="color:#66d9ef">half</span> ay) {
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">/</span> (NdotV <span style="color:#f92672">+</span> sqrt(Pow2(XdotV <span style="color:#f92672">*</span> ax) <span style="color:#f92672">+</span> Pow2(YdotV <span style="color:#f92672">*</span> ay) <span style="color:#f92672">+</span> Pow2(NdotV)));
-</span></span><span style="display:flex;"><span>            }
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">half3</span> Specular_Fresnel(<span style="color:#66d9ef">half3</span> Ctint, <span style="color:#66d9ef">half3</span> Cdlin, <span style="color:#66d9ef">half</span> LdotH, <span style="color:#66d9ef">half</span> Metallic) {
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">half</span> FlH <span style="color:#f92672">=</span> SchlickFresnel(LdotH);
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">half3</span> F0 <span style="color:#f92672">=</span> lerp(_Specular <span style="color:#f92672">*</span> <span style="color:#ae81ff">0.08</span> <span style="color:#f92672">*</span> lerp(<span style="color:#66d9ef">half3</span>(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>), Ctint, _SpecularTint), Cdlin, Metallic);
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">half3</span> F <span style="color:#f92672">=</span> lerp(F0, <span style="color:#66d9ef">half3</span>(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>), FlH);
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> F;
-</span></span><span style="display:flex;"><span>            }
-</span></span><span style="display:flex;"><span>            
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">half</span> Disney_Clear_GTR1(<span style="color:#66d9ef">half</span> NdotH, <span style="color:#66d9ef">half</span> a) {
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">if</span> (a <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">1</span>) {
-</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">/</span> PI;
-</span></span><span style="display:flex;"><span>                }
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">float</span> a2 <span style="color:#f92672">=</span> Pow2(a);
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> (a2 <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">/</span> (log(a2) <span style="color:#f92672">*</span> (<span style="color:#ae81ff">1</span> <span style="color:#f92672">+</span> (a2 <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">*</span> Pow2(NdotH)) <span style="color:#f92672">*</span> PI);
-</span></span><span style="display:flex;"><span>            }
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">half</span> Disney_Clear_GGX(<span style="color:#66d9ef">half</span> NdotV, <span style="color:#66d9ef">half</span> NdotL, <span style="color:#66d9ef">half</span> a) {
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">half</span> a2 <span style="color:#f92672">=</span> Pow2(a);
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">half</span> GGXnv <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">/</span> (NdotV <span style="color:#f92672">+</span> sqrt(a2 <span style="color:#f92672">+</span> (<span style="color:#ae81ff">1</span> <span style="color:#f92672">-</span> a2) <span style="color:#f92672">*</span> Pow2(NdotV)));
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">half</span> GGXnl <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">/</span> (NdotL <span style="color:#f92672">+</span> sqrt(a2 <span style="color:#f92672">+</span> (<span style="color:#ae81ff">1</span> <span style="color:#f92672">-</span> a2) <span style="color:#f92672">*</span> Pow2(NdotL)));
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> GGXnv <span style="color:#f92672">*</span> GGXnl;
-</span></span><span style="display:flex;"><span>            }
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">half</span> Disney_Subsurface_ss(<span style="color:#66d9ef">half</span> roughness, <span style="color:#66d9ef">half</span> LdotH, <span style="color:#66d9ef">half</span> NdotL, <span style="color:#66d9ef">half</span> NdotV) {
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">half</span> FnL <span style="color:#f92672">=</span> SchlickFresnel(NdotL);
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">half</span> Fnv <span style="color:#f92672">=</span> SchlickFresnel(NdotV);
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">half</span> Fss90 <span style="color:#f92672">=</span> Pow2(LdotH) <span style="color:#f92672">*</span> roughness;
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">half</span> Fss <span style="color:#f92672">=</span> lerp(<span style="color:#ae81ff">1.0</span>, Fss90, FnL) <span style="color:#f92672">*</span> lerp(<span style="color:#ae81ff">1.0</span>, Fss90, Fnv);
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">1.25</span> <span style="color:#f92672">*</span> (Fss <span style="color:#f92672">*</span> (<span style="color:#ae81ff">1</span> <span style="color:#f92672">/</span> (NdotV <span style="color:#f92672">+</span> NdotL) <span style="color:#f92672">-</span> <span style="color:#ae81ff">0.5</span>) <span style="color:#f92672">+</span> <span style="color:#ae81ff">0.5</span>);
-</span></span><span style="display:flex;"><span>            }
-</span></span><span style="display:flex;"><span>            
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">half3</span> fresnelSchlickRoughness(<span style="color:#66d9ef">half</span> cosTheta, <span style="color:#66d9ef">half3</span> F0, <span style="color:#66d9ef">half</span> roughness) {
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> F0 <span style="color:#f92672">+</span> (max(<span style="color:#66d9ef">half3</span>(<span style="color:#ae81ff">1.0</span> <span style="color:#f92672">-</span> roughness, <span style="color:#ae81ff">1.0</span> <span style="color:#f92672">-</span> roughness, <span style="color:#ae81ff">1.0</span> <span style="color:#f92672">-</span> roughness), F0) <span style="color:#f92672">-</span> F0) <span style="color:#f92672">*</span> Pow5(<span style="color:#ae81ff">1.0</span> <span style="color:#f92672">-</span> cosTheta);
-</span></span><span style="display:flex;"><span>            }
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">half4</span> frag(Varyings IN) <span style="color:#f92672">:</span> <span style="color:#a6e22e">SV_Target</span>
-</span></span><span style="display:flex;"><span>            {   
-</span></span><span style="display:flex;"><span>                <span style="color:#75715e">//albedo </span>
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">half4</span> albedoAlpha <span style="color:#f92672">=</span> SAMPLE_TEXTURE2D(_BaseMap, sampler_BumpMap, IN.uv);
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">half3</span> albedo <span style="color:#f92672">=</span> albedoAlpha.rgb <span style="color:#f92672">*</span> _MainColor.rgb;
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">half</span> alpha <span style="color:#f92672">=</span> albedoAlpha.a <span style="color:#f92672">*</span> _MainColor.a;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>                <span style="color:#75715e">//rip off the energy from albedo </span>
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">float</span> Cdlum <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.3</span> <span style="color:#f92672">*</span> albedo.r <span style="color:#f92672">+</span> <span style="color:#ae81ff">0.6</span> <span style="color:#f92672">*</span> albedo.g <span style="color:#f92672">+</span> <span style="color:#ae81ff">0.1</span> <span style="color:#f92672">*</span> albedo.b;
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">float3</span> Ctint <span style="color:#f92672">=</span> Cdlum <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">?</span> (albedo <span style="color:#f92672">/</span> Cdlum) <span style="color:#f92672">:</span> <span style="color:#66d9ef">float3</span>(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>);
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">float3</span> Csheen <span style="color:#f92672">=</span> lerp(<span style="color:#66d9ef">float3</span>(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>), Ctint, _SheenTint);
-</span></span><span style="display:flex;"><span>                
-</span></span><span style="display:flex;"><span>                <span style="color:#75715e">//normal</span>
-</span></span><span style="display:flex;"><span>                <span style="color:#960050;background-color:#1e0010">#</span>ifdef _NORMALMAP 
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">half3</span> normalTS <span style="color:#f92672">=</span> UnpackNormalScale(SAMPLE_TEXTURE2D(_BumpMap, sampler_BumpMap, IN.uv), _BumpScale);
-</span></span><span style="display:flex;"><span>                IN.normalWS <span style="color:#f92672">=</span> TransformTangentToWorld(normalTS, <span style="color:#66d9ef">half3x3</span>(IN.tangentWS.xyz, IN.bitangentWS.xyz, IN.normalWS.xyz));
-</span></span><span style="display:flex;"><span>                <span style="color:#960050;background-color:#1e0010">#</span>endif
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>                <span style="color:#75715e">//roughness</span>
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">float</span> perceptualRoughness <span style="color:#f92672">=</span> <span style="color:#ae81ff">1.0</span> <span style="color:#f92672">-</span> _Smoothness;
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">float</span> roughness <span style="color:#f92672">=</span> perceptualRoughness <span style="color:#f92672">*</span> perceptualRoughness;
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">float</span> squareRoughness <span style="color:#f92672">=</span> roughness <span style="color:#f92672">*</span> roughness;
-</span></span><span style="display:flex;"><span>                
-</span></span><span style="display:flex;"><span>                <span style="color:#75715e">// Direction Function</span>
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">half3</span> viewDirWS <span style="color:#f92672">=</span> GetWorldSpaceViewDir(IN.positionWS);
-</span></span><span style="display:flex;"><span>                
-</span></span><span style="display:flex;"><span>                <span style="color:#75715e">// Lighting Calculation</span>
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">half4</span> shadowCoord <span style="color:#f92672">=</span> TransformWorldToShadowCoord(IN.positionWS);
-</span></span><span style="display:flex;"><span>                Light mainLight <span style="color:#f92672">=</span> GetMainLight(shadowCoord);
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">half3</span> mainLightDir <span style="color:#f92672">=</span> normalize(TransformObjectToWorldDir(mainLight.direction));
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>                <span style="color:#75715e">//anisotropic</span>
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">half3</span> halfVector <span style="color:#f92672">=</span> normalize(viewDirWS <span style="color:#f92672">+</span> mainLightDir);
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">half</span> aspect <span style="color:#f92672">=</span> sqrt(<span style="color:#ae81ff">1.0</span> <span style="color:#f92672">-</span> _Anisotropic <span style="color:#f92672">*</span> <span style="color:#ae81ff">0.9</span>);
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">half</span> ax <span style="color:#f92672">=</span> max(<span style="color:#ae81ff">0.001</span>, squareRoughness <span style="color:#f92672">/</span> aspect);
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">half</span> ay <span style="color:#f92672">=</span> max(<span style="color:#ae81ff">0.001</span>, squareRoughness <span style="color:#f92672">*</span> aspect);
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">half</span> hx <span style="color:#f92672">=</span> max(saturate(dot(halfVector, IN.tangentWS)), <span style="color:#ae81ff">0.000001</span>);
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">half</span> hy <span style="color:#f92672">=</span> max(saturate(dot(halfVector, IN.bitangentWS)), <span style="color:#ae81ff">0.000001</span>);
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">half</span> XdotV <span style="color:#f92672">=</span> dot(hx, viewDirWS);
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">half</span> YdotV <span style="color:#f92672">=</span> dot(hy, viewDirWS);
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">half</span> XdotL <span style="color:#f92672">=</span> dot(hx, mainLightDir);
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">half</span> YdotL <span style="color:#f92672">=</span> dot(hy, mainLightDir);
-</span></span><span style="display:flex;"><span>                
-</span></span><span style="display:flex;"><span>                <span style="color:#75715e">// Dot Product Function</span>
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">half</span> NdotL <span style="color:#f92672">=</span> max(<span style="color:#ae81ff">0.000001</span>, saturate(dot(IN.normalWS, mainLightDir)));
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">half</span> NdotV <span style="color:#f92672">=</span> max(<span style="color:#ae81ff">0.000001</span>, saturate(dot(IN.normalWS, viewDirWS)));
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">half</span> NdotH <span style="color:#f92672">=</span> max(<span style="color:#ae81ff">0.000001</span>, saturate(dot(IN.normalWS, halfVector)));
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">half</span> VdotH <span style="color:#f92672">=</span> max(<span style="color:#ae81ff">0.000001</span>, saturate(dot(viewDirWS, halfVector)));
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">half</span> LdotH <span style="color:#f92672">=</span> max(<span style="color:#ae81ff">0.000001</span>, saturate(dot(mainLightDir, halfVector)));
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>                <span style="color:#75715e">//directLight Specular</span>
-</span></span><span style="display:flex;"><span>                <span style="color:#75715e">//D term</span>
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">half</span> Ds <span style="color:#f92672">=</span> Disney_Specular_GTR2_iso(NdotH, roughness);
-</span></span><span style="display:flex;"><span>                <span style="color:#75715e">//G term</span>
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">half</span> GnV <span style="color:#f92672">=</span> SmithsG_GGX_aniso(NdotV, XdotV, YdotV, ax, ay);
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">half</span> GnL <span style="color:#f92672">=</span> SmithsG_GGX_aniso(NdotL, XdotL, YdotL, ax, ay);
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">half</span> Gs <span style="color:#f92672">=</span> GnV <span style="color:#f92672">*</span> GnL;
-</span></span><span style="display:flex;"><span>                <span style="color:#75715e">//F term</span>
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">half3</span> Fs <span style="color:#f92672">=</span> Specular_Fresnel(Ctint, albedo, LdotH, _Metallic);
-</span></span><span style="display:flex;"><span>                
-</span></span><span style="display:flex;"><span>                <span style="color:#75715e">//directLight clearcoat D F G</span>
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">half</span> Dr <span style="color:#f92672">=</span> Disney_Clear_GTR1(NdotH, lerp(<span style="color:#ae81ff">0.1</span>, <span style="color:#ae81ff">0.001</span>, _ClearcoatGloss));
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">half3</span> F0 <span style="color:#f92672">=</span> <span style="color:#66d9ef">float3</span>(<span style="color:#ae81ff">0.04</span>, <span style="color:#ae81ff">0.04</span>, <span style="color:#ae81ff">0.04</span>);
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">half3</span> Fr <span style="color:#f92672">=</span> lerp(F0, <span style="color:#66d9ef">float3</span>(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>), SchlickFresnel(LdotH));  
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">half</span> Gr <span style="color:#f92672">=</span> Disney_Clear_GGX(NdotV, NdotL, <span style="color:#ae81ff">0.25</span>);
-</span></span><span style="display:flex;"><span>                
-</span></span><span style="display:flex;"><span>                <span style="color:#75715e">//conbine specular part </span>
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">half3</span> specular <span style="color:#f92672">=</span> Gs <span style="color:#f92672">*</span> Fs <span style="color:#f92672">*</span> Ds <span style="color:#f92672">+</span> Dr <span style="color:#f92672">*</span> Gr <span style="color:#f92672">*</span> Fr <span style="color:#f92672">*</span> <span style="color:#ae81ff">0.25</span> <span style="color:#f92672">*</span> _Clearcoat;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>                <span style="color:#75715e">// diffuse</span>
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">half3</span> Kd <span style="color:#f92672">=</span> Disney_Diffuse_Kfd(roughness, NdotV, NdotL, VdotH);
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">half</span> ss <span style="color:#f92672">=</span> Disney_Subsurface_ss(roughness, LdotH, NdotL, NdotV);
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">half3</span> Fsheen <span style="color:#f92672">=</span> SchlickFresnel(LdotH) <span style="color:#f92672">*</span> _Sheen <span style="color:#f92672">*</span> Csheen;
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">half3</span> diffuse <span style="color:#f92672">=</span> (albedo <span style="color:#f92672">*</span> lerp(Kd, ss, _Subsurface) <span style="color:#f92672">/</span>PI <span style="color:#f92672">+</span> Fsheen) <span style="color:#f92672">*</span> (<span style="color:#ae81ff">1.0</span> <span style="color:#f92672">-</span> _Metallic);
-</span></span><span style="display:flex;"><span>                
-</span></span><span style="display:flex;"><span>                <span style="color:#75715e">// direct Lighting</span>
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">half3</span> directLight <span style="color:#f92672">=</span> (diffuse <span style="color:#f92672">+</span> specular) <span style="color:#f92672">*</span> mainLight.color <span style="color:#f92672">*</span> NdotL;
-</span></span><span style="display:flex;"><span>                directLight <span style="color:#f92672">*=</span> mainLight.distanceAttenuation;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>                <span style="color:#75715e">// indirect Lighting</span>
-</span></span><span style="display:flex;"><span>                <span style="color:#75715e">//GI Diffuse</span>
-</span></span><span style="display:flex;"><span>                F0 <span style="color:#f92672">=</span> lerp(kDieletricSpec.rgb, albedo, _Metallic);
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">half3</span> F_ibl <span style="color:#f92672">=</span> fresnelSchlickRoughness(NdotV, F0, roughness); 
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">half</span> kd_ibl <span style="color:#f92672">=</span> (<span style="color:#ae81ff">1</span> <span style="color:#f92672">-</span> F_ibl.r) <span style="color:#f92672">*</span> (<span style="color:#ae81ff">1</span> <span style="color:#f92672">-</span> _Metallic);
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">half3</span> irradiance <span style="color:#f92672">=</span> SampleSH(IN.normalWS);
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">half3</span> inDiffuse <span style="color:#f92672">=</span> kd_ibl <span style="color:#f92672">*</span> albedo <span style="color:#f92672">*</span> irradiance;
-</span></span><span style="display:flex;"><span>                
-</span></span><span style="display:flex;"><span>                <span style="color:#75715e">//GI Specular</span>
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">half3</span> reflectVector <span style="color:#f92672">=</span> reflect(<span style="color:#f92672">-</span>viewDirWS, IN.normalWS); 
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">half</span> mip <span style="color:#f92672">=</span> roughness <span style="color:#f92672">*</span> (<span style="color:#ae81ff">1.7</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">0.7</span> <span style="color:#f92672">*</span> roughness) <span style="color:#f92672">*</span> UNITY_SPECCUBE_LOD_STEPS;
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">half3</span> prefilter_Specular <span style="color:#f92672">=</span> SAMPLE_TEXTURECUBE_LOD(unity_SpecCube0, samplerunity_SpecCube0, reflectVector, mip);
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">half2</span> envBRDF <span style="color:#f92672">=</span> SAMPLE_TEXTURE2D(_LUT, sampler_LUT, <span style="color:#66d9ef">float2</span>(lerp(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0.99</span>, NdotV), lerp(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0.99</span>, roughness))).rg; 
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">half3</span> inSpecular <span style="color:#f92672">=</span> prefilter_Specular <span style="color:#f92672">*</span> (envBRDF.r <span style="color:#f92672">*</span> F_ibl <span style="color:#f92672">+</span> envBRDF.g);
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">half3</span> indirectLight <span style="color:#f92672">=</span> inDiffuse <span style="color:#f92672">+</span> inSpecular;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>                
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">half4</span> color <span style="color:#f92672">=</span> <span style="color:#66d9ef">half4</span>(directLight <span style="color:#f92672">+</span> indirectLight , <span style="color:#ae81ff">1</span>);
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>                <span style="color:#75715e">// apply fog</span>
-</span></span><span style="display:flex;"><span>                color.xyz <span style="color:#f92672">=</span> MixFog(color.xyz, IN.fogCoord);
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> color;
-</span></span><span style="display:flex;"><span>            }
-</span></span><span style="display:flex;"><span>            
-</span></span><span style="display:flex;"><span>            ENDHLSL
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>} 
-</span></span></code></pre></div><p>间接光漫反射的部分偷懒直接使用Unity URP内置的 sampleSH函数。而间接光镜面反射部分也直接用reflection probe作为prefileter 采样。envBRDF的lut贴图直接采样预计算好的。其实如果仔细看源码的部分URP在间接光照的部分也对clearcoat进行处理</p>
-<h2 id="最终效果">最终效果</h2>
-<p>我实现的效果在左边，对比右边URP下默认的Lit</p>
-<p><img src="image-20230317121626944.png" alt=""></p>
-
-						</div>
-
-						<div class="post-text-bottom">
-							<div class="social-share" data-title="在URP中搭建一个Disney Principled BRDF" data-url="https://kampter.github.io/blog/%E5%9C%A8urp%E4%B8%AD%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AAdisney-principled-brdf/">
-								<span>Share:</span>
-								<a class="share-btn share-btn-facebook share-btn-1" title="Share on Facebook">
-									<i class="ion ion-social-facebook"></i>
-								</a>
-								<a class="share-btn share-btn-twitter share-btn-2" title="Share on Twitter">
-									<i class="ion ion-social-twitter"></i>
-								</a>
-								<a class="share-btn share-btn-linkedin share-btn-3" title="Share on Linkedin">
-									<i class="ion ion-social-linkedin"></i>
-								</a>
-								<a class="share-btn share-btn-reddit share-btn-4" title="Share on Reddit">
-									<i class="ion ion-social-reddit"></i>
-								</a>
-								<a class="share-btn share-btn-pinterest share-btn-5" title="Share on Pinterest">
-									<i class="ion ion-social-pinterest"></i>
-								</a>
-							</div>
-							
-							<div class="tags-links">
-								Tags:
-								
-								<a href="https://kampter.github.io/tags/pbr-shading/" rel="tag">PBR Shading</a>
-								
-								<a href="https://kampter.github.io/tags/unity/" rel="tag">Unity</a>
-								
-								<a href="https://kampter.github.io/tags/hlsl/" rel="tag">HLSL</a>
-								
-							</div>
-							
-						</div>
-
-						
-						<div class="post-navigation" role="navigation">
-							
-							<div class="nav-previous">
-								<a href="https://kampter.github.io/blog/games-202-pbr-rendering-%E6%80%BB%E7%BB%93/" rel="prev" title="Games 202 - PBR rendering 总结">
-									<span class="post-nav-next post-nav-text">Prev</span>
-								</a>
-							</div>
-							
-							
-							<div class="nav-next">
-								<a href="https://kampter.github.io/blog/urp-14-renderfeature-%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F/" rel="next" title="URP 14 RenderFeature 使用方式">
-									<span class="post-nav-prev post-nav-text">Next</span>
-								</a>
-							</div>
-							
-						</div>
-						
-					</div>
-				</div>
-			</div>
-
-			
-			<div class="title">Comments</div>
-
-			<div class="row border-line-v">
-				<div class="col col-m-12 col-t-12 col-d-12">
-					<div class="post-box">
-						<div class="col-md-12">
-							<div id="disqus_thread"></div>
-							<script>
-								var disqus_config = function () {
-									this.page.url = "https:\/\/kampter.github.io\/blog\/%E5%9C%A8urp%E4%B8%AD%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AAdisney-principled-brdf\/";   
-									this.page.identifier = "b371c9fcec93abde1c8e8c7b15c50dc6";  
-								};
-								(function() {  
-									var d = document, s = d.createElement('script');
-									s.src = 'https://kampterblog.disqus.com/embed.js';
-									s.setAttribute('data-timestamp', +new Date());
-									(d.head || d.body).appendChild(s);
-								})();
-							</script>
-							<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-						</div>
-					</div>
-				</div>
-			</div>
-			
-		</div>
-
-	</div>
-</div>
-
-
-    </div>
-  </div>
-
-  <!-- Scripts -->
-  <script src="https://kampter.github.io/plugins/jQuery/jquery.min.js"></script>
-
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.6.2/fuse.min.js" integrity="sha512-Nqw1tH3mpavka9cQCc5zWWEZNfIPdOYyQFjlV1NvflEtQ0/XI6ZQ+H/D3YgJdqSUJlMLAPRj/oXlaHCFbFCjoQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script src="https://kampter.github.io/plugins/search/simple-search.js"></script>
-
-
-<script src="https://kampter.github.io/plugins/validate/jquery.validate.min.js"></script>
-<script src="https://kampter.github.io/plugins/owl-carousel/owl.carousel.js"></script>
-<script src="https://kampter.github.io/plugins/magnific-popup/magnific-popup.min.js"></script>
-<script src="https://kampter.github.io/plugins/slimscroll/jquery.slimscroll.js"></script>
-<script src="https://kampter.github.io/plugins/imagesloaded/imagesloaded.pkgd.min.js"></script>
-<script src="https://kampter.github.io/plugins/isotope/isotope.pkgd.js"></script>
-<script src="https://kampter.github.io/plugins/typed/typed.js"></script>
-<script src="https://kampter.github.io/plugins/rrssb/rrssb.js"></script>
-
-
-
-
-<script src="https://kampter.github.io/js/form-handler.min.js"></script>
-
-
-<script src="https://kampter.github.io/js/common.min.js"></script>
-
-</body>
-
-</html>
+<!doctype html><html lang=en><head><title>在URP中搭建一个Disney Principled BRDF</title><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1"><meta name=HandheldFriendly content="true"><meta name=author content="bslthemes"><link rel=stylesheet href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i"><link rel=stylesheet href=https://use.fontawesome.com/releases/v5.8.0/css/all.css><link rel=stylesheet href=https://kampter.github.io/scss/style.min.css><link rel=stylesheet href=https://kampter.github.io/plugins/ionicons/ionicons.css><link rel=stylesheet href=https://kampter.github.io/plugins/font-awesome/css/font-awesome.css><link rel=stylesheet href=https://kampter.github.io/plugins/magnific-popup/magnific-popup.css><link rel=stylesheet href=https://kampter.github.io/plugins/owl-carousel/owl.carousel.css><link rel=stylesheet href=https://kampter.github.io/plugins/animate/animate.css><link rel=stylesheet href=https://kampter.github.io/plugins/syntax/syntax.css><link rel="shortcut icon" href=https://kampter.github.io/images/favicon/favicon.ico type=image/x-icon><link rel=icon href=https://kampter.github.io/images/favicon/favicon.ico type=image/x-icon><script async src="https://www.googletagmanager.com/gtag/js?id=G-4BGKQYLBBG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-4BGKQYLBBG")</script></head><body class=blog><div class="page new-skin"><div class=preloader><div class="centrize full-width"><div class=vertical-center><div class=spinner><div class=double-bounce1></div><div class=double-bounce2></div></div></div></div></div><div class="background gradient"><ul class=bg-bubbles><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li></ul></div><div class=s_overlay></div><div class=content-sidebar><div class=sidebar-wrap><aside id=secondary class=widget-area><div id=search class="widget widget_search"><form class=search-form action=https://kampter.github.io/search><label><input type=search id=searchInput class=search-field placeholder="Search ..."></label>
+<input type=submit class=search-submit><ul id=searchResults></ul></form></div><section class="widget widget_menu"><h2 class=widget-title>Menu</h2><ul><li class=active><a href=https://kampter.github.io//blog>Blog Page</a></li><li><a href=https://kampter.github.io//portfolio>Portfolio Page</a></li></ul></section><section class="widget widget_recent_entries"><h2 class=widget-title>Latest Posts</h2><ul><li><a href=https://kampter.github.io/blog/%E8%BF%91%E6%9C%9F%E5%81%9A%E7%9A%84%E5%87%A0%E4%B8%AAunity%E5%92%8Cue%E7%89%B9%E6%95%88/>近期做的几个Unity和UE特效</a></li><li><a href=https://kampter.github.io/blog/urp%E5%B1%8F%E5%B9%95%E7%A9%BA%E9%97%B4sobel%E8%BE%B9%E7%BC%98%E6%A3%80%E6%B5%8B/>URP屏幕空间Sobel边缘检测</a></li><li><a href=https://kampter.github.io/blog/blender%E6%8F%92%E4%BB%B6%E5%88%B6%E4%BD%9C%E5%BF%83%E5%BE%97/>blender插件制作心得</a></li><li><a href=https://kampter.github.io/blog/urp%E5%B1%8F%E5%B9%95%E7%A9%BA%E9%97%B4%E7%8E%AF%E5%A2%83%E5%85%89%E9%81%AE%E8%94%BD/>URP屏幕空间环境光遮蔽</a></li></ul></section><section class="widget widget_categories"><h2 class=widget-title>Categories</h2><ul><li><a href=https://kampter.github.io/categories/portfolio/>Portfolio</a>
+<small>( 5 )</small></li><li><a href=https://kampter.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/>学习笔记</a>
+<small>( 6 )</small></li><li><a href=https://kampter.github.io/categories/%E6%8A%80%E6%9C%AF%E5%AE%9E%E7%8E%B0/>技术实现</a>
+<small>( 5 )</small></li><li><a href=https://kampter.github.io/categories/%E6%97%A5%E5%B8%B8%E7%94%9F%E6%B4%BB/>日常生活</a>
+<small>( 1 )</small></li><li><a href=https://kampter.github.io/categories/%E6%97%A5%E5%B8%B8%E8%AE%B0%E5%BD%95/>日常记录</a>
+<small>( 1 )</small></li><li><a href=https://kampter.github.io/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/>课程笔记</a>
+<small>( 8 )</small></li></ul></section><section class="widget widget_tags"><h2 class=widget-title>Tags</h2><ul><li><a href=https://kampter.github.io/tags/after-effect/>After Effect</a>
+<small>( 1 )</small></li><li><a href=https://kampter.github.io/tags/bifrost/>Bifrost</a>
+<small>( 1 )</small></li><li><a href=https://kampter.github.io/tags/blender/>blender</a>
+<small>( 2 )</small></li><li><a href=https://kampter.github.io/tags/c#/>C#</a>
+<small>( 4 )</small></li><li><a href=https://kampter.github.io/tags/computer-graphic/>Computer Graphic</a>
+<small>( 9 )</small></li><li><a href=https://kampter.github.io/tags/eve-online/>Eve Online</a>
+<small>( 1 )</small></li><li><a href=https://kampter.github.io/tags/flip/>Flip</a>
+<small>( 1 )</small></li><li><a href=https://kampter.github.io/tags/games-101/>Games 101</a>
+<small>( 4 )</small></li><li><a href=https://kampter.github.io/tags/games-202/>Games 202</a>
+<small>( 3 )</small></li><li><a href=https://kampter.github.io/tags/hlsl/>HLSL</a>
+<small>( 12 )</small></li><li><a href=https://kampter.github.io/tags/houdini/>Houdini</a>
+<small>( 3 )</small></li><li><a href=https://kampter.github.io/tags/java/>Java</a>
+<small>( 1 )</small></li><li><a href=https://kampter.github.io/tags/math/>Math</a>
+<small>( 8 )</small></li><li><a href=https://kampter.github.io/tags/maya/>Maya</a>
+<small>( 1 )</small></li><li><a href=https://kampter.github.io/tags/niagara-system/>niagara system</a>
+<small>( 2 )</small></li><li><a href=https://kampter.github.io/tags/opengl/>Opengl</a>
+<small>( 1 )</small></li><li><a href=https://kampter.github.io/tags/particle/>Particle</a>
+<small>( 1 )</small></li><li><a href=https://kampter.github.io/tags/pbr-shading/>PBR Shading</a>
+<small>( 2 )</small></li><li><a href=https://kampter.github.io/tags/plugin/>plugin</a>
+<small>( 1 )</small></li><li><a href=https://kampter.github.io/tags/render-feature/>Render Feature</a>
+<small>( 4 )</small></li><li><a href=https://kampter.github.io/tags/shader-graph/>Shader Graph</a>
+<small>( 1 )</small></li><li><a href=https://kampter.github.io/tags/substance-designer/>substance designer</a>
+<small>( 2 )</small></li><li><a href=https://kampter.github.io/tags/toon-shading/>Toon Shading</a>
+<small>( 3 )</small></li><li><a href=https://kampter.github.io/tags/unity/>Unity</a>
+<small>( 15 )</small></li><li><a href=https://kampter.github.io/tags/unreal-engine/>unreal engine</a>
+<small>( 2 )</small></li><li><a href=https://kampter.github.io/tags/vfx-graph/>VFX Graph</a>
+<small>( 2 )</small></li></ul></section></aside></div><span class=close></span></div><div class="container opened" data-animation-in=fadeInLeft data-animation-out=fadeOutLeft><header class=header><a href=# class=menu-btn><span></span></a><div class=top-menu><ul><li class=active><a href=https://kampter.github.io/#about-card><span class="icon ion-person"></span>
+<span class=link>About</span></a></li><li><a href=https://kampter.github.io/#resume-card><span class="icon ion-android-list"></span>
+<span class=link>Resume</span></a></li><li><a href=https://kampter.github.io/#works-card><span class="icon ion-paintbrush"></span>
+<span class=link>Works</span></a></li><li><a href=https://kampter.github.io/#blog-card><span class="icon ion-chatbox-working"></span>
+<span class=link>Blog</span></a></li><li><a href=https://kampter.github.io/#contact-card><span class="icon ion-at"></span>
+<span class=link>Contact</span></a></li></ul></div></header><div class=card-started id=home-card><div class="profile no-photo"><div class=slide style=background-image:url(https://kampter.github.io/images/1082264.png)></div><div class=title>王子正</div><div class="subtitle subtitle-typed"><div class=typing-title><p>Technical Artist</p></div></div><div class=social><a target=_blank href=https://twitter.com/wang_psbswsg title=Twitter><span class="fab fa-twitter"></span></a>
+<a target=_blank href=https://github.com/Kampter title=GitHub><span class="fab fa-github"></span></a>
+<a target=_blank href=https://www.youtube.com/channel/UCK43eUkmsyRk8FeBw5oRJtQ title=Youtube><span class="fab fa-youtube"></span></a>
+<a target=_blank href=https://www.artstation.com/kampter title=Stackoverflow><span class="fab fa-artstation"></span></a></div><div class=lnks><a href=/images/Resume_ZizhengWang_Chinese_v004.pdf target=_blank class=lnk><span class=text>Download CV</span>
+<span class="ion ion ion-archive"></span></a>
+<a href=mailto:psbswsg@gmail.com target=_blank class=lnk><span class=text>Contact Me</span>
+<span class="ion arrow"></span></a></div></div></div><div class="card-inner blog blog-post animated" id=blog-card><div class=card-wrap><div class="content blog-single"><div class=title>Blog Post</div><div class="row border-line-v"><div class="col col-m-12 col-t-12 col-d-12"><div class=post-box><h1>在URP中搭建一个Disney Principled BRDF</h1><div class=blog-detail><span class=date>March 16, 2023</span>
+<span class=cat-links><a href=https://kampter.github.io/categories/%E6%8A%80%E6%9C%AF%E5%AE%9E%E7%8E%B0/>技术实现</a></span>
+<span class=byline>By <span class=author>Ryan Adlard</span></span></div><div class=blog-image><img src=https://kampter.github.io/images/blog/image-20230317121626944.png alt="在URP中搭建一个Disney Principled BRDF"></div><div class=blog-content><h2 id=技术实现>技术实现</h2><p>Unity 自带的Lit 采用了通用的microfacet Cook-Torrance BRDF着色模型，对于各向异性，清漆，布料等支持并没有实现。这里希望搭建一个Disney Principled BRDF 来学习源码并且扩充这部分shader便于以后风格化定制。</p><h3 id=diffuse项实现>Diffuse项实现</h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-HLSL data-lang=HLSL><span style=display:flex><span><span style=color:#66d9ef>half3</span> Disney_Diffuse(<span style=color:#66d9ef>half3</span> diffuseColor, <span style=color:#66d9ef>half</span> roughness, <span style=color:#66d9ef>half</span> ndotV, <span style=color:#66d9ef>half</span> ndotL, <span style=color:#66d9ef>half</span> LdotH)
+</span></span><span style=display:flex><span>{
+</span></span><span style=display:flex><span> <span style=color:#66d9ef>half</span> FD90 <span style=color:#f92672>=</span> <span style=color:#ae81ff>0.5</span> <span style=color:#f92672>+</span> <span style=color:#ae81ff>2</span> <span style=color:#f92672>*</span> LdotH <span style=color:#f92672>*</span> LdotH <span style=color:#f92672>*</span> roughness;
+</span></span><span style=display:flex><span> <span style=color:#66d9ef>half</span> FnV <span style=color:#f92672>=</span> SchlickFresnel(ndotV);
+</span></span><span style=display:flex><span> <span style=color:#66d9ef>half</span> FnL <span style=color:#f92672>=</span> SchlickFresnel(ndotL);
+</span></span><span style=display:flex><span> <span style=color:#66d9ef>return</span>  lerp(<span style=color:#ae81ff>1.0</span>, FD90, FnV) <span style=color:#f92672>*</span> lerp(<span style=color:#ae81ff>1.0</span>, FD90, FnL);
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><p>unity实现如下，但是UE把LdotH修改成VdotH</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-HLSL data-lang=HLSL><span style=display:flex><span><span style=color:#66d9ef>half3</span> Diffuse_Burley_Disney(<span style=color:#66d9ef>float3</span> diffuseColor, <span style=color:#66d9ef>float</span> roughness, <span style=color:#66d9ef>float</span> ndotV, <span style=color:#66d9ef>float</span> ndotL, <span style=color:#66d9ef>float</span> LdotH)
+</span></span><span style=display:flex><span>{
+</span></span><span style=display:flex><span> <span style=color:#66d9ef>float</span> FD90 <span style=color:#f92672>=</span> <span style=color:#ae81ff>0.5</span> <span style=color:#f92672>+</span> <span style=color:#ae81ff>2</span> <span style=color:#f92672>*</span> LdotH <span style=color:#f92672>*</span> LdotH <span style=color:#f92672>*</span> roughness;
+</span></span><span style=display:flex><span> <span style=color:#66d9ef>float</span> FdV <span style=color:#f92672>=</span> <span style=color:#ae81ff>1</span> <span style=color:#f92672>+</span> (FD90 <span style=color:#f92672>-</span> <span style=color:#ae81ff>1</span>) <span style=color:#f92672>*</span> Pow5(<span style=color:#ae81ff>1</span> <span style=color:#f92672>-</span> ndotV);
+</span></span><span style=display:flex><span> <span style=color:#66d9ef>float</span> FdL <span style=color:#f92672>=</span> <span style=color:#ae81ff>1</span> <span style=color:#f92672>+</span> (FD90 <span style=color:#f92672>-</span> <span style=color:#ae81ff>1</span>) <span style=color:#f92672>*</span> Pow5(<span style=color:#ae81ff>1</span> <span style=color:#f92672>-</span> ndotL);
+</span></span><span style=display:flex><span> <span style=color:#66d9ef>return</span> diffuseColor <span style=color:#f92672>*</span> ((<span style=color:#ae81ff>1</span> <span style=color:#f92672>/</span> PI) <span style=color:#f92672>*</span> FdV <span style=color:#f92672>*</span> FdL);
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><p><img src=image-20230316234314746.png alt></p><p>UE的修改会造成远距离看diffuse模型变成一个没有明暗区分的模型。</p><p><img src=image-20230316234400394.png alt></p><p>这与Disney的效果十分接近</p><figure><img src=image-20230317001852780.png width=30%></figure><h3 id=完整代码>完整代码</h3><p>偷懒没有逐一贴过来，完整写完直接代码在这里。</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-HLSL data-lang=HLSL><span style=display:flex><span>Shader <span style=color:#e6db74>&#34;Custom/Disney PBR&#34;</span>
+</span></span><span style=display:flex><span>{
+</span></span><span style=display:flex><span>    Properties
+</span></span><span style=display:flex><span>    {   
+</span></span><span style=display:flex><span>        <span style=color:#75715e>//Disney coefficients</span>
+</span></span><span style=display:flex><span>        [MainTexture] _BaseMap   (<span style=color:#e6db74>&#34;Base Color&#34;</span>, <span style=color:#ae81ff>2</span>D)                  <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;white&#34;</span> {}
+</span></span><span style=display:flex><span>        _MainColor               (<span style=color:#e6db74>&#34;Color Tint&#34;</span>, Color)               <span style=color:#f92672>=</span> (<span style=color:#ae81ff>1.0</span>, <span style=color:#ae81ff>1.0</span>, <span style=color:#ae81ff>1.0</span>, <span style=color:#ae81ff>1.0</span>)
+</span></span><span style=display:flex><span>        _Metallic                (<span style=color:#e6db74>&#34;Metallic&#34;</span>, Range(<span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>1</span>))           <span style=color:#f92672>=</span> <span style=color:#ae81ff>0.0</span>
+</span></span><span style=display:flex><span>        _Smoothness              (<span style=color:#e6db74>&#34;Smoothness&#34;</span>, Range(<span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>1</span>))         <span style=color:#f92672>=</span> <span style=color:#ae81ff>0.5</span>
+</span></span><span style=display:flex><span>        _Subsurface              (<span style=color:#e6db74>&#34;Subsurface&#34;</span>, Range(<span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>1</span>))         <span style=color:#f92672>=</span> <span style=color:#ae81ff>0.0</span>
+</span></span><span style=display:flex><span>        _Specular                (<span style=color:#e6db74>&#34;Specular&#34;</span>, Range(<span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>1</span>))           <span style=color:#f92672>=</span> <span style=color:#ae81ff>0.5</span>
+</span></span><span style=display:flex><span>        _SpecularTint            (<span style=color:#e6db74>&#34;SpecularTint&#34;</span>, Range(<span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>1</span>))       <span style=color:#f92672>=</span> <span style=color:#ae81ff>0.0</span>
+</span></span><span style=display:flex><span>        _Anisotropic             (<span style=color:#e6db74>&#34;Anisotropic&#34;</span>, Range(<span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>1</span>))        <span style=color:#f92672>=</span> <span style=color:#ae81ff>0.0</span>
+</span></span><span style=display:flex><span>        _Sheen                   (<span style=color:#e6db74>&#34;Sheen&#34;</span>, Range(<span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>1</span>))              <span style=color:#f92672>=</span> <span style=color:#ae81ff>0.0</span>
+</span></span><span style=display:flex><span>        _SheenTint               (<span style=color:#e6db74>&#34;SheenTint&#34;</span>, Range(<span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>1</span>))          <span style=color:#f92672>=</span> <span style=color:#ae81ff>0.5</span>
+</span></span><span style=display:flex><span>        _Clearcoat               (<span style=color:#e6db74>&#34;Clearcoat&#34;</span>, Range(<span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>1</span>))          <span style=color:#f92672>=</span> <span style=color:#ae81ff>0.0</span>
+</span></span><span style=display:flex><span>        _ClearcoatGloss          (<span style=color:#e6db74>&#34;ClearcoatGloss&#34;</span>, Range(<span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>1</span>))     <span style=color:#f92672>=</span> <span style=color:#ae81ff>0.0</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        <span style=color:#75715e>//Normal control</span>
+</span></span><span style=display:flex><span>        _BumpScale               (<span style=color:#e6db74>&#34;Normal Scale&#34;</span>, Range(<span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>1</span>))       <span style=color:#f92672>=</span> <span style=color:#ae81ff>1.0</span>
+</span></span><span style=display:flex><span>        _BumpMap                 (<span style=color:#e6db74>&#34;Normal Map&#34;</span>, <span style=color:#ae81ff>2</span>D)                  <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;bump&#34;</span>  {}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        <span style=color:#75715e>//GI control</span>
+</span></span><span style=display:flex><span><span style=color:#75715e>//        _IrradianceMap           (&#34;Irradiance Map&#34;, CUBE)            = &#34;white&#34; {}</span>
+</span></span><span style=display:flex><span>        _LUT                     (<span style=color:#e6db74>&#34;LUT&#34;</span>, <span style=color:#ae81ff>2</span>D)                         <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;white&#34;</span> {}
+</span></span><span style=display:flex><span><span style=color:#75715e>//        _PrefilterMap            (&#34;Prefilter Map&#34;, CUBE)             = &#34;white&#34; {}</span>
+</span></span><span style=display:flex><span><span style=color:#75715e>//        _AO                      (&#34;AO&#34;, 2D)                          = &#34;white&#34; {}</span>
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>    SubShader
+</span></span><span style=display:flex><span>    {
+</span></span><span style=display:flex><span>        Tags { <span style=color:#e6db74>&#34;RenderType&#34;</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;Opaque&#34;</span> <span style=color:#e6db74>&#34;RenderPipeLine&#34;</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;UniversalRenderPipeline&#34;</span> <span style=color:#e6db74>&#34;IgnoreProjector&#34;</span> <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;True&#34;</span> }
+</span></span><span style=display:flex><span>        HLSLINCLUDE
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        <span style=color:#960050;background-color:#1e0010>#</span>include <span style=color:#e6db74>&#34;Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl&#34;</span>
+</span></span><span style=display:flex><span>        <span style=color:#960050;background-color:#1e0010>#</span>include <span style=color:#e6db74>&#34;Packages/com.unity.render-pipelines.universal/ShaderLibrary/Lighting.hlsl&#34;</span>
+</span></span><span style=display:flex><span>        
+</span></span><span style=display:flex><span>        TEXTURE2D(_BaseMap);        SAMPLER(sample_BaseMap);
+</span></span><span style=display:flex><span>        TEXTURE2D(_BumpMap);        SAMPLER(sampler_BumpMap);
+</span></span><span style=display:flex><span>        TEXTURE2D(_LUT);            SAMPLER(sampler_LUT);
+</span></span><span style=display:flex><span>        
+</span></span><span style=display:flex><span>        CBUFFER_START(UnityPerMaterial)
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>half4</span> _BaseMap_ST;
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>half4</span> _MainColor;
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>half</span> _Metallic;
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>half</span> _Smoothness;
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>half</span> _Subsurface;
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>half</span> _Specular;
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>half</span> _SpecularTint;
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>half</span> _Anisotropic;
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>half</span> _Sheen;
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>half</span> _SheenTint;
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>half</span> _Clearcoat;
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>half</span> _ClearcoatGloss;
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>half4</span> _BumpMap_ST;
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>half</span> _BumpScale;
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>half4</span> _LUT_ST;
+</span></span><span style=display:flex><span>        CBUFFER_END
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>struct</span> Attributes
+</span></span><span style=display:flex><span>        {
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>half4</span> positionOS    <span style=color:#f92672>:</span> POSITION;
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>half3</span> normalOS      <span style=color:#f92672>:</span> NORMAL;
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>half4</span> tangetOS      <span style=color:#f92672>:</span> TANGENT;
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>half2</span> uv            <span style=color:#f92672>:</span> TEXCOORD0;
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>half2</span> lightmapUV    <span style=color:#f92672>:</span> TEXCOORD1;
+</span></span><span style=display:flex><span>            UNITY_VERTEX_INPUT_INSTANCE_ID
+</span></span><span style=display:flex><span>        };
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>struct</span> Varyings
+</span></span><span style=display:flex><span>        {
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>half4</span> positionCS    <span style=color:#f92672>:</span> SV_POSITION;
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>half3</span> positionWS    <span style=color:#f92672>:</span> TEXCOORD0;
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>half3</span> normalWS      <span style=color:#f92672>:</span> TEXCOORD1;
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>half2</span> uv            <span style=color:#f92672>:</span> TEXCOORD2;
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>half3</span> tangentWS     <span style=color:#f92672>:</span> TEXCOORD3;
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>half2</span> lightmapUV    <span style=color:#f92672>:</span> TEXCOORD4;
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>half3</span> bitangentWS   <span style=color:#f92672>:</span> TEXCOORD5;
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>half4</span> viewDirWS     <span style=color:#f92672>:</span> TEXCOORD6;
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>half</span>  fogCoord      <span style=color:#f92672>:</span> TEXCOORD7;
+</span></span><span style=display:flex><span>            UNITY_VERTEX_INPUT_INSTANCE_ID
+</span></span><span style=display:flex><span>        };
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        ENDHLSL
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        Pass 
+</span></span><span style=display:flex><span>        {   
+</span></span><span style=display:flex><span>            Name <span style=color:#e6db74>&#34;DisneyForward&#34;</span>
+</span></span><span style=display:flex><span>            Tags{ <span style=color:#e6db74>&#34;LightMode&#34;</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;UniversalForward&#34;</span> }
+</span></span><span style=display:flex><span>            
+</span></span><span style=display:flex><span>            CULL OFF
+</span></span><span style=display:flex><span>            HLSLPROGRAM
+</span></span><span style=display:flex><span>            <span style=color:#960050;background-color:#1e0010>#</span>pragma vertex vert
+</span></span><span style=display:flex><span>            <span style=color:#960050;background-color:#1e0010>#</span>pragma fragment frag
+</span></span><span style=display:flex><span>            <span style=color:#960050;background-color:#1e0010>#</span>pragma multi_compile_fog
+</span></span><span style=display:flex><span>            <span style=color:#960050;background-color:#1e0010>#</span>pragma shader_feature_local_fragement _EMISSION
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>            <span style=color:#960050;background-color:#1e0010>#</span>define _NORMALMAP
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>            Varyings vert(Attributes IN)
+</span></span><span style=display:flex><span>            {
+</span></span><span style=display:flex><span>                Varyings OUT <span style=color:#f92672>=</span> (Varyings)<span style=color:#ae81ff>0</span>;
+</span></span><span style=display:flex><span>                UNITY_SETUP_INSTANCE_ID(IN);
+</span></span><span style=display:flex><span>                UNITY_TRANSFER_INSTANCE_ID(IN, OUT);
+</span></span><span style=display:flex><span>            
+</span></span><span style=display:flex><span>                <span style=color:#66d9ef>const</span> VertexPositionInputs vpi <span style=color:#f92672>=</span> GetVertexPositionInputs(IN.positionOS);
+</span></span><span style=display:flex><span>                <span style=color:#66d9ef>const</span> VertexNormalInputs vni <span style=color:#f92672>=</span> GetVertexNormalInputs(IN.normalOS, IN.tangetOS);
+</span></span><span style=display:flex><span>                <span style=color:#75715e>// get positive or negative normal signal (should be either 1 or -1)</span>
+</span></span><span style=display:flex><span>                <span style=color:#66d9ef>half</span> sign <span style=color:#f92672>=</span> IN.tangetOS.w <span style=color:#f92672>*</span> GetOddNegativeScale();
+</span></span><span style=display:flex><span>                
+</span></span><span style=display:flex><span>                OUT.positionWS <span style=color:#f92672>=</span> vpi.positionWS;
+</span></span><span style=display:flex><span>                OUT.positionCS <span style=color:#f92672>=</span> vpi.positionCS;
+</span></span><span style=display:flex><span>                OUT.uv <span style=color:#f92672>=</span> TRANSFORM_TEX(IN.uv, _BaseMap);
+</span></span><span style=display:flex><span>                OUT.normalWS <span style=color:#f92672>=</span> vni.normalWS;
+</span></span><span style=display:flex><span>                OUT.tangentWS <span style=color:#f92672>=</span> vni.tangentWS;
+</span></span><span style=display:flex><span>                OUT.bitangentWS <span style=color:#f92672>=</span> vni.bitangentWS;
+</span></span><span style=display:flex><span>                OUT.lightmapUV <span style=color:#f92672>=</span> IN.lightmapUV;
+</span></span><span style=display:flex><span>                OUT.fogCoord <span style=color:#f92672>=</span> ComputeFogFactor(OUT.positionCS.z);
+</span></span><span style=display:flex><span>                <span style=color:#66d9ef>return</span> OUT;
+</span></span><span style=display:flex><span>            }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>half</span> Pow2(<span style=color:#66d9ef>half</span> v)
+</span></span><span style=display:flex><span>            {
+</span></span><span style=display:flex><span>               <span style=color:#66d9ef>return</span> v <span style=color:#f92672>*</span> v;
+</span></span><span style=display:flex><span>            }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>half</span> Pow5(<span style=color:#66d9ef>half</span> v)
+</span></span><span style=display:flex><span>            {
+</span></span><span style=display:flex><span>               <span style=color:#66d9ef>return</span> v <span style=color:#f92672>*</span> v <span style=color:#f92672>*</span> v <span style=color:#f92672>*</span> v <span style=color:#f92672>*</span> v;
+</span></span><span style=display:flex><span>            }
+</span></span><span style=display:flex><span>            
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>half</span> SchlickFresnel(<span style=color:#66d9ef>half</span> v) {
+</span></span><span style=display:flex><span>                v <span style=color:#f92672>=</span> clamp(<span style=color:#ae81ff>1</span> <span style=color:#f92672>-</span> v, <span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>1</span>);
+</span></span><span style=display:flex><span>                <span style=color:#66d9ef>return</span> Pow5(v);
+</span></span><span style=display:flex><span>            }
+</span></span><span style=display:flex><span>            
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>half3</span> Disney_Diffuse_Kfd(<span style=color:#66d9ef>half</span> roughness, <span style=color:#66d9ef>half</span> ndotV, <span style=color:#66d9ef>half</span> ndotL, <span style=color:#66d9ef>half</span> LdotH)
+</span></span><span style=display:flex><span>            {
+</span></span><span style=display:flex><span>               <span style=color:#66d9ef>half</span> FD90 <span style=color:#f92672>=</span> <span style=color:#ae81ff>0.5</span> <span style=color:#f92672>+</span> <span style=color:#ae81ff>2</span> <span style=color:#f92672>*</span> Pow2(LdotH) <span style=color:#f92672>*</span> roughness;
+</span></span><span style=display:flex><span>               <span style=color:#66d9ef>half</span> FnV <span style=color:#f92672>=</span> SchlickFresnel(ndotV);
+</span></span><span style=display:flex><span>               <span style=color:#66d9ef>half</span> FnL <span style=color:#f92672>=</span> SchlickFresnel(ndotL);
+</span></span><span style=display:flex><span>               <span style=color:#66d9ef>return</span> lerp(<span style=color:#ae81ff>1.0</span>, FD90, FnV) <span style=color:#f92672>*</span> lerp(<span style=color:#ae81ff>1.0</span>, FD90, FnL);
+</span></span><span style=display:flex><span>            }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>half</span> Disney_Specular_GTR2_iso(<span style=color:#66d9ef>half</span> NdotH, <span style=color:#66d9ef>half</span> roughness) {
+</span></span><span style=display:flex><span>                <span style=color:#66d9ef>half</span> a2 <span style=color:#f92672>=</span> Pow2(roughness);
+</span></span><span style=display:flex><span>                <span style=color:#66d9ef>half</span> den <span style=color:#f92672>=</span> <span style=color:#ae81ff>1.0</span> <span style=color:#f92672>+</span> (a2 <span style=color:#f92672>-</span> <span style=color:#ae81ff>1.0</span>) <span style=color:#f92672>*</span> Pow2(NdotH);
+</span></span><span style=display:flex><span>                <span style=color:#66d9ef>return</span> a2 <span style=color:#f92672>/</span> (Pow2(den) <span style=color:#f92672>*</span> PI);
+</span></span><span style=display:flex><span>            }
+</span></span><span style=display:flex><span>            
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>half</span> SmithsG_GGX_aniso(<span style=color:#66d9ef>half</span> NdotV, <span style=color:#66d9ef>half</span> XdotV, <span style=color:#66d9ef>half</span> YdotV, <span style=color:#66d9ef>half</span> ax, <span style=color:#66d9ef>half</span> ay) {
+</span></span><span style=display:flex><span>                <span style=color:#66d9ef>return</span> <span style=color:#ae81ff>1</span> <span style=color:#f92672>/</span> (NdotV <span style=color:#f92672>+</span> sqrt(Pow2(XdotV <span style=color:#f92672>*</span> ax) <span style=color:#f92672>+</span> Pow2(YdotV <span style=color:#f92672>*</span> ay) <span style=color:#f92672>+</span> Pow2(NdotV)));
+</span></span><span style=display:flex><span>            }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>half3</span> Specular_Fresnel(<span style=color:#66d9ef>half3</span> Ctint, <span style=color:#66d9ef>half3</span> Cdlin, <span style=color:#66d9ef>half</span> LdotH, <span style=color:#66d9ef>half</span> Metallic) {
+</span></span><span style=display:flex><span>                <span style=color:#66d9ef>half</span> FlH <span style=color:#f92672>=</span> SchlickFresnel(LdotH);
+</span></span><span style=display:flex><span>                <span style=color:#66d9ef>half3</span> F0 <span style=color:#f92672>=</span> lerp(_Specular <span style=color:#f92672>*</span> <span style=color:#ae81ff>0.08</span> <span style=color:#f92672>*</span> lerp(<span style=color:#66d9ef>half3</span>(<span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>1</span>), Ctint, _SpecularTint), Cdlin, Metallic);
+</span></span><span style=display:flex><span>                <span style=color:#66d9ef>half3</span> F <span style=color:#f92672>=</span> lerp(F0, <span style=color:#66d9ef>half3</span>(<span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>1</span>), FlH);
+</span></span><span style=display:flex><span>                <span style=color:#66d9ef>return</span> F;
+</span></span><span style=display:flex><span>            }
+</span></span><span style=display:flex><span>            
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>half</span> Disney_Clear_GTR1(<span style=color:#66d9ef>half</span> NdotH, <span style=color:#66d9ef>half</span> a) {
+</span></span><span style=display:flex><span>                <span style=color:#66d9ef>if</span> (a <span style=color:#f92672>&gt;=</span> <span style=color:#ae81ff>1</span>) {
+</span></span><span style=display:flex><span>                    <span style=color:#66d9ef>return</span> <span style=color:#ae81ff>1</span> <span style=color:#f92672>/</span> PI;
+</span></span><span style=display:flex><span>                }
+</span></span><span style=display:flex><span>                <span style=color:#66d9ef>float</span> a2 <span style=color:#f92672>=</span> Pow2(a);
+</span></span><span style=display:flex><span>                <span style=color:#66d9ef>return</span> (a2 <span style=color:#f92672>-</span> <span style=color:#ae81ff>1</span>) <span style=color:#f92672>/</span> (log(a2) <span style=color:#f92672>*</span> (<span style=color:#ae81ff>1</span> <span style=color:#f92672>+</span> (a2 <span style=color:#f92672>-</span> <span style=color:#ae81ff>1</span>) <span style=color:#f92672>*</span> Pow2(NdotH)) <span style=color:#f92672>*</span> PI);
+</span></span><span style=display:flex><span>            }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>half</span> Disney_Clear_GGX(<span style=color:#66d9ef>half</span> NdotV, <span style=color:#66d9ef>half</span> NdotL, <span style=color:#66d9ef>half</span> a) {
+</span></span><span style=display:flex><span>                <span style=color:#66d9ef>half</span> a2 <span style=color:#f92672>=</span> Pow2(a);
+</span></span><span style=display:flex><span>                <span style=color:#66d9ef>half</span> GGXnv <span style=color:#f92672>=</span> <span style=color:#ae81ff>1</span> <span style=color:#f92672>/</span> (NdotV <span style=color:#f92672>+</span> sqrt(a2 <span style=color:#f92672>+</span> (<span style=color:#ae81ff>1</span> <span style=color:#f92672>-</span> a2) <span style=color:#f92672>*</span> Pow2(NdotV)));
+</span></span><span style=display:flex><span>                <span style=color:#66d9ef>half</span> GGXnl <span style=color:#f92672>=</span> <span style=color:#ae81ff>1</span> <span style=color:#f92672>/</span> (NdotL <span style=color:#f92672>+</span> sqrt(a2 <span style=color:#f92672>+</span> (<span style=color:#ae81ff>1</span> <span style=color:#f92672>-</span> a2) <span style=color:#f92672>*</span> Pow2(NdotL)));
+</span></span><span style=display:flex><span>                <span style=color:#66d9ef>return</span> GGXnv <span style=color:#f92672>*</span> GGXnl;
+</span></span><span style=display:flex><span>            }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>half</span> Disney_Subsurface_ss(<span style=color:#66d9ef>half</span> roughness, <span style=color:#66d9ef>half</span> LdotH, <span style=color:#66d9ef>half</span> NdotL, <span style=color:#66d9ef>half</span> NdotV) {
+</span></span><span style=display:flex><span>                <span style=color:#66d9ef>half</span> FnL <span style=color:#f92672>=</span> SchlickFresnel(NdotL);
+</span></span><span style=display:flex><span>                <span style=color:#66d9ef>half</span> Fnv <span style=color:#f92672>=</span> SchlickFresnel(NdotV);
+</span></span><span style=display:flex><span>                <span style=color:#66d9ef>half</span> Fss90 <span style=color:#f92672>=</span> Pow2(LdotH) <span style=color:#f92672>*</span> roughness;
+</span></span><span style=display:flex><span>                <span style=color:#66d9ef>half</span> Fss <span style=color:#f92672>=</span> lerp(<span style=color:#ae81ff>1.0</span>, Fss90, FnL) <span style=color:#f92672>*</span> lerp(<span style=color:#ae81ff>1.0</span>, Fss90, Fnv);
+</span></span><span style=display:flex><span>                <span style=color:#66d9ef>return</span> <span style=color:#ae81ff>1.25</span> <span style=color:#f92672>*</span> (Fss <span style=color:#f92672>*</span> (<span style=color:#ae81ff>1</span> <span style=color:#f92672>/</span> (NdotV <span style=color:#f92672>+</span> NdotL) <span style=color:#f92672>-</span> <span style=color:#ae81ff>0.5</span>) <span style=color:#f92672>+</span> <span style=color:#ae81ff>0.5</span>);
+</span></span><span style=display:flex><span>            }
+</span></span><span style=display:flex><span>            
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>half3</span> fresnelSchlickRoughness(<span style=color:#66d9ef>half</span> cosTheta, <span style=color:#66d9ef>half3</span> F0, <span style=color:#66d9ef>half</span> roughness) {
+</span></span><span style=display:flex><span>                <span style=color:#66d9ef>return</span> F0 <span style=color:#f92672>+</span> (max(<span style=color:#66d9ef>half3</span>(<span style=color:#ae81ff>1.0</span> <span style=color:#f92672>-</span> roughness, <span style=color:#ae81ff>1.0</span> <span style=color:#f92672>-</span> roughness, <span style=color:#ae81ff>1.0</span> <span style=color:#f92672>-</span> roughness), F0) <span style=color:#f92672>-</span> F0) <span style=color:#f92672>*</span> Pow5(<span style=color:#ae81ff>1.0</span> <span style=color:#f92672>-</span> cosTheta);
+</span></span><span style=display:flex><span>            }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>half4</span> frag(Varyings IN) <span style=color:#f92672>:</span> <span style=color:#a6e22e>SV_Target</span>
+</span></span><span style=display:flex><span>            {   
+</span></span><span style=display:flex><span>                <span style=color:#75715e>//albedo </span>
+</span></span><span style=display:flex><span>                <span style=color:#66d9ef>half4</span> albedoAlpha <span style=color:#f92672>=</span> SAMPLE_TEXTURE2D(_BaseMap, sampler_BumpMap, IN.uv);
+</span></span><span style=display:flex><span>                <span style=color:#66d9ef>half3</span> albedo <span style=color:#f92672>=</span> albedoAlpha.rgb <span style=color:#f92672>*</span> _MainColor.rgb;
+</span></span><span style=display:flex><span>                <span style=color:#66d9ef>half</span> alpha <span style=color:#f92672>=</span> albedoAlpha.a <span style=color:#f92672>*</span> _MainColor.a;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>                <span style=color:#75715e>//rip off the energy from albedo </span>
+</span></span><span style=display:flex><span>                <span style=color:#66d9ef>float</span> Cdlum <span style=color:#f92672>=</span> <span style=color:#ae81ff>0.3</span> <span style=color:#f92672>*</span> albedo.r <span style=color:#f92672>+</span> <span style=color:#ae81ff>0.6</span> <span style=color:#f92672>*</span> albedo.g <span style=color:#f92672>+</span> <span style=color:#ae81ff>0.1</span> <span style=color:#f92672>*</span> albedo.b;
+</span></span><span style=display:flex><span>                <span style=color:#66d9ef>float3</span> Ctint <span style=color:#f92672>=</span> Cdlum <span style=color:#f92672>&gt;</span> <span style=color:#ae81ff>0</span> <span style=color:#f92672>?</span> (albedo <span style=color:#f92672>/</span> Cdlum) <span style=color:#f92672>:</span> <span style=color:#66d9ef>float3</span>(<span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>1</span>);
+</span></span><span style=display:flex><span>                <span style=color:#66d9ef>float3</span> Csheen <span style=color:#f92672>=</span> lerp(<span style=color:#66d9ef>float3</span>(<span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>1</span>), Ctint, _SheenTint);
+</span></span><span style=display:flex><span>                
+</span></span><span style=display:flex><span>                <span style=color:#75715e>//normal</span>
+</span></span><span style=display:flex><span>                <span style=color:#960050;background-color:#1e0010>#</span>ifdef _NORMALMAP 
+</span></span><span style=display:flex><span>                <span style=color:#66d9ef>half3</span> normalTS <span style=color:#f92672>=</span> UnpackNormalScale(SAMPLE_TEXTURE2D(_BumpMap, sampler_BumpMap, IN.uv), _BumpScale);
+</span></span><span style=display:flex><span>                IN.normalWS <span style=color:#f92672>=</span> TransformTangentToWorld(normalTS, <span style=color:#66d9ef>half3x3</span>(IN.tangentWS.xyz, IN.bitangentWS.xyz, IN.normalWS.xyz));
+</span></span><span style=display:flex><span>                <span style=color:#960050;background-color:#1e0010>#</span>endif
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>                <span style=color:#75715e>//roughness</span>
+</span></span><span style=display:flex><span>                <span style=color:#66d9ef>float</span> perceptualRoughness <span style=color:#f92672>=</span> <span style=color:#ae81ff>1.0</span> <span style=color:#f92672>-</span> _Smoothness;
+</span></span><span style=display:flex><span>                <span style=color:#66d9ef>float</span> roughness <span style=color:#f92672>=</span> perceptualRoughness <span style=color:#f92672>*</span> perceptualRoughness;
+</span></span><span style=display:flex><span>                <span style=color:#66d9ef>float</span> squareRoughness <span style=color:#f92672>=</span> roughness <span style=color:#f92672>*</span> roughness;
+</span></span><span style=display:flex><span>                
+</span></span><span style=display:flex><span>                <span style=color:#75715e>// Direction Function</span>
+</span></span><span style=display:flex><span>                <span style=color:#66d9ef>half3</span> viewDirWS <span style=color:#f92672>=</span> GetWorldSpaceViewDir(IN.positionWS);
+</span></span><span style=display:flex><span>                
+</span></span><span style=display:flex><span>                <span style=color:#75715e>// Lighting Calculation</span>
+</span></span><span style=display:flex><span>                <span style=color:#66d9ef>half4</span> shadowCoord <span style=color:#f92672>=</span> TransformWorldToShadowCoord(IN.positionWS);
+</span></span><span style=display:flex><span>                Light mainLight <span style=color:#f92672>=</span> GetMainLight(shadowCoord);
+</span></span><span style=display:flex><span>                <span style=color:#66d9ef>half3</span> mainLightDir <span style=color:#f92672>=</span> normalize(TransformObjectToWorldDir(mainLight.direction));
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>                <span style=color:#75715e>//anisotropic</span>
+</span></span><span style=display:flex><span>                <span style=color:#66d9ef>half3</span> halfVector <span style=color:#f92672>=</span> normalize(viewDirWS <span style=color:#f92672>+</span> mainLightDir);
+</span></span><span style=display:flex><span>                <span style=color:#66d9ef>half</span> aspect <span style=color:#f92672>=</span> sqrt(<span style=color:#ae81ff>1.0</span> <span style=color:#f92672>-</span> _Anisotropic <span style=color:#f92672>*</span> <span style=color:#ae81ff>0.9</span>);
+</span></span><span style=display:flex><span>                <span style=color:#66d9ef>half</span> ax <span style=color:#f92672>=</span> max(<span style=color:#ae81ff>0.001</span>, squareRoughness <span style=color:#f92672>/</span> aspect);
+</span></span><span style=display:flex><span>                <span style=color:#66d9ef>half</span> ay <span style=color:#f92672>=</span> max(<span style=color:#ae81ff>0.001</span>, squareRoughness <span style=color:#f92672>*</span> aspect);
+</span></span><span style=display:flex><span>                <span style=color:#66d9ef>half</span> hx <span style=color:#f92672>=</span> max(saturate(dot(halfVector, IN.tangentWS)), <span style=color:#ae81ff>0.000001</span>);
+</span></span><span style=display:flex><span>                <span style=color:#66d9ef>half</span> hy <span style=color:#f92672>=</span> max(saturate(dot(halfVector, IN.bitangentWS)), <span style=color:#ae81ff>0.000001</span>);
+</span></span><span style=display:flex><span>                <span style=color:#66d9ef>half</span> XdotV <span style=color:#f92672>=</span> dot(hx, viewDirWS);
+</span></span><span style=display:flex><span>                <span style=color:#66d9ef>half</span> YdotV <span style=color:#f92672>=</span> dot(hy, viewDirWS);
+</span></span><span style=display:flex><span>                <span style=color:#66d9ef>half</span> XdotL <span style=color:#f92672>=</span> dot(hx, mainLightDir);
+</span></span><span style=display:flex><span>                <span style=color:#66d9ef>half</span> YdotL <span style=color:#f92672>=</span> dot(hy, mainLightDir);
+</span></span><span style=display:flex><span>                
+</span></span><span style=display:flex><span>                <span style=color:#75715e>// Dot Product Function</span>
+</span></span><span style=display:flex><span>                <span style=color:#66d9ef>half</span> NdotL <span style=color:#f92672>=</span> max(<span style=color:#ae81ff>0.000001</span>, saturate(dot(IN.normalWS, mainLightDir)));
+</span></span><span style=display:flex><span>                <span style=color:#66d9ef>half</span> NdotV <span style=color:#f92672>=</span> max(<span style=color:#ae81ff>0.000001</span>, saturate(dot(IN.normalWS, viewDirWS)));
+</span></span><span style=display:flex><span>                <span style=color:#66d9ef>half</span> NdotH <span style=color:#f92672>=</span> max(<span style=color:#ae81ff>0.000001</span>, saturate(dot(IN.normalWS, halfVector)));
+</span></span><span style=display:flex><span>                <span style=color:#66d9ef>half</span> VdotH <span style=color:#f92672>=</span> max(<span style=color:#ae81ff>0.000001</span>, saturate(dot(viewDirWS, halfVector)));
+</span></span><span style=display:flex><span>                <span style=color:#66d9ef>half</span> LdotH <span style=color:#f92672>=</span> max(<span style=color:#ae81ff>0.000001</span>, saturate(dot(mainLightDir, halfVector)));
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>                <span style=color:#75715e>//directLight Specular</span>
+</span></span><span style=display:flex><span>                <span style=color:#75715e>//D term</span>
+</span></span><span style=display:flex><span>                <span style=color:#66d9ef>half</span> Ds <span style=color:#f92672>=</span> Disney_Specular_GTR2_iso(NdotH, roughness);
+</span></span><span style=display:flex><span>                <span style=color:#75715e>//G term</span>
+</span></span><span style=display:flex><span>                <span style=color:#66d9ef>half</span> GnV <span style=color:#f92672>=</span> SmithsG_GGX_aniso(NdotV, XdotV, YdotV, ax, ay);
+</span></span><span style=display:flex><span>                <span style=color:#66d9ef>half</span> GnL <span style=color:#f92672>=</span> SmithsG_GGX_aniso(NdotL, XdotL, YdotL, ax, ay);
+</span></span><span style=display:flex><span>                <span style=color:#66d9ef>half</span> Gs <span style=color:#f92672>=</span> GnV <span style=color:#f92672>*</span> GnL;
+</span></span><span style=display:flex><span>                <span style=color:#75715e>//F term</span>
+</span></span><span style=display:flex><span>                <span style=color:#66d9ef>half3</span> Fs <span style=color:#f92672>=</span> Specular_Fresnel(Ctint, albedo, LdotH, _Metallic);
+</span></span><span style=display:flex><span>                
+</span></span><span style=display:flex><span>                <span style=color:#75715e>//directLight clearcoat D F G</span>
+</span></span><span style=display:flex><span>                <span style=color:#66d9ef>half</span> Dr <span style=color:#f92672>=</span> Disney_Clear_GTR1(NdotH, lerp(<span style=color:#ae81ff>0.1</span>, <span style=color:#ae81ff>0.001</span>, _ClearcoatGloss));
+</span></span><span style=display:flex><span>                <span style=color:#66d9ef>half3</span> F0 <span style=color:#f92672>=</span> <span style=color:#66d9ef>float3</span>(<span style=color:#ae81ff>0.04</span>, <span style=color:#ae81ff>0.04</span>, <span style=color:#ae81ff>0.04</span>);
+</span></span><span style=display:flex><span>                <span style=color:#66d9ef>half3</span> Fr <span style=color:#f92672>=</span> lerp(F0, <span style=color:#66d9ef>float3</span>(<span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>1</span>), SchlickFresnel(LdotH));  
+</span></span><span style=display:flex><span>                <span style=color:#66d9ef>half</span> Gr <span style=color:#f92672>=</span> Disney_Clear_GGX(NdotV, NdotL, <span style=color:#ae81ff>0.25</span>);
+</span></span><span style=display:flex><span>                
+</span></span><span style=display:flex><span>                <span style=color:#75715e>//conbine specular part </span>
+</span></span><span style=display:flex><span>                <span style=color:#66d9ef>half3</span> specular <span style=color:#f92672>=</span> Gs <span style=color:#f92672>*</span> Fs <span style=color:#f92672>*</span> Ds <span style=color:#f92672>+</span> Dr <span style=color:#f92672>*</span> Gr <span style=color:#f92672>*</span> Fr <span style=color:#f92672>*</span> <span style=color:#ae81ff>0.25</span> <span style=color:#f92672>*</span> _Clearcoat;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>                <span style=color:#75715e>// diffuse</span>
+</span></span><span style=display:flex><span>                <span style=color:#66d9ef>half3</span> Kd <span style=color:#f92672>=</span> Disney_Diffuse_Kfd(roughness, NdotV, NdotL, VdotH);
+</span></span><span style=display:flex><span>                <span style=color:#66d9ef>half</span> ss <span style=color:#f92672>=</span> Disney_Subsurface_ss(roughness, LdotH, NdotL, NdotV);
+</span></span><span style=display:flex><span>                <span style=color:#66d9ef>half3</span> Fsheen <span style=color:#f92672>=</span> SchlickFresnel(LdotH) <span style=color:#f92672>*</span> _Sheen <span style=color:#f92672>*</span> Csheen;
+</span></span><span style=display:flex><span>                <span style=color:#66d9ef>half3</span> diffuse <span style=color:#f92672>=</span> (albedo <span style=color:#f92672>*</span> lerp(Kd, ss, _Subsurface) <span style=color:#f92672>/</span>PI <span style=color:#f92672>+</span> Fsheen) <span style=color:#f92672>*</span> (<span style=color:#ae81ff>1.0</span> <span style=color:#f92672>-</span> _Metallic);
+</span></span><span style=display:flex><span>                
+</span></span><span style=display:flex><span>                <span style=color:#75715e>// direct Lighting</span>
+</span></span><span style=display:flex><span>                <span style=color:#66d9ef>half3</span> directLight <span style=color:#f92672>=</span> (diffuse <span style=color:#f92672>+</span> specular) <span style=color:#f92672>*</span> mainLight.color <span style=color:#f92672>*</span> NdotL;
+</span></span><span style=display:flex><span>                directLight <span style=color:#f92672>*=</span> mainLight.distanceAttenuation;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>                <span style=color:#75715e>// indirect Lighting</span>
+</span></span><span style=display:flex><span>                <span style=color:#75715e>//GI Diffuse</span>
+</span></span><span style=display:flex><span>                F0 <span style=color:#f92672>=</span> lerp(kDieletricSpec.rgb, albedo, _Metallic);
+</span></span><span style=display:flex><span>                <span style=color:#66d9ef>half3</span> F_ibl <span style=color:#f92672>=</span> fresnelSchlickRoughness(NdotV, F0, roughness); 
+</span></span><span style=display:flex><span>                <span style=color:#66d9ef>half</span> kd_ibl <span style=color:#f92672>=</span> (<span style=color:#ae81ff>1</span> <span style=color:#f92672>-</span> F_ibl.r) <span style=color:#f92672>*</span> (<span style=color:#ae81ff>1</span> <span style=color:#f92672>-</span> _Metallic);
+</span></span><span style=display:flex><span>                <span style=color:#66d9ef>half3</span> irradiance <span style=color:#f92672>=</span> SampleSH(IN.normalWS);
+</span></span><span style=display:flex><span>                <span style=color:#66d9ef>half3</span> inDiffuse <span style=color:#f92672>=</span> kd_ibl <span style=color:#f92672>*</span> albedo <span style=color:#f92672>*</span> irradiance;
+</span></span><span style=display:flex><span>                
+</span></span><span style=display:flex><span>                <span style=color:#75715e>//GI Specular</span>
+</span></span><span style=display:flex><span>                <span style=color:#66d9ef>half3</span> reflectVector <span style=color:#f92672>=</span> reflect(<span style=color:#f92672>-</span>viewDirWS, IN.normalWS); 
+</span></span><span style=display:flex><span>                <span style=color:#66d9ef>half</span> mip <span style=color:#f92672>=</span> roughness <span style=color:#f92672>*</span> (<span style=color:#ae81ff>1.7</span> <span style=color:#f92672>-</span> <span style=color:#ae81ff>0.7</span> <span style=color:#f92672>*</span> roughness) <span style=color:#f92672>*</span> UNITY_SPECCUBE_LOD_STEPS;
+</span></span><span style=display:flex><span>                <span style=color:#66d9ef>half3</span> prefilter_Specular <span style=color:#f92672>=</span> SAMPLE_TEXTURECUBE_LOD(unity_SpecCube0, samplerunity_SpecCube0, reflectVector, mip);
+</span></span><span style=display:flex><span>                <span style=color:#66d9ef>half2</span> envBRDF <span style=color:#f92672>=</span> SAMPLE_TEXTURE2D(_LUT, sampler_LUT, <span style=color:#66d9ef>float2</span>(lerp(<span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>0.99</span>, NdotV), lerp(<span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>0.99</span>, roughness))).rg; 
+</span></span><span style=display:flex><span>                <span style=color:#66d9ef>half3</span> inSpecular <span style=color:#f92672>=</span> prefilter_Specular <span style=color:#f92672>*</span> (envBRDF.r <span style=color:#f92672>*</span> F_ibl <span style=color:#f92672>+</span> envBRDF.g);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>                <span style=color:#66d9ef>half3</span> indirectLight <span style=color:#f92672>=</span> inDiffuse <span style=color:#f92672>+</span> inSpecular;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>                
+</span></span><span style=display:flex><span>                <span style=color:#66d9ef>half4</span> color <span style=color:#f92672>=</span> <span style=color:#66d9ef>half4</span>(directLight <span style=color:#f92672>+</span> indirectLight , <span style=color:#ae81ff>1</span>);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>                <span style=color:#75715e>// apply fog</span>
+</span></span><span style=display:flex><span>                color.xyz <span style=color:#f92672>=</span> MixFog(color.xyz, IN.fogCoord);
+</span></span><span style=display:flex><span>                <span style=color:#66d9ef>return</span> color;
+</span></span><span style=display:flex><span>            }
+</span></span><span style=display:flex><span>            
+</span></span><span style=display:flex><span>            ENDHLSL
+</span></span><span style=display:flex><span>        }
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>} 
+</span></span></code></pre></div><p>间接光漫反射的部分偷懒直接使用Unity URP内置的 sampleSH函数。而间接光镜面反射部分也直接用reflection probe作为prefileter 采样。envBRDF的lut贴图直接采样预计算好的。其实如果仔细看源码的部分URP在间接光照的部分也对clearcoat进行处理</p><h2 id=最终效果>最终效果</h2><p>我实现的效果在左边，对比右边URP下默认的Lit</p><p><img src=image-20230317121626944.png alt></p></div><div class=post-text-bottom><div class=social-share data-title="在URP中搭建一个Disney Principled BRDF" data-url=https://kampter.github.io/blog/%E5%9C%A8urp%E4%B8%AD%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AAdisney-principled-brdf/><span>Share:</span>
+<a class="share-btn share-btn-facebook share-btn-1" title="Share on Facebook"><i class="ion ion-social-facebook"></i></a>
+<a class="share-btn share-btn-twitter share-btn-2" title="Share on Twitter"><i class="ion ion-social-twitter"></i></a>
+<a class="share-btn share-btn-linkedin share-btn-3" title="Share on Linkedin"><i class="ion ion-social-linkedin"></i></a>
+<a class="share-btn share-btn-reddit share-btn-4" title="Share on Reddit"><i class="ion ion-social-reddit"></i></a>
+<a class="share-btn share-btn-pinterest share-btn-5" title="Share on Pinterest"><i class="ion ion-social-pinterest"></i></a></div><div class=tags-links>Tags:
+<a href=https://kampter.github.io/tags/pbr-shading/ rel=tag>PBR Shading</a>
+<a href=https://kampter.github.io/tags/unity/ rel=tag>Unity</a>
+<a href=https://kampter.github.io/tags/hlsl/ rel=tag>HLSL</a></div></div><div class=post-navigation role=navigation><div class=nav-previous><a href=https://kampter.github.io/blog/games-202-pbr-rendering-%E6%80%BB%E7%BB%93/ rel=prev title="Games 202 - PBR rendering 总结"><span class="post-nav-next post-nav-text">Prev</span></a></div><div class=nav-next><a href=https://kampter.github.io/blog/urp-14-renderfeature-%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F/ rel=next title="URP 14 RenderFeature 使用方式"><span class="post-nav-prev post-nav-text">Next</span></a></div></div></div></div></div><div class=title>Comments</div><div class="row border-line-v"><div class="col col-m-12 col-t-12 col-d-12"><div class=post-box><div class=col-md-12><div id=disqus_thread></div><script>var disqus_config=function(){this.page.url="https://kampter.github.io/blog/%E5%9C%A8urp%E4%B8%AD%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AAdisney-principled-brdf/",this.page.identifier="b371c9fcec93abde1c8e8c7b15c50dc6"};(function(){var e=document,t=e.createElement("script");t.src="https://kampterblog.disqus.com/embed.js",t.setAttribute("data-timestamp",+new Date),(e.head||e.body).appendChild(t)})()</script><noscript>Please enable JavaScript to view the <a href=https://disqus.com/?ref_noscript>comments powered by Disqus.</a></noscript></div></div></div></div></div></div></div></div></div><script src=https://kampter.github.io/plugins/jQuery/jquery.min.js></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin=anonymous referrerpolicy=no-referrer></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.6.2/fuse.min.js integrity="sha512-Nqw1tH3mpavka9cQCc5zWWEZNfIPdOYyQFjlV1NvflEtQ0/XI6ZQ+H/D3YgJdqSUJlMLAPRj/oXlaHCFbFCjoQ==" crossorigin=anonymous referrerpolicy=no-referrer></script>
+<script src=https://kampter.github.io/plugins/search/simple-search.js></script>
+<script src=https://kampter.github.io/plugins/validate/jquery.validate.min.js></script>
+<script src=https://kampter.github.io/plugins/owl-carousel/owl.carousel.js></script>
+<script src=https://kampter.github.io/plugins/magnific-popup/magnific-popup.min.js></script>
+<script src=https://kampter.github.io/plugins/slimscroll/jquery.slimscroll.js></script>
+<script src=https://kampter.github.io/plugins/imagesloaded/imagesloaded.pkgd.min.js></script>
+<script src=https://kampter.github.io/plugins/isotope/isotope.pkgd.js></script>
+<script src=https://kampter.github.io/plugins/typed/typed.js></script>
+<script src=https://kampter.github.io/plugins/rrssb/rrssb.js></script>
+<script src=https://kampter.github.io/js/form-handler.min.js></script>
+<script src=https://kampter.github.io/js/common.min.js></script></body></html>

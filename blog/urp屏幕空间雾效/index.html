@@ -1,710 +1,100 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <title>URP屏幕空间雾效</title>
-
-  <!-- Meta -->
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="HandheldFriendly" content="true">
-  <meta name="author" content="bslthemes" />
-
-  <!-- Google Fonts -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" />
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.0/css/all.css" />
-
-  <!-- Main Stylesheets -->
-  
-  <link rel="stylesheet" href="https://kampter.github.io/scss/style.min.css" />
-
-  <!-- Plugins Stylesheets -->
-  <link rel="stylesheet" href="https://kampter.github.io/plugins/ionicons/ionicons.css" />
-  <link rel="stylesheet" href="https://kampter.github.io/plugins/font-awesome/css/font-awesome.css" />
-  <link rel="stylesheet" href="https://kampter.github.io/plugins/magnific-popup/magnific-popup.css" />
-  <link rel="stylesheet" href="https://kampter.github.io/plugins/owl-carousel/owl.carousel.css" />
-  <link rel="stylesheet" href="https://kampter.github.io/plugins/animate/animate.css" />
-  <link rel="stylesheet" href="https://kampter.github.io/plugins/syntax/syntax.css" />
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  <!-- Favicon -->
-  <link rel="shortcut icon" href="https://kampter.github.io/images/favicon/favicon.ico" type="image/x-icon" />
-  <link rel="icon" href="https://kampter.github.io/images/favicon/favicon.ico" type="image/x-icon" />
-
-  
-  <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-4BGKQYLBBG"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-
-    gtag('config', 'G-4BGKQYLBBG');
-  </script>
-  
-
-  </head>
-
-
-<body class=" blog">
-  <div class="page new-skin">
-
-    <!-- Preloader -->
-<div class="preloader">
-	<div class="centrize full-width">
-		<div class="vertical-center">
-			<div class="spinner">
-				<div class="double-bounce1"></div>
-				<div class="double-bounce2"></div>
-			</div>
-		</div>
-	</div>
-</div>
-
-
-    
-
-<!-- Background -->
-
-
-<div class="background gradient">
-	<ul class="bg-bubbles">
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-	</ul>
-</div>
-
-
-
-
-
-    
-
-<div class="s_overlay"></div>
-<div class="content-sidebar">
-	<div class="sidebar-wrap">
-		<aside id="secondary" class="widget-area">
-
-      
-			<div id="search" class="widget widget_search">
-				<form class="search-form" action="https://kampter.github.io/search">
-					<label>
-						<input type="search" id="searchInput" class="search-field" placeholder="Search ..." value="">
-					</label>
-					<input type="submit" class="search-submit" value="">
-          <ul id="searchResults"></ul>
-				</form>
-			</div>
-      
-
-			
-			<section class="widget widget_menu">
-				<h2 class="widget-title">Menu</h2>
-				<ul>
-					
-					
-					
-					
-					
-					<li class="active">
-						<a href="https://kampter.github.io//blog">Blog Page</a>
-					</li>
-					
-					
-					
-					
-					<li>
-						<a href="https://kampter.github.io//portfolio">Portfolio Page</a>
-					</li>
-					
-				</ul>
-			</section>
-      
-
-			
-			<section class="widget widget_recent_entries">
-				<h2 class="widget-title">Latest Posts</h2>
-				<ul>
-					
-					<li>
-						<a href="https://kampter.github.io/blog/%E8%BF%91%E6%9C%9F%E5%81%9A%E7%9A%84%E5%87%A0%E4%B8%AAunity%E5%92%8Cue%E7%89%B9%E6%95%88/">近期做的几个Unity和UE特效</a>
-					</li>
-					
-					<li>
-						<a href="https://kampter.github.io/blog/urp%E5%B1%8F%E5%B9%95%E7%A9%BA%E9%97%B4sobel%E8%BE%B9%E7%BC%98%E6%A3%80%E6%B5%8B/">URP屏幕空间Sobel边缘检测</a>
-					</li>
-					
-					<li>
-						<a href="https://kampter.github.io/blog/blender%E6%8F%92%E4%BB%B6%E5%88%B6%E4%BD%9C%E5%BF%83%E5%BE%97/">blender插件制作心得</a>
-					</li>
-					
-					<li>
-						<a href="https://kampter.github.io/blog/urp%E5%B1%8F%E5%B9%95%E7%A9%BA%E9%97%B4%E7%8E%AF%E5%A2%83%E5%85%89%E9%81%AE%E8%94%BD/">URP屏幕空间环境光遮蔽</a>
-					</li>
-					
-				</ul>
-			</section>
-			
-
-			
-			<section class="widget widget_categories">
-				<h2 class="widget-title">Categories</h2>
-				<ul>
-            
-  				  <li>
-              <a href="https://kampter.github.io/categories/portfolio/">Portfolio</a>
-              <small>( 5 )</small>
-            </li>
-            
-  				  <li>
-              <a href="https://kampter.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
-              <small>( 6 )</small>
-            </li>
-            
-  				  <li>
-              <a href="https://kampter.github.io/categories/%E6%8A%80%E6%9C%AF%E5%AE%9E%E7%8E%B0/">技术实现</a>
-              <small>( 5 )</small>
-            </li>
-            
-  				  <li>
-              <a href="https://kampter.github.io/categories/%E6%97%A5%E5%B8%B8%E7%94%9F%E6%B4%BB/">日常生活</a>
-              <small>( 1 )</small>
-            </li>
-            
-  				  <li>
-              <a href="https://kampter.github.io/categories/%E6%97%A5%E5%B8%B8%E8%AE%B0%E5%BD%95/">日常记录</a>
-              <small>( 1 )</small>
-            </li>
-            
-  				  <li>
-              <a href="https://kampter.github.io/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/">课程笔记</a>
-              <small>( 8 )</small>
-            </li>
-            
-				</ul>
-			</section>
-			
-
-			
-			<section class="widget widget_tags">
-				<h2 class="widget-title">Tags</h2>
-				<ul>
-           
-           <li>
-             <a href="https://kampter.github.io/tags/after-effect/">After Effect</a>
-             <small>( 1 )</small>
-           </li>
-           
-           <li>
-             <a href="https://kampter.github.io/tags/bifrost/">Bifrost</a>
-             <small>( 1 )</small>
-           </li>
-           
-           <li>
-             <a href="https://kampter.github.io/tags/blender/">blender</a>
-             <small>( 2 )</small>
-           </li>
-           
-           <li>
-             <a href="https://kampter.github.io/tags/c#/">C#</a>
-             <small>( 4 )</small>
-           </li>
-           
-           <li>
-             <a href="https://kampter.github.io/tags/computer-graphic/">Computer Graphic</a>
-             <small>( 9 )</small>
-           </li>
-           
-           <li>
-             <a href="https://kampter.github.io/tags/eve-online/">Eve Online</a>
-             <small>( 1 )</small>
-           </li>
-           
-           <li>
-             <a href="https://kampter.github.io/tags/flip/">Flip</a>
-             <small>( 1 )</small>
-           </li>
-           
-           <li>
-             <a href="https://kampter.github.io/tags/games-101/">Games 101</a>
-             <small>( 4 )</small>
-           </li>
-           
-           <li>
-             <a href="https://kampter.github.io/tags/games-202/">Games 202</a>
-             <small>( 3 )</small>
-           </li>
-           
-           <li>
-             <a href="https://kampter.github.io/tags/hlsl/">HLSL</a>
-             <small>( 12 )</small>
-           </li>
-           
-           <li>
-             <a href="https://kampter.github.io/tags/houdini/">Houdini</a>
-             <small>( 3 )</small>
-           </li>
-           
-           <li>
-             <a href="https://kampter.github.io/tags/java/">Java</a>
-             <small>( 1 )</small>
-           </li>
-           
-           <li>
-             <a href="https://kampter.github.io/tags/math/">Math</a>
-             <small>( 8 )</small>
-           </li>
-           
-           <li>
-             <a href="https://kampter.github.io/tags/maya/">Maya</a>
-             <small>( 1 )</small>
-           </li>
-           
-           <li>
-             <a href="https://kampter.github.io/tags/niagara-system/">niagara system</a>
-             <small>( 2 )</small>
-           </li>
-           
-           <li>
-             <a href="https://kampter.github.io/tags/opengl/">Opengl</a>
-             <small>( 1 )</small>
-           </li>
-           
-           <li>
-             <a href="https://kampter.github.io/tags/particle/">Particle</a>
-             <small>( 1 )</small>
-           </li>
-           
-           <li>
-             <a href="https://kampter.github.io/tags/pbr-shading/">PBR Shading</a>
-             <small>( 2 )</small>
-           </li>
-           
-           <li>
-             <a href="https://kampter.github.io/tags/plugin/">plugin</a>
-             <small>( 1 )</small>
-           </li>
-           
-           <li>
-             <a href="https://kampter.github.io/tags/render-feature/">Render Feature</a>
-             <small>( 4 )</small>
-           </li>
-           
-           <li>
-             <a href="https://kampter.github.io/tags/shader-graph/">Shader Graph</a>
-             <small>( 1 )</small>
-           </li>
-           
-           <li>
-             <a href="https://kampter.github.io/tags/substance-designer/">substance designer</a>
-             <small>( 2 )</small>
-           </li>
-           
-           <li>
-             <a href="https://kampter.github.io/tags/toon-shading/">Toon Shading</a>
-             <small>( 3 )</small>
-           </li>
-           
-           <li>
-             <a href="https://kampter.github.io/tags/unity/">Unity</a>
-             <small>( 15 )</small>
-           </li>
-           
-           <li>
-             <a href="https://kampter.github.io/tags/unreal-engine/">unreal engine</a>
-             <small>( 2 )</small>
-           </li>
-           
-           <li>
-             <a href="https://kampter.github.io/tags/vfx-graph/">VFX Graph</a>
-             <small>( 2 )</small>
-           </li>
-           
-				</ul>
-			</section>
-			
-
-		</aside>
-	</div>
-	<span class="close"></span>
-</div>
-
-
-    
-    
-    <!-- Container -->
-    <div class="container opened" data-animation-in="fadeInLeft" data-animation-out="fadeOutLeft">
-
-      
-
-<!-- Header -->
-<header class="header">
-
-	<a href="#" class="menu-btn"><span></span></a>
-
-  <!-- menu -->
-	<div class="top-menu">
-		<ul>
-      
-      
-      
-      
-      
-			<li class="active">
-				<a href="https://kampter.github.io/#about-card">
-					<span class="icon ion-person"></span>
-					<span class="link">About</span>
-				</a>
-			</li>
-			
-      
-      
-      
-			<li>
-				<a href="https://kampter.github.io/#resume-card">
-					<span class="icon ion-android-list"></span>
-					<span class="link">Resume</span>
-				</a>
-			</li>
-			
-      
-      
-      
-			<li>
-				<a href="https://kampter.github.io/#works-card">
-					<span class="icon ion-paintbrush"></span>
-					<span class="link">Works</span>
-				</a>
-			</li>
-			
-      
-      
-      
-			<li>
-				<a href="https://kampter.github.io/#blog-card">
-					<span class="icon ion-chatbox-working"></span>
-					<span class="link">Blog</span>
-				</a>
-			</li>
-			
-      
-      
-      
-			<li>
-				<a href="https://kampter.github.io/#contact-card">
-					<span class="icon ion-at"></span>
-					<span class="link">Contact</span>
-				</a>
-			</li>
-			
-		</ul>
-	</div>
-
-</header>
-
-
-      <!-- Card - Started -->
-
-
-
-<div class="card-started" id="home-card">
-
-  <!-- Profile-->
-  <div class="profile no-photo">
-
-    <!-- profile image -->
-    <div class="slide" style="background-image: url(https://kampter.github.io/images/1082264.png);"></div>
-
-    <!-- profile photo -->
-    
-
-    <!-- profile titles -->
-    <div class="title">王子正</div>
-    <div class="subtitle subtitle-typed">
-      <div class="typing-title">
-        
-        <p>Technical Artist</p>
-        
-      </div>
-    </div>
-
-    <!-- profile socials -->
-    <div class="social">
-      
-      <a target="_blank" href="https://twitter.com/wang_psbswsg" title="Twitter"><span class="fab fa-twitter"></span></a>
-      
-      <a target="_blank" href="https://github.com/Kampter" title="GitHub"><span class="fab fa-github"></span></a>
-      
-      <a target="_blank" href="https://www.youtube.com/channel/UCK43eUkmsyRk8FeBw5oRJtQ" title="Youtube"><span class="fab fa-youtube"></span></a>
-      
-      <a target="_blank" href="https://www.artstation.com/kampter" title="Stackoverflow"><span class="fab fa-artstation"></span></a>
-      
-    </div>
-
-    <!-- profile buttons -->
-    <div class="lnks">
-      
-      <a href="/images/Resume_ZizhengWang_Chinese_v004.pdf" target="_blank" class="lnk">
-        <span class="text">Download CV</span>
-        
-        <span class="ion ion ion-archive"></span>
-        
-      </a>
-      
-      <a href="mailto:psbswsg@gmail.com" target="_blank" class="lnk">
-        <span class="text">Contact Me</span>
-        
-        <span class="ion arrow"></span>
-        
-      </a>
-      
-    </div>
-
-  </div>
-
-</div>
-
-
-
-
-      
-
-
-<!-- Blog Post -->
-<div class="card-inner blog blog-post animated" id="blog-card">
-	<div class="card-wrap">
-
-		<div class="content blog-single">
-
-			<div class="title">Blog Post</div>
-
-			<div class="row border-line-v">
-				<div class="col col-m-12 col-t-12 col-d-12">
-					<div class="post-box">
-
-						<h1>URP屏幕空间雾效</h1>
-						<div class="blog-detail">
-							<span class="date">April 4, 2023</span>
-							
-							<span class="cat-links">
-		            
-		            <a href="https://kampter.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
-		            
-							</span>
-							
-							<span class="byline"> By <span class="author">Ryan Adlard</span></span>
-						</div>
-
-						
-						<div class="blog-image">
-							<img src="https://kampter.github.io/images/blog/fog.png" alt="URP屏幕空间雾效" />
-						</div>
-						
-
-						<div class="blog-content">
-							<h1 id="unity-urp-depth-fog">Unity URP Depth Fog</h1>
-<h2 id="introduction">Introduction</h2>
-<p>Unity is a powerful game engine that has been used by game developers around the world to create high-quality games with various tools and features. One of these features is the Universal Rendering Pipeline (URP), which provides a lightweight rendering pipeline that is optimized for mobile and low-end hardware devices. In this blog post, we will discuss how to implement depth fog in Unity URP, which is a visual effect that creates a sense of depth and distance in a scene.</p>
-<h2 id="what-is-depth-fog">What is Depth Fog?</h2>
-<p>Depth fog is an atmospheric effect that makes distant objects appear hazy or blurry. This effect can be used to create a sense of scale in a scene and to make objects appear more realistic. Depth fog is a useful tool for game developers who want to create immersive environments that feel more natural.</p>
-<h2 id="how-to-implement-depth-fog-in-unity-urp">How to Implement Depth Fog in Unity URP</h2>
-<p>Unity URP provides a built-in Depth Texture that can be used to implement depth fog. The Depth Texture is a grayscale texture that represents the distance between the camera and the objects in the scene. To implement depth fog in Unity URP, follow these steps:</p>
-<ol>
-<li>Create a new material and set its Shader to the URP/Lit shader.</li>
-<li>Enable the Depth Texture option in the material.</li>
-<li>Adjust the Depth Fade Start and Depth Fade Distance properties to control the distance at which the fog starts and how far it extends.</li>
-<li>Set the fog color in the material.</li>
-</ol>
-<p>Once you have created the material with the depth texture enabled, apply it to the objects in your scene that you want to be affected by depth fog. The objects closer to the camera will be less affected by the fog, while the objects further away will appear more hazy.</p>
-<h2 id="benefits-of-using-depth-fog">Benefits of Using Depth Fog</h2>
-<p>Depth fog is a powerful tool for game developers who want to create immersive environments. By using depth fog, developers can create a sense of depth and distance in a scene, which can make the scene feel more natural and realistic. Depth fog can also be used to create a sense of scale in a scene, which is important for games that involve large environments, such as open-world games.</p>
-<h2 id="conclusion">Conclusion</h2>
-<p>Depth fog is a useful visual effect that can be used to create a sense of depth and distance in a scene. Unity URP provides a built-in Depth Texture that can be used to implement depth fog. By following the steps outlined in this blog post, you can easily add depth fog to your Unity URP project. By using depth fog, game developers can create immersive environments that feel more natural and realistic, making for a more engaging gaming experience.</p>
-<h2 id="技术总结">技术总结</h2>
-<p>还是用 Notion AI帮忙生成一下对于Depth Fog的介绍。</p>
-<ol>
-<li>采样Depth</li>
-<li>重建世界空间</li>
-<li>三种雾效计算方式</li>
-</ol>
-<p>这个系数在Unity内置雾效实现中，支持三种雾的计算方式——<code>线性（Linear）</code>，<code>指数（Exponential）</code>，<code>指数的平方（Exponential Squared）</code>。当给定距离z后。Linear的计算公式如下
+<!doctype html><html lang=en><head><title>URP屏幕空间雾效</title><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1"><meta name=HandheldFriendly content="true"><meta name=author content="bslthemes"><link rel=stylesheet href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i"><link rel=stylesheet href=https://use.fontawesome.com/releases/v5.8.0/css/all.css><link rel=stylesheet href=https://kampter.github.io/scss/style.min.css><link rel=stylesheet href=https://kampter.github.io/plugins/ionicons/ionicons.css><link rel=stylesheet href=https://kampter.github.io/plugins/font-awesome/css/font-awesome.css><link rel=stylesheet href=https://kampter.github.io/plugins/magnific-popup/magnific-popup.css><link rel=stylesheet href=https://kampter.github.io/plugins/owl-carousel/owl.carousel.css><link rel=stylesheet href=https://kampter.github.io/plugins/animate/animate.css><link rel=stylesheet href=https://kampter.github.io/plugins/syntax/syntax.css><link rel="shortcut icon" href=https://kampter.github.io/images/favicon/favicon.ico type=image/x-icon><link rel=icon href=https://kampter.github.io/images/favicon/favicon.ico type=image/x-icon><script async src="https://www.googletagmanager.com/gtag/js?id=G-4BGKQYLBBG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-4BGKQYLBBG")</script></head><body class=blog><div class="page new-skin"><div class=preloader><div class="centrize full-width"><div class=vertical-center><div class=spinner><div class=double-bounce1></div><div class=double-bounce2></div></div></div></div></div><div class="background gradient"><ul class=bg-bubbles><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li></ul></div><div class=s_overlay></div><div class=content-sidebar><div class=sidebar-wrap><aside id=secondary class=widget-area><div id=search class="widget widget_search"><form class=search-form action=https://kampter.github.io/search><label><input type=search id=searchInput class=search-field placeholder="Search ..."></label>
+<input type=submit class=search-submit><ul id=searchResults></ul></form></div><section class="widget widget_menu"><h2 class=widget-title>Menu</h2><ul><li class=active><a href=https://kampter.github.io//blog>Blog Page</a></li><li><a href=https://kampter.github.io//portfolio>Portfolio Page</a></li></ul></section><section class="widget widget_recent_entries"><h2 class=widget-title>Latest Posts</h2><ul><li><a href=https://kampter.github.io/blog/%E8%BF%91%E6%9C%9F%E5%81%9A%E7%9A%84%E5%87%A0%E4%B8%AAunity%E5%92%8Cue%E7%89%B9%E6%95%88/>近期做的几个Unity和UE特效</a></li><li><a href=https://kampter.github.io/blog/urp%E5%B1%8F%E5%B9%95%E7%A9%BA%E9%97%B4sobel%E8%BE%B9%E7%BC%98%E6%A3%80%E6%B5%8B/>URP屏幕空间Sobel边缘检测</a></li><li><a href=https://kampter.github.io/blog/blender%E6%8F%92%E4%BB%B6%E5%88%B6%E4%BD%9C%E5%BF%83%E5%BE%97/>blender插件制作心得</a></li><li><a href=https://kampter.github.io/blog/urp%E5%B1%8F%E5%B9%95%E7%A9%BA%E9%97%B4%E7%8E%AF%E5%A2%83%E5%85%89%E9%81%AE%E8%94%BD/>URP屏幕空间环境光遮蔽</a></li></ul></section><section class="widget widget_categories"><h2 class=widget-title>Categories</h2><ul><li><a href=https://kampter.github.io/categories/portfolio/>Portfolio</a>
+<small>( 5 )</small></li><li><a href=https://kampter.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/>学习笔记</a>
+<small>( 6 )</small></li><li><a href=https://kampter.github.io/categories/%E6%8A%80%E6%9C%AF%E5%AE%9E%E7%8E%B0/>技术实现</a>
+<small>( 5 )</small></li><li><a href=https://kampter.github.io/categories/%E6%97%A5%E5%B8%B8%E7%94%9F%E6%B4%BB/>日常生活</a>
+<small>( 1 )</small></li><li><a href=https://kampter.github.io/categories/%E6%97%A5%E5%B8%B8%E8%AE%B0%E5%BD%95/>日常记录</a>
+<small>( 1 )</small></li><li><a href=https://kampter.github.io/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/>课程笔记</a>
+<small>( 8 )</small></li></ul></section><section class="widget widget_tags"><h2 class=widget-title>Tags</h2><ul><li><a href=https://kampter.github.io/tags/after-effect/>After Effect</a>
+<small>( 1 )</small></li><li><a href=https://kampter.github.io/tags/bifrost/>Bifrost</a>
+<small>( 1 )</small></li><li><a href=https://kampter.github.io/tags/blender/>blender</a>
+<small>( 2 )</small></li><li><a href=https://kampter.github.io/tags/c#/>C#</a>
+<small>( 4 )</small></li><li><a href=https://kampter.github.io/tags/computer-graphic/>Computer Graphic</a>
+<small>( 9 )</small></li><li><a href=https://kampter.github.io/tags/eve-online/>Eve Online</a>
+<small>( 1 )</small></li><li><a href=https://kampter.github.io/tags/flip/>Flip</a>
+<small>( 1 )</small></li><li><a href=https://kampter.github.io/tags/games-101/>Games 101</a>
+<small>( 4 )</small></li><li><a href=https://kampter.github.io/tags/games-202/>Games 202</a>
+<small>( 3 )</small></li><li><a href=https://kampter.github.io/tags/hlsl/>HLSL</a>
+<small>( 12 )</small></li><li><a href=https://kampter.github.io/tags/houdini/>Houdini</a>
+<small>( 3 )</small></li><li><a href=https://kampter.github.io/tags/java/>Java</a>
+<small>( 1 )</small></li><li><a href=https://kampter.github.io/tags/math/>Math</a>
+<small>( 8 )</small></li><li><a href=https://kampter.github.io/tags/maya/>Maya</a>
+<small>( 1 )</small></li><li><a href=https://kampter.github.io/tags/niagara-system/>niagara system</a>
+<small>( 2 )</small></li><li><a href=https://kampter.github.io/tags/opengl/>Opengl</a>
+<small>( 1 )</small></li><li><a href=https://kampter.github.io/tags/particle/>Particle</a>
+<small>( 1 )</small></li><li><a href=https://kampter.github.io/tags/pbr-shading/>PBR Shading</a>
+<small>( 2 )</small></li><li><a href=https://kampter.github.io/tags/plugin/>plugin</a>
+<small>( 1 )</small></li><li><a href=https://kampter.github.io/tags/render-feature/>Render Feature</a>
+<small>( 4 )</small></li><li><a href=https://kampter.github.io/tags/shader-graph/>Shader Graph</a>
+<small>( 1 )</small></li><li><a href=https://kampter.github.io/tags/substance-designer/>substance designer</a>
+<small>( 2 )</small></li><li><a href=https://kampter.github.io/tags/toon-shading/>Toon Shading</a>
+<small>( 3 )</small></li><li><a href=https://kampter.github.io/tags/unity/>Unity</a>
+<small>( 15 )</small></li><li><a href=https://kampter.github.io/tags/unreal-engine/>unreal engine</a>
+<small>( 2 )</small></li><li><a href=https://kampter.github.io/tags/vfx-graph/>VFX Graph</a>
+<small>( 2 )</small></li></ul></section></aside></div><span class=close></span></div><div class="container opened" data-animation-in=fadeInLeft data-animation-out=fadeOutLeft><header class=header><a href=# class=menu-btn><span></span></a><div class=top-menu><ul><li class=active><a href=https://kampter.github.io/#about-card><span class="icon ion-person"></span>
+<span class=link>About</span></a></li><li><a href=https://kampter.github.io/#resume-card><span class="icon ion-android-list"></span>
+<span class=link>Resume</span></a></li><li><a href=https://kampter.github.io/#works-card><span class="icon ion-paintbrush"></span>
+<span class=link>Works</span></a></li><li><a href=https://kampter.github.io/#blog-card><span class="icon ion-chatbox-working"></span>
+<span class=link>Blog</span></a></li><li><a href=https://kampter.github.io/#contact-card><span class="icon ion-at"></span>
+<span class=link>Contact</span></a></li></ul></div></header><div class=card-started id=home-card><div class="profile no-photo"><div class=slide style=background-image:url(https://kampter.github.io/images/1082264.png)></div><div class=title>王子正</div><div class="subtitle subtitle-typed"><div class=typing-title><p>Technical Artist</p></div></div><div class=social><a target=_blank href=https://twitter.com/wang_psbswsg title=Twitter><span class="fab fa-twitter"></span></a>
+<a target=_blank href=https://github.com/Kampter title=GitHub><span class="fab fa-github"></span></a>
+<a target=_blank href=https://www.youtube.com/channel/UCK43eUkmsyRk8FeBw5oRJtQ title=Youtube><span class="fab fa-youtube"></span></a>
+<a target=_blank href=https://www.artstation.com/kampter title=Stackoverflow><span class="fab fa-artstation"></span></a></div><div class=lnks><a href=/images/Resume_ZizhengWang_Chinese_v004.pdf target=_blank class=lnk><span class=text>Download CV</span>
+<span class="ion ion ion-archive"></span></a>
+<a href=mailto:psbswsg@gmail.com target=_blank class=lnk><span class=text>Contact Me</span>
+<span class="ion arrow"></span></a></div></div></div><div class="card-inner blog blog-post animated" id=blog-card><div class=card-wrap><div class="content blog-single"><div class=title>Blog Post</div><div class="row border-line-v"><div class="col col-m-12 col-t-12 col-d-12"><div class=post-box><h1>URP屏幕空间雾效</h1><div class=blog-detail><span class=date>April 4, 2023</span>
+<span class=cat-links><a href=https://kampter.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/>学习笔记</a></span>
+<span class=byline>By <span class=author>Ryan Adlard</span></span></div><div class=blog-image><img src=https://kampter.github.io/images/blog/fog.png alt=URP屏幕空间雾效></div><div class=blog-content><h1 id=unity-urp-depth-fog>Unity URP Depth Fog</h1><h2 id=introduction>Introduction</h2><p>Unity is a powerful game engine that has been used by game developers around the world to create high-quality games with various tools and features. One of these features is the Universal Rendering Pipeline (URP), which provides a lightweight rendering pipeline that is optimized for mobile and low-end hardware devices. In this blog post, we will discuss how to implement depth fog in Unity URP, which is a visual effect that creates a sense of depth and distance in a scene.</p><h2 id=what-is-depth-fog>What is Depth Fog?</h2><p>Depth fog is an atmospheric effect that makes distant objects appear hazy or blurry. This effect can be used to create a sense of scale in a scene and to make objects appear more realistic. Depth fog is a useful tool for game developers who want to create immersive environments that feel more natural.</p><h2 id=how-to-implement-depth-fog-in-unity-urp>How to Implement Depth Fog in Unity URP</h2><p>Unity URP provides a built-in Depth Texture that can be used to implement depth fog. The Depth Texture is a grayscale texture that represents the distance between the camera and the objects in the scene. To implement depth fog in Unity URP, follow these steps:</p><ol><li>Create a new material and set its Shader to the URP/Lit shader.</li><li>Enable the Depth Texture option in the material.</li><li>Adjust the Depth Fade Start and Depth Fade Distance properties to control the distance at which the fog starts and how far it extends.</li><li>Set the fog color in the material.</li></ol><p>Once you have created the material with the depth texture enabled, apply it to the objects in your scene that you want to be affected by depth fog. The objects closer to the camera will be less affected by the fog, while the objects further away will appear more hazy.</p><h2 id=benefits-of-using-depth-fog>Benefits of Using Depth Fog</h2><p>Depth fog is a powerful tool for game developers who want to create immersive environments. By using depth fog, developers can create a sense of depth and distance in a scene, which can make the scene feel more natural and realistic. Depth fog can also be used to create a sense of scale in a scene, which is important for games that involve large environments, such as open-world games.</p><h2 id=conclusion>Conclusion</h2><p>Depth fog is a useful visual effect that can be used to create a sense of depth and distance in a scene. Unity URP provides a built-in Depth Texture that can be used to implement depth fog. By following the steps outlined in this blog post, you can easily add depth fog to your Unity URP project. By using depth fog, game developers can create immersive environments that feel more natural and realistic, making for a more engaging gaming experience.</p><h2 id=技术总结>技术总结</h2><p>还是用 Notion AI帮忙生成一下对于Depth Fog的介绍。</p><ol><li>采样Depth</li><li>重建世界空间</li><li>三种雾效计算方式</li></ol><p>这个系数在Unity内置雾效实现中，支持三种雾的计算方式——<code>线性（Linear）</code>，<code>指数（Exponential）</code>，<code>指数的平方（Exponential Squared）</code>。当给定距离z后。Linear的计算公式如下
 $$
 f;=;\frac{d_{max};-;\left|z\right|}{d_{max};-;d_{ming}}
 $$
-$d_{max}$和$d_{min}$分别表示受雾影响的最小距离和最大距离。</p>
-<p>Exponential的计算公式如下
+$d_{max}$和$d_{min}$分别表示受雾影响的最小距离和最大距离。</p><p>Exponential的计算公式如下
 $$
 f;=;e^{-d\cdot\left|z\right|}
 $$
-d是控制雾的浓度的参数。</p>
-<p>Exponential Squared的计算公式如下
+d是控制雾的浓度的参数。</p><p>Exponential Squared的计算公式如下
 $$
 f;=;e^{-\left(d;\cdot;\left|z\right|\right)^2}
-$$</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-HLSL" data-lang="HLSL"><span style="display:flex;"><span><span style="color:#66d9ef">half4</span> frag(Varyings input)<span style="color:#f92672">:</span> <span style="color:#a6e22e">SV_Target</span>
-</span></span><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// 采样depth 并且重建世界空间</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">half2</span> uv <span style="color:#f92672">=</span> input.positionCS.xy <span style="color:#f92672">/</span> _ScaledScreenParams.xy;
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">float</span> rawDepth <span style="color:#f92672">=</span> SampleSceneDepth(uv);
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">float3</span> positionWS <span style="color:#f92672">=</span> ComputeWorldSpacePosition(uv, rawDepth, UNITY_MATRIX_I_VP);
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 高度雾效系数 = （终止高度 - 当前像素高度）/（终止高度 - 起始高度）</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">float</span> fogDensity <span style="color:#f92672">=</span> (_FogEnd <span style="color:#f92672">-</span> positionWS.y) <span style="color:#f92672">/</span> (_FogEnd <span style="color:#f92672">-</span> _FogStart);
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 计算浓度     saturate：截取到0-1</span>
-</span></span><span style="display:flex;"><span>    fogDensity <span style="color:#f92672">=</span> saturate(fogDensity <span style="color:#f92672">*</span> _FogDensity);
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 原始颜色</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">half4</span> finalColor <span style="color:#f92672">=</span> SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, uv);
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 插值原始颜色，与雾效颜色，使用雾效系数作为参数</span>
-</span></span><span style="display:flex;"><span>    finalColor.rgb <span style="color:#f92672">=</span> lerp(finalColor.rgb, _FogColor.rgb, fogDensity);
-</span></span><span style="display:flex;"><span>    
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> finalColor;
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><hr>
-<p><img src="fog.png" alt="fog"></p>
-<h2 id="reference">Reference</h2>
-<ol>
-<li><a href="https://www.lfzxb.top/unity-shader-userdepthandnormaltexture/">https://www.lfzxb.top/unity-shader-userdepthandnormaltexture/</a></li>
-<li><a href="https://blog.csdn.net/puppet_master/article/details/77489948">https://blog.csdn.net/puppet_master/article/details/77489948</a></li>
-</ol>
-
-						</div>
-
-						<div class="post-text-bottom">
-							<div class="social-share" data-title="URP屏幕空间雾效" data-url="https://kampter.github.io/blog/urp%E5%B1%8F%E5%B9%95%E7%A9%BA%E9%97%B4%E9%9B%BE%E6%95%88/">
-								<span>Share:</span>
-								<a class="share-btn share-btn-facebook share-btn-1" title="Share on Facebook">
-									<i class="ion ion-social-facebook"></i>
-								</a>
-								<a class="share-btn share-btn-twitter share-btn-2" title="Share on Twitter">
-									<i class="ion ion-social-twitter"></i>
-								</a>
-								<a class="share-btn share-btn-linkedin share-btn-3" title="Share on Linkedin">
-									<i class="ion ion-social-linkedin"></i>
-								</a>
-								<a class="share-btn share-btn-reddit share-btn-4" title="Share on Reddit">
-									<i class="ion ion-social-reddit"></i>
-								</a>
-								<a class="share-btn share-btn-pinterest share-btn-5" title="Share on Pinterest">
-									<i class="ion ion-social-pinterest"></i>
-								</a>
-							</div>
-							
-							<div class="tags-links">
-								Tags:
-								
-								<a href="https://kampter.github.io/tags/unity/" rel="tag">Unity</a>
-								
-								<a href="https://kampter.github.io/tags/hlsl/" rel="tag">HLSL</a>
-								
-								<a href="https://kampter.github.io/tags/c#/" rel="tag">C#</a>
-								
-								<a href="https://kampter.github.io/tags/render-feature/" rel="tag">Render Feature</a>
-								
-							</div>
-							
-						</div>
-
-						
-						<div class="post-navigation" role="navigation">
-							
-							<div class="nav-previous">
-								<a href="https://kampter.github.io/blog/urp-14-renderfeature-%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F/" rel="prev" title="URP 14 RenderFeature 使用方式">
-									<span class="post-nav-next post-nav-text">Prev</span>
-								</a>
-							</div>
-							
-							
-							<div class="nav-next">
-								<a href="https://kampter.github.io/blog/urp%E5%B1%8F%E5%B9%95%E7%A9%BA%E9%97%B4%E7%8E%AF%E5%A2%83%E5%85%89%E9%81%AE%E8%94%BD/" rel="next" title="URP屏幕空间环境光遮蔽">
-									<span class="post-nav-prev post-nav-text">Next</span>
-								</a>
-							</div>
-							
-						</div>
-						
-					</div>
-				</div>
-			</div>
-
-			
-			<div class="title">Comments</div>
-
-			<div class="row border-line-v">
-				<div class="col col-m-12 col-t-12 col-d-12">
-					<div class="post-box">
-						<div class="col-md-12">
-							<div id="disqus_thread"></div>
-							<script>
-								var disqus_config = function () {
-									this.page.url = "https:\/\/kampter.github.io\/blog\/urp%E5%B1%8F%E5%B9%95%E7%A9%BA%E9%97%B4%E9%9B%BE%E6%95%88\/";   
-									this.page.identifier = "d9433db545810bbb891d56dec714dd3a";  
-								};
-								(function() {  
-									var d = document, s = d.createElement('script');
-									s.src = 'https://kampterblog.disqus.com/embed.js';
-									s.setAttribute('data-timestamp', +new Date());
-									(d.head || d.body).appendChild(s);
-								})();
-							</script>
-							<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-						</div>
-					</div>
-				</div>
-			</div>
-			
-		</div>
-
-	</div>
-</div>
-
-
-    </div>
-  </div>
-
-  <!-- Scripts -->
-  <script src="https://kampter.github.io/plugins/jQuery/jquery.min.js"></script>
-
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.6.2/fuse.min.js" integrity="sha512-Nqw1tH3mpavka9cQCc5zWWEZNfIPdOYyQFjlV1NvflEtQ0/XI6ZQ+H/D3YgJdqSUJlMLAPRj/oXlaHCFbFCjoQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script src="https://kampter.github.io/plugins/search/simple-search.js"></script>
-
-
-<script src="https://kampter.github.io/plugins/validate/jquery.validate.min.js"></script>
-<script src="https://kampter.github.io/plugins/owl-carousel/owl.carousel.js"></script>
-<script src="https://kampter.github.io/plugins/magnific-popup/magnific-popup.min.js"></script>
-<script src="https://kampter.github.io/plugins/slimscroll/jquery.slimscroll.js"></script>
-<script src="https://kampter.github.io/plugins/imagesloaded/imagesloaded.pkgd.min.js"></script>
-<script src="https://kampter.github.io/plugins/isotope/isotope.pkgd.js"></script>
-<script src="https://kampter.github.io/plugins/typed/typed.js"></script>
-<script src="https://kampter.github.io/plugins/rrssb/rrssb.js"></script>
-
-
-
-
-<script src="https://kampter.github.io/js/form-handler.min.js"></script>
-
-
-<script src="https://kampter.github.io/js/common.min.js"></script>
-
-</body>
-
-</html>
+$$</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-HLSL data-lang=HLSL><span style=display:flex><span><span style=color:#66d9ef>half4</span> frag(Varyings input)<span style=color:#f92672>:</span> <span style=color:#a6e22e>SV_Target</span>
+</span></span><span style=display:flex><span>{
+</span></span><span style=display:flex><span>	<span style=color:#75715e>// 采样depth 并且重建世界空间</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>half2</span> uv <span style=color:#f92672>=</span> input.positionCS.xy <span style=color:#f92672>/</span> _ScaledScreenParams.xy;
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>float</span> rawDepth <span style=color:#f92672>=</span> SampleSceneDepth(uv);
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>float3</span> positionWS <span style=color:#f92672>=</span> ComputeWorldSpacePosition(uv, rawDepth, UNITY_MATRIX_I_VP);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e>// 高度雾效系数 = （终止高度 - 当前像素高度）/（终止高度 - 起始高度）</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>float</span> fogDensity <span style=color:#f92672>=</span> (_FogEnd <span style=color:#f92672>-</span> positionWS.y) <span style=color:#f92672>/</span> (_FogEnd <span style=color:#f92672>-</span> _FogStart);
+</span></span><span style=display:flex><span>    <span style=color:#75715e>// 计算浓度     saturate：截取到0-1</span>
+</span></span><span style=display:flex><span>    fogDensity <span style=color:#f92672>=</span> saturate(fogDensity <span style=color:#f92672>*</span> _FogDensity);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e>// 原始颜色</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>half4</span> finalColor <span style=color:#f92672>=</span> SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, uv);
+</span></span><span style=display:flex><span>    <span style=color:#75715e>// 插值原始颜色，与雾效颜色，使用雾效系数作为参数</span>
+</span></span><span style=display:flex><span>    finalColor.rgb <span style=color:#f92672>=</span> lerp(finalColor.rgb, _FogColor.rgb, fogDensity);
+</span></span><span style=display:flex><span>    
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> finalColor;
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><hr><p><img src=fog.png alt=fog></p><h2 id=reference>Reference</h2><ol><li><a href=https://www.lfzxb.top/unity-shader-userdepthandnormaltexture/>https://www.lfzxb.top/unity-shader-userdepthandnormaltexture/</a></li><li><a href=https://blog.csdn.net/puppet_master/article/details/77489948>https://blog.csdn.net/puppet_master/article/details/77489948</a></li></ol></div><div class=post-text-bottom><div class=social-share data-title=URP屏幕空间雾效 data-url=https://kampter.github.io/blog/urp%E5%B1%8F%E5%B9%95%E7%A9%BA%E9%97%B4%E9%9B%BE%E6%95%88/><span>Share:</span>
+<a class="share-btn share-btn-facebook share-btn-1" title="Share on Facebook"><i class="ion ion-social-facebook"></i></a>
+<a class="share-btn share-btn-twitter share-btn-2" title="Share on Twitter"><i class="ion ion-social-twitter"></i></a>
+<a class="share-btn share-btn-linkedin share-btn-3" title="Share on Linkedin"><i class="ion ion-social-linkedin"></i></a>
+<a class="share-btn share-btn-reddit share-btn-4" title="Share on Reddit"><i class="ion ion-social-reddit"></i></a>
+<a class="share-btn share-btn-pinterest share-btn-5" title="Share on Pinterest"><i class="ion ion-social-pinterest"></i></a></div><div class=tags-links>Tags:
+<a href=https://kampter.github.io/tags/unity/ rel=tag>Unity</a>
+<a href=https://kampter.github.io/tags/hlsl/ rel=tag>HLSL</a>
+<a href=https://kampter.github.io/tags/c#/ rel=tag>C#</a>
+<a href=https://kampter.github.io/tags/render-feature/ rel=tag>Render Feature</a></div></div><div class=post-navigation role=navigation><div class=nav-previous><a href=https://kampter.github.io/blog/urp-14-renderfeature-%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F/ rel=prev title="URP 14 RenderFeature 使用方式"><span class="post-nav-next post-nav-text">Prev</span></a></div><div class=nav-next><a href=https://kampter.github.io/blog/urp%E5%B1%8F%E5%B9%95%E7%A9%BA%E9%97%B4%E7%8E%AF%E5%A2%83%E5%85%89%E9%81%AE%E8%94%BD/ rel=next title=URP屏幕空间环境光遮蔽><span class="post-nav-prev post-nav-text">Next</span></a></div></div></div></div></div><div class=title>Comments</div><div class="row border-line-v"><div class="col col-m-12 col-t-12 col-d-12"><div class=post-box><div class=col-md-12><div id=disqus_thread></div><script>var disqus_config=function(){this.page.url="https://kampter.github.io/blog/urp%E5%B1%8F%E5%B9%95%E7%A9%BA%E9%97%B4%E9%9B%BE%E6%95%88/",this.page.identifier="d9433db545810bbb891d56dec714dd3a"};(function(){var e=document,t=e.createElement("script");t.src="https://kampterblog.disqus.com/embed.js",t.setAttribute("data-timestamp",+new Date),(e.head||e.body).appendChild(t)})()</script><noscript>Please enable JavaScript to view the <a href=https://disqus.com/?ref_noscript>comments powered by Disqus.</a></noscript></div></div></div></div></div></div></div></div></div><script src=https://kampter.github.io/plugins/jQuery/jquery.min.js></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin=anonymous referrerpolicy=no-referrer></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.6.2/fuse.min.js integrity="sha512-Nqw1tH3mpavka9cQCc5zWWEZNfIPdOYyQFjlV1NvflEtQ0/XI6ZQ+H/D3YgJdqSUJlMLAPRj/oXlaHCFbFCjoQ==" crossorigin=anonymous referrerpolicy=no-referrer></script>
+<script src=https://kampter.github.io/plugins/search/simple-search.js></script>
+<script src=https://kampter.github.io/plugins/validate/jquery.validate.min.js></script>
+<script src=https://kampter.github.io/plugins/owl-carousel/owl.carousel.js></script>
+<script src=https://kampter.github.io/plugins/magnific-popup/magnific-popup.min.js></script>
+<script src=https://kampter.github.io/plugins/slimscroll/jquery.slimscroll.js></script>
+<script src=https://kampter.github.io/plugins/imagesloaded/imagesloaded.pkgd.min.js></script>
+<script src=https://kampter.github.io/plugins/isotope/isotope.pkgd.js></script>
+<script src=https://kampter.github.io/plugins/typed/typed.js></script>
+<script src=https://kampter.github.io/plugins/rrssb/rrssb.js></script>
+<script src=https://kampter.github.io/js/form-handler.min.js></script>
+<script src=https://kampter.github.io/js/common.min.js></script></body></html>

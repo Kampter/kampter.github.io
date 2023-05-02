@@ -1,68 +1,13 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>技术实现 on RyanCV - CV Resume &amp; vCard Hugo Theme</title>
-    <link>https://kampter.github.io/categories/%E6%8A%80%E6%9C%AF%E5%AE%9E%E7%8E%B0/</link>
-    <description>Recent content in 技术实现 on RyanCV - CV Resume &amp; vCard Hugo Theme</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Tue, 18 Apr 2023 17:46:43 +0800</lastBuildDate><atom:link href="https://kampter.github.io/categories/%E6%8A%80%E6%9C%AF%E5%AE%9E%E7%8E%B0/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>近期做的几个Unity和UE特效</title>
-      <link>https://kampter.github.io/blog/%E8%BF%91%E6%9C%9F%E5%81%9A%E7%9A%84%E5%87%A0%E4%B8%AAunity%E5%92%8Cue%E7%89%B9%E6%95%88/</link>
-      <pubDate>Tue, 18 Apr 2023 17:46:43 +0800</pubDate>
-      
-      <guid>https://kampter.github.io/blog/%E8%BF%91%E6%9C%9F%E5%81%9A%E7%9A%84%E5%87%A0%E4%B8%AAunity%E5%92%8Cue%E7%89%B9%E6%95%88/</guid>
-      <description>风格化毒液投射物 请原谅我制作了一个毒液的技能特效。我原本想要制作毒液效果的，但是尝试了多次后一直不满意，就把部分素材拼凑成了毒液的技能特效，希望可以得到谅解。这里我用UE5来制作这个技能特效。
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>技术实现 on RyanCV - CV Resume &amp; vCard Hugo Theme</title><link>https://kampter.github.io/categories/%E6%8A%80%E6%9C%AF%E5%AE%9E%E7%8E%B0/</link><description>Recent content in 技术实现 on RyanCV - CV Resume &amp; vCard Hugo Theme</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Tue, 18 Apr 2023 17:46:43 +0800</lastBuildDate><atom:link href="https://kampter.github.io/categories/%E6%8A%80%E6%9C%AF%E5%AE%9E%E7%8E%B0/index.xml" rel="self" type="application/rss+xml"/><item><title>近期做的几个Unity和UE特效</title><link>https://kampter.github.io/blog/%E8%BF%91%E6%9C%9F%E5%81%9A%E7%9A%84%E5%87%A0%E4%B8%AAunity%E5%92%8Cue%E7%89%B9%E6%95%88/</link><pubDate>Tue, 18 Apr 2023 17:46:43 +0800</pubDate><guid>https://kampter.github.io/blog/%E8%BF%91%E6%9C%9F%E5%81%9A%E7%9A%84%E5%87%A0%E4%B8%AAunity%E5%92%8Cue%E7%89%B9%E6%95%88/</guid><description>风格化毒液投射物 请原谅我制作了一个毒液的技能特效。我原本想要制作毒液效果的，但是尝试了多次后一直不满意，就把部分素材拼凑成了毒液的技能特效，希望可以得到谅解。这里我用UE5来制作这个技能特效。
 Texture的思路：用cross section + histogram scan制造一条线，通过不断叠加noise制造细节，并且用blend的subtract模式减掉球状的shape，用来模拟液体的感觉。最后用Directional Warp制造速度的感觉。
 原本Trail是不需要有mesh的，但是我希望力大出奇迹（bushi），只是希望最终呈现的效果更加立体吧。这里用 point jitter制造noise并且把球体copy to point 来制造这个不规则的球状物体作为 projectile 的mesh。
-Material的部分我分成三块，第一块是 Projectile，我希望用Fresnel来描述mesh的边缘发光的感觉。同时在这个Material里面我还添加erosion的效果在alpha mask中，希望在Niagara中可以驱动这个erosion 制造飞溅的小液滴的效果，而不是用particle来实现。除此之外我还用一张noise 贴图来驱动vertex posion，希望制造液体飞出主体但是与主体牵连的感觉(液滴表面张力)。 Smoke的部分，用一张Noise作为UV的distortion添加在Main Noise Texture上面，并且添加圆形的mask和depth fade减弱边缘。Trail部分与Smoke基本相同，在Mask部分我用了横向的Gradient Mask，希望Trail的尾部逐渐虚化掉。</description>
-    </item>
-    
-    <item>
-      <title>在URP中搭建一个Disney Principled BRDF</title>
-      <link>https://kampter.github.io/blog/%E5%9C%A8urp%E4%B8%AD%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AAdisney-principled-brdf/</link>
-      <pubDate>Thu, 16 Mar 2023 23:33:20 +0000</pubDate>
-      
-      <guid>https://kampter.github.io/blog/%E5%9C%A8urp%E4%B8%AD%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AAdisney-principled-brdf/</guid>
-      <description>技术实现 Unity 自带的Lit 采用了通用的microfacet Cook-Torrance BRDF着色模型，对于各向异性，清漆，布料等支持并没有实现。这里希望搭建一个Disney Principled BRDF 来学习源码并且扩充这部分shader便于以后风格化定制。
-Diffuse项实现 half3 Disney_Diffuse(half3 diffuseColor, half roughness, half ndotV, half ndotL, half LdotH) { half FD90 = 0.</description>
-    </item>
-    
-    <item>
-      <title>尝试在URP下手写 PBR shader</title>
-      <link>https://kampter.github.io/blog/%E5%B0%9D%E8%AF%95%E5%9C%A8urp%E4%B8%AD%E6%89%8B%E5%86%99-pbr-shader/</link>
-      <pubDate>Fri, 10 Feb 2023 12:58:11 +0000</pubDate>
-      
-      <guid>https://kampter.github.io/blog/%E5%B0%9D%E8%AF%95%E5%9C%A8urp%E4%B8%AD%E6%89%8B%E5%86%99-pbr-shader/</guid>
-      <description>Cook-Torrance BRDF Cook-Torrance BRDF的镜面反射部分包含三个函数，此外分母部分还有一个标准化因子 。字母D，F与G分别代表着一种类型的函数，各个函数分别用来近似的计算出表面反射特性的一个特定部分。三个函数分别为法线分布函数(Normal Distribution Function)，菲涅尔方程(Fresnel Rquation)和几何函数(Geometry Function)：
+Material的部分我分成三块，第一块是 Projectile，我希望用Fresnel来描述mesh的边缘发光的感觉。同时在这个Material里面我还添加erosion的效果在alpha mask中，希望在Niagara中可以驱动这个erosion 制造飞溅的小液滴的效果，而不是用particle来实现。除此之外我还用一张noise 贴图来驱动vertex posion，希望制造液体飞出主体但是与主体牵连的感觉(液滴表面张力)。 Smoke的部分，用一张Noise作为UV的distortion添加在Main Noise Texture上面，并且添加圆形的mask和depth fade减弱边缘。Trail部分与Smoke基本相同，在Mask部分我用了横向的Gradient Mask，希望Trail的尾部逐渐虚化掉。</description></item><item><title>在URP中搭建一个Disney Principled BRDF</title><link>https://kampter.github.io/blog/%E5%9C%A8urp%E4%B8%AD%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AAdisney-principled-brdf/</link><pubDate>Thu, 16 Mar 2023 23:33:20 +0000</pubDate><guid>https://kampter.github.io/blog/%E5%9C%A8urp%E4%B8%AD%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AAdisney-principled-brdf/</guid><description>技术实现 Unity 自带的Lit 采用了通用的microfacet Cook-Torrance BRDF着色模型，对于各向异性，清漆，布料等支持并没有实现。这里希望搭建一个Disney Principled BRDF 来学习源码并且扩充这部分shader便于以后风格化定制。
+Diffuse项实现 half3 Disney_Diffuse(half3 diffuseColor, half roughness, half ndotV, half ndotL, half LdotH) { half FD90 = 0.</description></item><item><title>尝试在URP下手写 PBR shader</title><link>https://kampter.github.io/blog/%E5%B0%9D%E8%AF%95%E5%9C%A8urp%E4%B8%AD%E6%89%8B%E5%86%99-pbr-shader/</link><pubDate>Fri, 10 Feb 2023 12:58:11 +0000</pubDate><guid>https://kampter.github.io/blog/%E5%B0%9D%E8%AF%95%E5%9C%A8urp%E4%B8%AD%E6%89%8B%E5%86%99-pbr-shader/</guid><description>Cook-Torrance BRDF Cook-Torrance BRDF的镜面反射部分包含三个函数，此外分母部分还有一个标准化因子 。字母D，F与G分别代表着一种类型的函数，各个函数分别用来近似的计算出表面反射特性的一个特定部分。三个函数分别为法线分布函数(Normal Distribution Function)，菲涅尔方程(Fresnel Rquation)和几何函数(Geometry Function)：
 D项 - 法线分布函数: 估算在受到表面粗糙度的影响下，朝向方向与半程向量一致的微平面的数量。这是用来估算微平面的主要函数。
-half Function_D(half ndotH, half roughness) { half a2 = roughness * roughness; half ndotH2 = ndotH * ndotH; half nom = a2; half denom = (ndotH2 * (a2 - 1.</description>
-    </item>
-    
-    <item>
-      <title>URP仿原神渲染shader</title>
-      <link>https://kampter.github.io/blog/urp%E4%BB%BF%E5%8E%9F%E7%A5%9E%E6%B8%B2%E6%9F%93shader/</link>
-      <pubDate>Sun, 05 Feb 2023 21:56:47 +0000</pubDate>
-      
-      <guid>https://kampter.github.io/blog/urp%E4%BB%BF%E5%8E%9F%E7%A5%9E%E6%B8%B2%E6%9F%93shader/</guid>
-      <description>技术实现 在原神二测就有来体验过游戏，也是一步一步看着原神成长壮大封神的，一直以来都对于这样认真做内容的游戏公司怀有敬意。这次终于“敢”在掌握一定技术的情况下来模仿原神的渲染效果。
+half Function_D(half ndotH, half roughness) { half a2 = roughness * roughness; half ndotH2 = ndotH * ndotH; half nom = a2; half denom = (ndotH2 * (a2 - 1.</description></item><item><title>URP仿原神渲染shader</title><link>https://kampter.github.io/blog/urp%E4%BB%BF%E5%8E%9F%E7%A5%9E%E6%B8%B2%E6%9F%93shader/</link><pubDate>Sun, 05 Feb 2023 21:56:47 +0000</pubDate><guid>https://kampter.github.io/blog/urp%E4%BB%BF%E5%8E%9F%E7%A5%9E%E6%B8%B2%E6%9F%93shader/</guid><description>技术实现 在原神二测就有来体验过游戏，也是一步一步看着原神成长壮大封神的，一直以来都对于这样认真做内容的游戏公司怀有敬意。这次终于“敢”在掌握一定技术的情况下来模仿原神的渲染效果。
 模型准备 模型下载自米哈游官方在B站开展的二创活动pmx格式，直接网上随便找个converter即可转为fbx方便使用，这里选择刻晴作为测试人物模型。而神奇的google有人通过神奇的方式获得其他的贴图文件。汇总起来一共获得这些文件：
 贴图分析 Lightmap.r = Specular Mask
 Lightmap.g = AO Map
 Lightmap.b = Roughness
-lightmap.a = Emission Mask</description>
-    </item>
-    
-    <item>
-      <title>军团要塞2渲染shader实现</title>
-      <link>https://kampter.github.io/blog/%E5%86%9B%E5%9B%A2%E8%A6%81%E5%A1%9E2%E6%B8%B2%E6%9F%93shader%E5%AE%9E%E7%8E%B0/</link>
-      <pubDate>Mon, 16 Jan 2023 15:25:58 +0000</pubDate>
-      
-      <guid>https://kampter.github.io/blog/%E5%86%9B%E5%9B%A2%E8%A6%81%E5%A1%9E2%E6%B8%B2%E6%9F%93shader%E5%AE%9E%E7%8E%B0/</guid>
-      <description>技术分析 论文中有一篇非常形象的图片来实现渲染效果
-Albedo // Albedo half4 mainTex = SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, IN.uv) * _MainColor; half4 albedo = mainTex; half4 ambient = half4(unity_SHAr.</description>
-    </item>
-    
-  </channel>
-</rss>
+lightmap.a = Emission Mask</description></item><item><title>军团要塞2渲染shader实现</title><link>https://kampter.github.io/blog/%E5%86%9B%E5%9B%A2%E8%A6%81%E5%A1%9E2%E6%B8%B2%E6%9F%93shader%E5%AE%9E%E7%8E%B0/</link><pubDate>Mon, 16 Jan 2023 15:25:58 +0000</pubDate><guid>https://kampter.github.io/blog/%E5%86%9B%E5%9B%A2%E8%A6%81%E5%A1%9E2%E6%B8%B2%E6%9F%93shader%E5%AE%9E%E7%8E%B0/</guid><description>技术分析 论文中有一篇非常形象的图片来实现渲染效果
+Albedo // Albedo half4 mainTex = SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, IN.uv) * _MainColor; half4 albedo = mainTex; half4 ambient = half4(unity_SHAr.</description></item></channel></rss>

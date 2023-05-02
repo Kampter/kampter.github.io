@@ -1,818 +1,216 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <title>URP 14 RenderFeature 使用方式</title>
-
-  <!-- Meta -->
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="HandheldFriendly" content="true">
-  <meta name="author" content="bslthemes" />
-
-  <!-- Google Fonts -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" />
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.0/css/all.css" />
-
-  <!-- Main Stylesheets -->
-  
-  <link rel="stylesheet" href="https://kampter.github.io/scss/style.min.css" />
-
-  <!-- Plugins Stylesheets -->
-  <link rel="stylesheet" href="https://kampter.github.io/plugins/ionicons/ionicons.css" />
-  <link rel="stylesheet" href="https://kampter.github.io/plugins/font-awesome/css/font-awesome.css" />
-  <link rel="stylesheet" href="https://kampter.github.io/plugins/magnific-popup/magnific-popup.css" />
-  <link rel="stylesheet" href="https://kampter.github.io/plugins/owl-carousel/owl.carousel.css" />
-  <link rel="stylesheet" href="https://kampter.github.io/plugins/animate/animate.css" />
-  <link rel="stylesheet" href="https://kampter.github.io/plugins/syntax/syntax.css" />
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  <!-- Favicon -->
-  <link rel="shortcut icon" href="https://kampter.github.io/images/favicon/favicon.ico" type="image/x-icon" />
-  <link rel="icon" href="https://kampter.github.io/images/favicon/favicon.ico" type="image/x-icon" />
-
-  
-  <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-4BGKQYLBBG"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-
-    gtag('config', 'G-4BGKQYLBBG');
-  </script>
-  
-
-  </head>
-
-
-<body class=" blog">
-  <div class="page new-skin">
-
-    <!-- Preloader -->
-<div class="preloader">
-	<div class="centrize full-width">
-		<div class="vertical-center">
-			<div class="spinner">
-				<div class="double-bounce1"></div>
-				<div class="double-bounce2"></div>
-			</div>
-		</div>
-	</div>
-</div>
-
-
-    
-
-<!-- Background -->
-
-
-<div class="background gradient">
-	<ul class="bg-bubbles">
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-	</ul>
-</div>
-
-
-
-
-
-    
-
-<div class="s_overlay"></div>
-<div class="content-sidebar">
-	<div class="sidebar-wrap">
-		<aside id="secondary" class="widget-area">
-
-      
-			<div id="search" class="widget widget_search">
-				<form class="search-form" action="https://kampter.github.io/search">
-					<label>
-						<input type="search" id="searchInput" class="search-field" placeholder="Search ..." value="">
-					</label>
-					<input type="submit" class="search-submit" value="">
-          <ul id="searchResults"></ul>
-				</form>
-			</div>
-      
-
-			
-			<section class="widget widget_menu">
-				<h2 class="widget-title">Menu</h2>
-				<ul>
-					
-					
-					
-					
-					
-					<li class="active">
-						<a href="https://kampter.github.io//blog">Blog Page</a>
-					</li>
-					
-					
-					
-					
-					<li>
-						<a href="https://kampter.github.io//portfolio">Portfolio Page</a>
-					</li>
-					
-				</ul>
-			</section>
-      
-
-			
-			<section class="widget widget_recent_entries">
-				<h2 class="widget-title">Latest Posts</h2>
-				<ul>
-					
-					<li>
-						<a href="https://kampter.github.io/blog/%E8%BF%91%E6%9C%9F%E5%81%9A%E7%9A%84%E5%87%A0%E4%B8%AAunity%E5%92%8Cue%E7%89%B9%E6%95%88/">近期做的几个Unity和UE特效</a>
-					</li>
-					
-					<li>
-						<a href="https://kampter.github.io/blog/urp%E5%B1%8F%E5%B9%95%E7%A9%BA%E9%97%B4sobel%E8%BE%B9%E7%BC%98%E6%A3%80%E6%B5%8B/">URP屏幕空间Sobel边缘检测</a>
-					</li>
-					
-					<li>
-						<a href="https://kampter.github.io/blog/blender%E6%8F%92%E4%BB%B6%E5%88%B6%E4%BD%9C%E5%BF%83%E5%BE%97/">blender插件制作心得</a>
-					</li>
-					
-					<li>
-						<a href="https://kampter.github.io/blog/urp%E5%B1%8F%E5%B9%95%E7%A9%BA%E9%97%B4%E7%8E%AF%E5%A2%83%E5%85%89%E9%81%AE%E8%94%BD/">URP屏幕空间环境光遮蔽</a>
-					</li>
-					
-				</ul>
-			</section>
-			
-
-			
-			<section class="widget widget_categories">
-				<h2 class="widget-title">Categories</h2>
-				<ul>
-            
-  				  <li>
-              <a href="https://kampter.github.io/categories/portfolio/">Portfolio</a>
-              <small>( 5 )</small>
-            </li>
-            
-  				  <li>
-              <a href="https://kampter.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
-              <small>( 6 )</small>
-            </li>
-            
-  				  <li>
-              <a href="https://kampter.github.io/categories/%E6%8A%80%E6%9C%AF%E5%AE%9E%E7%8E%B0/">技术实现</a>
-              <small>( 5 )</small>
-            </li>
-            
-  				  <li>
-              <a href="https://kampter.github.io/categories/%E6%97%A5%E5%B8%B8%E7%94%9F%E6%B4%BB/">日常生活</a>
-              <small>( 1 )</small>
-            </li>
-            
-  				  <li>
-              <a href="https://kampter.github.io/categories/%E6%97%A5%E5%B8%B8%E8%AE%B0%E5%BD%95/">日常记录</a>
-              <small>( 1 )</small>
-            </li>
-            
-  				  <li>
-              <a href="https://kampter.github.io/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/">课程笔记</a>
-              <small>( 8 )</small>
-            </li>
-            
-				</ul>
-			</section>
-			
-
-			
-			<section class="widget widget_tags">
-				<h2 class="widget-title">Tags</h2>
-				<ul>
-           
-           <li>
-             <a href="https://kampter.github.io/tags/after-effect/">After Effect</a>
-             <small>( 1 )</small>
-           </li>
-           
-           <li>
-             <a href="https://kampter.github.io/tags/bifrost/">Bifrost</a>
-             <small>( 1 )</small>
-           </li>
-           
-           <li>
-             <a href="https://kampter.github.io/tags/blender/">blender</a>
-             <small>( 2 )</small>
-           </li>
-           
-           <li>
-             <a href="https://kampter.github.io/tags/c#/">C#</a>
-             <small>( 4 )</small>
-           </li>
-           
-           <li>
-             <a href="https://kampter.github.io/tags/computer-graphic/">Computer Graphic</a>
-             <small>( 9 )</small>
-           </li>
-           
-           <li>
-             <a href="https://kampter.github.io/tags/eve-online/">Eve Online</a>
-             <small>( 1 )</small>
-           </li>
-           
-           <li>
-             <a href="https://kampter.github.io/tags/flip/">Flip</a>
-             <small>( 1 )</small>
-           </li>
-           
-           <li>
-             <a href="https://kampter.github.io/tags/games-101/">Games 101</a>
-             <small>( 4 )</small>
-           </li>
-           
-           <li>
-             <a href="https://kampter.github.io/tags/games-202/">Games 202</a>
-             <small>( 3 )</small>
-           </li>
-           
-           <li>
-             <a href="https://kampter.github.io/tags/hlsl/">HLSL</a>
-             <small>( 12 )</small>
-           </li>
-           
-           <li>
-             <a href="https://kampter.github.io/tags/houdini/">Houdini</a>
-             <small>( 3 )</small>
-           </li>
-           
-           <li>
-             <a href="https://kampter.github.io/tags/java/">Java</a>
-             <small>( 1 )</small>
-           </li>
-           
-           <li>
-             <a href="https://kampter.github.io/tags/math/">Math</a>
-             <small>( 8 )</small>
-           </li>
-           
-           <li>
-             <a href="https://kampter.github.io/tags/maya/">Maya</a>
-             <small>( 1 )</small>
-           </li>
-           
-           <li>
-             <a href="https://kampter.github.io/tags/niagara-system/">niagara system</a>
-             <small>( 2 )</small>
-           </li>
-           
-           <li>
-             <a href="https://kampter.github.io/tags/opengl/">Opengl</a>
-             <small>( 1 )</small>
-           </li>
-           
-           <li>
-             <a href="https://kampter.github.io/tags/particle/">Particle</a>
-             <small>( 1 )</small>
-           </li>
-           
-           <li>
-             <a href="https://kampter.github.io/tags/pbr-shading/">PBR Shading</a>
-             <small>( 2 )</small>
-           </li>
-           
-           <li>
-             <a href="https://kampter.github.io/tags/plugin/">plugin</a>
-             <small>( 1 )</small>
-           </li>
-           
-           <li>
-             <a href="https://kampter.github.io/tags/render-feature/">Render Feature</a>
-             <small>( 4 )</small>
-           </li>
-           
-           <li>
-             <a href="https://kampter.github.io/tags/shader-graph/">Shader Graph</a>
-             <small>( 1 )</small>
-           </li>
-           
-           <li>
-             <a href="https://kampter.github.io/tags/substance-designer/">substance designer</a>
-             <small>( 2 )</small>
-           </li>
-           
-           <li>
-             <a href="https://kampter.github.io/tags/toon-shading/">Toon Shading</a>
-             <small>( 3 )</small>
-           </li>
-           
-           <li>
-             <a href="https://kampter.github.io/tags/unity/">Unity</a>
-             <small>( 15 )</small>
-           </li>
-           
-           <li>
-             <a href="https://kampter.github.io/tags/unreal-engine/">unreal engine</a>
-             <small>( 2 )</small>
-           </li>
-           
-           <li>
-             <a href="https://kampter.github.io/tags/vfx-graph/">VFX Graph</a>
-             <small>( 2 )</small>
-           </li>
-           
-				</ul>
-			</section>
-			
-
-		</aside>
-	</div>
-	<span class="close"></span>
-</div>
-
-
-    
-    
-    <!-- Container -->
-    <div class="container opened" data-animation-in="fadeInLeft" data-animation-out="fadeOutLeft">
-
-      
-
-<!-- Header -->
-<header class="header">
-
-	<a href="#" class="menu-btn"><span></span></a>
-
-  <!-- menu -->
-	<div class="top-menu">
-		<ul>
-      
-      
-      
-      
-      
-			<li class="active">
-				<a href="https://kampter.github.io/#about-card">
-					<span class="icon ion-person"></span>
-					<span class="link">About</span>
-				</a>
-			</li>
-			
-      
-      
-      
-			<li>
-				<a href="https://kampter.github.io/#resume-card">
-					<span class="icon ion-android-list"></span>
-					<span class="link">Resume</span>
-				</a>
-			</li>
-			
-      
-      
-      
-			<li>
-				<a href="https://kampter.github.io/#works-card">
-					<span class="icon ion-paintbrush"></span>
-					<span class="link">Works</span>
-				</a>
-			</li>
-			
-      
-      
-      
-			<li>
-				<a href="https://kampter.github.io/#blog-card">
-					<span class="icon ion-chatbox-working"></span>
-					<span class="link">Blog</span>
-				</a>
-			</li>
-			
-      
-      
-      
-			<li>
-				<a href="https://kampter.github.io/#contact-card">
-					<span class="icon ion-at"></span>
-					<span class="link">Contact</span>
-				</a>
-			</li>
-			
-		</ul>
-	</div>
-
-</header>
-
-
-      <!-- Card - Started -->
-
-
-
-<div class="card-started" id="home-card">
-
-  <!-- Profile-->
-  <div class="profile no-photo">
-
-    <!-- profile image -->
-    <div class="slide" style="background-image: url(https://kampter.github.io/images/1082264.png);"></div>
-
-    <!-- profile photo -->
-    
-
-    <!-- profile titles -->
-    <div class="title">王子正</div>
-    <div class="subtitle subtitle-typed">
-      <div class="typing-title">
-        
-        <p>Technical Artist</p>
-        
-      </div>
-    </div>
-
-    <!-- profile socials -->
-    <div class="social">
-      
-      <a target="_blank" href="https://twitter.com/wang_psbswsg" title="Twitter"><span class="fab fa-twitter"></span></a>
-      
-      <a target="_blank" href="https://github.com/Kampter" title="GitHub"><span class="fab fa-github"></span></a>
-      
-      <a target="_blank" href="https://www.youtube.com/channel/UCK43eUkmsyRk8FeBw5oRJtQ" title="Youtube"><span class="fab fa-youtube"></span></a>
-      
-      <a target="_blank" href="https://www.artstation.com/kampter" title="Stackoverflow"><span class="fab fa-artstation"></span></a>
-      
-    </div>
-
-    <!-- profile buttons -->
-    <div class="lnks">
-      
-      <a href="/images/Resume_ZizhengWang_Chinese_v004.pdf" target="_blank" class="lnk">
-        <span class="text">Download CV</span>
-        
-        <span class="ion ion ion-archive"></span>
-        
-      </a>
-      
-      <a href="mailto:psbswsg@gmail.com" target="_blank" class="lnk">
-        <span class="text">Contact Me</span>
-        
-        <span class="ion arrow"></span>
-        
-      </a>
-      
-    </div>
-
-  </div>
-
-</div>
-
-
-
-
-      
-
-
-<!-- Blog Post -->
-<div class="card-inner blog blog-post animated" id="blog-card">
-	<div class="card-wrap">
-
-		<div class="content blog-single">
-
-			<div class="title">Blog Post</div>
-
-			<div class="row border-line-v">
-				<div class="col col-m-12 col-t-12 col-d-12">
-					<div class="post-box">
-
-						<h1>URP 14 RenderFeature 使用方式</h1>
-						<div class="blog-detail">
-							<span class="date">March 20, 2023</span>
-							
-							<span class="cat-links">
-		            
-		            <a href="https://kampter.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
-		            
-							</span>
-							
-							<span class="byline"> By <span class="author">Ryan Adlard</span></span>
-						</div>
-
-						
-						<div class="blog-image">
-							<img src="https://kampter.github.io/images/blog/URP14.png" alt="URP 14 RenderFeature 使用方式" />
-						</div>
-						
-
-						<div class="blog-content">
-							<h2 id="urp-14">URP 14</h2>
-<p><a href="https://docs.unity3d.com/Packages/com.unity.render-pipelines.universal@14.0/manual/upgrade-guide-2022-2.html">URP 14</a> 对应Unity 2022.2对于2021lts版本的URP 12中后处理的API有些许改变，需要参考官方文档的改变。而其中最大的改变来自于RTHandle的引入。</p>
-<p>以一个DesaturateFeature为例。在DesaturateFeature.cs中改变比较大的是加入一个SetupRenderPasses来帮助创建Materail和传递参数，而不是传统的写法在Create()中。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C#" data-lang="C#"><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">void</span> SetupRenderPasses(ScriptableRenderer renderer, <span style="color:#66d9ef">in</span> RenderingData renderingData)
-</span></span><span style="display:flex;"><span>    {
-</span></span><span style="display:flex;"><span>        Material material = CoreUtils.CreateEngineMaterial(shader);
-</span></span><span style="display:flex;"><span>        desaturateRenderPass.ConfigureInput(ScriptableRenderPassInput.Color);
-</span></span><span style="display:flex;"><span>        desaturateRenderPass.Setup(material, <span style="color:#e6db74">&#34;DesaturatedRenderPass&#34;</span>,renderingData);
-</span></span><span style="display:flex;"><span>    }
-</span></span></code></pre></div><p>然后写内部的DesaturateRenderPass 类。</p>
-<ul>
-<li>变化一是RenderTargetHandle.Init(&quot;_CustomPassHandle&quot;)方式的改变为</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C#" data-lang="C#"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> colorCopyDescriptor = renderingData.cameraData.cameraTargetDescriptor;
-</span></span><span style="display:flex;"><span>            colorCopyDescriptor.depthBufferBits = (<span style="color:#66d9ef">int</span>) DepthBits.None;
-</span></span><span style="display:flex;"><span>            RenderingUtils.ReAllocateIfNeeded(<span style="color:#66d9ef">ref</span> m_CopiedColor, colorCopyDescriptor, name: <span style="color:#e6db74">&#34;_FullscreenPassColorCopy&#34;</span>);
-</span></span><span style="display:flex;"><span>        
-</span></span></code></pre></div><ul>
-<li>
-<p>变化二：command buffer的GetTemporaryRT和ReleaseTemporaryRT被弃用。</p>
-</li>
-<li>
-<p>官方推荐使用Blitter.BlitCameraTexture方法把原始的RT添加我们自定义的material然后再传递回去。代码实现如下</p>
-</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C#" data-lang="C#"><span style="display:flex;"><span>CommandBuffer cmd = CommandBufferPool.Get();
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> cameraData = renderingData.cameraData;
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> (<span style="color:#66d9ef">new</span> ProfilingScope(cmd, profilingSampler))
-</span></span><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> source =cameraData.renderer.cameraColorTargetHandle;
-</span></span><span style="display:flex;"><span>    passMaterial.SetTexture(m_BlitTextureShaderID, copiedColor);
-</span></span><span style="display:flex;"><span>    Blitter.BlitCameraTexture(cmd, source, copiedColor, passMaterial, <span style="color:#ae81ff">0</span>);
-</span></span><span style="display:flex;"><span>    Blitter.BlitCameraTexture(cmd, copiedColor, source);
-</span></span><span style="display:flex;"><span>    context.ExecuteCommandBuffer(cmd);
-</span></span><span style="display:flex;"><span>    cmd.Clear();
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p>参考官方的案例，完整写一个ColorTint的实例</p>
-<p>Shader的部分可以十分简化，Vert在Blit.hlsl中官方已经帮忙处理好，这里只需要写frag的逻辑部分，太香了。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-HLSL" data-lang="HLSL"><span style="display:flex;"><span>Shader <span style="color:#e6db74">&#34;ColorBlit&#34;</span>
-</span></span><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>    SubShader
-</span></span><span style="display:flex;"><span>    {
-</span></span><span style="display:flex;"><span>        Tags { <span style="color:#e6db74">&#34;RenderType&#34;</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Opaque&#34;</span> <span style="color:#e6db74">&#34;RenderPipeline&#34;</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;UniversalPipeline&#34;</span>}
-</span></span><span style="display:flex;"><span>        LOD <span style="color:#ae81ff">100</span>
-</span></span><span style="display:flex;"><span>        ZWrite Off Cull Off
-</span></span><span style="display:flex;"><span>        Pass
-</span></span><span style="display:flex;"><span>        {
-</span></span><span style="display:flex;"><span>            Name <span style="color:#e6db74">&#34;ColorTintPass&#34;</span>
-</span></span><span style="display:flex;"><span>            HLSLPROGRAM
-</span></span><span style="display:flex;"><span>            <span style="color:#960050;background-color:#1e0010">#</span>include <span style="color:#e6db74">&#34;Packages/com.unity.render-pipelines.core/Runtime/Utilities/BlitColorAndDepth.hlsl&#34;</span>
-</span></span><span style="display:flex;"><span>            <span style="color:#960050;background-color:#1e0010">#</span>pragma vertex Vert
-</span></span><span style="display:flex;"><span>            <span style="color:#960050;background-color:#1e0010">#</span>pragma fragment frag
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">float4</span> _ColorTint;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">half4</span> frag (Varyings input) <span style="color:#f92672">:</span> <span style="color:#a6e22e">SV_Target</span>
-</span></span><span style="display:flex;"><span>            {
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">half4</span> color <span style="color:#f92672">=</span> FragColorAndDepth(input).color;
-</span></span><span style="display:flex;"><span>                color <span style="color:#f92672">*=</span> _ColorTint;
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> color;
-</span></span><span style="display:flex;"><span>            }
-</span></span><span style="display:flex;"><span>            ENDHLSL
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p>完整的ColorTintRenderFeature部分。思路如下，用一个colorTintSettings做UI接住全部的设置内容。重写一个SetupRenderPasses来传递以前在Create()中传递的内容，创建就好好创建，设置参数就好好设置参数，嗯恒河里。RenderFeature class基本就这样没什么可以说的，与urp 12就这么点区别。哦对，在传递相机的部分，用renderer.cameraColorTargetHandle而不是cameraColorTarget。换句话说，unity 换了RThandle这个API，跟着换就行，虽然老的也能用，但是Unity官方论坛的讨论结果是未来RThandle会成为主流，你现在学会对未来没坏处。</p>
-<p>这里偷懒不想创建Volume，也不想多创建一个c#脚本来写colorTintPass，直接用一个intenal class来写吧。首先最大的区别就是用RThandle替代以前的API。重写OnCameraSetup()，调用ConfigureTarget()来设置当前Target，也就是刚刚传递过来的cameraColorTargetHandle。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C#" data-lang="C#"><span style="display:flex;"><span><span style="color:#66d9ef">using</span> UnityEngine;
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> UnityEngine.Rendering;
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> UnityEngine.Rendering.Universal;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ColorTintRenderFeature</span> : ScriptableRendererFeature
-</span></span><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">    [System.Serializable]</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ColorTintSettings</span>
-</span></span><span style="display:flex;"><span>    {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> Shader colorTintShader;
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> RenderPassEvent passEvent = RenderPassEvent.BeforeRenderingPostProcessing;
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> ScriptableRenderPassInput requirements = ScriptableRenderPassInput.Color;
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">        [Header(&#34;ColorTint Settings&#34;)]</span> [Space(<span style="color:#ae81ff">10</span>)]
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> Color colorTint = Color.red;
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>    
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> ColorTintSettings colorTintSettings = <span style="color:#66d9ef">new</span> ColorTintSettings();
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> ColorTintPass colorTintPass;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">void</span> SetupRenderPasses(ScriptableRenderer renderer, <span style="color:#66d9ef">in</span> RenderingData renderingData)
-</span></span><span style="display:flex;"><span>    {
-</span></span><span style="display:flex;"><span>        colorTintPass.ConfigureInput(colorTintSettings.requirements);
-</span></span><span style="display:flex;"><span>        colorTintPass.Setup(renderer.cameraColorTargetHandle, colorTintSettings);
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">void</span> Create()
-</span></span><span style="display:flex;"><span>    {
-</span></span><span style="display:flex;"><span>        colorTintPass = <span style="color:#66d9ef">new</span> ColorTintPass();
-</span></span><span style="display:flex;"><span>        colorTintPass.renderPassEvent = colorTintSettings.passEvent;
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>    
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">void</span> AddRenderPasses(ScriptableRenderer renderer, <span style="color:#66d9ef">ref</span> RenderingData renderingData)
-</span></span><span style="display:flex;"><span>    {
-</span></span><span style="display:flex;"><span>        renderer.EnqueuePass(colorTintPass);
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">protected</span> <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">void</span> Dispose(<span style="color:#66d9ef">bool</span> disposing)
-</span></span><span style="display:flex;"><span>    {
-</span></span><span style="display:flex;"><span>        colorTintPass.Dispose();
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>    
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ColorTintPass</span> : ScriptableRenderPass
-</span></span><span style="display:flex;"><span>    {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">private</span> ProfilingSampler profilingSampler = <span style="color:#66d9ef">new</span> ProfilingSampler(nameof(ColorTintPass));
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">private</span> ColorTintSettings colorTintSettings;
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">private</span> Material colorTintMaterial;
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">readonly</span> <span style="color:#66d9ef">int</span> ColorTintID = Shader.PropertyToID(<span style="color:#e6db74">&#34;_ColorTint&#34;</span>);
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">readonly</span> <span style="color:#66d9ef">int</span> BlitTextureID = Shader.PropertyToID(<span style="color:#e6db74">&#34;_BlitTexture&#34;</span>);
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">private</span> RTHandle source;
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">private</span> RTHandle copiedColor;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> Setup(RTHandle colorHandle, ColorTintSettings colorTintSettings)
-</span></span><span style="display:flex;"><span>        {
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">this</span>.colorTintSettings = colorTintSettings;
-</span></span><span style="display:flex;"><span>            Shader shader = colorTintSettings.colorTintShader;
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (shader == <span style="color:#66d9ef">null</span>) 
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span>;
-</span></span><span style="display:flex;"><span>            colorTintMaterial = CoreUtils.CreateEngineMaterial(shader);
-</span></span><span style="display:flex;"><span>            source = colorHandle;
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> Dispose()
-</span></span><span style="display:flex;"><span>        {
-</span></span><span style="display:flex;"><span>            source.Release();
-</span></span><span style="display:flex;"><span>            CoreUtils.Destroy(colorTintMaterial);
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>        
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">void</span> OnCameraSetup(CommandBuffer cmd, <span style="color:#66d9ef">ref</span> RenderingData renderingData)
-</span></span><span style="display:flex;"><span>        {
-</span></span><span style="display:flex;"><span>            ConfigureTarget(source);
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">var</span> colorCopyDescriptor = renderingData.cameraData.cameraTargetDescriptor;
-</span></span><span style="display:flex;"><span>            colorCopyDescriptor.depthBufferBits = (<span style="color:#66d9ef">int</span>) DepthBits.None;
-</span></span><span style="display:flex;"><span>            RenderingUtils.ReAllocateIfNeeded(<span style="color:#66d9ef">ref</span> copiedColor, colorCopyDescriptor, name: <span style="color:#e6db74">&#34;_FullscreenPassColorCopy&#34;</span>);
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">void</span> Execute(ScriptableRenderContext context, <span style="color:#66d9ef">ref</span> RenderingData renderingData)
-</span></span><span style="display:flex;"><span>        {
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (colorTintMaterial == <span style="color:#66d9ef">null</span>)
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span>;
-</span></span><span style="display:flex;"><span>            
-</span></span><span style="display:flex;"><span>            CommandBuffer cmd = CommandBufferPool.Get();
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">var</span> cameraData = renderingData.cameraData;
-</span></span><span style="display:flex;"><span>            
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">using</span> (<span style="color:#66d9ef">new</span> ProfilingScope(cmd, profilingSampler))
-</span></span><span style="display:flex;"><span>            {
-</span></span><span style="display:flex;"><span>                colorTintMaterial.SetColor(ColorTintID, colorTintSettings.colorTint);
-</span></span><span style="display:flex;"><span>                Blitter.BlitCameraTexture(cmd, source, copiedColor);
-</span></span><span style="display:flex;"><span>                colorTintMaterial.SetTexture(BlitTextureID, copiedColor);
-</span></span><span style="display:flex;"><span>                Blitter.BlitCameraTexture(cmd, copiedColor, source, colorTintMaterial, <span style="color:#ae81ff">0</span>);
-</span></span><span style="display:flex;"><span>            }
-</span></span><span style="display:flex;"><span>            context.ExecuteCommandBuffer(cmd);
-</span></span><span style="display:flex;"><span>            cmd.Clear();
-</span></span><span style="display:flex;"><span>            CommandBufferPool.Release(cmd);
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p>RT的初始化方法</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C#" data-lang="C#"><span style="display:flex;"><span>RenderingUtils.ReAllocateIfNeeded(<span style="color:#66d9ef">ref</span> copiedColor, colorCopyDescriptor, name: <span style="color:#e6db74">&#34;_FullscreenPassColorCopy&#34;</span>);
-</span></span></code></pre></div><p>这里偷懒直接用Blitter.BlitCameraTexture(cmd, source, source, colorTintMaterial, 0) 直接把source当作最终的RT并写入colorTintMaterial，按照逻辑的话，写成就和之前cmd.blit写出来到一个暂时的RT上再写入原source一样了。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-HLSL" data-lang="HLSL"><span style="display:flex;"><span>Blitter.BlitCameraTexture(cmd, source, temp, colorTintMaterial, <span style="color:#ae81ff">0</span>);
-</span></span><span style="display:flex;"><span>colorTintMaterial.SetColor(ColorTintID, colorTintSettings.colorTint); 
-</span></span><span style="display:flex;"><span>Blitter.BlitCameraTexture(cmd, temp, source);
-</span></span></code></pre></div><p>最终效果如图</p>
-<p><img src="URP14.png" alt=""></p>
-<h2 id="参考">参考</h2>
-<ol>
-<li><a href="https://docs.unity3d.com/Packages/com.unity.render-pipelines.universal@14.0/manual/upgrade-guide-2022-2.html">Upgrading to URP 14 (Unity 2022.2) | Universal RP | 14.0.6 (unity3d.com)</a></li>
-</ol>
-
-						</div>
-
-						<div class="post-text-bottom">
-							<div class="social-share" data-title="URP 14 RenderFeature 使用方式" data-url="https://kampter.github.io/blog/urp-14-renderfeature-%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F/">
-								<span>Share:</span>
-								<a class="share-btn share-btn-facebook share-btn-1" title="Share on Facebook">
-									<i class="ion ion-social-facebook"></i>
-								</a>
-								<a class="share-btn share-btn-twitter share-btn-2" title="Share on Twitter">
-									<i class="ion ion-social-twitter"></i>
-								</a>
-								<a class="share-btn share-btn-linkedin share-btn-3" title="Share on Linkedin">
-									<i class="ion ion-social-linkedin"></i>
-								</a>
-								<a class="share-btn share-btn-reddit share-btn-4" title="Share on Reddit">
-									<i class="ion ion-social-reddit"></i>
-								</a>
-								<a class="share-btn share-btn-pinterest share-btn-5" title="Share on Pinterest">
-									<i class="ion ion-social-pinterest"></i>
-								</a>
-							</div>
-							
-							<div class="tags-links">
-								Tags:
-								
-								<a href="https://kampter.github.io/tags/hlsl/" rel="tag">HLSL</a>
-								
-								<a href="https://kampter.github.io/tags/c#/" rel="tag">C#</a>
-								
-								<a href="https://kampter.github.io/tags/unity/" rel="tag">Unity</a>
-								
-								<a href="https://kampter.github.io/tags/render-feature/" rel="tag">Render Feature</a>
-								
-							</div>
-							
-						</div>
-
-						
-						<div class="post-navigation" role="navigation">
-							
-							<div class="nav-previous">
-								<a href="https://kampter.github.io/blog/%E5%9C%A8urp%E4%B8%AD%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AAdisney-principled-brdf/" rel="prev" title="在URP中搭建一个Disney Principled BRDF">
-									<span class="post-nav-next post-nav-text">Prev</span>
-								</a>
-							</div>
-							
-							
-							<div class="nav-next">
-								<a href="https://kampter.github.io/blog/urp%E5%B1%8F%E5%B9%95%E7%A9%BA%E9%97%B4%E9%9B%BE%E6%95%88/" rel="next" title="URP屏幕空间雾效">
-									<span class="post-nav-prev post-nav-text">Next</span>
-								</a>
-							</div>
-							
-						</div>
-						
-					</div>
-				</div>
-			</div>
-
-			
-			<div class="title">Comments</div>
-
-			<div class="row border-line-v">
-				<div class="col col-m-12 col-t-12 col-d-12">
-					<div class="post-box">
-						<div class="col-md-12">
-							<div id="disqus_thread"></div>
-							<script>
-								var disqus_config = function () {
-									this.page.url = "https:\/\/kampter.github.io\/blog\/urp-14-renderfeature-%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F\/";   
-									this.page.identifier = "5125aa9387a535145b1c46c4c895f224";  
-								};
-								(function() {  
-									var d = document, s = d.createElement('script');
-									s.src = 'https://kampterblog.disqus.com/embed.js';
-									s.setAttribute('data-timestamp', +new Date());
-									(d.head || d.body).appendChild(s);
-								})();
-							</script>
-							<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-						</div>
-					</div>
-				</div>
-			</div>
-			
-		</div>
-
-	</div>
-</div>
-
-
-    </div>
-  </div>
-
-  <!-- Scripts -->
-  <script src="https://kampter.github.io/plugins/jQuery/jquery.min.js"></script>
-
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.6.2/fuse.min.js" integrity="sha512-Nqw1tH3mpavka9cQCc5zWWEZNfIPdOYyQFjlV1NvflEtQ0/XI6ZQ+H/D3YgJdqSUJlMLAPRj/oXlaHCFbFCjoQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script src="https://kampter.github.io/plugins/search/simple-search.js"></script>
-
-
-<script src="https://kampter.github.io/plugins/validate/jquery.validate.min.js"></script>
-<script src="https://kampter.github.io/plugins/owl-carousel/owl.carousel.js"></script>
-<script src="https://kampter.github.io/plugins/magnific-popup/magnific-popup.min.js"></script>
-<script src="https://kampter.github.io/plugins/slimscroll/jquery.slimscroll.js"></script>
-<script src="https://kampter.github.io/plugins/imagesloaded/imagesloaded.pkgd.min.js"></script>
-<script src="https://kampter.github.io/plugins/isotope/isotope.pkgd.js"></script>
-<script src="https://kampter.github.io/plugins/typed/typed.js"></script>
-<script src="https://kampter.github.io/plugins/rrssb/rrssb.js"></script>
-
-
-
-
-<script src="https://kampter.github.io/js/form-handler.min.js"></script>
-
-
-<script src="https://kampter.github.io/js/common.min.js"></script>
-
-</body>
-
-</html>
+<!doctype html><html lang=en><head><title>URP 14 RenderFeature 使用方式</title><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1"><meta name=HandheldFriendly content="true"><meta name=author content="bslthemes"><link rel=stylesheet href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i"><link rel=stylesheet href=https://use.fontawesome.com/releases/v5.8.0/css/all.css><link rel=stylesheet href=https://kampter.github.io/scss/style.min.css><link rel=stylesheet href=https://kampter.github.io/plugins/ionicons/ionicons.css><link rel=stylesheet href=https://kampter.github.io/plugins/font-awesome/css/font-awesome.css><link rel=stylesheet href=https://kampter.github.io/plugins/magnific-popup/magnific-popup.css><link rel=stylesheet href=https://kampter.github.io/plugins/owl-carousel/owl.carousel.css><link rel=stylesheet href=https://kampter.github.io/plugins/animate/animate.css><link rel=stylesheet href=https://kampter.github.io/plugins/syntax/syntax.css><link rel="shortcut icon" href=https://kampter.github.io/images/favicon/favicon.ico type=image/x-icon><link rel=icon href=https://kampter.github.io/images/favicon/favicon.ico type=image/x-icon><script async src="https://www.googletagmanager.com/gtag/js?id=G-4BGKQYLBBG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-4BGKQYLBBG")</script></head><body class=blog><div class="page new-skin"><div class=preloader><div class="centrize full-width"><div class=vertical-center><div class=spinner><div class=double-bounce1></div><div class=double-bounce2></div></div></div></div></div><div class="background gradient"><ul class=bg-bubbles><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li></ul></div><div class=s_overlay></div><div class=content-sidebar><div class=sidebar-wrap><aside id=secondary class=widget-area><div id=search class="widget widget_search"><form class=search-form action=https://kampter.github.io/search><label><input type=search id=searchInput class=search-field placeholder="Search ..."></label>
+<input type=submit class=search-submit><ul id=searchResults></ul></form></div><section class="widget widget_menu"><h2 class=widget-title>Menu</h2><ul><li class=active><a href=https://kampter.github.io//blog>Blog Page</a></li><li><a href=https://kampter.github.io//portfolio>Portfolio Page</a></li></ul></section><section class="widget widget_recent_entries"><h2 class=widget-title>Latest Posts</h2><ul><li><a href=https://kampter.github.io/blog/%E8%BF%91%E6%9C%9F%E5%81%9A%E7%9A%84%E5%87%A0%E4%B8%AAunity%E5%92%8Cue%E7%89%B9%E6%95%88/>近期做的几个Unity和UE特效</a></li><li><a href=https://kampter.github.io/blog/urp%E5%B1%8F%E5%B9%95%E7%A9%BA%E9%97%B4sobel%E8%BE%B9%E7%BC%98%E6%A3%80%E6%B5%8B/>URP屏幕空间Sobel边缘检测</a></li><li><a href=https://kampter.github.io/blog/blender%E6%8F%92%E4%BB%B6%E5%88%B6%E4%BD%9C%E5%BF%83%E5%BE%97/>blender插件制作心得</a></li><li><a href=https://kampter.github.io/blog/urp%E5%B1%8F%E5%B9%95%E7%A9%BA%E9%97%B4%E7%8E%AF%E5%A2%83%E5%85%89%E9%81%AE%E8%94%BD/>URP屏幕空间环境光遮蔽</a></li></ul></section><section class="widget widget_categories"><h2 class=widget-title>Categories</h2><ul><li><a href=https://kampter.github.io/categories/portfolio/>Portfolio</a>
+<small>( 5 )</small></li><li><a href=https://kampter.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/>学习笔记</a>
+<small>( 6 )</small></li><li><a href=https://kampter.github.io/categories/%E6%8A%80%E6%9C%AF%E5%AE%9E%E7%8E%B0/>技术实现</a>
+<small>( 5 )</small></li><li><a href=https://kampter.github.io/categories/%E6%97%A5%E5%B8%B8%E7%94%9F%E6%B4%BB/>日常生活</a>
+<small>( 1 )</small></li><li><a href=https://kampter.github.io/categories/%E6%97%A5%E5%B8%B8%E8%AE%B0%E5%BD%95/>日常记录</a>
+<small>( 1 )</small></li><li><a href=https://kampter.github.io/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/>课程笔记</a>
+<small>( 8 )</small></li></ul></section><section class="widget widget_tags"><h2 class=widget-title>Tags</h2><ul><li><a href=https://kampter.github.io/tags/after-effect/>After Effect</a>
+<small>( 1 )</small></li><li><a href=https://kampter.github.io/tags/bifrost/>Bifrost</a>
+<small>( 1 )</small></li><li><a href=https://kampter.github.io/tags/blender/>blender</a>
+<small>( 2 )</small></li><li><a href=https://kampter.github.io/tags/c#/>C#</a>
+<small>( 4 )</small></li><li><a href=https://kampter.github.io/tags/computer-graphic/>Computer Graphic</a>
+<small>( 9 )</small></li><li><a href=https://kampter.github.io/tags/eve-online/>Eve Online</a>
+<small>( 1 )</small></li><li><a href=https://kampter.github.io/tags/flip/>Flip</a>
+<small>( 1 )</small></li><li><a href=https://kampter.github.io/tags/games-101/>Games 101</a>
+<small>( 4 )</small></li><li><a href=https://kampter.github.io/tags/games-202/>Games 202</a>
+<small>( 3 )</small></li><li><a href=https://kampter.github.io/tags/hlsl/>HLSL</a>
+<small>( 12 )</small></li><li><a href=https://kampter.github.io/tags/houdini/>Houdini</a>
+<small>( 3 )</small></li><li><a href=https://kampter.github.io/tags/java/>Java</a>
+<small>( 1 )</small></li><li><a href=https://kampter.github.io/tags/math/>Math</a>
+<small>( 8 )</small></li><li><a href=https://kampter.github.io/tags/maya/>Maya</a>
+<small>( 1 )</small></li><li><a href=https://kampter.github.io/tags/niagara-system/>niagara system</a>
+<small>( 2 )</small></li><li><a href=https://kampter.github.io/tags/opengl/>Opengl</a>
+<small>( 1 )</small></li><li><a href=https://kampter.github.io/tags/particle/>Particle</a>
+<small>( 1 )</small></li><li><a href=https://kampter.github.io/tags/pbr-shading/>PBR Shading</a>
+<small>( 2 )</small></li><li><a href=https://kampter.github.io/tags/plugin/>plugin</a>
+<small>( 1 )</small></li><li><a href=https://kampter.github.io/tags/render-feature/>Render Feature</a>
+<small>( 4 )</small></li><li><a href=https://kampter.github.io/tags/shader-graph/>Shader Graph</a>
+<small>( 1 )</small></li><li><a href=https://kampter.github.io/tags/substance-designer/>substance designer</a>
+<small>( 2 )</small></li><li><a href=https://kampter.github.io/tags/toon-shading/>Toon Shading</a>
+<small>( 3 )</small></li><li><a href=https://kampter.github.io/tags/unity/>Unity</a>
+<small>( 15 )</small></li><li><a href=https://kampter.github.io/tags/unreal-engine/>unreal engine</a>
+<small>( 2 )</small></li><li><a href=https://kampter.github.io/tags/vfx-graph/>VFX Graph</a>
+<small>( 2 )</small></li></ul></section></aside></div><span class=close></span></div><div class="container opened" data-animation-in=fadeInLeft data-animation-out=fadeOutLeft><header class=header><a href=# class=menu-btn><span></span></a><div class=top-menu><ul><li class=active><a href=https://kampter.github.io/#about-card><span class="icon ion-person"></span>
+<span class=link>About</span></a></li><li><a href=https://kampter.github.io/#resume-card><span class="icon ion-android-list"></span>
+<span class=link>Resume</span></a></li><li><a href=https://kampter.github.io/#works-card><span class="icon ion-paintbrush"></span>
+<span class=link>Works</span></a></li><li><a href=https://kampter.github.io/#blog-card><span class="icon ion-chatbox-working"></span>
+<span class=link>Blog</span></a></li><li><a href=https://kampter.github.io/#contact-card><span class="icon ion-at"></span>
+<span class=link>Contact</span></a></li></ul></div></header><div class=card-started id=home-card><div class="profile no-photo"><div class=slide style=background-image:url(https://kampter.github.io/images/1082264.png)></div><div class=title>王子正</div><div class="subtitle subtitle-typed"><div class=typing-title><p>Technical Artist</p></div></div><div class=social><a target=_blank href=https://twitter.com/wang_psbswsg title=Twitter><span class="fab fa-twitter"></span></a>
+<a target=_blank href=https://github.com/Kampter title=GitHub><span class="fab fa-github"></span></a>
+<a target=_blank href=https://www.youtube.com/channel/UCK43eUkmsyRk8FeBw5oRJtQ title=Youtube><span class="fab fa-youtube"></span></a>
+<a target=_blank href=https://www.artstation.com/kampter title=Stackoverflow><span class="fab fa-artstation"></span></a></div><div class=lnks><a href=/images/Resume_ZizhengWang_Chinese_v004.pdf target=_blank class=lnk><span class=text>Download CV</span>
+<span class="ion ion ion-archive"></span></a>
+<a href=mailto:psbswsg@gmail.com target=_blank class=lnk><span class=text>Contact Me</span>
+<span class="ion arrow"></span></a></div></div></div><div class="card-inner blog blog-post animated" id=blog-card><div class=card-wrap><div class="content blog-single"><div class=title>Blog Post</div><div class="row border-line-v"><div class="col col-m-12 col-t-12 col-d-12"><div class=post-box><h1>URP 14 RenderFeature 使用方式</h1><div class=blog-detail><span class=date>March 20, 2023</span>
+<span class=cat-links><a href=https://kampter.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/>学习笔记</a></span>
+<span class=byline>By <span class=author>Ryan Adlard</span></span></div><div class=blog-image><img src=https://kampter.github.io/images/blog/URP14.png alt="URP 14 RenderFeature 使用方式"></div><div class=blog-content><h2 id=urp-14>URP 14</h2><p><a href=https://docs.unity3d.com/Packages/com.unity.render-pipelines.universal@14.0/manual/upgrade-guide-2022-2.html>URP 14</a> 对应Unity 2022.2对于2021lts版本的URP 12中后处理的API有些许改变，需要参考官方文档的改变。而其中最大的改变来自于RTHandle的引入。</p><p>以一个DesaturateFeature为例。在DesaturateFeature.cs中改变比较大的是加入一个SetupRenderPasses来帮助创建Materail和传递参数，而不是传统的写法在Create()中。</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-C# data-lang=C#><span style=display:flex><span>    <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>override</span> <span style=color:#66d9ef>void</span> SetupRenderPasses(ScriptableRenderer renderer, <span style=color:#66d9ef>in</span> RenderingData renderingData)
+</span></span><span style=display:flex><span>    {
+</span></span><span style=display:flex><span>        Material material = CoreUtils.CreateEngineMaterial(shader);
+</span></span><span style=display:flex><span>        desaturateRenderPass.ConfigureInput(ScriptableRenderPassInput.Color);
+</span></span><span style=display:flex><span>        desaturateRenderPass.Setup(material, <span style=color:#e6db74>&#34;DesaturatedRenderPass&#34;</span>,renderingData);
+</span></span><span style=display:flex><span>    }
+</span></span></code></pre></div><p>然后写内部的DesaturateRenderPass 类。</p><ul><li>变化一是RenderTargetHandle.Init("_CustomPassHandle")方式的改变为</li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-C# data-lang=C#><span style=display:flex><span><span style=color:#66d9ef>var</span> colorCopyDescriptor = renderingData.cameraData.cameraTargetDescriptor;
+</span></span><span style=display:flex><span>            colorCopyDescriptor.depthBufferBits = (<span style=color:#66d9ef>int</span>) DepthBits.None;
+</span></span><span style=display:flex><span>            RenderingUtils.ReAllocateIfNeeded(<span style=color:#66d9ef>ref</span> m_CopiedColor, colorCopyDescriptor, name: <span style=color:#e6db74>&#34;_FullscreenPassColorCopy&#34;</span>);
+</span></span><span style=display:flex><span>        
+</span></span></code></pre></div><ul><li><p>变化二：command buffer的GetTemporaryRT和ReleaseTemporaryRT被弃用。</p></li><li><p>官方推荐使用Blitter.BlitCameraTexture方法把原始的RT添加我们自定义的material然后再传递回去。代码实现如下</p></li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-C# data-lang=C#><span style=display:flex><span>CommandBuffer cmd = CommandBufferPool.Get();
+</span></span><span style=display:flex><span><span style=color:#66d9ef>var</span> cameraData = renderingData.cameraData;
+</span></span><span style=display:flex><span><span style=color:#66d9ef>using</span> (<span style=color:#66d9ef>new</span> ProfilingScope(cmd, profilingSampler))
+</span></span><span style=display:flex><span>{
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>var</span> source =cameraData.renderer.cameraColorTargetHandle;
+</span></span><span style=display:flex><span>    passMaterial.SetTexture(m_BlitTextureShaderID, copiedColor);
+</span></span><span style=display:flex><span>    Blitter.BlitCameraTexture(cmd, source, copiedColor, passMaterial, <span style=color:#ae81ff>0</span>);
+</span></span><span style=display:flex><span>    Blitter.BlitCameraTexture(cmd, copiedColor, source);
+</span></span><span style=display:flex><span>    context.ExecuteCommandBuffer(cmd);
+</span></span><span style=display:flex><span>    cmd.Clear();
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><p>参考官方的案例，完整写一个ColorTint的实例</p><p>Shader的部分可以十分简化，Vert在Blit.hlsl中官方已经帮忙处理好，这里只需要写frag的逻辑部分，太香了。</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-HLSL data-lang=HLSL><span style=display:flex><span>Shader <span style=color:#e6db74>&#34;ColorBlit&#34;</span>
+</span></span><span style=display:flex><span>{
+</span></span><span style=display:flex><span>    SubShader
+</span></span><span style=display:flex><span>    {
+</span></span><span style=display:flex><span>        Tags { <span style=color:#e6db74>&#34;RenderType&#34;</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;Opaque&#34;</span> <span style=color:#e6db74>&#34;RenderPipeline&#34;</span> <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;UniversalPipeline&#34;</span>}
+</span></span><span style=display:flex><span>        LOD <span style=color:#ae81ff>100</span>
+</span></span><span style=display:flex><span>        ZWrite Off Cull Off
+</span></span><span style=display:flex><span>        Pass
+</span></span><span style=display:flex><span>        {
+</span></span><span style=display:flex><span>            Name <span style=color:#e6db74>&#34;ColorTintPass&#34;</span>
+</span></span><span style=display:flex><span>            HLSLPROGRAM
+</span></span><span style=display:flex><span>            <span style=color:#960050;background-color:#1e0010>#</span>include <span style=color:#e6db74>&#34;Packages/com.unity.render-pipelines.core/Runtime/Utilities/BlitColorAndDepth.hlsl&#34;</span>
+</span></span><span style=display:flex><span>            <span style=color:#960050;background-color:#1e0010>#</span>pragma vertex Vert
+</span></span><span style=display:flex><span>            <span style=color:#960050;background-color:#1e0010>#</span>pragma fragment frag
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>float4</span> _ColorTint;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>half4</span> frag (Varyings input) <span style=color:#f92672>:</span> <span style=color:#a6e22e>SV_Target</span>
+</span></span><span style=display:flex><span>            {
+</span></span><span style=display:flex><span>                <span style=color:#66d9ef>half4</span> color <span style=color:#f92672>=</span> FragColorAndDepth(input).color;
+</span></span><span style=display:flex><span>                color <span style=color:#f92672>*=</span> _ColorTint;
+</span></span><span style=display:flex><span>                <span style=color:#66d9ef>return</span> color;
+</span></span><span style=display:flex><span>            }
+</span></span><span style=display:flex><span>            ENDHLSL
+</span></span><span style=display:flex><span>        }
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><p>完整的ColorTintRenderFeature部分。思路如下，用一个colorTintSettings做UI接住全部的设置内容。重写一个SetupRenderPasses来传递以前在Create()中传递的内容，创建就好好创建，设置参数就好好设置参数，嗯恒河里。RenderFeature class基本就这样没什么可以说的，与urp 12就这么点区别。哦对，在传递相机的部分，用renderer.cameraColorTargetHandle而不是cameraColorTarget。换句话说，unity 换了RThandle这个API，跟着换就行，虽然老的也能用，但是Unity官方论坛的讨论结果是未来RThandle会成为主流，你现在学会对未来没坏处。</p><p>这里偷懒不想创建Volume，也不想多创建一个c#脚本来写colorTintPass，直接用一个intenal class来写吧。首先最大的区别就是用RThandle替代以前的API。重写OnCameraSetup()，调用ConfigureTarget()来设置当前Target，也就是刚刚传递过来的cameraColorTargetHandle。</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-C# data-lang=C#><span style=display:flex><span><span style=color:#66d9ef>using</span> UnityEngine;
+</span></span><span style=display:flex><span><span style=color:#66d9ef>using</span> UnityEngine.Rendering;
+</span></span><span style=display:flex><span><span style=color:#66d9ef>using</span> UnityEngine.Rendering.Universal;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>ColorTintRenderFeature</span> : ScriptableRendererFeature
+</span></span><span style=display:flex><span>{
+</span></span><span style=display:flex><span><span style=color:#a6e22e>    [System.Serializable]</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>ColorTintSettings</span>
+</span></span><span style=display:flex><span>    {
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>public</span> Shader colorTintShader;
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>public</span> RenderPassEvent passEvent = RenderPassEvent.BeforeRenderingPostProcessing;
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>public</span> ScriptableRenderPassInput requirements = ScriptableRenderPassInput.Color;
+</span></span><span style=display:flex><span><span style=color:#a6e22e>        [Header(&#34;ColorTint Settings&#34;)]</span> [Space(<span style=color:#ae81ff>10</span>)]
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>public</span> Color colorTint = Color.red;
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>    
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>public</span> ColorTintSettings colorTintSettings = <span style=color:#66d9ef>new</span> ColorTintSettings();
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>private</span> ColorTintPass colorTintPass;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>override</span> <span style=color:#66d9ef>void</span> SetupRenderPasses(ScriptableRenderer renderer, <span style=color:#66d9ef>in</span> RenderingData renderingData)
+</span></span><span style=display:flex><span>    {
+</span></span><span style=display:flex><span>        colorTintPass.ConfigureInput(colorTintSettings.requirements);
+</span></span><span style=display:flex><span>        colorTintPass.Setup(renderer.cameraColorTargetHandle, colorTintSettings);
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>override</span> <span style=color:#66d9ef>void</span> Create()
+</span></span><span style=display:flex><span>    {
+</span></span><span style=display:flex><span>        colorTintPass = <span style=color:#66d9ef>new</span> ColorTintPass();
+</span></span><span style=display:flex><span>        colorTintPass.renderPassEvent = colorTintSettings.passEvent;
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>    
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>override</span> <span style=color:#66d9ef>void</span> AddRenderPasses(ScriptableRenderer renderer, <span style=color:#66d9ef>ref</span> RenderingData renderingData)
+</span></span><span style=display:flex><span>    {
+</span></span><span style=display:flex><span>        renderer.EnqueuePass(colorTintPass);
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>protected</span> <span style=color:#66d9ef>override</span> <span style=color:#66d9ef>void</span> Dispose(<span style=color:#66d9ef>bool</span> disposing)
+</span></span><span style=display:flex><span>    {
+</span></span><span style=display:flex><span>        colorTintPass.Dispose();
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>    
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>ColorTintPass</span> : ScriptableRenderPass
+</span></span><span style=display:flex><span>    {
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>private</span> ProfilingSampler profilingSampler = <span style=color:#66d9ef>new</span> ProfilingSampler(nameof(ColorTintPass));
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>private</span> ColorTintSettings colorTintSettings;
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>private</span> Material colorTintMaterial;
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>private</span> <span style=color:#66d9ef>static</span> <span style=color:#66d9ef>readonly</span> <span style=color:#66d9ef>int</span> ColorTintID = Shader.PropertyToID(<span style=color:#e6db74>&#34;_ColorTint&#34;</span>);
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>private</span> <span style=color:#66d9ef>static</span> <span style=color:#66d9ef>readonly</span> <span style=color:#66d9ef>int</span> BlitTextureID = Shader.PropertyToID(<span style=color:#e6db74>&#34;_BlitTexture&#34;</span>);
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>private</span> RTHandle source;
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>private</span> RTHandle copiedColor;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>void</span> Setup(RTHandle colorHandle, ColorTintSettings colorTintSettings)
+</span></span><span style=display:flex><span>        {
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>this</span>.colorTintSettings = colorTintSettings;
+</span></span><span style=display:flex><span>            Shader shader = colorTintSettings.colorTintShader;
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>if</span> (shader == <span style=color:#66d9ef>null</span>) 
+</span></span><span style=display:flex><span>                <span style=color:#66d9ef>return</span>;
+</span></span><span style=display:flex><span>            colorTintMaterial = CoreUtils.CreateEngineMaterial(shader);
+</span></span><span style=display:flex><span>            source = colorHandle;
+</span></span><span style=display:flex><span>        }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>void</span> Dispose()
+</span></span><span style=display:flex><span>        {
+</span></span><span style=display:flex><span>            source.Release();
+</span></span><span style=display:flex><span>            CoreUtils.Destroy(colorTintMaterial);
+</span></span><span style=display:flex><span>        }
+</span></span><span style=display:flex><span>        
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>override</span> <span style=color:#66d9ef>void</span> OnCameraSetup(CommandBuffer cmd, <span style=color:#66d9ef>ref</span> RenderingData renderingData)
+</span></span><span style=display:flex><span>        {
+</span></span><span style=display:flex><span>            ConfigureTarget(source);
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>var</span> colorCopyDescriptor = renderingData.cameraData.cameraTargetDescriptor;
+</span></span><span style=display:flex><span>            colorCopyDescriptor.depthBufferBits = (<span style=color:#66d9ef>int</span>) DepthBits.None;
+</span></span><span style=display:flex><span>            RenderingUtils.ReAllocateIfNeeded(<span style=color:#66d9ef>ref</span> copiedColor, colorCopyDescriptor, name: <span style=color:#e6db74>&#34;_FullscreenPassColorCopy&#34;</span>);
+</span></span><span style=display:flex><span>        }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>override</span> <span style=color:#66d9ef>void</span> Execute(ScriptableRenderContext context, <span style=color:#66d9ef>ref</span> RenderingData renderingData)
+</span></span><span style=display:flex><span>        {
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>if</span> (colorTintMaterial == <span style=color:#66d9ef>null</span>)
+</span></span><span style=display:flex><span>                <span style=color:#66d9ef>return</span>;
+</span></span><span style=display:flex><span>            
+</span></span><span style=display:flex><span>            CommandBuffer cmd = CommandBufferPool.Get();
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>var</span> cameraData = renderingData.cameraData;
+</span></span><span style=display:flex><span>            
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>using</span> (<span style=color:#66d9ef>new</span> ProfilingScope(cmd, profilingSampler))
+</span></span><span style=display:flex><span>            {
+</span></span><span style=display:flex><span>                colorTintMaterial.SetColor(ColorTintID, colorTintSettings.colorTint);
+</span></span><span style=display:flex><span>                Blitter.BlitCameraTexture(cmd, source, copiedColor);
+</span></span><span style=display:flex><span>                colorTintMaterial.SetTexture(BlitTextureID, copiedColor);
+</span></span><span style=display:flex><span>                Blitter.BlitCameraTexture(cmd, copiedColor, source, colorTintMaterial, <span style=color:#ae81ff>0</span>);
+</span></span><span style=display:flex><span>            }
+</span></span><span style=display:flex><span>            context.ExecuteCommandBuffer(cmd);
+</span></span><span style=display:flex><span>            cmd.Clear();
+</span></span><span style=display:flex><span>            CommandBufferPool.Release(cmd);
+</span></span><span style=display:flex><span>        }
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><p>RT的初始化方法</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-C# data-lang=C#><span style=display:flex><span>RenderingUtils.ReAllocateIfNeeded(<span style=color:#66d9ef>ref</span> copiedColor, colorCopyDescriptor, name: <span style=color:#e6db74>&#34;_FullscreenPassColorCopy&#34;</span>);
+</span></span></code></pre></div><p>这里偷懒直接用Blitter.BlitCameraTexture(cmd, source, source, colorTintMaterial, 0) 直接把source当作最终的RT并写入colorTintMaterial，按照逻辑的话，写成就和之前cmd.blit写出来到一个暂时的RT上再写入原source一样了。</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-HLSL data-lang=HLSL><span style=display:flex><span>Blitter.BlitCameraTexture(cmd, source, temp, colorTintMaterial, <span style=color:#ae81ff>0</span>);
+</span></span><span style=display:flex><span>colorTintMaterial.SetColor(ColorTintID, colorTintSettings.colorTint); 
+</span></span><span style=display:flex><span>Blitter.BlitCameraTexture(cmd, temp, source);
+</span></span></code></pre></div><p>最终效果如图</p><p><img src=URP14.png alt></p><h2 id=参考>参考</h2><ol><li><a href=https://docs.unity3d.com/Packages/com.unity.render-pipelines.universal@14.0/manual/upgrade-guide-2022-2.html>Upgrading to URP 14 (Unity 2022.2) | Universal RP | 14.0.6 (unity3d.com)</a></li></ol></div><div class=post-text-bottom><div class=social-share data-title="URP 14 RenderFeature 使用方式" data-url=https://kampter.github.io/blog/urp-14-renderfeature-%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F/><span>Share:</span>
+<a class="share-btn share-btn-facebook share-btn-1" title="Share on Facebook"><i class="ion ion-social-facebook"></i></a>
+<a class="share-btn share-btn-twitter share-btn-2" title="Share on Twitter"><i class="ion ion-social-twitter"></i></a>
+<a class="share-btn share-btn-linkedin share-btn-3" title="Share on Linkedin"><i class="ion ion-social-linkedin"></i></a>
+<a class="share-btn share-btn-reddit share-btn-4" title="Share on Reddit"><i class="ion ion-social-reddit"></i></a>
+<a class="share-btn share-btn-pinterest share-btn-5" title="Share on Pinterest"><i class="ion ion-social-pinterest"></i></a></div><div class=tags-links>Tags:
+<a href=https://kampter.github.io/tags/hlsl/ rel=tag>HLSL</a>
+<a href=https://kampter.github.io/tags/c#/ rel=tag>C#</a>
+<a href=https://kampter.github.io/tags/unity/ rel=tag>Unity</a>
+<a href=https://kampter.github.io/tags/render-feature/ rel=tag>Render Feature</a></div></div><div class=post-navigation role=navigation><div class=nav-previous><a href=https://kampter.github.io/blog/%E5%9C%A8urp%E4%B8%AD%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AAdisney-principled-brdf/ rel=prev title="在URP中搭建一个Disney Principled BRDF"><span class="post-nav-next post-nav-text">Prev</span></a></div><div class=nav-next><a href=https://kampter.github.io/blog/urp%E5%B1%8F%E5%B9%95%E7%A9%BA%E9%97%B4%E9%9B%BE%E6%95%88/ rel=next title=URP屏幕空间雾效><span class="post-nav-prev post-nav-text">Next</span></a></div></div></div></div></div><div class=title>Comments</div><div class="row border-line-v"><div class="col col-m-12 col-t-12 col-d-12"><div class=post-box><div class=col-md-12><div id=disqus_thread></div><script>var disqus_config=function(){this.page.url="https://kampter.github.io/blog/urp-14-renderfeature-%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F/",this.page.identifier="5125aa9387a535145b1c46c4c895f224"};(function(){var e=document,t=e.createElement("script");t.src="https://kampterblog.disqus.com/embed.js",t.setAttribute("data-timestamp",+new Date),(e.head||e.body).appendChild(t)})()</script><noscript>Please enable JavaScript to view the <a href=https://disqus.com/?ref_noscript>comments powered by Disqus.</a></noscript></div></div></div></div></div></div></div></div></div><script src=https://kampter.github.io/plugins/jQuery/jquery.min.js></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin=anonymous referrerpolicy=no-referrer></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.6.2/fuse.min.js integrity="sha512-Nqw1tH3mpavka9cQCc5zWWEZNfIPdOYyQFjlV1NvflEtQ0/XI6ZQ+H/D3YgJdqSUJlMLAPRj/oXlaHCFbFCjoQ==" crossorigin=anonymous referrerpolicy=no-referrer></script>
+<script src=https://kampter.github.io/plugins/search/simple-search.js></script>
+<script src=https://kampter.github.io/plugins/validate/jquery.validate.min.js></script>
+<script src=https://kampter.github.io/plugins/owl-carousel/owl.carousel.js></script>
+<script src=https://kampter.github.io/plugins/magnific-popup/magnific-popup.min.js></script>
+<script src=https://kampter.github.io/plugins/slimscroll/jquery.slimscroll.js></script>
+<script src=https://kampter.github.io/plugins/imagesloaded/imagesloaded.pkgd.min.js></script>
+<script src=https://kampter.github.io/plugins/isotope/isotope.pkgd.js></script>
+<script src=https://kampter.github.io/plugins/typed/typed.js></script>
+<script src=https://kampter.github.io/plugins/rrssb/rrssb.js></script>
+<script src=https://kampter.github.io/js/form-handler.min.js></script>
+<script src=https://kampter.github.io/js/common.min.js></script></body></html>
