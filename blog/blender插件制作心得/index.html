@@ -1,0 +1,993 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>blender插件制作心得</title>
+
+  <!-- Meta -->
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="HandheldFriendly" content="true">
+  <meta name="author" content="bslthemes" />
+
+  <!-- Google Fonts -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.0/css/all.css" />
+
+  <!-- Main Stylesheets -->
+  
+  <link rel="stylesheet" href="https://kampter.github.io/scss/style.min.css" />
+
+  <!-- Plugins Stylesheets -->
+  <link rel="stylesheet" href="https://kampter.github.io/plugins/ionicons/ionicons.css" />
+  <link rel="stylesheet" href="https://kampter.github.io/plugins/font-awesome/css/font-awesome.css" />
+  <link rel="stylesheet" href="https://kampter.github.io/plugins/magnific-popup/magnific-popup.css" />
+  <link rel="stylesheet" href="https://kampter.github.io/plugins/owl-carousel/owl.carousel.css" />
+  <link rel="stylesheet" href="https://kampter.github.io/plugins/animate/animate.css" />
+  <link rel="stylesheet" href="https://kampter.github.io/plugins/syntax/syntax.css" />
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="https://kampter.github.io/images/favicon/favicon.ico" type="image/x-icon" />
+  <link rel="icon" href="https://kampter.github.io/images/favicon/favicon.ico" type="image/x-icon" />
+
+  
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-4BGKQYLBBG"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-4BGKQYLBBG');
+  </script>
+  
+
+  </head>
+
+
+<body class=" blog">
+  <div class="page new-skin">
+
+    <!-- Preloader -->
+<div class="preloader">
+	<div class="centrize full-width">
+		<div class="vertical-center">
+			<div class="spinner">
+				<div class="double-bounce1"></div>
+				<div class="double-bounce2"></div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+    
+
+<!-- Background -->
+
+
+<div class="background gradient">
+	<ul class="bg-bubbles">
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>
+</div>
+
+
+
+
+
+    
+
+<div class="s_overlay"></div>
+<div class="content-sidebar">
+	<div class="sidebar-wrap">
+		<aside id="secondary" class="widget-area">
+
+      
+			<div id="search" class="widget widget_search">
+				<form class="search-form" action="https://kampter.github.io/search">
+					<label>
+						<input type="search" id="searchInput" class="search-field" placeholder="Search ..." value="">
+					</label>
+					<input type="submit" class="search-submit" value="">
+          <ul id="searchResults"></ul>
+				</form>
+			</div>
+      
+
+			
+			<section class="widget widget_menu">
+				<h2 class="widget-title">Menu</h2>
+				<ul>
+					
+					
+					
+					
+					
+					<li class="active">
+						<a href="https://kampter.github.io//blog">Blog Page</a>
+					</li>
+					
+					
+					
+					
+					<li>
+						<a href="https://kampter.github.io//portfolio">Portfolio Page</a>
+					</li>
+					
+				</ul>
+			</section>
+      
+
+			
+			<section class="widget widget_recent_entries">
+				<h2 class="widget-title">Latest Posts</h2>
+				<ul>
+					
+					<li>
+						<a href="https://kampter.github.io/blog/%E8%BF%91%E6%9C%9F%E5%81%9A%E7%9A%84%E5%87%A0%E4%B8%AAunity%E5%92%8Cue%E7%89%B9%E6%95%88/">近期做的几个Unity和UE特效</a>
+					</li>
+					
+					<li>
+						<a href="https://kampter.github.io/blog/urp%E5%B1%8F%E5%B9%95%E7%A9%BA%E9%97%B4sobel%E8%BE%B9%E7%BC%98%E6%A3%80%E6%B5%8B/">URP屏幕空间Sobel边缘检测</a>
+					</li>
+					
+					<li>
+						<a href="https://kampter.github.io/blog/blender%E6%8F%92%E4%BB%B6%E5%88%B6%E4%BD%9C%E5%BF%83%E5%BE%97/">blender插件制作心得</a>
+					</li>
+					
+					<li>
+						<a href="https://kampter.github.io/blog/urp%E5%B1%8F%E5%B9%95%E7%A9%BA%E9%97%B4%E7%8E%AF%E5%A2%83%E5%85%89%E9%81%AE%E8%94%BD/">URP屏幕空间环境光遮蔽</a>
+					</li>
+					
+				</ul>
+			</section>
+			
+
+			
+			<section class="widget widget_categories">
+				<h2 class="widget-title">Categories</h2>
+				<ul>
+            
+  				  <li>
+              <a href="https://kampter.github.io/categories/portfolio/">Portfolio</a>
+              <small>( 5 )</small>
+            </li>
+            
+  				  <li>
+              <a href="https://kampter.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+              <small>( 6 )</small>
+            </li>
+            
+  				  <li>
+              <a href="https://kampter.github.io/categories/%E6%8A%80%E6%9C%AF%E5%AE%9E%E7%8E%B0/">技术实现</a>
+              <small>( 5 )</small>
+            </li>
+            
+  				  <li>
+              <a href="https://kampter.github.io/categories/%E6%97%A5%E5%B8%B8%E7%94%9F%E6%B4%BB/">日常生活</a>
+              <small>( 1 )</small>
+            </li>
+            
+  				  <li>
+              <a href="https://kampter.github.io/categories/%E6%97%A5%E5%B8%B8%E8%AE%B0%E5%BD%95/">日常记录</a>
+              <small>( 1 )</small>
+            </li>
+            
+  				  <li>
+              <a href="https://kampter.github.io/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/">课程笔记</a>
+              <small>( 8 )</small>
+            </li>
+            
+				</ul>
+			</section>
+			
+
+			
+			<section class="widget widget_tags">
+				<h2 class="widget-title">Tags</h2>
+				<ul>
+           
+           <li>
+             <a href="https://kampter.github.io/tags/after-effect/">After Effect</a>
+             <small>( 1 )</small>
+           </li>
+           
+           <li>
+             <a href="https://kampter.github.io/tags/bifrost/">Bifrost</a>
+             <small>( 1 )</small>
+           </li>
+           
+           <li>
+             <a href="https://kampter.github.io/tags/blender/">blender</a>
+             <small>( 2 )</small>
+           </li>
+           
+           <li>
+             <a href="https://kampter.github.io/tags/c#/">C#</a>
+             <small>( 4 )</small>
+           </li>
+           
+           <li>
+             <a href="https://kampter.github.io/tags/computer-graphic/">Computer Graphic</a>
+             <small>( 9 )</small>
+           </li>
+           
+           <li>
+             <a href="https://kampter.github.io/tags/eve-online/">Eve Online</a>
+             <small>( 1 )</small>
+           </li>
+           
+           <li>
+             <a href="https://kampter.github.io/tags/flip/">Flip</a>
+             <small>( 1 )</small>
+           </li>
+           
+           <li>
+             <a href="https://kampter.github.io/tags/games-101/">Games 101</a>
+             <small>( 4 )</small>
+           </li>
+           
+           <li>
+             <a href="https://kampter.github.io/tags/games-202/">Games 202</a>
+             <small>( 3 )</small>
+           </li>
+           
+           <li>
+             <a href="https://kampter.github.io/tags/hlsl/">HLSL</a>
+             <small>( 12 )</small>
+           </li>
+           
+           <li>
+             <a href="https://kampter.github.io/tags/houdini/">Houdini</a>
+             <small>( 3 )</small>
+           </li>
+           
+           <li>
+             <a href="https://kampter.github.io/tags/java/">Java</a>
+             <small>( 1 )</small>
+           </li>
+           
+           <li>
+             <a href="https://kampter.github.io/tags/math/">Math</a>
+             <small>( 8 )</small>
+           </li>
+           
+           <li>
+             <a href="https://kampter.github.io/tags/maya/">Maya</a>
+             <small>( 1 )</small>
+           </li>
+           
+           <li>
+             <a href="https://kampter.github.io/tags/niagara-system/">niagara system</a>
+             <small>( 2 )</small>
+           </li>
+           
+           <li>
+             <a href="https://kampter.github.io/tags/opengl/">Opengl</a>
+             <small>( 1 )</small>
+           </li>
+           
+           <li>
+             <a href="https://kampter.github.io/tags/particle/">Particle</a>
+             <small>( 1 )</small>
+           </li>
+           
+           <li>
+             <a href="https://kampter.github.io/tags/pbr-shading/">PBR Shading</a>
+             <small>( 2 )</small>
+           </li>
+           
+           <li>
+             <a href="https://kampter.github.io/tags/plugin/">plugin</a>
+             <small>( 1 )</small>
+           </li>
+           
+           <li>
+             <a href="https://kampter.github.io/tags/render-feature/">Render Feature</a>
+             <small>( 4 )</small>
+           </li>
+           
+           <li>
+             <a href="https://kampter.github.io/tags/shader-graph/">Shader Graph</a>
+             <small>( 1 )</small>
+           </li>
+           
+           <li>
+             <a href="https://kampter.github.io/tags/substance-designer/">substance designer</a>
+             <small>( 2 )</small>
+           </li>
+           
+           <li>
+             <a href="https://kampter.github.io/tags/toon-shading/">Toon Shading</a>
+             <small>( 3 )</small>
+           </li>
+           
+           <li>
+             <a href="https://kampter.github.io/tags/unity/">Unity</a>
+             <small>( 15 )</small>
+           </li>
+           
+           <li>
+             <a href="https://kampter.github.io/tags/unreal-engine/">unreal engine</a>
+             <small>( 2 )</small>
+           </li>
+           
+           <li>
+             <a href="https://kampter.github.io/tags/vfx-graph/">VFX Graph</a>
+             <small>( 2 )</small>
+           </li>
+           
+				</ul>
+			</section>
+			
+
+		</aside>
+	</div>
+	<span class="close"></span>
+</div>
+
+
+    
+    
+    <!-- Container -->
+    <div class="container opened" data-animation-in="fadeInLeft" data-animation-out="fadeOutLeft">
+
+      
+
+<!-- Header -->
+<header class="header">
+
+	<a href="#" class="menu-btn"><span></span></a>
+
+  <!-- menu -->
+	<div class="top-menu">
+		<ul>
+      
+      
+      
+      
+      
+			<li class="active">
+				<a href="https://kampter.github.io/#about-card">
+					<span class="icon ion-person"></span>
+					<span class="link">About</span>
+				</a>
+			</li>
+			
+      
+      
+      
+			<li>
+				<a href="https://kampter.github.io/#resume-card">
+					<span class="icon ion-android-list"></span>
+					<span class="link">Resume</span>
+				</a>
+			</li>
+			
+      
+      
+      
+			<li>
+				<a href="https://kampter.github.io/#works-card">
+					<span class="icon ion-paintbrush"></span>
+					<span class="link">Works</span>
+				</a>
+			</li>
+			
+      
+      
+      
+			<li>
+				<a href="https://kampter.github.io/#blog-card">
+					<span class="icon ion-chatbox-working"></span>
+					<span class="link">Blog</span>
+				</a>
+			</li>
+			
+      
+      
+      
+			<li>
+				<a href="https://kampter.github.io/#contact-card">
+					<span class="icon ion-at"></span>
+					<span class="link">Contact</span>
+				</a>
+			</li>
+			
+		</ul>
+	</div>
+
+</header>
+
+
+      <!-- Card - Started -->
+
+
+
+<div class="card-started" id="home-card">
+
+  <!-- Profile-->
+  <div class="profile no-photo">
+
+    <!-- profile image -->
+    <div class="slide" style="background-image: url(https://kampter.github.io/images/1082264.png);"></div>
+
+    <!-- profile photo -->
+    
+
+    <!-- profile titles -->
+    <div class="title">王子正</div>
+    <div class="subtitle subtitle-typed">
+      <div class="typing-title">
+        
+        <p>Technical Artist</p>
+        
+      </div>
+    </div>
+
+    <!-- profile socials -->
+    <div class="social">
+      
+      <a target="_blank" href="https://twitter.com/wang_psbswsg" title="Twitter"><span class="fab fa-twitter"></span></a>
+      
+      <a target="_blank" href="https://github.com/Kampter" title="GitHub"><span class="fab fa-github"></span></a>
+      
+      <a target="_blank" href="https://www.youtube.com/channel/UCK43eUkmsyRk8FeBw5oRJtQ" title="Youtube"><span class="fab fa-youtube"></span></a>
+      
+      <a target="_blank" href="https://www.artstation.com/kampter" title="Stackoverflow"><span class="fab fa-artstation"></span></a>
+      
+    </div>
+
+    <!-- profile buttons -->
+    <div class="lnks">
+      
+      <a href="/images/Resume_ZizhengWang_Chinese_v004.pdf" target="_blank" class="lnk">
+        <span class="text">Download CV</span>
+        
+        <span class="ion ion ion-archive"></span>
+        
+      </a>
+      
+      <a href="mailto:psbswsg@gmail.com" target="_blank" class="lnk">
+        <span class="text">Contact Me</span>
+        
+        <span class="ion arrow"></span>
+        
+      </a>
+      
+    </div>
+
+  </div>
+
+</div>
+
+
+
+
+      
+
+
+<!-- Blog Post -->
+<div class="card-inner blog blog-post animated" id="blog-card">
+	<div class="card-wrap">
+
+		<div class="content blog-single">
+
+			<div class="title">Blog Post</div>
+
+			<div class="row border-line-v">
+				<div class="col col-m-12 col-t-12 col-d-12">
+					<div class="post-box">
+
+						<h1>blender插件制作心得</h1>
+						<div class="blog-detail">
+							<span class="date">April 5, 2023</span>
+							
+							<span class="cat-links">
+		            
+		            <a href="https://kampter.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+		            
+							</span>
+							
+							<span class="byline"> By <span class="author">Ryan Adlard</span></span>
+						</div>
+
+						
+						<div class="blog-image">
+							<img src="https://kampter.github.io/images/blog/add-on.jpg" alt="blender插件制作心得" />
+						</div>
+						
+
+						<div class="blog-content">
+							<h2 id="前言">前言</h2>
+<p>一个偶然的机会接触到 Blender插件编写，一直以来我都是(曾经是) Maya以及Houdini软件的拥护者，但是Blender 的开源社区逐渐壮大也不能不引起重视，那么是时候了解一下Blender的相关内容。</p>
+<p>Blender的交互层都是用Python来编写的，这就很友好了。作为一个使用过python用来数据分析以及编写爬虫爬 *** 内容的人表示这很开心。</p>
+<h2 id="基础模板">基础模板</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>bl_info <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;HelloAddon&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;author&#34;</span>: <span style="color:#e6db74">&#34;作者&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;version&#34;</span>: (<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">0</span>),
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;blender&#34;</span>: (<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">79</span>, <span style="color:#ae81ff">0</span>),
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;location&#34;</span>: <span style="color:#e6db74">&#34;View3D &gt; Tool Shelf &gt;HelloAddon Panel&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;description&#34;</span>: <span style="color:#e6db74">&#34;插件描述&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;warning&#34;</span>: <span style="color:#e6db74">&#34;&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;wiki_url&#34;</span>: <span style="color:#e6db74">&#34;&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;category&#34;</span>: <span style="color:#e6db74">&#34;3D View&#34;</span>,
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> bpy
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> logging
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> . <span style="color:#f92672">import</span> model_data
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> . <span style="color:#f92672">import</span> command_operators
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> . <span style="color:#f92672">import</span> view_panels
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">register</span>():
+</span></span><span style="display:flex;"><span>    bpy<span style="color:#f92672">.</span>utils<span style="color:#f92672">.</span>register_module(__name__)
+</span></span><span style="display:flex;"><span>    command_operators<span style="color:#f92672">.</span>register()
+</span></span><span style="display:flex;"><span>    view_panels<span style="color:#f92672">.</span>register()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">unregister</span>():
+</span></span><span style="display:flex;"><span>    bpy<span style="color:#f92672">.</span>utils<span style="color:#f92672">.</span>unregister_module(__name__)
+</span></span><span style="display:flex;"><span>    command_operators<span style="color:#f92672">.</span>unregister()
+</span></span><span style="display:flex;"><span>    view_panels<span style="color:#f92672">.</span>unregister()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;__main__&#34;</span>:
+</span></span><span style="display:flex;"><span>    register()
+</span></span></code></pre></div><p>整体思路还是比价简单的。以上代码就是套路，不需要理解，主体为bpy.utils.register_module(name)，作用是注册import进来的所有模块。至于<em>command_operators.register() 与 view_panels.register()则代表其他非模块相关的注册。这里的代码</em>以后要新建工程直接ctrl c即可。直接运行main函数，就可以注册插件。z注册插件后就可以编写自己的插件内容并且分别在 register() 和 unregister() 中调用。</p>
+<h2 id="编写一个-check-object命名的功能吧">编写一个 check object命名的功能吧</h2>
+<p>我希望我的这个插件可以实现的功能是遍历当前场景内全部的object，然后根据命名规则判断正确还是错误，命名规则如下。</p>
+<blockquote>
+<p>​	&lt;asset_type&gt;<em>&lt;descriptive_name&gt;</em>&lt;descriptive_name&gt;_&lt;##&gt;</p>
+</blockquote>
+<ol>
+<li>其中&lt;asset_type&gt; 可以为 char, prop, veg,  veh, arch 和 tree</li>
+<li>中间的&lt;descriptive_name&gt;可以有2-3个不同的名字，并且全部为小写的英文字母</li>
+<li>最后的&lt;##&gt; 是数量，从01 最大可以到99</li>
+</ol>
+<p>并且把最终的结果输出到一个html网页中并渲染出来。最终效果如下</p>
+<p><img src="image-20230405185735496.png" alt="image-20230405185735496"></p>
+<p>先写基础模板把我的CheckNamesOperator 注册上去</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> bpy
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">register</span>():
+</span></span><span style="display:flex;"><span>    bpy<span style="color:#f92672">.</span>utils<span style="color:#f92672">.</span>register_class(CheckNamesOperator)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">unregister</span>():
+</span></span><span style="display:flex;"><span>    bpy<span style="color:#f92672">.</span>utils<span style="color:#f92672">.</span>unregister_class(CheckNamesOperator)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;__main__&#34;</span>:
+</span></span><span style="display:flex;"><span>    register()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># test call</span>
+</span></span><span style="display:flex;"><span>    bpy<span style="color:#f92672">.</span>ops<span style="color:#f92672">.</span>object<span style="color:#f92672">.</span>check_naming()
+</span></span></code></pre></div><p>功能实现部分的思路如下。先遍历场景内的object， 然后读到这个object的当前命名内容，把他当作一串string。整体思路有点类似之前编程课写的string parser。这里把命名string用split(&quot;_&quot;)拆分为三部分并且放在一个tags list中</p>
+<h3 id="prefix">Prefix</h3>
+<p>第一部分的asset_type 是prefix 用tags[0] 提取，判断第一部分的类型，可以预先用一个list把valid prefixes提前写好，判定提取的string是否在list中</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Prefix</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> tags[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">in</span> valid_prefixes:
+</span></span><span style="display:flex;"><span>        prefix_ok <span style="color:#f92672">=</span> <span style="color:#66d9ef">True</span>
+</span></span></code></pre></div><h3 id="suffix">Suffix</h3>
+<p>第三部分的## 用tags[-1]提取, 最后一部分的内容是长度为2 的数字。数字的判定用python自带的ValueError来判定，如果不报错就是数字。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Suffix</span>
+</span></span><span style="display:flex;"><span>nan <span style="color:#f92672">=</span> <span style="color:#66d9ef">False</span>
+</span></span><span style="display:flex;"><span>padding <span style="color:#f92672">=</span> len(tags[<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]) <span style="color:#f92672">==</span> suffix_padding
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">try</span>:
+</span></span><span style="display:flex;"><span>    num <span style="color:#f92672">=</span> int(tags[<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>])
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">except</span> <span style="color:#a6e22e">ValueError</span>:
+</span></span><span style="display:flex;"><span>    nan <span style="color:#f92672">=</span> <span style="color:#66d9ef">True</span>
+</span></span></code></pre></div><h3 id="identifiers">Identifiers</h3>
+<p>中间的部分descriptive_name用tags[1:-1] 提取，先判断中间部分有几个descriptive_name, 规则只允许2-3个。其次要求descriptive_name全部为小写的英文字母</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span><span style="color:#75715e"># Identifiers</span>
+</span></span><span style="display:flex;"><span>errors <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> len(tags) <span style="color:#f92672">-</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">not</span> <span style="color:#f92672">in</span> num_indentifiers_required:
+</span></span><span style="display:flex;"><span>    errors <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> id <span style="color:#f92672">in</span> tags[<span style="color:#ae81ff">1</span>:<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> id<span style="color:#f92672">.</span>isalpha():
+</span></span><span style="display:flex;"><span>        errors <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> id <span style="color:#f92672">==</span> id<span style="color:#f92672">.</span>lower():
+</span></span><span style="display:flex;"><span>        errors <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> errors <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>:
+</span></span><span style="display:flex;"><span>    ids_ok <span style="color:#f92672">=</span> <span style="color:#66d9ef">True</span>
+</span></span></code></pre></div><p>这样最核心的判定就完全结束了。现在来编写输出的部分</p>
+<p>class CheckNamesOperator(bpy.types.Operator):
+&ldquo;&ldquo;&ldquo;Check Object Names&rdquo;&rdquo;&rdquo;
+bl_idname = &ldquo;object.check_naming&rdquo;
+bl_label = &ldquo;Check Object Names&rdquo;</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span><span style="color:#a6e22e">@classmethod</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">poll</span>(cls, context):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> context<span style="color:#f92672">.</span>active_object <span style="color:#f92672">is</span> <span style="color:#f92672">not</span> <span style="color:#66d9ef">None</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">execute</span>(self, context):
+</span></span><span style="display:flex;"><span>    scene_objects <span style="color:#f92672">=</span> [[obj[<span style="color:#ae81ff">0</span>], obj[<span style="color:#ae81ff">1</span>]] <span style="color:#66d9ef">for</span> obj <span style="color:#f92672">in</span> bpy<span style="color:#f92672">.</span>data<span style="color:#f92672">.</span>objects<span style="color:#f92672">.</span>items()]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    results <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>    errors <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> obj <span style="color:#f92672">in</span> scene_objects:
+</span></span><span style="display:flex;"><span>        v <span style="color:#f92672">=</span> validate_name(obj[<span style="color:#ae81ff">0</span>])
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> all(v):
+</span></span><span style="display:flex;"><span>            errors <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>        results<span style="color:#f92672">.</span>append({
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#39;object&#39;</span>: obj[<span style="color:#ae81ff">0</span>],
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#39;prefix&#39;</span>: <span style="color:#e6db74">&#39;OK&#39;</span> <span style="color:#66d9ef">if</span> v[<span style="color:#ae81ff">0</span>] <span style="color:#66d9ef">else</span> <span style="color:#e6db74">&#39;FAIL&#39;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#39;ids&#39;</span>: <span style="color:#e6db74">&#39;OK&#39;</span> <span style="color:#66d9ef">if</span> v[<span style="color:#ae81ff">1</span>] <span style="color:#66d9ef">else</span> <span style="color:#e6db74">&#39;FAIL&#39;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#39;suffix&#39;</span>: <span style="color:#e6db74">&#39;OK&#39;</span> <span style="color:#66d9ef">if</span> v[<span style="color:#ae81ff">2</span>] <span style="color:#66d9ef">else</span> <span style="color:#e6db74">&#39;FAIL&#39;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#39;pass&#39;</span>: all(v)
+</span></span><span style="display:flex;"><span>        })
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> errors:
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>message_errors(results)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>message_ok(message<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;No problems found!&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> {<span style="color:#e6db74">&#39;FINISHED&#39;</span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">message_ok</span>(self, message<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;&#34;</span>, title<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;OK!&#34;</span>, icon<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;INFO&#39;</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">draw</span>(self, context):
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>layout<span style="color:#f92672">.</span>label(text<span style="color:#f92672">=</span>message)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    bpy<span style="color:#f92672">.</span>context<span style="color:#f92672">.</span>window_manager<span style="color:#f92672">.</span>popup_menu(draw, title<span style="color:#f92672">=</span>title, icon<span style="color:#f92672">=</span>icon)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">message_errors</span>(self, results, title<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Errors Found!&#34;</span>, icon<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;ERROR&#39;</span>):
+</span></span><span style="display:flex;"><span>    scene_file <span style="color:#f92672">=</span> bpy<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>basename(bpy<span style="color:#f92672">.</span>data<span style="color:#f92672">.</span>filepath)
+</span></span><span style="display:flex;"><span>    scene_folder <span style="color:#f92672">=</span> path<span style="color:#f92672">.</span>dirname(bpy<span style="color:#f92672">.</span>data<span style="color:#f92672">.</span>filepath)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    base_file_name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;.&#39;</span><span style="color:#f92672">.</span>join(scene_file<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#39;.&#39;</span>)[<span style="color:#ae81ff">0</span>:<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]) <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;.html&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    out_html_file <span style="color:#f92672">=</span> path<span style="color:#f92672">.</span>join(scene_folder, base_file_name)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">with</span> open(out_html_file, <span style="color:#e6db74">&#39;w&#39;</span>) <span style="color:#66d9ef">as</span> f:
+</span></span><span style="display:flex;"><span>        f<span style="color:#f92672">.</span>write(<span style="color:#e6db74">&#39;&lt;html&gt;&lt;head&gt;&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># Styles</span>
+</span></span><span style="display:flex;"><span>        f<span style="color:#f92672">.</span>write(<span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        &lt;style type=&#34;text/css&#34;&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">            table {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">              margin: 0 auto;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">              text-align: left;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">            }
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">            tr.error{
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">              background-color: #990d0d;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">              color: #ffd5d5;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">            }
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">            tr.ok {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">              background-color: green;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">              color: #1a2615;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">            }
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">            table {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">              margin: 10</span><span style="color:#e6db74">% a</span><span style="color:#e6db74">uto;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">              width: 40%;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">              background-color: dimgray;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">            }
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">            th {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">              color: #b9b9b9;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">            }
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">            body {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">              background-color: rgb(26, 26, 26);
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">            }
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">            &lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;table&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        &#34;&#34;&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># Header</span>
+</span></span><span style="display:flex;"><span>        f<span style="color:#f92672">.</span>write(<span style="color:#e6db74">&#39;&lt;tr&gt;&lt;th&gt;Object&lt;/th&gt;&lt;th&gt;Prefix&lt;/th&gt;&lt;th&gt;Ids&lt;/th&gt;&lt;th&gt;Suffix&lt;/th&gt;&lt;/tr&gt;&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># Results</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> r <span style="color:#f92672">in</span> results:
+</span></span><span style="display:flex;"><span>            row_class <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;ok&#39;</span> <span style="color:#66d9ef">if</span> r[<span style="color:#e6db74">&#39;pass&#39;</span>] <span style="color:#66d9ef">else</span> <span style="color:#e6db74">&#39;error&#39;</span>
+</span></span><span style="display:flex;"><span>            f<span style="color:#f92672">.</span>write(
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;&lt;tr class=</span><span style="color:#ae81ff">\&#34;</span><span style="color:#e6db74">{</span>row_class<span style="color:#e6db74">}</span><span style="color:#ae81ff">\&#34;</span><span style="color:#e6db74">&gt;&lt;td&gt;</span><span style="color:#e6db74">{</span>r[<span style="color:#e6db74">&#39;object&#39;</span>]<span style="color:#e6db74">}</span><span style="color:#e6db74">&lt;/td&gt;&lt;td&gt;</span><span style="color:#e6db74">{</span>r[<span style="color:#e6db74">&#39;prefix&#39;</span>]<span style="color:#e6db74">}</span><span style="color:#e6db74">&lt;/td&gt;&lt;td&gt;</span><span style="color:#e6db74">{</span>r[<span style="color:#e6db74">&#39;ids&#39;</span>]<span style="color:#e6db74">}</span><span style="color:#e6db74">&lt;/td&gt;&lt;td&gt;</span><span style="color:#e6db74">{</span>r[<span style="color:#e6db74">&#39;suffix&#39;</span>]<span style="color:#e6db74">}</span><span style="color:#e6db74">&lt;/td&gt;&lt;/tr&gt;&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        f<span style="color:#f92672">.</span>write(<span style="color:#e6db74">&#39;&lt;/table&gt;&lt;/body&gt;&lt;/html&gt;&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Open Generated html Results</span>
+</span></span><span style="display:flex;"><span>    webbrowser<span style="color:#f92672">.</span>open(out_html_file)
+</span></span></code></pre></div><p>这是一段我借鉴来的代码。主要涉及到几部分内容。</p>
+<ol>
+<li>这是一个class 的 CheckNamesOperator，也就是我们的检查器对象。</li>
+<li>其中最核心的部分在 exeute() 内，用以运行刚刚的检查逻辑函数，并且把结果保存在results[] 这个list中</li>
+<li>输出王爷的部分，其实这是一个调用IO的函数，主要是遍历刚刚我们保存下来的results 数组并且逐行按照我们的目标效果编译出来的，中间还涉及到html 和css代码（虽然挺丑的）。最终把Html保存在Blender相同的目录下面。</li>
+</ol>
+<h3 id="检查代码效果">检查代码效果</h3>
+<p>创建几个object，并且根据我们的目标规则，更改命名。可以看到场景内对对错错的object有好几个，虽然我不是专业的测试，但是基础的边界测试还是要有的。</p>
+<p><img src="image-20230405194512646.png" alt="image-20230405194512646"></p>
+<p>检查完自动弹出的检查结果窗口，很丑，但是可以提示我们哪里有错误，可以及时修改。</p>
+<p><img src="image-20230405194614938.png" alt="image-20230405194614938"></p>
+<h2 id="再写一个pie-menu的object生成菜单">再写一个Pie Menu的Object生成菜单</h2>
+<h3 id="插件的逻辑">插件的逻辑</h3>
+<ol>
+<li>View3D_MT_PIE_template(menu) 用以继承官方的pie menu并且在下面添加我们自己的功能按钮，用pie.operator()</li>
+<li>View3D_OT_PIE_template_call(menu) 用以在场景内呼出这个菜单</li>
+<li>每一个功能按钮单独用一个class实现，bl_idname就是在pie.operator()中调用的id, 每一个功能按钮都有一个execute用以运行。其中的功能可以自行设计，我这里就调用比如生成plane, cube, sphere的代码</li>
+<li>额外编写一个add_hotkey()用以实现快捷键呼出菜单的功能，核心是这一段，用以调用场景内呼出菜单的效果。</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span>km<span style="color:#f92672">.</span>keymap_items<span style="color:#f92672">.</span>new(
+</span></span><span style="display:flex;"><span>    VIEW3D_OT_PIE_template_call<span style="color:#f92672">.</span>bl_idname, <span style="color:#e6db74">&#39;D&#39;</span>, <span style="color:#e6db74">&#39;PRESS&#39;</span>, ctrl<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>, shift<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>)
+</span></span></code></pre></div><ol start="5">
+<li>最后的最后，把全部实现的功能都注册在register()和unregister()中就可以了。</li>
+</ol>
+<p>插件在Blender中效果实现如下</p>
+<p><img src="blender.png" alt=""></p>
+<p>完整插件代码如下，可以直接复制并且安装在blender中，默认是shift + D呼出菜单。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span><span style="color:#f92672">import</span> bpy
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> bpy.types <span style="color:#f92672">import</span> Menu
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;&#39;&#39; 
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Reference List 
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">1. https://www.youtube.com/watch?v=jfQTX293dw0
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">2. https://blender.stackexchange.com/questions/147894/is-there-a-way-to-add-a-custom-pie-menu-in-2-8
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">3. https://docs.blender.org/manual/en/latest/advanced/scripting/addon_tutorial.html
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;&#39;&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>bl_info <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;Kampter Pie Menu&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;author&#34;</span>: <span style="color:#e6db74">&#34;Kampter&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;version&#34;</span>: (<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>),
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;description&#34;</span>: <span style="color:#e6db74">&#34;Pie Menus made by Kampter&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;blender&#34;</span>: (<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">40</span>, <span style="color:#ae81ff">0</span>),
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;category&#34;</span>: <span style="color:#e6db74">&#34;Mesh&#34;</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>addon_keymaps <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">add_hotkey</span>():
+</span></span><span style="display:flex;"><span>    wm <span style="color:#f92672">=</span> bpy<span style="color:#f92672">.</span>context<span style="color:#f92672">.</span>window_manager
+</span></span><span style="display:flex;"><span>    kc <span style="color:#f92672">=</span> wm<span style="color:#f92672">.</span>keyconfigs<span style="color:#f92672">.</span>addon
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> kc:
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">&#39;Keymap Error&#39;</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># object Mode</span>
+</span></span><span style="display:flex;"><span>    km <span style="color:#f92672">=</span> kc<span style="color:#f92672">.</span>keymaps<span style="color:#f92672">.</span>new(name<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;Object Mode&#39;</span>, space_type<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;EMPTY&#39;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># here you can chose the keymapping.</span>
+</span></span><span style="display:flex;"><span>    kmi <span style="color:#f92672">=</span> km<span style="color:#f92672">.</span>keymap_items<span style="color:#f92672">.</span>new(
+</span></span><span style="display:flex;"><span>        VIEW3D_OT_PIE_template_call<span style="color:#f92672">.</span>bl_idname, <span style="color:#e6db74">&#39;D&#39;</span>, <span style="color:#e6db74">&#39;PRESS&#39;</span>, ctrl<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>, shift<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>)
+</span></span><span style="display:flex;"><span>    addon_keymaps<span style="color:#f92672">.</span>append((km, kmi))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">remove_hotkey</span>():
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> km, kmi <span style="color:#f92672">in</span> addon_keymaps:
+</span></span><span style="display:flex;"><span>        km<span style="color:#f92672">.</span>keymap_items<span style="color:#f92672">.</span>remove(kmi)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    addon_keymaps<span style="color:#f92672">.</span>clear()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">VIEW3D_MT_PIE_template</span>(Menu):
+</span></span><span style="display:flex;"><span>    bl_label <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Kampter Mesh Generator Menu&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">draw</span>(self, context):
+</span></span><span style="display:flex;"><span>        layout <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>layout
+</span></span><span style="display:flex;"><span>        prefs <span style="color:#f92672">=</span> context<span style="color:#f92672">.</span>preferences
+</span></span><span style="display:flex;"><span>        inputs <span style="color:#f92672">=</span> prefs<span style="color:#f92672">.</span>inputs
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        pie <span style="color:#f92672">=</span> layout<span style="color:#f92672">.</span>menu_pie()
+</span></span><span style="display:flex;"><span>        pie<span style="color:#f92672">.</span>operator(<span style="color:#e6db74">&#39;kampter.plane&#39;</span>)
+</span></span><span style="display:flex;"><span>        pie<span style="color:#f92672">.</span>operator(<span style="color:#e6db74">&#39;kampter.cube&#39;</span>)
+</span></span><span style="display:flex;"><span>        pie<span style="color:#f92672">.</span>operator(<span style="color:#e6db74">&#39;kampter.sphere&#39;</span>)
+</span></span><span style="display:flex;"><span>        pie<span style="color:#f92672">.</span>operator(<span style="color:#e6db74">&#39;kampter.cylinder&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">VIEW3D_OT_PIE_template_call</span>(bpy<span style="color:#f92672">.</span>types<span style="color:#f92672">.</span>Operator):
+</span></span><span style="display:flex;"><span>    bl_idname <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;kampter.call&#39;</span>
+</span></span><span style="display:flex;"><span>    bl_label <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Kampter Pie Menu&#39;</span>
+</span></span><span style="display:flex;"><span>    bl_description <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Calls pie menu&#39;</span>
+</span></span><span style="display:flex;"><span>    bl_options <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#39;REGISTER&#39;</span>, <span style="color:#e6db74">&#39;UNDO&#39;</span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">execute</span>(self, context):
+</span></span><span style="display:flex;"><span>        bpy<span style="color:#f92672">.</span>ops<span style="color:#f92672">.</span>wm<span style="color:#f92672">.</span>call_menu_pie(name<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;VIEW3D_MT_PIE_template&#34;</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> {<span style="color:#e6db74">&#39;FINISHED&#39;</span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CREATE_PLANE</span>(bpy<span style="color:#f92672">.</span>types<span style="color:#f92672">.</span>Operator):
+</span></span><span style="display:flex;"><span>    bl_idname <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;kampter.plane&#39;</span>
+</span></span><span style="display:flex;"><span>    bl_label <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Plane&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">execute</span>(self, context):
+</span></span><span style="display:flex;"><span>        bpy<span style="color:#f92672">.</span>ops<span style="color:#f92672">.</span>mesh<span style="color:#f92672">.</span>primitive_plane_add(enter_editmode<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>, align<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;WORLD&#39;</span>, location<span style="color:#f92672">=</span>(<span style="color:#f92672">-</span><span style="color:#ae81ff">2.25724</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">2.46012</span>, <span style="color:#ae81ff">2.15026</span>),
+</span></span><span style="display:flex;"><span>                                         scale<span style="color:#f92672">=</span>(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>))
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> {<span style="color:#e6db74">&#39;FINISHED&#39;</span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CREATE_CUBE</span>(bpy<span style="color:#f92672">.</span>types<span style="color:#f92672">.</span>Operator):
+</span></span><span style="display:flex;"><span>    bl_idname <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;kampter.cube&#39;</span>
+</span></span><span style="display:flex;"><span>    bl_label <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Cube&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">execute</span>(self, context):
+</span></span><span style="display:flex;"><span>        bpy<span style="color:#f92672">.</span>ops<span style="color:#f92672">.</span>mesh<span style="color:#f92672">.</span>primitive_cube_add(enter_editmode<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>, align<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;WORLD&#39;</span>, location<span style="color:#f92672">=</span>(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>), scale<span style="color:#f92672">=</span>(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>))
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> {<span style="color:#e6db74">&#39;FINISHED&#39;</span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CREATE_UV_SPHERE</span>(bpy<span style="color:#f92672">.</span>types<span style="color:#f92672">.</span>Operator):
+</span></span><span style="display:flex;"><span>    bl_idname <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;kampter.sphere&#39;</span>
+</span></span><span style="display:flex;"><span>    bl_label <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;UV Sphere&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">execute</span>(self, context):
+</span></span><span style="display:flex;"><span>        bpy<span style="color:#f92672">.</span>ops<span style="color:#f92672">.</span>mesh<span style="color:#f92672">.</span>primitive_uv_sphere_add(radius<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>, enter_editmode<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>, align<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;WORLD&#39;</span>, location<span style="color:#f92672">=</span>(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>),
+</span></span><span style="display:flex;"><span>                                             scale<span style="color:#f92672">=</span>(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>))
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> {<span style="color:#e6db74">&#39;FINISHED&#39;</span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CREATE_CYLINDER</span>(bpy<span style="color:#f92672">.</span>types<span style="color:#f92672">.</span>Operator):
+</span></span><span style="display:flex;"><span>    bl_idname <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;kampter.cylinder&#39;</span>
+</span></span><span style="display:flex;"><span>    bl_label <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Cylinder&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">execute</span>(self, context):
+</span></span><span style="display:flex;"><span>        bpy<span style="color:#f92672">.</span>ops<span style="color:#f92672">.</span>mesh<span style="color:#f92672">.</span>primitive_cylinder_add(enter_editmode<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>, align<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;WORLD&#39;</span>,
+</span></span><span style="display:flex;"><span>                                            location<span style="color:#f92672">=</span>(<span style="color:#f92672">-</span><span style="color:#ae81ff">0.492159</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">3.12005</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">1.62732</span>), scale<span style="color:#f92672">=</span>(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>))
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> {<span style="color:#e6db74">&#39;FINISHED&#39;</span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">register</span>():
+</span></span><span style="display:flex;"><span>    bpy<span style="color:#f92672">.</span>utils<span style="color:#f92672">.</span>register_class(VIEW3D_MT_PIE_template)
+</span></span><span style="display:flex;"><span>    bpy<span style="color:#f92672">.</span>utils<span style="color:#f92672">.</span>register_class(VIEW3D_OT_PIE_template_call)
+</span></span><span style="display:flex;"><span>    bpy<span style="color:#f92672">.</span>utils<span style="color:#f92672">.</span>register_class(CREATE_PLANE)
+</span></span><span style="display:flex;"><span>    bpy<span style="color:#f92672">.</span>utils<span style="color:#f92672">.</span>register_class(CREATE_CUBE)
+</span></span><span style="display:flex;"><span>    bpy<span style="color:#f92672">.</span>utils<span style="color:#f92672">.</span>register_class(CREATE_UV_SPHERE)
+</span></span><span style="display:flex;"><span>    bpy<span style="color:#f92672">.</span>utils<span style="color:#f92672">.</span>register_class(CREATE_CYLINDER)
+</span></span><span style="display:flex;"><span>    add_hotkey()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">unregister</span>():
+</span></span><span style="display:flex;"><span>    bpy<span style="color:#f92672">.</span>utils<span style="color:#f92672">.</span>unregister_class(VIEW3D_MT_PIE_template)
+</span></span><span style="display:flex;"><span>    bpy<span style="color:#f92672">.</span>utils<span style="color:#f92672">.</span>unregister_class(VIEW3D_OT_PIE_template_call)
+</span></span><span style="display:flex;"><span>    bpy<span style="color:#f92672">.</span>utils<span style="color:#f92672">.</span>unregister_class(CREATE_PLANE)
+</span></span><span style="display:flex;"><span>    bpy<span style="color:#f92672">.</span>utils<span style="color:#f92672">.</span>unregister_class(CREATE_CUBE)
+</span></span><span style="display:flex;"><span>    bpy<span style="color:#f92672">.</span>utils<span style="color:#f92672">.</span>unregister_class(CREATE_UV_SPHERE)
+</span></span><span style="display:flex;"><span>    bpy<span style="color:#f92672">.</span>utils<span style="color:#f92672">.</span>unregister_class(CREATE_CYLINDER)
+</span></span><span style="display:flex;"><span>    remove_hotkey()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;__main__&#34;</span>:
+</span></span><span style="display:flex;"><span>    register()
+</span></span></code></pre></div><p>Reference</p>
+<ol>
+<li><a href="https://zhuanlan.zhihu.com/p/63095684">blender插件开发入门 - 知乎 (zhihu.com)</a></li>
+<li><a href="https://www.youtube.com/watch?v=jfQTX293dw0">https://www.youtube.com/watch?v=jfQTX293dw0</a></li>
+<li><a href="https://blender.stackexchange.com/questions/147894/is-there-a-way-to-add-a-custom-pie-menu-in-2-8">https://blender.stackexchange.com/questions/147894/is-there-a-way-to-add-a-custom-pie-menu-in-2-8</a></li>
+<li><a href="https://docs.blender.org/manual/en/latest/advanced/scripting/addon_tutorial.html">https://docs.blender.org/manual/en/latest/advanced/scripting/addon_tutorial.html</a></li>
+</ol>
+
+						</div>
+
+						<div class="post-text-bottom">
+							<div class="social-share" data-title="blender插件制作心得" data-url="https://kampter.github.io/blog/blender%E6%8F%92%E4%BB%B6%E5%88%B6%E4%BD%9C%E5%BF%83%E5%BE%97/">
+								<span>Share:</span>
+								<a class="share-btn share-btn-facebook share-btn-1" title="Share on Facebook">
+									<i class="ion ion-social-facebook"></i>
+								</a>
+								<a class="share-btn share-btn-twitter share-btn-2" title="Share on Twitter">
+									<i class="ion ion-social-twitter"></i>
+								</a>
+								<a class="share-btn share-btn-linkedin share-btn-3" title="Share on Linkedin">
+									<i class="ion ion-social-linkedin"></i>
+								</a>
+								<a class="share-btn share-btn-reddit share-btn-4" title="Share on Reddit">
+									<i class="ion ion-social-reddit"></i>
+								</a>
+								<a class="share-btn share-btn-pinterest share-btn-5" title="Share on Pinterest">
+									<i class="ion ion-social-pinterest"></i>
+								</a>
+							</div>
+							
+							<div class="tags-links">
+								Tags:
+								
+								<a href="https://kampter.github.io/tags/blender/" rel="tag">blender</a>
+								
+								<a href="https://kampter.github.io/tags/plugin/" rel="tag">plugin</a>
+								
+							</div>
+							
+						</div>
+
+						
+						<div class="post-navigation" role="navigation">
+							
+							<div class="nav-previous">
+								<a href="https://kampter.github.io/blog/urp%E5%B1%8F%E5%B9%95%E7%A9%BA%E9%97%B4%E7%8E%AF%E5%A2%83%E5%85%89%E9%81%AE%E8%94%BD/" rel="prev" title="URP屏幕空间环境光遮蔽">
+									<span class="post-nav-next post-nav-text">Prev</span>
+								</a>
+							</div>
+							
+							
+							<div class="nav-next">
+								<a href="https://kampter.github.io/blog/urp%E5%B1%8F%E5%B9%95%E7%A9%BA%E9%97%B4sobel%E8%BE%B9%E7%BC%98%E6%A3%80%E6%B5%8B/" rel="next" title="URP屏幕空间Sobel边缘检测">
+									<span class="post-nav-prev post-nav-text">Next</span>
+								</a>
+							</div>
+							
+						</div>
+						
+					</div>
+				</div>
+			</div>
+
+			
+			<div class="title">Comments</div>
+
+			<div class="row border-line-v">
+				<div class="col col-m-12 col-t-12 col-d-12">
+					<div class="post-box">
+						<div class="col-md-12">
+							<div id="disqus_thread"></div>
+							<script>
+								var disqus_config = function () {
+									this.page.url = "https:\/\/kampter.github.io\/blog\/blender%E6%8F%92%E4%BB%B6%E5%88%B6%E4%BD%9C%E5%BF%83%E5%BE%97\/";   
+									this.page.identifier = "62260cb3660e1081daac867ebb11737e";  
+								};
+								(function() {  
+									var d = document, s = d.createElement('script');
+									s.src = 'https://kampterblog.disqus.com/embed.js';
+									s.setAttribute('data-timestamp', +new Date());
+									(d.head || d.body).appendChild(s);
+								})();
+							</script>
+							<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+
+	</div>
+</div>
+
+
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://kampter.github.io/plugins/jQuery/jquery.min.js"></script>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.6.2/fuse.min.js" integrity="sha512-Nqw1tH3mpavka9cQCc5zWWEZNfIPdOYyQFjlV1NvflEtQ0/XI6ZQ+H/D3YgJdqSUJlMLAPRj/oXlaHCFbFCjoQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://kampter.github.io/plugins/search/simple-search.js"></script>
+
+
+<script src="https://kampter.github.io/plugins/validate/jquery.validate.min.js"></script>
+<script src="https://kampter.github.io/plugins/owl-carousel/owl.carousel.js"></script>
+<script src="https://kampter.github.io/plugins/magnific-popup/magnific-popup.min.js"></script>
+<script src="https://kampter.github.io/plugins/slimscroll/jquery.slimscroll.js"></script>
+<script src="https://kampter.github.io/plugins/imagesloaded/imagesloaded.pkgd.min.js"></script>
+<script src="https://kampter.github.io/plugins/isotope/isotope.pkgd.js"></script>
+<script src="https://kampter.github.io/plugins/typed/typed.js"></script>
+<script src="https://kampter.github.io/plugins/rrssb/rrssb.js"></script>
+
+
+
+
+<script src="https://kampter.github.io/js/form-handler.min.js"></script>
+
+
+<script src="https://kampter.github.io/js/common.min.js"></script>
+
+</body>
+
+</html>

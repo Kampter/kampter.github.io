@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>军团要塞2渲染shader实现</title>
+
+  <!-- Meta -->
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="HandheldFriendly" content="true">
+  <meta name="author" content="bslthemes" />
+
+  <!-- Google Fonts -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.0/css/all.css" />
+
+  <!-- Main Stylesheets -->
+  
+  <link rel="stylesheet" href="https://kampter.github.io/scss/style.min.css" />
+
+  <!-- Plugins Stylesheets -->
+  <link rel="stylesheet" href="https://kampter.github.io/plugins/ionicons/ionicons.css" />
+  <link rel="stylesheet" href="https://kampter.github.io/plugins/font-awesome/css/font-awesome.css" />
+  <link rel="stylesheet" href="https://kampter.github.io/plugins/magnific-popup/magnific-popup.css" />
+  <link rel="stylesheet" href="https://kampter.github.io/plugins/owl-carousel/owl.carousel.css" />
+  <link rel="stylesheet" href="https://kampter.github.io/plugins/animate/animate.css" />
+  <link rel="stylesheet" href="https://kampter.github.io/plugins/syntax/syntax.css" />
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="https://kampter.github.io/images/favicon/favicon.ico" type="image/x-icon" />
+  <link rel="icon" href="https://kampter.github.io/images/favicon/favicon.ico" type="image/x-icon" />
+
+  
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-4BGKQYLBBG"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-4BGKQYLBBG');
+  </script>
+  
+
+  </head>
+
+
+<body class=" blog">
+  <div class="page new-skin">
+
+    <!-- Preloader -->
+<div class="preloader">
+	<div class="centrize full-width">
+		<div class="vertical-center">
+			<div class="spinner">
+				<div class="double-bounce1"></div>
+				<div class="double-bounce2"></div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+    
+
+<!-- Background -->
+
+
+<div class="background gradient">
+	<ul class="bg-bubbles">
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>
+</div>
+
+
+
+
+
+    
+
+<div class="s_overlay"></div>
+<div class="content-sidebar">
+	<div class="sidebar-wrap">
+		<aside id="secondary" class="widget-area">
+
+      
+			<div id="search" class="widget widget_search">
+				<form class="search-form" action="https://kampter.github.io/search">
+					<label>
+						<input type="search" id="searchInput" class="search-field" placeholder="Search ..." value="">
+					</label>
+					<input type="submit" class="search-submit" value="">
+          <ul id="searchResults"></ul>
+				</form>
+			</div>
+      
+
+			
+			<section class="widget widget_menu">
+				<h2 class="widget-title">Menu</h2>
+				<ul>
+					
+					
+					
+					
+					
+					<li class="active">
+						<a href="https://kampter.github.io//blog">Blog Page</a>
+					</li>
+					
+					
+					
+					
+					<li>
+						<a href="https://kampter.github.io//portfolio">Portfolio Page</a>
+					</li>
+					
+				</ul>
+			</section>
+      
+
+			
+			<section class="widget widget_recent_entries">
+				<h2 class="widget-title">Latest Posts</h2>
+				<ul>
+					
+					<li>
+						<a href="https://kampter.github.io/blog/%E8%BF%91%E6%9C%9F%E5%81%9A%E7%9A%84%E5%87%A0%E4%B8%AAunity%E5%92%8Cue%E7%89%B9%E6%95%88/">近期做的几个Unity和UE特效</a>
+					</li>
+					
+					<li>
+						<a href="https://kampter.github.io/blog/urp%E5%B1%8F%E5%B9%95%E7%A9%BA%E9%97%B4sobel%E8%BE%B9%E7%BC%98%E6%A3%80%E6%B5%8B/">URP屏幕空间Sobel边缘检测</a>
+					</li>
+					
+					<li>
+						<a href="https://kampter.github.io/blog/blender%E6%8F%92%E4%BB%B6%E5%88%B6%E4%BD%9C%E5%BF%83%E5%BE%97/">blender插件制作心得</a>
+					</li>
+					
+					<li>
+						<a href="https://kampter.github.io/blog/urp%E5%B1%8F%E5%B9%95%E7%A9%BA%E9%97%B4%E7%8E%AF%E5%A2%83%E5%85%89%E9%81%AE%E8%94%BD/">URP屏幕空间环境光遮蔽</a>
+					</li>
+					
+				</ul>
+			</section>
+			
+
+			
+			<section class="widget widget_categories">
+				<h2 class="widget-title">Categories</h2>
+				<ul>
+            
+  				  <li>
+              <a href="https://kampter.github.io/categories/portfolio/">Portfolio</a>
+              <small>( 5 )</small>
+            </li>
+            
+  				  <li>
+              <a href="https://kampter.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+              <small>( 6 )</small>
+            </li>
+            
+  				  <li>
+              <a href="https://kampter.github.io/categories/%E6%8A%80%E6%9C%AF%E5%AE%9E%E7%8E%B0/">技术实现</a>
+              <small>( 5 )</small>
+            </li>
+            
+  				  <li>
+              <a href="https://kampter.github.io/categories/%E6%97%A5%E5%B8%B8%E7%94%9F%E6%B4%BB/">日常生活</a>
+              <small>( 1 )</small>
+            </li>
+            
+  				  <li>
+              <a href="https://kampter.github.io/categories/%E6%97%A5%E5%B8%B8%E8%AE%B0%E5%BD%95/">日常记录</a>
+              <small>( 1 )</small>
+            </li>
+            
+  				  <li>
+              <a href="https://kampter.github.io/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/">课程笔记</a>
+              <small>( 8 )</small>
+            </li>
+            
+				</ul>
+			</section>
+			
+
+			
+			<section class="widget widget_tags">
+				<h2 class="widget-title">Tags</h2>
+				<ul>
+           
+           <li>
+             <a href="https://kampter.github.io/tags/after-effect/">After Effect</a>
+             <small>( 1 )</small>
+           </li>
+           
+           <li>
+             <a href="https://kampter.github.io/tags/bifrost/">Bifrost</a>
+             <small>( 1 )</small>
+           </li>
+           
+           <li>
+             <a href="https://kampter.github.io/tags/blender/">blender</a>
+             <small>( 2 )</small>
+           </li>
+           
+           <li>
+             <a href="https://kampter.github.io/tags/c#/">C#</a>
+             <small>( 4 )</small>
+           </li>
+           
+           <li>
+             <a href="https://kampter.github.io/tags/computer-graphic/">Computer Graphic</a>
+             <small>( 9 )</small>
+           </li>
+           
+           <li>
+             <a href="https://kampter.github.io/tags/eve-online/">Eve Online</a>
+             <small>( 1 )</small>
+           </li>
+           
+           <li>
+             <a href="https://kampter.github.io/tags/flip/">Flip</a>
+             <small>( 1 )</small>
+           </li>
+           
+           <li>
+             <a href="https://kampter.github.io/tags/games-101/">Games 101</a>
+             <small>( 4 )</small>
+           </li>
+           
+           <li>
+             <a href="https://kampter.github.io/tags/games-202/">Games 202</a>
+             <small>( 3 )</small>
+           </li>
+           
+           <li>
+             <a href="https://kampter.github.io/tags/hlsl/">HLSL</a>
+             <small>( 12 )</small>
+           </li>
+           
+           <li>
+             <a href="https://kampter.github.io/tags/houdini/">Houdini</a>
+             <small>( 3 )</small>
+           </li>
+           
+           <li>
+             <a href="https://kampter.github.io/tags/java/">Java</a>
+             <small>( 1 )</small>
+           </li>
+           
+           <li>
+             <a href="https://kampter.github.io/tags/math/">Math</a>
+             <small>( 8 )</small>
+           </li>
+           
+           <li>
+             <a href="https://kampter.github.io/tags/maya/">Maya</a>
+             <small>( 1 )</small>
+           </li>
+           
+           <li>
+             <a href="https://kampter.github.io/tags/niagara-system/">niagara system</a>
+             <small>( 2 )</small>
+           </li>
+           
+           <li>
+             <a href="https://kampter.github.io/tags/opengl/">Opengl</a>
+             <small>( 1 )</small>
+           </li>
+           
+           <li>
+             <a href="https://kampter.github.io/tags/particle/">Particle</a>
+             <small>( 1 )</small>
+           </li>
+           
+           <li>
+             <a href="https://kampter.github.io/tags/pbr-shading/">PBR Shading</a>
+             <small>( 2 )</small>
+           </li>
+           
+           <li>
+             <a href="https://kampter.github.io/tags/plugin/">plugin</a>
+             <small>( 1 )</small>
+           </li>
+           
+           <li>
+             <a href="https://kampter.github.io/tags/render-feature/">Render Feature</a>
+             <small>( 4 )</small>
+           </li>
+           
+           <li>
+             <a href="https://kampter.github.io/tags/shader-graph/">Shader Graph</a>
+             <small>( 1 )</small>
+           </li>
+           
+           <li>
+             <a href="https://kampter.github.io/tags/substance-designer/">substance designer</a>
+             <small>( 2 )</small>
+           </li>
+           
+           <li>
+             <a href="https://kampter.github.io/tags/toon-shading/">Toon Shading</a>
+             <small>( 3 )</small>
+           </li>
+           
+           <li>
+             <a href="https://kampter.github.io/tags/unity/">Unity</a>
+             <small>( 15 )</small>
+           </li>
+           
+           <li>
+             <a href="https://kampter.github.io/tags/unreal-engine/">unreal engine</a>
+             <small>( 2 )</small>
+           </li>
+           
+           <li>
+             <a href="https://kampter.github.io/tags/vfx-graph/">VFX Graph</a>
+             <small>( 2 )</small>
+           </li>
+           
+				</ul>
+			</section>
+			
+
+		</aside>
+	</div>
+	<span class="close"></span>
+</div>
+
+
+    
+    
+    <!-- Container -->
+    <div class="container opened" data-animation-in="fadeInLeft" data-animation-out="fadeOutLeft">
+
+      
+
+<!-- Header -->
+<header class="header">
+
+	<a href="#" class="menu-btn"><span></span></a>
+
+  <!-- menu -->
+	<div class="top-menu">
+		<ul>
+      
+      
+      
+      
+      
+			<li class="active">
+				<a href="https://kampter.github.io/#about-card">
+					<span class="icon ion-person"></span>
+					<span class="link">About</span>
+				</a>
+			</li>
+			
+      
+      
+      
+			<li>
+				<a href="https://kampter.github.io/#resume-card">
+					<span class="icon ion-android-list"></span>
+					<span class="link">Resume</span>
+				</a>
+			</li>
+			
+      
+      
+      
+			<li>
+				<a href="https://kampter.github.io/#works-card">
+					<span class="icon ion-paintbrush"></span>
+					<span class="link">Works</span>
+				</a>
+			</li>
+			
+      
+      
+      
+			<li>
+				<a href="https://kampter.github.io/#blog-card">
+					<span class="icon ion-chatbox-working"></span>
+					<span class="link">Blog</span>
+				</a>
+			</li>
+			
+      
+      
+      
+			<li>
+				<a href="https://kampter.github.io/#contact-card">
+					<span class="icon ion-at"></span>
+					<span class="link">Contact</span>
+				</a>
+			</li>
+			
+		</ul>
+	</div>
+
+</header>
+
+
+      <!-- Card - Started -->
+
+
+
+<div class="card-started" id="home-card">
+
+  <!-- Profile-->
+  <div class="profile no-photo">
+
+    <!-- profile image -->
+    <div class="slide" style="background-image: url(https://kampter.github.io/images/1082264.png);"></div>
+
+    <!-- profile photo -->
+    
+
+    <!-- profile titles -->
+    <div class="title">王子正</div>
+    <div class="subtitle subtitle-typed">
+      <div class="typing-title">
+        
+        <p>Technical Artist</p>
+        
+      </div>
+    </div>
+
+    <!-- profile socials -->
+    <div class="social">
+      
+      <a target="_blank" href="https://twitter.com/wang_psbswsg" title="Twitter"><span class="fab fa-twitter"></span></a>
+      
+      <a target="_blank" href="https://github.com/Kampter" title="GitHub"><span class="fab fa-github"></span></a>
+      
+      <a target="_blank" href="https://www.youtube.com/channel/UCK43eUkmsyRk8FeBw5oRJtQ" title="Youtube"><span class="fab fa-youtube"></span></a>
+      
+      <a target="_blank" href="https://www.artstation.com/kampter" title="Stackoverflow"><span class="fab fa-artstation"></span></a>
+      
+    </div>
+
+    <!-- profile buttons -->
+    <div class="lnks">
+      
+      <a href="/images/Resume_ZizhengWang_Chinese_v004.pdf" target="_blank" class="lnk">
+        <span class="text">Download CV</span>
+        
+        <span class="ion ion ion-archive"></span>
+        
+      </a>
+      
+      <a href="mailto:psbswsg@gmail.com" target="_blank" class="lnk">
+        <span class="text">Contact Me</span>
+        
+        <span class="ion arrow"></span>
+        
+      </a>
+      
+    </div>
+
+  </div>
+
+</div>
+
+
+
+
+      
+
+
+<!-- Blog Post -->
+<div class="card-inner blog blog-post animated" id="blog-card">
+	<div class="card-wrap">
+
+		<div class="content blog-single">
+
+			<div class="title">Blog Post</div>
+
+			<div class="row border-line-v">
+				<div class="col col-m-12 col-t-12 col-d-12">
+					<div class="post-box">
+
+						<h1>军团要塞2渲染shader实现</h1>
+						<div class="blog-detail">
+							<span class="date">January 16, 2023</span>
+							
+							<span class="cat-links">
+		            
+		            <a href="https://kampter.github.io/categories/%E6%8A%80%E6%9C%AF%E5%AE%9E%E7%8E%B0/">技术实现</a>
+		            
+							</span>
+							
+							<span class="byline"> By <span class="author">Ryan Adlard</span></span>
+						</div>
+
+						
+						<div class="blog-image">
+							<img src="https://kampter.github.io/images/blog/image-20230217171948752.png" alt="军团要塞2渲染shader实现" />
+						</div>
+						
+
+						<div class="blog-content">
+							<h2 id="技术分析">技术分析</h2>
+<p>论文中有一篇非常形象的图片来实现渲染效果</p>
+<p><img src="Figure6_1.png" alt=""></p>
+<p><img src="Figure6.png" alt=""></p>
+<h3 id="albedo">Albedo</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-HLSL" data-lang="HLSL"><span style="display:flex;"><span><span style="color:#75715e">// Albedo</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">half4</span> mainTex <span style="color:#f92672">=</span> SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, IN.uv) <span style="color:#f92672">*</span> _MainColor;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">half4</span> albedo <span style="color:#f92672">=</span> mainTex;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">half4</span> ambient <span style="color:#f92672">=</span> <span style="color:#66d9ef">half4</span>(unity_SHAr.w, unity_SHAg.w, unity_SHAb.w, <span style="color:#ae81ff">1.0</span>);
+</span></span></code></pre></div><p>直接采样人物的贴图，顺手再把其他的贴图也一并采样进来。</p>
+<p><img src="image-20230217154828034.png" alt=""></p>
+<hr>
+<h3 id="wraped-diffuse">Wraped diffuse</h3>
+<p>论文中的光照实现公式为</p>
+<p><img src="%E5%85%AC%E5%BC%8F1.png" alt=""></p>
+<p>在unity实现中使用ramp的方式即采样ramp时的uv 参数用halfLambert 组成的X分量，叠加上主光源即可。</p>
+<pre tabindex="0"><code>// Half Lambert
+half ndotL = max(0, dot(normalWS, lightDir));
+half lambert = ndotL;
+half halfLambert= saturate(lambert * 0.5 + 0.5);
+half4 ramp = SAMPLE_TEXTURE2D(_RampMap, sampler_RampMap, half2(halfLambert, 0));
+half4 wrapDiffuseTerm = ramp * lightColor;
+</code></pre><p><img src="image-20230217160722860.png" alt=""></p>
+<hr>
+<h3 id="ambient">Ambient</h3>
+<p>ambient实现比较复杂，这里直接抄unity urp中关于SH 求谐函数的代码</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-HLSL" data-lang="HLSL"><span style="display:flex;"><span>real3 SH_indirectDiffuse(real3 normalWS, real AO)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    real4 SHCoefficients[<span style="color:#ae81ff">7</span>];
+</span></span><span style="display:flex;"><span>    SHCoefficients[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=</span> unity_SHAr;
+</span></span><span style="display:flex;"><span>    SHCoefficients[<span style="color:#ae81ff">1</span>] <span style="color:#f92672">=</span> unity_SHAg;
+</span></span><span style="display:flex;"><span>    SHCoefficients[<span style="color:#ae81ff">2</span>] <span style="color:#f92672">=</span> unity_SHAb;
+</span></span><span style="display:flex;"><span>    SHCoefficients[<span style="color:#ae81ff">3</span>] <span style="color:#f92672">=</span> unity_SHBr;
+</span></span><span style="display:flex;"><span>    SHCoefficients[<span style="color:#ae81ff">4</span>] <span style="color:#f92672">=</span> unity_SHBg;
+</span></span><span style="display:flex;"><span>    SHCoefficients[<span style="color:#ae81ff">5</span>] <span style="color:#f92672">=</span> unity_SHBb;
+</span></span><span style="display:flex;"><span>    SHCoefficients[<span style="color:#ae81ff">6</span>] <span style="color:#f92672">=</span> unity_SHC;
+</span></span><span style="display:flex;"><span>    real3 color <span style="color:#f92672">=</span> SampleSH9(SHCoefficients, normalWS);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> max(<span style="color:#ae81ff">0</span>, color) <span style="color:#f92672">*</span> AO;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p><img src="image-20230217161718102.png" alt=""></p>
+<hr>
+<h3 id="view-independent-lighting-terms">View Independent Lighting Terms</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-HLSL" data-lang="HLSL"><span style="display:flex;"><span><span style="color:#66d9ef">half3</span> viewIndependentLightTerms <span style="color:#f92672">=</span> albedo <span style="color:#f92672">*</span> (indirectDiffuse<span style="color:#f92672">+</span> wrapDiffuseTerm);
+</span></span></code></pre></div><p><img src="image-20230217162038823.png" alt=""></p>
+<hr>
+<h3 id="view-dependent-lighting-terms">View Dependent Lighting Terms</h3>
+<p>论文中计算依赖视角的光照部分的公式</p>
+<p><img src="%E5%85%AC%E5%BC%8F2.png" alt=""></p>
+<p>在依赖视角的光照部分中，《军团要塞2》除了考虑一般的Phong高光外，还基于菲涅尔现象实现了类似边缘光的效果。Specular就是式子中的左半部分，Rim lighting就是式子中的右半部分。</p>
+<p>原版实现代码如下</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-HLSL" data-lang="HLSL"><span style="display:flex;"><span><span style="color:#75715e">//计算View Independent Lighting Terms</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">half3</span> viewIndependentLightTerms <span style="color:#f92672">=</span> albedo <span style="color:#f92672">*</span> (indirectDiffuse<span style="color:#f92672">+</span> wrapDiffuseTerm);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Specular</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">half</span> fs <span style="color:#f92672">=</span> _FresnelSpecular;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">half4</span> spec <span style="color:#f92672">=</span> fs <span style="color:#f92672">*</span> pow(ndotH, smoothness);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">half4</span> specular <span style="color:#f92672">=</span> pow(spec, _KSpecular)<span style="color:#f92672">*</span> _SpecularColor <span style="color:#f92672">*</span> metalMask;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Rim Lightingw</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">half</span> kr <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.5</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">half</span> fr <span style="color:#f92672">=</span> pow(<span style="color:#ae81ff">1</span> <span style="color:#f92672">-</span> ndotV, <span style="color:#ae81ff">4</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">half4</span> rim <span style="color:#f92672">=</span> kr <span style="color:#f92672">*</span> fr <span style="color:#f92672">*</span> pow(spec, _RimPower);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Dedicated Rim Lighting </span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">half4</span> aV <span style="color:#f92672">=</span> <span style="color:#66d9ef">half</span>(<span style="color:#ae81ff">1</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">half4</span> dedicatedRimLighting <span style="color:#f92672">=</span> ndotU <span style="color:#f92672">*</span> fr <span style="color:#f92672">*</span> kr <span style="color:#f92672">*</span> aV;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Multiple Phong Terms</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">half</span> ks <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">half4</span> multiplePhongTerms <span style="color:#f92672">=</span> ks <span style="color:#f92672">*</span> lightColor <span style="color:#f92672">*</span> max(specular, rim);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">half4</span> viewDependentLightTerms <span style="color:#f92672">=</span> multiplePhongTerms <span style="color:#f92672">+</span> dedicatedRimLighting;
+</span></span></code></pre></div><p>参考没有遮罩的时候，转换成另一种算法，同时替代phong高光为blinn phong。</p>
+<p>添加Fresnel 效果的 multiplePhongTerms 高光模型</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-HLSL" data-lang="HLSL"><span style="display:flex;"><span><span style="color:#75715e">// 计算View dependent Lighting Terms</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">half</span> halfVector <span style="color:#f92672">=</span> normalize(viewDirWS <span style="color:#f92672">+</span> lightDir);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">half3</span> specular <span style="color:#f92672">=</span> pow(ndotH, <span style="color:#ae81ff">1</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">half</span> fresnel <span style="color:#f92672">=</span> pow(<span style="color:#ae81ff">1</span> <span style="color:#f92672">-</span> dot(viewDirWS, halfVector), <span style="color:#ae81ff">5.0</span>);
+</span></span><span style="display:flex;"><span>fresnel <span style="color:#f92672">+=</span> <span style="color:#ae81ff">0.5</span> <span style="color:#f92672">*</span> (<span style="color:#ae81ff">1.0</span> <span style="color:#f92672">-</span> fresnel);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">half3</span> multiplePhongTerms <span style="color:#f92672">=</span> specular <span style="color:#f92672">*</span> fresnel <span style="color:#f92672">*</span> lightColor;
+</span></span></code></pre></div><p><img src="image-20230217171838962.png" alt=""></p>
+<hr>
+<h3 id="rim-light-实现">Rim Light 实现</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-HLSL" data-lang="HLSL"><span style="display:flex;"><span><span style="color:#66d9ef">half</span> rim <span style="color:#f92672">=</span> <span style="color:#ae81ff">1.0</span> <span style="color:#f92672">-</span> saturate(ndotV);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">half3</span> dedicatedRimLighting <span style="color:#f92672">=</span> _RimLightColor <span style="color:#f92672">*</span> pow(rim, _RimPower);
+</span></span></code></pre></div><p><img src="image-20230217171853212.png" alt=""></p>
+<hr>
+<h2 id="合成效果">合成效果</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-HLSL" data-lang="HLSL"><span style="display:flex;"><span><span style="color:#66d9ef">half3</span> viewDependentLightTerms <span style="color:#f92672">=</span> albedo <span style="color:#f92672">*</span> lightColor <span style="color:#f92672">*</span> max(multiplePhongTerms, dedicatedRimLighting);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Combine</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">half3</span> color <span style="color:#f92672">=</span> viewIndependentLightTerms <span style="color:#f92672">+</span> viewDependentLightTerms;
+</span></span></code></pre></div><p><img src="image-20230217171948752.png" alt=""></p>
+<hr>
+<p>哦豁打完收工，忽略没有写投影pass。wrapped diffuse的效果提供明暗交界处有明显的泛红。</p>
+<h2 id="参考">参考</h2>
+<ol>
+<li><a href="https://steamcdn-a.akamaihd.net/apps/valve/2007/NPAR07_IllustrativeRenderingInTeamFortress2.pdf">NPAR07_IllustrativeRenderingInTeamFortress2.pdf (akamaihd.net)</a></li>
+<li><a href="http://richbabe.top/2018/12/12/%E5%86%9B%E5%9B%A2%E8%A6%81%E5%A1%9E2-%E5%8D%A1%E9%80%9A%E6%B8%B2%E6%9F%93%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0/">《军团要塞2》卡通渲染算法实现 - Richbabe的博客 | Richbabe Blog</a></li>
+<li><a href="https://blog.csdn.net/candycat1992/article/details/37696187">【Shader拓展】Illustrative Rendering in Team Fortress 2_妈妈说女孩子要自立自强的博客-CSDN博客</a></li>
+<li><a href="https://polycount.com/discussion/94026/shader-specular-term-fresnel">Shader - Specular Term - Fresnel — polycount</a></li>
+</ol>
+
+						</div>
+
+						<div class="post-text-bottom">
+							<div class="social-share" data-title="军团要塞2渲染shader实现" data-url="https://kampter.github.io/blog/%E5%86%9B%E5%9B%A2%E8%A6%81%E5%A1%9E2%E6%B8%B2%E6%9F%93shader%E5%AE%9E%E7%8E%B0/">
+								<span>Share:</span>
+								<a class="share-btn share-btn-facebook share-btn-1" title="Share on Facebook">
+									<i class="ion ion-social-facebook"></i>
+								</a>
+								<a class="share-btn share-btn-twitter share-btn-2" title="Share on Twitter">
+									<i class="ion ion-social-twitter"></i>
+								</a>
+								<a class="share-btn share-btn-linkedin share-btn-3" title="Share on Linkedin">
+									<i class="ion ion-social-linkedin"></i>
+								</a>
+								<a class="share-btn share-btn-reddit share-btn-4" title="Share on Reddit">
+									<i class="ion ion-social-reddit"></i>
+								</a>
+								<a class="share-btn share-btn-pinterest share-btn-5" title="Share on Pinterest">
+									<i class="ion ion-social-pinterest"></i>
+								</a>
+							</div>
+							
+							<div class="tags-links">
+								Tags:
+								
+								<a href="https://kampter.github.io/tags/toon-shading/" rel="tag">Toon Shading</a>
+								
+								<a href="https://kampter.github.io/tags/unity/" rel="tag">Unity</a>
+								
+								<a href="https://kampter.github.io/tags/hlsl/" rel="tag">HLSL</a>
+								
+							</div>
+							
+						</div>
+
+						
+						<div class="post-navigation" role="navigation">
+							
+							<div class="nav-previous">
+								<a href="https://kampter.github.io/blog/games-202-%E9%98%B4%E5%BD%B1/" rel="prev" title="Games 202 - 阴影">
+									<span class="post-nav-next post-nav-text">Prev</span>
+								</a>
+							</div>
+							
+							
+							<div class="nav-next">
+								<a href="https://kampter.github.io/blog/games-202-%E7%8E%AF%E5%A2%83%E5%85%89%E7%85%A7/" rel="next" title="Games 202 环境光照">
+									<span class="post-nav-prev post-nav-text">Next</span>
+								</a>
+							</div>
+							
+						</div>
+						
+					</div>
+				</div>
+			</div>
+
+			
+			<div class="title">Comments</div>
+
+			<div class="row border-line-v">
+				<div class="col col-m-12 col-t-12 col-d-12">
+					<div class="post-box">
+						<div class="col-md-12">
+							<div id="disqus_thread"></div>
+							<script>
+								var disqus_config = function () {
+									this.page.url = "https:\/\/kampter.github.io\/blog\/%E5%86%9B%E5%9B%A2%E8%A6%81%E5%A1%9E2%E6%B8%B2%E6%9F%93shader%E5%AE%9E%E7%8E%B0\/";   
+									this.page.identifier = "9b11389efdb217b1a21dfd41a3e67672";  
+								};
+								(function() {  
+									var d = document, s = d.createElement('script');
+									s.src = 'https://kampterblog.disqus.com/embed.js';
+									s.setAttribute('data-timestamp', +new Date());
+									(d.head || d.body).appendChild(s);
+								})();
+							</script>
+							<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+
+	</div>
+</div>
+
+
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://kampter.github.io/plugins/jQuery/jquery.min.js"></script>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.6.2/fuse.min.js" integrity="sha512-Nqw1tH3mpavka9cQCc5zWWEZNfIPdOYyQFjlV1NvflEtQ0/XI6ZQ+H/D3YgJdqSUJlMLAPRj/oXlaHCFbFCjoQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://kampter.github.io/plugins/search/simple-search.js"></script>
+
+
+<script src="https://kampter.github.io/plugins/validate/jquery.validate.min.js"></script>
+<script src="https://kampter.github.io/plugins/owl-carousel/owl.carousel.js"></script>
+<script src="https://kampter.github.io/plugins/magnific-popup/magnific-popup.min.js"></script>
+<script src="https://kampter.github.io/plugins/slimscroll/jquery.slimscroll.js"></script>
+<script src="https://kampter.github.io/plugins/imagesloaded/imagesloaded.pkgd.min.js"></script>
+<script src="https://kampter.github.io/plugins/isotope/isotope.pkgd.js"></script>
+<script src="https://kampter.github.io/plugins/typed/typed.js"></script>
+<script src="https://kampter.github.io/plugins/rrssb/rrssb.js"></script>
+
+
+
+
+<script src="https://kampter.github.io/js/form-handler.min.js"></script>
+
+
+<script src="https://kampter.github.io/js/common.min.js"></script>
+
+</body>
+
+</html>

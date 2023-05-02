@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Math on RyanCV - CV Resume &amp; vCard Hugo Theme</title>
+    <link>https://kampter.github.io/tags/math/</link>
+    <description>Recent content in Math on RyanCV - CV Resume &amp; vCard Hugo Theme</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 26 Feb 2023 23:16:34 +0000</lastBuildDate><atom:link href="https://kampter.github.io/tags/math/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Games 202 - PBR rendering 总结</title>
+      <link>https://kampter.github.io/blog/games-202-pbr-rendering-%E6%80%BB%E7%BB%93/</link>
+      <pubDate>Sun, 26 Feb 2023 23:16:34 +0000</pubDate>
+      
+      <guid>https://kampter.github.io/blog/games-202-pbr-rendering-%E6%80%BB%E7%BB%93/</guid>
+      <description>直接光照 在不考虑能量补偿的情况下 传统的Blinn Phong模型是
+diffuse + specular + ambient
+而cook-torrance BRDF的方程是
+其中Ks = F, 且金属材质的漫反射为0
+阴影 各种优化过的Shadow Map, PCF, PCSS等等</description>
+    </item>
+    
+    <item>
+      <title>Games 202 - PBR材质</title>
+      <link>https://kampter.github.io/blog/games-202-pbr%E6%9D%90%E8%B4%A8/</link>
+      <pubDate>Sat, 25 Feb 2023 10:50:14 +0000</pubDate>
+      
+      <guid>https://kampter.github.io/blog/games-202-pbr%E6%9D%90%E8%B4%A8/</guid>
+      <description>PBR PBR包括Materials, lighting, camera, light transport等等任何与渲染有关的基于物理的内容。而工业界习惯叫PBR都是指PBR材质，虽然之前已经在unity中看过URP中PBR的实现原理并且尝试手动还原，这次看过Games 202后还是更加深化对PBR材质的了解。
+基于表面的材质
+Microfacet models微表面模型（不是完全基于物理的）
+Disney Principled BRDF能够用于离线渲染, 但也可以运用在实时渲染中，但也不是PBR，是基于artist的角度来考虑的。
+基于体积的材质
+实时渲染中并没有什么特别好的解决方案，常见的诸如云，头发，皮肤。 Microfacet BRDF F项：菲涅尔项，表示观察角度与反射的关系(从一个角度看去会有多少的能量被反射) 当视线与反射表面夹角越小，反射越明显。水体是菲涅尔效应最明显的现实物体之一（当站在湖边看到脚下的湖水是透明的，而远处湖面的水则是不透明的，并且反射非常强烈）。</description>
+    </item>
+    
+    <item>
+      <title>Games 202 环境光照</title>
+      <link>https://kampter.github.io/blog/games-202-%E7%8E%AF%E5%A2%83%E5%85%89%E7%85%A7/</link>
+      <pubDate>Sat, 21 Jan 2023 14:17:21 +0000</pubDate>
+      
+      <guid>https://kampter.github.io/blog/games-202-%E7%8E%AF%E5%A2%83%E5%85%89%E7%85%A7/</guid>
+      <description>IBL实时环境光照 IBL：Image-Based Lighting
+典型的保存方式：cube map，spherical map
+在不考虑阴影的情况下（Visibility term）真实的渲染方程
+真实求解需要用蒙特卡洛积分求解path tracing, 但是速度太慢
+使用之前的近似方案
+一点点小的区别，我们只需要对 BRDF 覆盖的范围 ΩG 进行积分即可 第一部分的积分 红色区域就是对光源的入射方向（上面的 r ）进行了一个滤波</description>
+    </item>
+    
+    <item>
+      <title>Games 202 - 阴影</title>
+      <link>https://kampter.github.io/blog/games-202-%E9%98%B4%E5%BD%B1/</link>
+      <pubDate>Wed, 11 Jan 2023 14:17:21 +0000</pubDate>
+      
+      <guid>https://kampter.github.io/blog/games-202-%E9%98%B4%E5%BD%B1/</guid>
+      <description>ShadowMapping 原理 先渲染一个从光源到物体的pass 获得深度图 再渲染一个从相机位置到物体的pass获得深度图，并且把这个深度投影到光源位置 （图中橙色点为无阴影） 比较第一次与第二次投影到光源的深度，如果相同即没有阴影；如果比原深度远，即在阴影中(图中红色点为在阴影中) 缺陷 走样、分辨率。数值精度问题 只能点光源、硬阴影 会产生自遮挡如果light 方向与物体平面接近平行 改善方式具体方式就是当一个点深度大于记录深度的值超过一个阈值bias时，我们才认为这个点在阴影内。 解决方案 增加一个 bias
+中间的黄色那段我们不算
+也就是说我们对计算得到的深度减去一个 bias 一些技巧：动态的 bias</description>
+    </item>
+    
+    <item>
+      <title>Games 101 - PBR原理</title>
+      <link>https://kampter.github.io/blog/games-101-pbr%E5%8E%9F%E7%90%86/</link>
+      <pubDate>Wed, 28 Sep 2022 17:09:57 +0000</pubDate>
+      
+      <guid>https://kampter.github.io/blog/games-101-pbr%E5%8E%9F%E7%90%86/</guid>
+      <description>前言：只记录自己需要的内容
+辐射度量学 Radiant energy 能量，单位：J（Joule焦耳）
+Radiant Flux （单位时间能量 → 功率）单位：W（Watt），lm（lumen流明）
+Intensity the power per unit solid angle (立体角) $$ I(\omega) = \frac{\mathrm{d} \Phi}{\mathrm{d} \omega} $$</description>
+    </item>
+    
+    <item>
+      <title>Games 101 - Shading</title>
+      <link>https://kampter.github.io/blog/games-101-shading/</link>
+      <pubDate>Sun, 11 Sep 2022 16:31:55 +0000</pubDate>
+      
+      <guid>https://kampter.github.io/blog/games-101-shading/</guid>
+      <description>前言：只记录自己需要的内容
+深度测试 （Z buffer or Depth buffer） 把深度视为无限远，然后遍历每一个山脚行，再遍历每一个三角形的光栅化过程，同时记录光栅化的深度信息。如果光栅化后当前像素点的深度信息小于之前记录过的信息，则替换原本的像素点信息。
+Z-buffer：对每个像素多存一个深度
+复杂度：O(n) for n triangles 并不是排序，而是只要最值
+需要保证三角形进入顺序和结果无关
+无法处理透明物体
+Blinn-Phong Reflectance Model 光照模型 着色模型 Diffuse Lambertian (Diffuse) Shading $$ L_{d}=k_{d}\left(I / r^{2}\right) \max (0, \mathbf{n} \cdot \mathbf{l}) $$</description>
+    </item>
+    
+    <item>
+      <title>Games 101 - 光栅化</title>
+      <link>https://kampter.github.io/blog/games-101-%E5%85%89%E6%A0%85%E5%8C%96/</link>
+      <pubDate>Fri, 02 Sep 2022 15:48:07 +0000</pubDate>
+      
+      <guid>https://kampter.github.io/blog/games-101-%E5%85%89%E6%A0%85%E5%8C%96/</guid>
+      <description>前言：只记录自己需要的内容
+光栅化 屏幕空间 从（0，0）到（width, height）
+光栅化的过程即采样过程，来判断屏幕上的像素点是否在三角形里面
+采样的缺点：以点代面，有失偏颇 → Aliasing 走样，表现为锯齿
+引入傅里叶变换，采样信息可以分解成函数表达
+高频信息：简单来说就是outline边界，边界变化带来巨大的图像效果变化
+只保留高频信息：表现为边缘部分
+只保留低频信息：表现为画面主体
+走样 走样就是采样的中出现重复或者没有采集到关键信息 （图中蓝色和黑色采样点相同，但是实际差距明显）
+减少Aliasing Error 的方法</description>
+    </item>
+    
+    <item>
+      <title>Games 101 - 线代和变换</title>
+      <link>https://kampter.github.io/blog/games-101-%E7%BA%BF%E4%BB%A3%E5%92%8C%E5%8F%98%E6%8D%A2/</link>
+      <pubDate>Sun, 21 Aug 2022 14:17:21 +0000</pubDate>
+      
+      <guid>https://kampter.github.io/blog/games-101-%E7%BA%BF%E4%BB%A3%E5%92%8C%E5%8F%98%E6%8D%A2/</guid>
+      <description>前言：只记录自己需要的内容
+线代 判断点是否在三角形内的方法1 按照逆时针找到ab，bc，ca向量，当同时满足cross(ab * ap) &amp;gt; 0 &amp;amp;&amp;amp; cross(bc * bp) &amp;gt; 0 &amp;amp;&amp;amp; cross (ca * cp) &amp;gt; 0 时点在三角形内，如果有一个结果为0 点在这条边上，有一个小于0在三角形外。换种思路就是如果点在三角形内测，三次判断点都在封闭线段的左侧，即点在图形内。</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>HLSL on RyanCV - CV Resume &amp; vCard Hugo Theme</title>
+    <link>https://kampter.github.io/tags/hlsl/</link>
+    <description>Recent content in HLSL on RyanCV - CV Resume &amp; vCard Hugo Theme</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 05 Apr 2023 20:25:54 +0800</lastBuildDate><atom:link href="https://kampter.github.io/tags/hlsl/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>URP屏幕空间Sobel边缘检测</title>
+      <link>https://kampter.github.io/blog/urp%E5%B1%8F%E5%B9%95%E7%A9%BA%E9%97%B4sobel%E8%BE%B9%E7%BC%98%E6%A3%80%E6%B5%8B/</link>
+      <pubDate>Wed, 05 Apr 2023 20:25:54 +0800</pubDate>
+      
+      <guid>https://kampter.github.io/blog/urp%E5%B1%8F%E5%B9%95%E7%A9%BA%E9%97%B4sobel%E8%BE%B9%E7%BC%98%E6%A3%80%E6%B5%8B/</guid>
+      <description>什么是边缘检测 根据Wiki说明，边缘检测是一种用于识别图像变化的明显的区域的技术。因此这种基础技术被广泛应用与图像处理和计算机视觉中用以查找出物体的边缘。边缘检测算法的目的是发掘图像中不连续火图像亮度急剧变化的点。而常见的几种算法用于便边缘检测技术包括Sobel， Prewitt, Roberts 和 Canny。其中Canny 边缘检测器是罪被广泛应用的算法，它使用多阶算法结合，于1986年被John F. Canny最先开发出来并且随后广泛使用。
+为什么边缘检测重要 边缘检测是图像处理的重要组成部分，因为它有助于计算识别和将图像分离成不同的部分 。 它用于图像处理、计算机视觉和机器视觉等领域的图像分割和数据提取。 检测图像亮度的急剧变化的目的是捕捉重要事件和属性的变化。 边缘是与图像相关的最重要的特征之一。 我们通过图像的边缘了解图像的底层结构。 因此，计算机视觉处理管道广泛使用边缘检测。
+Sobel 边缘检测 简单地说，我们对每个片段的四个边邻居进行采样，并对采样属性的差异求和。 小的差异表明表面是一致的，我们很可能不在边缘上，而大的差异表明采样属性的突然变化，我们很可能在边缘像素上。</description>
+    </item>
+    
+    <item>
+      <title>URP屏幕空间环境光遮蔽</title>
+      <link>https://kampter.github.io/blog/urp%E5%B1%8F%E5%B9%95%E7%A9%BA%E9%97%B4%E7%8E%AF%E5%A2%83%E5%85%89%E9%81%AE%E8%94%BD/</link>
+      <pubDate>Wed, 05 Apr 2023 14:35:17 +0800</pubDate>
+      
+      <guid>https://kampter.github.io/blog/urp%E5%B1%8F%E5%B9%95%E7%A9%BA%E9%97%B4%E7%8E%AF%E5%A2%83%E5%85%89%E9%81%AE%E8%94%BD/</guid>
+      <description>Screen Space Ambient Occlusion: Enhancing Realism in Video Games Introduction Video games have come a long way since their inception, and the quality of graphics has improved significantly.</description>
+    </item>
+    
+    <item>
+      <title>URP屏幕空间雾效</title>
+      <link>https://kampter.github.io/blog/urp%E5%B1%8F%E5%B9%95%E7%A9%BA%E9%97%B4%E9%9B%BE%E6%95%88/</link>
+      <pubDate>Tue, 04 Apr 2023 14:25:03 +0800</pubDate>
+      
+      <guid>https://kampter.github.io/blog/urp%E5%B1%8F%E5%B9%95%E7%A9%BA%E9%97%B4%E9%9B%BE%E6%95%88/</guid>
+      <description>Unity URP Depth Fog Introduction Unity is a powerful game engine that has been used by game developers around the world to create high-quality games with various tools and features.</description>
+    </item>
+    
+    <item>
+      <title>URP 14 RenderFeature 使用方式</title>
+      <link>https://kampter.github.io/blog/urp-14-renderfeature-%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F/</link>
+      <pubDate>Mon, 20 Mar 2023 10:47:50 +0000</pubDate>
+      
+      <guid>https://kampter.github.io/blog/urp-14-renderfeature-%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F/</guid>
+      <description>URP 14 URP 14 对应Unity 2022.2对于2021lts版本的URP 12中后处理的API有些许改变，需要参考官方文档的改变。而其中最大的改变来自于RTHandle的引入。
+以一个DesaturateFeature为例。在DesaturateFeature.cs中改变比较大的是加入一个SetupRenderPasses来帮助创建Materail和传递参数，而不是传统的写法在Create()中。
+public override void SetupRenderPasses(ScriptableRenderer renderer, in RenderingData renderingData) { Material material = CoreUtils.</description>
+    </item>
+    
+    <item>
+      <title>在URP中搭建一个Disney Principled BRDF</title>
+      <link>https://kampter.github.io/blog/%E5%9C%A8urp%E4%B8%AD%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AAdisney-principled-brdf/</link>
+      <pubDate>Thu, 16 Mar 2023 23:33:20 +0000</pubDate>
+      
+      <guid>https://kampter.github.io/blog/%E5%9C%A8urp%E4%B8%AD%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AAdisney-principled-brdf/</guid>
+      <description>技术实现 Unity 自带的Lit 采用了通用的microfacet Cook-Torrance BRDF着色模型，对于各向异性，清漆，布料等支持并没有实现。这里希望搭建一个Disney Principled BRDF 来学习源码并且扩充这部分shader便于以后风格化定制。
+Diffuse项实现 half3 Disney_Diffuse(half3 diffuseColor, half roughness, half ndotV, half ndotL, half LdotH) { half FD90 = 0.</description>
+    </item>
+    
+    <item>
+      <title>GGJ2023 x GiCA 中国站回顾</title>
+      <link>https://kampter.github.io/blog/global-game-jam-2023%E5%9B%9E%E9%A1%BE/</link>
+      <pubDate>Wed, 15 Feb 2023 19:10:20 +0000</pubDate>
+      
+      <guid>https://kampter.github.io/blog/global-game-jam-2023%E5%9B%9E%E9%A1%BE/</guid>
+      <description>心得 抱歉这么晚才来写这个回顾，近期忙于过年，情人节，以及学习等等事项，年后到现在终于有一段时间相对比较安静可以回顾一下这个赛事。
+首先感谢GGJ 2023能在这个时期召开，我从前公司离职到现在学习游戏制作已经有半年多的时间。一直在学习但是没有什么机会能够回顾学会什么，还欠缺什么，还想要什么。而且在这种比赛的压力下，很多问题才会暴漏出来，感谢这次能够让我总结的机会。
+其次感谢我的组员：
+48小时开发辛苦了，组内的除了我之外都是已经在游戏公司内工作的大佬，很高兴能与你们一起合作完成这个作品，希望我没有给你们拖后腿。
+最后感谢我的女朋友，感谢她在开发前与我一起准备；开发中陪伴我并鼓励，帮我一起寻找灵感；结束后我们一起分享喜悦。她也喜欢游戏，也喜欢宫崎骏的动画。游戏场景内的部分渲染风格也是我的一点私心，希望未来有机会能构建一个独属于我们的世界。
+技术实现 鉴于这个48小时的小项目，虽然之前一直在玩HDRP渲染管线。这次就老老实实用URP了，这也是我第一次用URP。之前在HDRP中大部分shader都用shader graph就可以完成，这次在urp中纯手写还是很有挑战性的。
+整体美术风格，希望尝试一下卡通渲染。场景渲染希望借鉴吉卜力风格治愈、唯美的感觉，同时借鉴宫崎骏动画中对自然和平的追求。而人物我们选择格鲁特这一经典漫威角色，我想尝试一下厚涂风格带来的立体感。
+找参考 背景参考，可以说是整个流程里最轻松的部分。因为我需要做的就是去看原来知名的对应题材的作品，游戏，动画，影视等。寻找其中的共同背景，色彩构成，空间元素构成。
+乱糟糟随心所欲找了一些东西，也没有成体系。理想的过程是从图片总结出风格特点，再转化成引擎可以实现的方案做出来。
+基础场景搭建 刚好在2022年底花不少精力学习和排坑的houdini PDG流程这次刚好可以应该用在这次项目中。
+用houdini 生成Heightmap已经是非常轻松愉快的事情了，这个项目不需要高精度雕琢，简单调整一些细节就可以搭建PDG节点了。哦对，在这之前要在unity中准备好terrain layer以及通过随即撒点种植的植物prefab，同时设置好LOD。</description>
+    </item>
+    
+    <item>
+      <title>尝试在URP下手写 PBR shader</title>
+      <link>https://kampter.github.io/blog/%E5%B0%9D%E8%AF%95%E5%9C%A8urp%E4%B8%AD%E6%89%8B%E5%86%99-pbr-shader/</link>
+      <pubDate>Fri, 10 Feb 2023 12:58:11 +0000</pubDate>
+      
+      <guid>https://kampter.github.io/blog/%E5%B0%9D%E8%AF%95%E5%9C%A8urp%E4%B8%AD%E6%89%8B%E5%86%99-pbr-shader/</guid>
+      <description>Cook-Torrance BRDF Cook-Torrance BRDF的镜面反射部分包含三个函数，此外分母部分还有一个标准化因子 。字母D，F与G分别代表着一种类型的函数，各个函数分别用来近似的计算出表面反射特性的一个特定部分。三个函数分别为法线分布函数(Normal Distribution Function)，菲涅尔方程(Fresnel Rquation)和几何函数(Geometry Function)：
+D项 - 法线分布函数: 估算在受到表面粗糙度的影响下，朝向方向与半程向量一致的微平面的数量。这是用来估算微平面的主要函数。
+half Function_D(half ndotH, half roughness) { half a2 = roughness * roughness; half ndotH2 = ndotH * ndotH; half nom = a2; half denom = (ndotH2 * (a2 - 1.</description>
+    </item>
+    
+    <item>
+      <title>URP仿原神渲染shader</title>
+      <link>https://kampter.github.io/blog/urp%E4%BB%BF%E5%8E%9F%E7%A5%9E%E6%B8%B2%E6%9F%93shader/</link>
+      <pubDate>Sun, 05 Feb 2023 21:56:47 +0000</pubDate>
+      
+      <guid>https://kampter.github.io/blog/urp%E4%BB%BF%E5%8E%9F%E7%A5%9E%E6%B8%B2%E6%9F%93shader/</guid>
+      <description>技术实现 在原神二测就有来体验过游戏，也是一步一步看着原神成长壮大封神的，一直以来都对于这样认真做内容的游戏公司怀有敬意。这次终于“敢”在掌握一定技术的情况下来模仿原神的渲染效果。
+模型准备 模型下载自米哈游官方在B站开展的二创活动pmx格式，直接网上随便找个converter即可转为fbx方便使用，这里选择刻晴作为测试人物模型。而神奇的google有人通过神奇的方式获得其他的贴图文件。汇总起来一共获得这些文件：
+贴图分析 Lightmap.r = Specular Mask
+Lightmap.g = AO Map
+Lightmap.b = Roughness
+lightmap.a = Emission Mask</description>
+    </item>
+    
+    <item>
+      <title>军团要塞2渲染shader实现</title>
+      <link>https://kampter.github.io/blog/%E5%86%9B%E5%9B%A2%E8%A6%81%E5%A1%9E2%E6%B8%B2%E6%9F%93shader%E5%AE%9E%E7%8E%B0/</link>
+      <pubDate>Mon, 16 Jan 2023 15:25:58 +0000</pubDate>
+      
+      <guid>https://kampter.github.io/blog/%E5%86%9B%E5%9B%A2%E8%A6%81%E5%A1%9E2%E6%B8%B2%E6%9F%93shader%E5%AE%9E%E7%8E%B0/</guid>
+      <description>技术分析 论文中有一篇非常形象的图片来实现渲染效果
+Albedo // Albedo half4 mainTex = SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, IN.uv) * _MainColor; half4 albedo = mainTex; half4 ambient = half4(unity_SHAr.</description>
+    </item>
+    
+    <item>
+      <title>Games 202 - 阴影</title>
+      <link>https://kampter.github.io/blog/games-202-%E9%98%B4%E5%BD%B1/</link>
+      <pubDate>Wed, 11 Jan 2023 14:17:21 +0000</pubDate>
+      
+      <guid>https://kampter.github.io/blog/games-202-%E9%98%B4%E5%BD%B1/</guid>
+      <description>ShadowMapping 原理 先渲染一个从光源到物体的pass 获得深度图 再渲染一个从相机位置到物体的pass获得深度图，并且把这个深度投影到光源位置 （图中橙色点为无阴影） 比较第一次与第二次投影到光源的深度，如果相同即没有阴影；如果比原深度远，即在阴影中(图中红色点为在阴影中) 缺陷 走样、分辨率。数值精度问题 只能点光源、硬阴影 会产生自遮挡如果light 方向与物体平面接近平行 改善方式具体方式就是当一个点深度大于记录深度的值超过一个阈值bias时，我们才认为这个点在阴影内。 解决方案 增加一个 bias
+中间的黄色那段我们不算
+也就是说我们对计算得到的深度减去一个 bias 一些技巧：动态的 bias</description>
+    </item>
+    
+    <item>
+      <title>渲染相关</title>
+      <link>https://kampter.github.io/blog/%E6%B8%B2%E6%9F%93%E7%9B%B8%E5%85%B3/</link>
+      <pubDate>Sun, 25 Dec 2022 17:22:02 +0800</pubDate>
+      
+      <guid>https://kampter.github.io/blog/%E6%B8%B2%E6%9F%93%E7%9B%B8%E5%85%B3/</guid>
+      <description>URP 后处理描边 实现原理
+URP 后处理雾效 实现原理
+Disney Principled BRDF 实现 实现原理
+Global Game Jam 2023 （包括草地，树木，水体渲染） 实现原理
+URP 仿原神渲染 实现原理</description>
+    </item>
+    
+    <item>
+      <title>Games 101 - Shading</title>
+      <link>https://kampter.github.io/blog/games-101-shading/</link>
+      <pubDate>Sun, 11 Sep 2022 16:31:55 +0000</pubDate>
+      
+      <guid>https://kampter.github.io/blog/games-101-shading/</guid>
+      <description>前言：只记录自己需要的内容
+深度测试 （Z buffer or Depth buffer） 把深度视为无限远，然后遍历每一个山脚行，再遍历每一个三角形的光栅化过程，同时记录光栅化的深度信息。如果光栅化后当前像素点的深度信息小于之前记录过的信息，则替换原本的像素点信息。
+Z-buffer：对每个像素多存一个深度
+复杂度：O(n) for n triangles 并不是排序，而是只要最值
+需要保证三角形进入顺序和结果无关
+无法处理透明物体
+Blinn-Phong Reflectance Model 光照模型 着色模型 Diffuse Lambertian (Diffuse) Shading $$ L_{d}=k_{d}\left(I / r^{2}\right) \max (0, \mathbf{n} \cdot \mathbf{l}) $$</description>
+    </item>
+    
+  </channel>
+</rss>

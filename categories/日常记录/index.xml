@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>日常记录 on RyanCV - CV Resume &amp; vCard Hugo Theme</title>
+    <link>https://kampter.github.io/categories/%E6%97%A5%E5%B8%B8%E8%AE%B0%E5%BD%95/</link>
+    <description>Recent content in 日常记录 on RyanCV - CV Resume &amp; vCard Hugo Theme</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 15 Feb 2023 19:10:20 +0000</lastBuildDate><atom:link href="https://kampter.github.io/categories/%E6%97%A5%E5%B8%B8%E8%AE%B0%E5%BD%95/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>GGJ2023 x GiCA 中国站回顾</title>
+      <link>https://kampter.github.io/blog/global-game-jam-2023%E5%9B%9E%E9%A1%BE/</link>
+      <pubDate>Wed, 15 Feb 2023 19:10:20 +0000</pubDate>
+      
+      <guid>https://kampter.github.io/blog/global-game-jam-2023%E5%9B%9E%E9%A1%BE/</guid>
+      <description>心得 抱歉这么晚才来写这个回顾，近期忙于过年，情人节，以及学习等等事项，年后到现在终于有一段时间相对比较安静可以回顾一下这个赛事。
+首先感谢GGJ 2023能在这个时期召开，我从前公司离职到现在学习游戏制作已经有半年多的时间。一直在学习但是没有什么机会能够回顾学会什么，还欠缺什么，还想要什么。而且在这种比赛的压力下，很多问题才会暴漏出来，感谢这次能够让我总结的机会。
+其次感谢我的组员：
+48小时开发辛苦了，组内的除了我之外都是已经在游戏公司内工作的大佬，很高兴能与你们一起合作完成这个作品，希望我没有给你们拖后腿。
+最后感谢我的女朋友，感谢她在开发前与我一起准备；开发中陪伴我并鼓励，帮我一起寻找灵感；结束后我们一起分享喜悦。她也喜欢游戏，也喜欢宫崎骏的动画。游戏场景内的部分渲染风格也是我的一点私心，希望未来有机会能构建一个独属于我们的世界。
+技术实现 鉴于这个48小时的小项目，虽然之前一直在玩HDRP渲染管线。这次就老老实实用URP了，这也是我第一次用URP。之前在HDRP中大部分shader都用shader graph就可以完成，这次在urp中纯手写还是很有挑战性的。
+整体美术风格，希望尝试一下卡通渲染。场景渲染希望借鉴吉卜力风格治愈、唯美的感觉，同时借鉴宫崎骏动画中对自然和平的追求。而人物我们选择格鲁特这一经典漫威角色，我想尝试一下厚涂风格带来的立体感。
+找参考 背景参考，可以说是整个流程里最轻松的部分。因为我需要做的就是去看原来知名的对应题材的作品，游戏，动画，影视等。寻找其中的共同背景，色彩构成，空间元素构成。
+乱糟糟随心所欲找了一些东西，也没有成体系。理想的过程是从图片总结出风格特点，再转化成引擎可以实现的方案做出来。
+基础场景搭建 刚好在2022年底花不少精力学习和排坑的houdini PDG流程这次刚好可以应该用在这次项目中。
+用houdini 生成Heightmap已经是非常轻松愉快的事情了，这个项目不需要高精度雕琢，简单调整一些细节就可以搭建PDG节点了。哦对，在这之前要在unity中准备好terrain layer以及通过随即撒点种植的植物prefab，同时设置好LOD。</description>
+    </item>
+    
+  </channel>
+</rss>

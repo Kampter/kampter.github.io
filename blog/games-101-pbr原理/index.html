@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Games 101 - PBR原理</title>
+
+  <!-- Meta -->
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="HandheldFriendly" content="true">
+  <meta name="author" content="bslthemes" />
+
+  <!-- Google Fonts -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.0/css/all.css" />
+
+  <!-- Main Stylesheets -->
+  
+  <link rel="stylesheet" href="https://kampter.github.io/scss/style.min.css" />
+
+  <!-- Plugins Stylesheets -->
+  <link rel="stylesheet" href="https://kampter.github.io/plugins/ionicons/ionicons.css" />
+  <link rel="stylesheet" href="https://kampter.github.io/plugins/font-awesome/css/font-awesome.css" />
+  <link rel="stylesheet" href="https://kampter.github.io/plugins/magnific-popup/magnific-popup.css" />
+  <link rel="stylesheet" href="https://kampter.github.io/plugins/owl-carousel/owl.carousel.css" />
+  <link rel="stylesheet" href="https://kampter.github.io/plugins/animate/animate.css" />
+  <link rel="stylesheet" href="https://kampter.github.io/plugins/syntax/syntax.css" />
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="https://kampter.github.io/images/favicon/favicon.ico" type="image/x-icon" />
+  <link rel="icon" href="https://kampter.github.io/images/favicon/favicon.ico" type="image/x-icon" />
+
+  
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-4BGKQYLBBG"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-4BGKQYLBBG');
+  </script>
+  
+
+  </head>
+
+
+<body class=" blog">
+  <div class="page new-skin">
+
+    <!-- Preloader -->
+<div class="preloader">
+	<div class="centrize full-width">
+		<div class="vertical-center">
+			<div class="spinner">
+				<div class="double-bounce1"></div>
+				<div class="double-bounce2"></div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+    
+
+<!-- Background -->
+
+
+<div class="background gradient">
+	<ul class="bg-bubbles">
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>
+</div>
+
+
+
+
+
+    
+
+<div class="s_overlay"></div>
+<div class="content-sidebar">
+	<div class="sidebar-wrap">
+		<aside id="secondary" class="widget-area">
+
+      
+			<div id="search" class="widget widget_search">
+				<form class="search-form" action="https://kampter.github.io/search">
+					<label>
+						<input type="search" id="searchInput" class="search-field" placeholder="Search ..." value="">
+					</label>
+					<input type="submit" class="search-submit" value="">
+          <ul id="searchResults"></ul>
+				</form>
+			</div>
+      
+
+			
+			<section class="widget widget_menu">
+				<h2 class="widget-title">Menu</h2>
+				<ul>
+					
+					
+					
+					
+					
+					<li class="active">
+						<a href="https://kampter.github.io//blog">Blog Page</a>
+					</li>
+					
+					
+					
+					
+					<li>
+						<a href="https://kampter.github.io//portfolio">Portfolio Page</a>
+					</li>
+					
+				</ul>
+			</section>
+      
+
+			
+			<section class="widget widget_recent_entries">
+				<h2 class="widget-title">Latest Posts</h2>
+				<ul>
+					
+					<li>
+						<a href="https://kampter.github.io/blog/%E8%BF%91%E6%9C%9F%E5%81%9A%E7%9A%84%E5%87%A0%E4%B8%AAunity%E5%92%8Cue%E7%89%B9%E6%95%88/">近期做的几个Unity和UE特效</a>
+					</li>
+					
+					<li>
+						<a href="https://kampter.github.io/blog/urp%E5%B1%8F%E5%B9%95%E7%A9%BA%E9%97%B4sobel%E8%BE%B9%E7%BC%98%E6%A3%80%E6%B5%8B/">URP屏幕空间Sobel边缘检测</a>
+					</li>
+					
+					<li>
+						<a href="https://kampter.github.io/blog/blender%E6%8F%92%E4%BB%B6%E5%88%B6%E4%BD%9C%E5%BF%83%E5%BE%97/">blender插件制作心得</a>
+					</li>
+					
+					<li>
+						<a href="https://kampter.github.io/blog/urp%E5%B1%8F%E5%B9%95%E7%A9%BA%E9%97%B4%E7%8E%AF%E5%A2%83%E5%85%89%E9%81%AE%E8%94%BD/">URP屏幕空间环境光遮蔽</a>
+					</li>
+					
+				</ul>
+			</section>
+			
+
+			
+			<section class="widget widget_categories">
+				<h2 class="widget-title">Categories</h2>
+				<ul>
+            
+  				  <li>
+              <a href="https://kampter.github.io/categories/portfolio/">Portfolio</a>
+              <small>( 5 )</small>
+            </li>
+            
+  				  <li>
+              <a href="https://kampter.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+              <small>( 6 )</small>
+            </li>
+            
+  				  <li>
+              <a href="https://kampter.github.io/categories/%E6%8A%80%E6%9C%AF%E5%AE%9E%E7%8E%B0/">技术实现</a>
+              <small>( 5 )</small>
+            </li>
+            
+  				  <li>
+              <a href="https://kampter.github.io/categories/%E6%97%A5%E5%B8%B8%E7%94%9F%E6%B4%BB/">日常生活</a>
+              <small>( 1 )</small>
+            </li>
+            
+  				  <li>
+              <a href="https://kampter.github.io/categories/%E6%97%A5%E5%B8%B8%E8%AE%B0%E5%BD%95/">日常记录</a>
+              <small>( 1 )</small>
+            </li>
+            
+  				  <li>
+              <a href="https://kampter.github.io/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/">课程笔记</a>
+              <small>( 8 )</small>
+            </li>
+            
+				</ul>
+			</section>
+			
+
+			
+			<section class="widget widget_tags">
+				<h2 class="widget-title">Tags</h2>
+				<ul>
+           
+           <li>
+             <a href="https://kampter.github.io/tags/after-effect/">After Effect</a>
+             <small>( 1 )</small>
+           </li>
+           
+           <li>
+             <a href="https://kampter.github.io/tags/bifrost/">Bifrost</a>
+             <small>( 1 )</small>
+           </li>
+           
+           <li>
+             <a href="https://kampter.github.io/tags/blender/">blender</a>
+             <small>( 2 )</small>
+           </li>
+           
+           <li>
+             <a href="https://kampter.github.io/tags/c#/">C#</a>
+             <small>( 4 )</small>
+           </li>
+           
+           <li>
+             <a href="https://kampter.github.io/tags/computer-graphic/">Computer Graphic</a>
+             <small>( 9 )</small>
+           </li>
+           
+           <li>
+             <a href="https://kampter.github.io/tags/eve-online/">Eve Online</a>
+             <small>( 1 )</small>
+           </li>
+           
+           <li>
+             <a href="https://kampter.github.io/tags/flip/">Flip</a>
+             <small>( 1 )</small>
+           </li>
+           
+           <li>
+             <a href="https://kampter.github.io/tags/games-101/">Games 101</a>
+             <small>( 4 )</small>
+           </li>
+           
+           <li>
+             <a href="https://kampter.github.io/tags/games-202/">Games 202</a>
+             <small>( 3 )</small>
+           </li>
+           
+           <li>
+             <a href="https://kampter.github.io/tags/hlsl/">HLSL</a>
+             <small>( 12 )</small>
+           </li>
+           
+           <li>
+             <a href="https://kampter.github.io/tags/houdini/">Houdini</a>
+             <small>( 3 )</small>
+           </li>
+           
+           <li>
+             <a href="https://kampter.github.io/tags/java/">Java</a>
+             <small>( 1 )</small>
+           </li>
+           
+           <li>
+             <a href="https://kampter.github.io/tags/math/">Math</a>
+             <small>( 8 )</small>
+           </li>
+           
+           <li>
+             <a href="https://kampter.github.io/tags/maya/">Maya</a>
+             <small>( 1 )</small>
+           </li>
+           
+           <li>
+             <a href="https://kampter.github.io/tags/niagara-system/">niagara system</a>
+             <small>( 2 )</small>
+           </li>
+           
+           <li>
+             <a href="https://kampter.github.io/tags/opengl/">Opengl</a>
+             <small>( 1 )</small>
+           </li>
+           
+           <li>
+             <a href="https://kampter.github.io/tags/particle/">Particle</a>
+             <small>( 1 )</small>
+           </li>
+           
+           <li>
+             <a href="https://kampter.github.io/tags/pbr-shading/">PBR Shading</a>
+             <small>( 2 )</small>
+           </li>
+           
+           <li>
+             <a href="https://kampter.github.io/tags/plugin/">plugin</a>
+             <small>( 1 )</small>
+           </li>
+           
+           <li>
+             <a href="https://kampter.github.io/tags/render-feature/">Render Feature</a>
+             <small>( 4 )</small>
+           </li>
+           
+           <li>
+             <a href="https://kampter.github.io/tags/shader-graph/">Shader Graph</a>
+             <small>( 1 )</small>
+           </li>
+           
+           <li>
+             <a href="https://kampter.github.io/tags/substance-designer/">substance designer</a>
+             <small>( 2 )</small>
+           </li>
+           
+           <li>
+             <a href="https://kampter.github.io/tags/toon-shading/">Toon Shading</a>
+             <small>( 3 )</small>
+           </li>
+           
+           <li>
+             <a href="https://kampter.github.io/tags/unity/">Unity</a>
+             <small>( 15 )</small>
+           </li>
+           
+           <li>
+             <a href="https://kampter.github.io/tags/unreal-engine/">unreal engine</a>
+             <small>( 2 )</small>
+           </li>
+           
+           <li>
+             <a href="https://kampter.github.io/tags/vfx-graph/">VFX Graph</a>
+             <small>( 2 )</small>
+           </li>
+           
+				</ul>
+			</section>
+			
+
+		</aside>
+	</div>
+	<span class="close"></span>
+</div>
+
+
+    
+    
+    <!-- Container -->
+    <div class="container opened" data-animation-in="fadeInLeft" data-animation-out="fadeOutLeft">
+
+      
+
+<!-- Header -->
+<header class="header">
+
+	<a href="#" class="menu-btn"><span></span></a>
+
+  <!-- menu -->
+	<div class="top-menu">
+		<ul>
+      
+      
+      
+      
+      
+			<li class="active">
+				<a href="https://kampter.github.io/#about-card">
+					<span class="icon ion-person"></span>
+					<span class="link">About</span>
+				</a>
+			</li>
+			
+      
+      
+      
+			<li>
+				<a href="https://kampter.github.io/#resume-card">
+					<span class="icon ion-android-list"></span>
+					<span class="link">Resume</span>
+				</a>
+			</li>
+			
+      
+      
+      
+			<li>
+				<a href="https://kampter.github.io/#works-card">
+					<span class="icon ion-paintbrush"></span>
+					<span class="link">Works</span>
+				</a>
+			</li>
+			
+      
+      
+      
+			<li>
+				<a href="https://kampter.github.io/#blog-card">
+					<span class="icon ion-chatbox-working"></span>
+					<span class="link">Blog</span>
+				</a>
+			</li>
+			
+      
+      
+      
+			<li>
+				<a href="https://kampter.github.io/#contact-card">
+					<span class="icon ion-at"></span>
+					<span class="link">Contact</span>
+				</a>
+			</li>
+			
+		</ul>
+	</div>
+
+</header>
+
+
+      <!-- Card - Started -->
+
+
+
+<div class="card-started" id="home-card">
+
+  <!-- Profile-->
+  <div class="profile no-photo">
+
+    <!-- profile image -->
+    <div class="slide" style="background-image: url(https://kampter.github.io/images/1082264.png);"></div>
+
+    <!-- profile photo -->
+    
+
+    <!-- profile titles -->
+    <div class="title">王子正</div>
+    <div class="subtitle subtitle-typed">
+      <div class="typing-title">
+        
+        <p>Technical Artist</p>
+        
+      </div>
+    </div>
+
+    <!-- profile socials -->
+    <div class="social">
+      
+      <a target="_blank" href="https://twitter.com/wang_psbswsg" title="Twitter"><span class="fab fa-twitter"></span></a>
+      
+      <a target="_blank" href="https://github.com/Kampter" title="GitHub"><span class="fab fa-github"></span></a>
+      
+      <a target="_blank" href="https://www.youtube.com/channel/UCK43eUkmsyRk8FeBw5oRJtQ" title="Youtube"><span class="fab fa-youtube"></span></a>
+      
+      <a target="_blank" href="https://www.artstation.com/kampter" title="Stackoverflow"><span class="fab fa-artstation"></span></a>
+      
+    </div>
+
+    <!-- profile buttons -->
+    <div class="lnks">
+      
+      <a href="/images/Resume_ZizhengWang_Chinese_v004.pdf" target="_blank" class="lnk">
+        <span class="text">Download CV</span>
+        
+        <span class="ion ion ion-archive"></span>
+        
+      </a>
+      
+      <a href="mailto:psbswsg@gmail.com" target="_blank" class="lnk">
+        <span class="text">Contact Me</span>
+        
+        <span class="ion arrow"></span>
+        
+      </a>
+      
+    </div>
+
+  </div>
+
+</div>
+
+
+
+
+      
+
+
+<!-- Blog Post -->
+<div class="card-inner blog blog-post animated" id="blog-card">
+	<div class="card-wrap">
+
+		<div class="content blog-single">
+
+			<div class="title">Blog Post</div>
+
+			<div class="row border-line-v">
+				<div class="col col-m-12 col-t-12 col-d-12">
+					<div class="post-box">
+
+						<h1>Games 101 - PBR原理</h1>
+						<div class="blog-detail">
+							<span class="date">September 28, 2022</span>
+							
+							<span class="cat-links">
+		            
+		            <a href="https://kampter.github.io/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/">课程笔记</a>
+		            
+							</span>
+							
+							<span class="byline"> By <span class="author">Ryan Adlard</span></span>
+						</div>
+
+						
+						<div class="blog-image">
+							<img src="https://kampter.github.io/images/blog/image-20230222184836605.png" alt="Games 101 - PBR原理" />
+						</div>
+						
+
+						<div class="blog-content">
+							<p>前言：只记录自己需要的内容</p>
+<hr>
+<h2 id="辐射度量学">辐射度量学</h2>
+<figure><img src="radiant.png" width="50%"/>
+</figure>
+
+<h3 id="radiant-energy">Radiant energy</h3>
+<p>能量，单位：J（Joule焦耳）</p>
+<h3 id="radiant-flux">Radiant Flux</h3>
+<p>（<strong>单位时间</strong>能量 → 功率）单位：W（Watt），lm（lumen流明）</p>
+<h3 id="intensity">Intensity</h3>
+<p>the power per unit solid angle (立体角)
+$$
+I(\omega) = \frac{\mathrm{d} \Phi}{\mathrm{d} \omega}
+$$</p>
+<ul>
+<li>
+<p>立体角</p>
+<ul>
+<li>面积/半径^2，</li>
+</ul>
+<p>$$
+\Omega=\frac{A}{r^{2}}
+$$</p>
+<ul>
+<li>单位：sr, steradians</li>
+</ul>
+<p>$$
+\mathrm{d} \omega=\frac{\mathrm{d} A}{r^{2}}=\sin \theta \mathrm{d} \theta \mathrm{d} \phi
+$$</p>
+</li>
+<li>
+<p>方向性：用 w来表示方向</p>
+</li>
+</ul>
+<h3 id="irradiance">Irradiance</h3>
+<p>power per unit area
+$$
+E(\mathbf{x}) \equiv \frac{\mathrm{d} \Phi(\mathbf{x})}{\mathrm{d} A}
+$$
+单位：W/m^2 | lm/m^2 = lux</p>
+<figure><img src="image-20230222175520499.png" width="20%"/>
+</figure>
+
+<p>irradiance解释衰减,  随着半径增大衰减越明显</p>
+<h3 id="radiance">Radiance</h3>
+<p>power per unit solid angle, per projected unit area.
+$$
+L(\mathrm{p}, \omega) \equiv \frac{\mathrm{d}^{2} \Phi(\mathrm{p}, \omega)}{\mathrm{d} \omega \mathrm{d} A \cos \theta}
+$$
+<figure><img src="image-20230222175312913.png" width="50%"/>
+</figure>
+</p>
+<p>非垂直平面需要根据 θ 夹角计算</p>
+<figure><img src="image-20230222174348091.png" width="50%"/>
+</figure>
+
+<p>radiance 与intensity 和 irradiance 结合对比</p>
+<p>Irradiance和Radiance之间的区别就在于是否有方向性</p>
+<ul>
+<li>Irradiance: power received by area dA 四面八方的光线积分起来</li>
+<li>Radiance: power received by area dA from “direction” dω</li>
+</ul>
+<p>$$
+\begin{aligned} d E(\mathrm{p}, \omega) &amp;=L_{i}(\mathrm{p}, \omega) \cos \theta \mathrm{d} \omega \ E(\mathrm{p}) &amp;=\int_{H^{2}} L_{i}(\mathrm{p}, \omega) \cos \theta \mathrm{d} \omega \end{aligned}
+$$</p>
+<h2 id="bidirectional-reflectance-distribution-function-brdf-双向反射分布函数">Bidirectional Reflectance Distribution Function (BRDF) 双向反射分布函数</h2>
+<h3 id="理解">理解</h3>
+<p>反射的理解：光线打到某个点，（被吸收了）然后反弹（发出）到其他地方</p>
+<figure><img src="image-20230222181257182.png" width="50%"/>
+</figure>
+
+<p>某个点从某个方向接受/向某个方向发射光线能量：radiance</p>
+<ul>
+<li>Differential irradiance incoming:</li>
+</ul>
+<p>$$
+d E\left(\omega_{i}\right)=L\left(\omega_{i}\right) \cos \theta_{i} d \omega_{i}
+$$</p>
+<ul>
+<li>Differential radiance exiting:</li>
+</ul>
+<p>$$
+d L_{r}\left(\omega_{r}\right)
+$$</p>
+<p>通俗理解：这个微小面积接受的能量计算后，再分配到各个方向上</p>
+<h3 id="the-reflection-equation-反射方程">The Reflection Equation 反射方程</h3>
+<ul>
+<li>针对一个输出源（着色点），积分所有方向输入源（光照）的BRDF，获得最后的输出</li>
+</ul>
+<p>$$
+L_{r}\left(\mathrm{p}, \omega_{r}\right)=\int_{H^{2}} f_{r}\left(\mathrm{p}, \omega_{i} \rightarrow \omega_{r}\right) L_{i}\left(\mathrm{p}, \omega_{i}\right) \cos \theta_{i} \mathrm{d} \omega_{i}
+$$</p>
+<h2 id="the-rendering-equation-渲染方程">The Rendering Equation 渲染方程</h2>
+<p>$$
+L_{o}\left(p, \omega_{o}\right)=L_{e}\left(p, \omega_{o}\right)+\int_{\Omega^{+}} L_{i}\left(p, \omega_{i}\right) f_{r}\left(p, \omega_{i}, \omega_{o}\right)\left(n \cdot \omega_{i}\right) \mathrm{d} \omega_{i}
+$$</p>
+<figure><img src="image-20230222182311587.png" width="50%"/>
+</figure>
+
+<p>渲染方程考虑多个点光源：根据w方向加起来，同时考虑其他物体反射的光源。</p>
+<figure><img src="image-20230222182448860.png" width="50%"/>
+</figure>
+
+<p>一个神奇的抽象化理解：</p>
+<ul>
+<li>光栅化的着色过程主要是直接光照（间接光照计算非常复杂）</li>
+<li>全局光照：直接和间接光照的集合
+<ul>
+<li>会收敛到一个亮度</li>
+</ul>
+</li>
+</ul>
+<h3 id="brdf-材质">BRDF 材质</h3>
+<p>以前只有Blinn Phong的时候，通过非物理的方式模拟出各种材质。</p>
+<p>Material == BRDF 决定光如何被反射</p>
+<h4 id="diffuse--lambertain-material">Diffuse / Lambertain Material</h4>
+<figure><img src="image-20230222183648389.png" width="50%"/>
+</figure>
+
+<ul>
+<li>能量守恒：进出的irradiance相同（总量）</li>
+<li>漫反射：出的radiance均匀→ $f_r = c$ （常量）</li>
+<li>假设入射光和出射光都是均匀的→ $L_i = L_o$</li>
+<li>ρ: albedo(反射率, RGB)</li>
+</ul>
+<h4 id="glossy-materialbrdf">Glossy Material（BRDF）</h4>
+<h4 id="ideal-reflective--refractive-material-bsdf--">Ideal reflective / refractive material (BSDF * )</h4>
+<p>BSDF（散射） = BRDF（反射） + BTDF（折射）</p>
+<h4 id="isotropic--anisotropic-materials-brdfs">Isotropic / Anisotropic Materials (BRDFs)</h4>
+<p>各向异性BRDF</p>
+<h4 id="fresnel-reflection--term-菲涅耳项">Fresnel Reflection / Term （菲涅耳项）</h4>
+<p>和normal法线方向越接近，越少光被反射</p>
+<ul>
+<li>近似：Schlick’s approximation</li>
+</ul>
+<p>$$
+\begin{aligned} R(\theta) &amp;=R_{0}+\left(1-R_{0}\right)(1-\cos \theta)^{5} \ R_{0} &amp;=\left(\frac{n_{1}-n_{2}}{n_{1}+n_{2}}\right)^{2} \end{aligned}
+$$</p>
+<h3 id="microfacet-material-微表面材质">Microfacet Material 微表面材质</h3>
+<p>从足够远的地方看过去，无限接近镜面反射。但是不断拉近，表面会变得凹凸不平。</p>
+<figure><img src="image-20230222184902536.png" width="50%"/>
+</figure>
+
+<p>远处情况就是Glossy,  近处是diffuse，因此获得计算公式如下：
+$$
+f(\mathbf{i}, \mathbf{o})=\frac{\mathbf{F}(\mathbf{i}, \mathbf{h}) \mathbf{G}(\mathbf{i}, \mathbf{o}, \mathbf{h}) \mathbf{D}(\mathbf{h})}{4(\mathbf{n}, \mathbf{i})(\mathbf{n}, \mathbf{o})}
+$$</p>
+<figure><img src="image-20230222185813296.png" width="50%"/>
+</figure>
+
+<ul>
+<li>Fresnel term 表示菲尼尔效果</li>
+<li>shadowing-masking term 表示足够远的地方光滑但是细微的地方实际是凹凸不平产生遮挡阴影效果</li>
+<li>distribution of normals 表示凹凸不平的法线方向（细小平面的方向）</li>
+</ul>
+<p>&mdash; 2023.2.10 更新 &mdash;</p>
+<p><a href="http://localhost:1313/p/%E5%B0%9D%E8%AF%95%E5%9C%A8urp%E4%B8%8B%E6%89%8B%E5%86%99-pbr-shader/">尝试在URP中手写PBR shader</a></p>
+
+						</div>
+
+						<div class="post-text-bottom">
+							<div class="social-share" data-title="Games 101 - PBR原理" data-url="https://kampter.github.io/blog/games-101-pbr%E5%8E%9F%E7%90%86/">
+								<span>Share:</span>
+								<a class="share-btn share-btn-facebook share-btn-1" title="Share on Facebook">
+									<i class="ion ion-social-facebook"></i>
+								</a>
+								<a class="share-btn share-btn-twitter share-btn-2" title="Share on Twitter">
+									<i class="ion ion-social-twitter"></i>
+								</a>
+								<a class="share-btn share-btn-linkedin share-btn-3" title="Share on Linkedin">
+									<i class="ion ion-social-linkedin"></i>
+								</a>
+								<a class="share-btn share-btn-reddit share-btn-4" title="Share on Reddit">
+									<i class="ion ion-social-reddit"></i>
+								</a>
+								<a class="share-btn share-btn-pinterest share-btn-5" title="Share on Pinterest">
+									<i class="ion ion-social-pinterest"></i>
+								</a>
+							</div>
+							
+							<div class="tags-links">
+								Tags:
+								
+								<a href="https://kampter.github.io/tags/computer-graphic/" rel="tag">Computer Graphic</a>
+								
+								<a href="https://kampter.github.io/tags/math/" rel="tag">Math</a>
+								
+								<a href="https://kampter.github.io/tags/games-101/" rel="tag">Games 101</a>
+								
+							</div>
+							
+						</div>
+
+						
+						<div class="post-navigation" role="navigation">
+							
+							<div class="nav-previous">
+								<a href="https://kampter.github.io/blog/games-101-shading/" rel="prev" title="Games 101 - Shading">
+									<span class="post-nav-next post-nav-text">Prev</span>
+								</a>
+							</div>
+							
+							
+							<div class="nav-next">
+								<a href="https://kampter.github.io/blog/%E6%B8%B8%E6%88%8F%E7%89%B9%E6%95%88/" rel="next" title="游戏特效">
+									<span class="post-nav-prev post-nav-text">Next</span>
+								</a>
+							</div>
+							
+						</div>
+						
+					</div>
+				</div>
+			</div>
+
+			
+			<div class="title">Comments</div>
+
+			<div class="row border-line-v">
+				<div class="col col-m-12 col-t-12 col-d-12">
+					<div class="post-box">
+						<div class="col-md-12">
+							<div id="disqus_thread"></div>
+							<script>
+								var disqus_config = function () {
+									this.page.url = "https:\/\/kampter.github.io\/blog\/games-101-pbr%E5%8E%9F%E7%90%86\/";   
+									this.page.identifier = "7a949b8517a6af46d148a39c9405a57e";  
+								};
+								(function() {  
+									var d = document, s = d.createElement('script');
+									s.src = 'https://kampterblog.disqus.com/embed.js';
+									s.setAttribute('data-timestamp', +new Date());
+									(d.head || d.body).appendChild(s);
+								})();
+							</script>
+							<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+
+	</div>
+</div>
+
+
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://kampter.github.io/plugins/jQuery/jquery.min.js"></script>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.6.2/fuse.min.js" integrity="sha512-Nqw1tH3mpavka9cQCc5zWWEZNfIPdOYyQFjlV1NvflEtQ0/XI6ZQ+H/D3YgJdqSUJlMLAPRj/oXlaHCFbFCjoQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://kampter.github.io/plugins/search/simple-search.js"></script>
+
+
+<script src="https://kampter.github.io/plugins/validate/jquery.validate.min.js"></script>
+<script src="https://kampter.github.io/plugins/owl-carousel/owl.carousel.js"></script>
+<script src="https://kampter.github.io/plugins/magnific-popup/magnific-popup.min.js"></script>
+<script src="https://kampter.github.io/plugins/slimscroll/jquery.slimscroll.js"></script>
+<script src="https://kampter.github.io/plugins/imagesloaded/imagesloaded.pkgd.min.js"></script>
+<script src="https://kampter.github.io/plugins/isotope/isotope.pkgd.js"></script>
+<script src="https://kampter.github.io/plugins/typed/typed.js"></script>
+<script src="https://kampter.github.io/plugins/rrssb/rrssb.js"></script>
+
+
+
+
+<script src="https://kampter.github.io/js/form-handler.min.js"></script>
+
+
+<script src="https://kampter.github.io/js/common.min.js"></script>
+
+</body>
+
+</html>

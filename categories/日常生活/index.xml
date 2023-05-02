@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>日常生活 on RyanCV - CV Resume &amp; vCard Hugo Theme</title>
+    <link>https://kampter.github.io/categories/%E6%97%A5%E5%B8%B8%E7%94%9F%E6%B4%BB/</link>
+    <description>Recent content in 日常生活 on RyanCV - CV Resume &amp; vCard Hugo Theme</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 21 Dec 2019 12:24:33 +0000</lastBuildDate><atom:link href="https://kampter.github.io/categories/%E6%97%A5%E5%B8%B8%E7%94%9F%E6%B4%BB/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>碎片化记录一下在澳洲的学习生活</title>
+      <link>https://kampter.github.io/blog/%E7%A2%8E%E7%89%87%E5%8C%96%E8%AE%B0%E5%BD%95%E6%BE%B3%E6%B4%B2%E7%9A%84%E5%AD%A6%E4%B9%A0%E7%94%9F%E6%B4%BB/</link>
+      <pubDate>Sat, 21 Dec 2019 12:24:33 +0000</pubDate>
+      
+      <guid>https://kampter.github.io/blog/%E7%A2%8E%E7%89%87%E5%8C%96%E8%AE%B0%E5%BD%95%E6%BE%B3%E6%B4%B2%E7%9A%84%E5%AD%A6%E4%B9%A0%E7%94%9F%E6%B4%BB/</guid>
+      <description>ANU - Canberra 学习java的时候尝试复刻flappy bird
+终于到了最喜欢的图形学课程。可以用Java 版本的opengl 绘画。
+也在老师的帮助指导下，完成了Lighting model以及简单光线追踪模型。
+我还专门选修了一门制作网页的课程。这是当时制作网站的效果，完全静态网站，没有使用任何的框架，纯html, cs, javascript实现的网站效果。那时候觉得手写响应式网站还要不断适配各种设备可太累了，痛恨老师不让我们用框架。
+VU - Melbourne 作为一个名商科学生偷学AE合成课程的作品，学会了在AE中抠图，添加素材，定位追踪，求三维空间位置，并且最终调色合成。
+这是那节课上课时候有机会参观影视实拍流程的绿幕。我的第一个AE合成作品便使用这里实现的把拍摄素材融入到视频中。
+EVE 悉尼见面会 在堪培拉枯燥的学习生活之余终于有机会去悉尼参加我喜欢的游戏eve的粉丝见面会。</description>
+    </item>
+    
+  </channel>
+</rss>

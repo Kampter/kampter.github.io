@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Portfolio on RyanCV - CV Resume &amp; vCard Hugo Theme</title>
+    <link>https://kampter.github.io/categories/portfolio/</link>
+    <description>Recent content in Portfolio on RyanCV - CV Resume &amp; vCard Hugo Theme</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 25 Dec 2022 17:40:29 +0800</lastBuildDate><atom:link href="https://kampter.github.io/categories/portfolio/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>程序相关</title>
+      <link>https://kampter.github.io/blog/%E7%A8%8B%E5%BA%8F%E7%9B%B8%E5%85%B3/</link>
+      <pubDate>Sun, 25 Dec 2022 17:40:29 +0800</pubDate>
+      
+      <guid>https://kampter.github.io/blog/%E7%A8%8B%E5%BA%8F%E7%9B%B8%E5%85%B3/</guid>
+      <description>Unity 仿只狼抓钩系统 Github
+Blender 插件 自定义转盘 拼写检查 实现原理</description>
+    </item>
+    
+    <item>
+      <title>渲染相关</title>
+      <link>https://kampter.github.io/blog/%E6%B8%B2%E6%9F%93%E7%9B%B8%E5%85%B3/</link>
+      <pubDate>Sun, 25 Dec 2022 17:22:02 +0800</pubDate>
+      
+      <guid>https://kampter.github.io/blog/%E6%B8%B2%E6%9F%93%E7%9B%B8%E5%85%B3/</guid>
+      <description>URP 后处理描边 实现原理
+URP 后处理雾效 实现原理
+Disney Principled BRDF 实现 实现原理
+Global Game Jam 2023 （包括草地，树木，水体渲染） 实现原理
+URP 仿原神渲染 实现原理</description>
+    </item>
+    
+    <item>
+      <title>游戏特效</title>
+      <link>https://kampter.github.io/blog/%E6%B8%B8%E6%88%8F%E7%89%B9%E6%95%88/</link>
+      <pubDate>Sun, 25 Dec 2022 17:21:06 +0800</pubDate>
+      
+      <guid>https://kampter.github.io/blog/%E6%B8%B8%E6%88%8F%E7%89%B9%E6%95%88/</guid>
+      <description>Poison Projectile Trail by UE 实现原理
+Lighting Impact by Unity 实现原理
+Bubble Effect by Unity 实现原理
+Lighting Swipe Trail by Unity Stylized Projectile by Unity {{youtube s9sVoHDX0EM}}</description>
+    </item>
+    
+    <item>
+      <title>Maya Bifrost</title>
+      <link>https://kampter.github.io/blog/maya-bifrost-showreel/</link>
+      <pubDate>Sat, 17 Feb 2018 12:03:11 +0000</pubDate>
+      
+      <guid>https://kampter.github.io/blog/maya-bifrost-showreel/</guid>
+      <description> R&amp;amp;D &amp;ndash;&amp;gt; WIP &amp;ndash;&amp;gt; Render Test &amp;ndash;&amp;gt; Final Render
+Beach Beer Waterfall Coffee 第一周 第二周 第三周 第四周 第五周 第六周 第七周 第八周 第九周 第十周 第十一周 </description>
+    </item>
+    
+    <item>
+      <title>Houdini</title>
+      <link>https://kampter.github.io/blog/houdini-showreel/</link>
+      <pubDate>Mon, 18 Dec 2017 16:23:55 +0000</pubDate>
+      
+      <guid>https://kampter.github.io/blog/houdini-showreel/</guid>
+      <description>Particle Trails Water Cathedral Beauty </description>
+    </item>
+    
+  </channel>
+</rss>
