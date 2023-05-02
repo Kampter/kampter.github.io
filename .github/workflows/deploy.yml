@@ -40,13 +40,11 @@ jobs:
     # Step 4 - Builds the site using the latest version of Hugo
     # Also specifies the theme we want to use
     - name: Build
-      run: hugo --theme=ryancv
+      run: hugo --minify
 
     # Step 6 - Push our generated site to our gh-pages branch
-    - name: Deploy 🚀
-      uses: JamesIves/github-pages-deploy-action@v4
+    - name: Deploy
+      uses: peaceiris/actions-gh-pages@v3
       with:
-          branch: gh-pages
-          folder: public
-          clean: true
-          single-commit: true
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./public
