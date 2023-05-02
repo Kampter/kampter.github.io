@@ -23,6 +23,15 @@ Z-buffer：对每个像素多存一个深度
 复杂度：O(n) for n triangles 并不是排序，而是只要最值
 需要保证三角形进入顺序和结果无关
 无法处理透明物体
-Blinn-Phong Reflectance Model 光照模型 着色模型 Diffuse Lambertian (Diffuse) Shading $$ L_{d}=k_{d}\left(I / r^{2}\right) \max (0, \mathbf{n} \cdot \mathbf{l}) $$</description></item><item><title>Games 101 - 线代和变换</title><link>https://kampter.github.io/blog/games-101-%E7%BA%BF%E4%BB%A3%E5%92%8C%E5%8F%98%E6%8D%A2/</link><pubDate>Sun, 21 Aug 2022 14:17:21 +0000</pubDate><guid>https://kampter.github.io/blog/games-101-%E7%BA%BF%E4%BB%A3%E5%92%8C%E5%8F%98%E6%8D%A2/</guid><description>前言：只记录自己需要的内容
+Blinn-Phong Reflectance Model 光照模型 着色模型 Diffuse Lambertian (Diffuse) Shading $$ L_{d}=k_{d}\left(I / r^{2}\right) \max (0, \mathbf{n} \cdot \mathbf{l}) $$</description></item><item><title>Games 101 - 光栅化</title><link>https://kampter.github.io/blog/games-101-%E5%85%89%E6%A0%85%E5%8C%96/</link><pubDate>Fri, 02 Sep 2022 15:48:07 +0000</pubDate><guid>https://kampter.github.io/blog/games-101-%E5%85%89%E6%A0%85%E5%8C%96/</guid><description>前言：只记录自己需要的内容
+光栅化 屏幕空间 从（0，0）到（width, height）
+光栅化的过程即采样过程，来判断屏幕上的像素点是否在三角形里面
+采样的缺点：以点代面，有失偏颇 → Aliasing 走样，表现为锯齿
+引入傅里叶变换，采样信息可以分解成函数表达
+高频信息：简单来说就是outline边界，边界变化带来巨大的图像效果变化
+只保留高频信息：表现为边缘部分
+只保留低频信息：表现为画面主体
+走样 走样就是采样的中出现重复或者没有采集到关键信息 （图中蓝色和黑色采样点相同，但是实际差距明显）
+减少Aliasing Error 的方法</description></item><item><title>Games 101 - 线代和变换</title><link>https://kampter.github.io/blog/games-101-%E7%BA%BF%E4%BB%A3%E5%92%8C%E5%8F%98%E6%8D%A2/</link><pubDate>Sun, 21 Aug 2022 14:17:21 +0000</pubDate><guid>https://kampter.github.io/blog/games-101-%E7%BA%BF%E4%BB%A3%E5%92%8C%E5%8F%98%E6%8D%A2/</guid><description>前言：只记录自己需要的内容
 线代 判断点是否在三角形内的方法1 按照逆时针找到ab，bc，ca向量，当同时满足cross(ab * ap) &amp;gt; 0 &amp;amp;&amp;amp; cross(bc * bp) &amp;gt; 0 &amp;amp;&amp;amp; cross (ca * cp) &amp;gt; 0 时点在三角形内，如果有一个结果为0 点在这条边上，有一个小于0在三角形外。换种思路就是如果点在三角形内测，三次判断点都在封闭线段的左侧，即点在图形内。</description></item><item><title>Maya Bifrost</title><link>https://kampter.github.io/blog/maya-bifrost-showreel/</link><pubDate>Sat, 17 Feb 2018 12:03:11 +0000</pubDate><guid>https://kampter.github.io/blog/maya-bifrost-showreel/</guid><description> R&amp;amp;D &amp;ndash;&amp;gt; WIP &amp;ndash;&amp;gt; Render Test &amp;ndash;&amp;gt; Final Render
 Beach Beer Waterfall Coffee 第一周 第二周 第三周 第四周 第五周 第六周 第七周 第八周 第九周 第十周 第十一周</description></item></channel></rss>

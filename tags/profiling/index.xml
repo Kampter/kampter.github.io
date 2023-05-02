@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Profiling on RyanCV - CV Resume &amp; vCard Hugo Theme</title><link>https://kampter.github.io/tags/profiling/</link><description>Recent content in Profiling on RyanCV - CV Resume &amp; vCard Hugo Theme</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Mon, 27 Feb 2023 22:34:27 +0000</lastBuildDate><atom:link href="https://kampter.github.io/tags/profiling/index.xml" rel="self" type="application/rss+xml"/><item><title>Unity 项目优化</title><link>https://kampter.github.io/blog/unity-%E9%A1%B9%E7%9B%AE%E4%BC%98%E5%8C%96/</link><pubDate>Mon, 27 Feb 2023 22:34:27 +0000</pubDate><guid>https://kampter.github.io/blog/unity-%E9%A1%B9%E7%9B%AE%E4%BC%98%E5%8C%96/</guid><description>资产说明 这次使用的全部资产来自Toon Fantasy Nature 这个Pacakage，直接使用下面的的Lake 01场景，原价是比较贵的，刚刚参加的Game Jam有优惠，几个特效，场景，人物还有音频等等资产加起来不到20刀还是蛮划算的，谢谢Unity。
+UPR 使用Unity官方自带的检测工具过一遍全部的资产，先用AssetChecker Win过一遍总览一下有哪些问题。
+使用方式也非常简单，直接查看用户手册即可，这工具绿色好用，真心点赞。
+.\assetcheck.exe --project=&amp;lt;project_path&amp;gt; --projectId=&amp;lt;project_id&amp;gt; &amp;lt;project_path&amp;gt;为Unity工程所在路径，&amp;lt;project_id&amp;gt;为UPR项目Id。
+&amp;lt;project_id&amp;gt;非必需项。如果填写了&amp;lt;project_id&amp;gt;，检测结束后，可直接在UPR网站该项目内查看检测结果。
+运行游戏看一下效果
+看一下内存占用情况
+&amp;mdash;未完待续&amp;mdash;</description></item></channel></rss>
