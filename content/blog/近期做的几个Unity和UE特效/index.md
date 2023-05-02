@@ -3,7 +3,7 @@ title: "近期做的几个Unity和UE特效"
 date: 2023-04-18T17:46:43+08:00
 featureImage: images/blog/poison.jpg
 categories: 
-- 学习笔记
+- 技术实现
 tags: 
 - Substance Designer
 - Houdini
