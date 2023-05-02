@@ -125,7 +125,7 @@ out = "fadeOutLeft" #ANIMATION OUT: [ rotateOutUpLeft, rollOut, jackOutTheBox, f
 
 # Portfolio Settings
 [params.portfolio]
-homeNumOfItems = 12
+homeNumOfItems = 36
 [[params.portfolio.filters]]
 name = "Render"
 slug = "render"

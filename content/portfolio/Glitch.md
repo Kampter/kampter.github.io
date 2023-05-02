@@ -1,5 +1,5 @@
 ---
-title: Post Processing Glitch
+title: Glitch
 category: VFX
 category_slug: vfx
 source: video

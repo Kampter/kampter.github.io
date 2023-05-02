@@ -1,5 +1,5 @@
 ---
-title: Portal Effect
+title: Bubble Effect
 category: VFX
 category_slug: vfx
 source: video

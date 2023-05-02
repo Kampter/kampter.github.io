@@ -3,7 +3,7 @@ title: GGJ2023 x GiCA 中国站回顾
 date: 2023-02-15 19:10:20
 featureImage: images/blog/image-20230215211434958.png
 categories: 
-- 日常记录
+- 日常生活
 tags: 
 - Shader Graph
 - HLSL

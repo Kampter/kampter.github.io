@@ -4,7 +4,7 @@ description:
 date: 2023-04-05T14:35:17+08:00
 featureImage: images/blog/ssao.jpg
 Categories:
-- 学习笔记
+- 技术实现
 tags: 
 - Unity
 - HLSL

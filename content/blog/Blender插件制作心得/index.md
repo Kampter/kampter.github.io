@@ -1,9 +1,9 @@
 ---
-title: "blender插件制作心得"
-date: 2023-04-05T15:36:05+08:00
+title: "Blender插件制作心得"
+date: 2023-04-08T15:36:05+08:00
 featureImage: images/blog/add-on.jpg
 categories: 
-- 学习笔记
+- 技术实现
 tags: 
 - blender
 - plugin
@@ -14,8 +14,6 @@ tags:
 一个偶然的机会接触到 Blender插件编写，一直以来我都是(曾经是) Maya以及Houdini软件的拥护者，但是Blender 的开源社区逐渐壮大也不能不引起重视，那么是时候了解一下Blender的相关内容。
 
 Blender的交互层都是用Python来编写的，这就相当友好了。作为一个使用过python用来数据分析以及编写爬虫爬 *** 内容的人表示这很开心。
-
-
 
 ## 基础模板
 

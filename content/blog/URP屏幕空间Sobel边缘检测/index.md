@@ -1,10 +1,10 @@
 ---
 title: "URP屏幕空间Sobel边缘检测"
 description: 
-date: 2023-04-05T20:25:54+08:00
+date: 2023-04-10T20:25:54+08:00
 featureImage: images/blog/EdgeDetection.png
 categories: 
-- 学习笔记
+- 技术实现
 tags: 
 - Unity
 - HLSL

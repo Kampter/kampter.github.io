@@ -3,7 +3,7 @@ title: Games 101 - 光栅化
 date: 2022-09-02 15:48:07
 featureImage: images/blog/rasterization.jpg
 categories: 
-- 学习笔记
+- 课程笔记
 tags: 
 - Computer Graphic
 - Math

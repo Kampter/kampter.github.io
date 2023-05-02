@@ -1,12 +1,12 @@
 ---
 title: Unity 项目优化
 date: 2023-02-27 22:34:27
+featureImage: images/works/profiling.png
 categories: 
 - 学习笔记
 tags: 
-- profiling
+- Profiling
 - UPR
-draft: true
 ---
 
 ## 资产说明
